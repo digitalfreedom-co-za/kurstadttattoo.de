@@ -1,16 +1,21 @@
 ---
 // Temporary start page content for both locales, until the landing page ticket (#5) replaces it.
+import Container from './Container.astro';
+import ReopeningNotice from './ReopeningNotice.astro';
 import { t, type Locale } from '../../i18n';
 
 interface Props {
   locale: Locale;
 }
 
-const copy = t(Astro.props.locale).pages.home;
+const { locale } = Astro.props;
+const copy = t(locale).pages.home;
 ---
 
-<section class="mx-auto max-w-2xl px-5 py-16 sm:py-24">
-  <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{copy.heading}</h1>
-  <p class="mt-6 text-lg leading-relaxed">{copy.intro}</p>
-  <p class="mt-4 text-base opacity-75">{copy.status}</p>
-</section>
+<Container class="py-section">
+  <span class="basin-rule max-w-[40rem]" data-reveal="rule" aria-hidden="true"></span>
+  <h1 class="mt-8 max-w-[14ch] text-h1">{copy.heading}</h1>
+  <p class="mt-6 max-w-[38rem] text-lead text-muted" data-reveal>{copy.intro}</p>
+  <p class="label mt-6 text-muted" data-reveal>{copy.status}</p>
+  <ReopeningNotice locale={locale} class="mt-12 md:mt-16" />
+</Container>

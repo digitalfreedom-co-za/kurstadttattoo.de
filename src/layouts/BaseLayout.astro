@@ -1,10 +1,14 @@
 ---
-// HTML frame for every page: html lang per locale, SEO head, skip link, language switch, main.
-// Header, footer and design system follow in the design system ticket (#4).
+// HTML frame for every page: html lang per locale, theme and JS bootstrap, fonts, SEO head, skip link,
+// reopening strip, header, main, footer, motion script. Extra head tags go into the "head" slot.
 import '../styles/global.css';
+import { Font } from 'astro:assets';
 import SeoHead, { type SeoProps } from '../components/seo/SeoHead.astro';
-import LanguageSwitch from '../components/layout/LanguageSwitch.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import ReopeningNotice from '../components/ui/ReopeningNotice.astro';
 import { t, localeMeta } from '../i18n';
+import { url } from '../lib/url';
 
 type Props = SeoProps;
 
@@ -16,25 +20,45 @@ const { locale, routeKey } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Before paint: the stored dark theme (wiki websites.md: light by default, prefers-color-scheme is
+         ignored) and the JS states. Failsafe: if the motion or menu script has not initialised after 3 s
+         (blocked or failed), drop .js so content and navigation stay usable. -->
+    <script is:inline>
+      (function (root) {
+        try {
+          if (localStorage.getItem('theme') === 'dark') root.dataset.theme = 'dark';
+        } catch (e) {}
+        root.classList.add('js');
+        setTimeout(function () {
+          if (!root.classList.contains('motion-ready') || !root.classList.contains('nav-ready')) root.classList.remove('js');
+        }, 3000);
+      })(document.documentElement);
+    </script>
     <SeoHead {...Astro.props} />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <meta name="theme-color" content="#f5f4f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f0e10" media="(prefers-color-scheme: dark)" />
+    <Font cssVariable="--font-instrument" preload={[{ style: 'normal' }]} />
+    <Font cssVariable="--font-syne" preload />
     <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col">
     <a
       href="#inhalt"
-      class="fixed top-3 left-3 z-50 -translate-y-24 bg-black px-4 py-3 text-white focus:translate-y-0"
+      class="label fixed top-3 left-3 z-50 -translate-y-24 bg-ink px-4 py-3 text-wall transition-transform focus:translate-y-0"
     >
       {t(locale).a11y.skipToContent}
     </a>
-    {
-      routeKey && (
-        <header class="flex justify-end p-4">
-          <LanguageSwitch locale={locale} routeKey={routeKey} />
-        </header>
-      )
-    }
-    <main id="inhalt" tabindex="-1" class="flex-1 focus:outline-none">
+    <div data-inert-when-menu>
+      <ReopeningNotice locale={locale} variant="strip" />
+    </div>
+    <Header locale={locale} routeKey={routeKey} />
+    <main id="inhalt" data-inert-when-menu tabindex="-1" class="flex-1 focus:outline-none">
       <slot />
     </main>
+    <Footer locale={locale} />
+    <script>
+      import '../scripts/motion';
+    </script>
   </body>
 </html>

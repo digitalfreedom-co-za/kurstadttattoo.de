@@ -1,4 +1,6 @@
 // Single source for site wide facts. Every component reads from here; never hard-code these values in markup.
+// Facts come from docs/source-content (old site) and the ticket for the new address; see the fact sheet there.
+import type { RouteKey } from '../i18n/routes';
 
 export const site = {
   name: 'KurstadtTattoo',
@@ -11,3 +13,39 @@ export const site = {
  * PUBLIC_INDEXABLE=true (deploy workflow env). Only the 404 page is never indexed.
  */
 export const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
+
+/** The studio: name, artist, address of the new location from 1 December 2026, direct contact. */
+export const studio = {
+  name: 'KurstadtTattoo Bad Nauheim',
+  artist: 'Patrick Wolf',
+  address: {
+    street: 'Friedrich-Ebert-Platz 1A',
+    postalCode: '61231',
+    city: 'Bad Nauheim',
+    countryCode: 'DE',
+  },
+  phone: { display: '0173 160 51 62', href: 'tel:+491731605162' },
+  email: { display: 'Kurstadttattoo@web.de', href: 'mailto:Kurstadttattoo@web.de' },
+  tiktok: { handle: '@patrickkurstadttattoo', href: 'https://www.tiktok.com/@patrickkurstadttattoo' },
+} as const;
+
+/**
+ * Reopening at the new location. While active, the layout shows the reopening strip and the footer marks
+ * the address as new. Switch off after the opening day; the build stays free of date logic so the HTML
+ * is deterministic (wiki websites.md, IndexNow).
+ */
+export const reopening = {
+  active: true,
+  date: '2026-12-01',
+} as const;
+
+/** Patrick Wolf's expert office. Linked secondary only (teaser and footer), no own content here. */
+export const expertSite = {
+  href: 'https://www.tattoogutachten.de/',
+  display: 'tattoogutachten.de',
+} as const;
+
+/** Header and footer navigation, in this order. Pages that do not exist yet are left out (see lib/pages). */
+export const mainNav: RouteKey[] = ['gallery', 'artists', 'hygiene', 'consultation', 'aftercare', 'faq', 'contact'];
+export const footerNav: RouteKey[] = [...mainNav, 'engraving'];
+export const legalNav: RouteKey[] = ['imprint', 'privacy'];

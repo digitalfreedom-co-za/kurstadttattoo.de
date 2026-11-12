@@ -1,0 +1,128 @@
+---
+// Site footer on the always dark surface: the full logo, the studio (new address, phone, email),
+// opening hours (marked as the previous ones until the new location confirms them), TikTok, the pages, the secondary link to Patrick Wolf's expert office and the legal
+// links. Only pages that exist are linked (src/lib/pages.ts).
+import Logo from '../../assets/brand/logo.svg';
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+import { expertSite, footerNav, legalNav, reopening, studio } from '../../config/site';
+import { existingRoutes } from '../../lib/pages';
+import { localizedPath, t, type Locale } from '../../i18n';
+import { url } from '../../lib/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = t(locale);
+const pages = existingRoutes(footerNav, locale);
+const legal = existingRoutes(legalNav, locale);
+const { address } = studio;
+const linkClass = 'link inline-flex min-h-11 items-center no-underline hover:underline';
+---
+
+<footer class="bg-night text-chalk" data-inert-when-menu>
+  <Container class="pt-14 md:pt-20">
+    <span class="basin-rule text-chalk/40" aria-hidden="true"></span>
+    <div class="mt-10 grid gap-10 sm:grid-cols-2 md:mt-14 lg:grid-cols-12 lg:gap-x-8">
+      <div class="sm:col-span-2 lg:col-span-3">
+        <Logo class="h-auto w-36 md:w-44" role="img" aria-label={studio.name} />
+        <p class="mt-6 max-w-[22rem] text-sm text-chalk-muted">{copy.footer.about}</p>
+      </div>
+
+      <div class="min-w-0 lg:col-span-3">
+        <p class="label text-chalk-muted">{copy.studio.addressLabel}</p>
+        <address class="mt-3 grid gap-1 text-[0.9375rem] not-italic">
+          <p class="flex gap-3">
+            <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon-glow" />
+            <span>
+              {address.street}
+              <br />
+              {`${address.postalCode} ${address.city}`}
+              {reopening.active && <span class="mt-1 block text-sm text-chalk-muted">{copy.studio.newAddressNote}</span>}
+            </span>
+          </p>
+          <p>
+            <a class={`${linkClass} gap-3`} href={studio.phone.href}>
+              <Icon name="phone" size={18} class="shrink-0 text-neon-glow" />
+              <span><span class="sr-only">{copy.studio.phoneLabel} </span>{studio.phone.display}</span>
+            </a>
+          </p>
+          <p>
+            <a class={`${linkClass} gap-3 break-all`} href={studio.email.href}>
+              <Icon name="mail" size={18} class="shrink-0 text-neon-glow" />
+              <span><span class="sr-only">{copy.studio.emailLabel} </span>{studio.email.display}</span>
+            </a>
+          </p>
+        </address>
+      </div>
+
+      <div class="min-w-0 lg:col-span-3">
+        <p class="label text-chalk-muted">{copy.studio.hoursLabel}</p>
+        <p class="mt-3 flex gap-3 text-[0.9375rem]">
+          <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon-glow" />
+          <span>
+            {copy.studio.hours}<span class="block text-sm text-chalk-muted">{copy.studio.hoursNote}</span>
+            <span class="mt-2 block text-sm text-chalk-muted">{copy.studio.hoursUnconfirmed}</span>
+          </span>
+        </p>
+        <p class="label mt-8 text-chalk-muted">{copy.studio.followLabel}</p>
+        <p class="mt-1">
+          <a class={`${linkClass} items-start gap-3 py-2 text-[0.9375rem]`} href={studio.tiktok.href} rel="noopener" target="_blank">
+            <Icon name="tiktok" size={18} class="mt-1 shrink-0 text-neon-glow" />
+            <span>{copy.studio.tiktok}<span class="block text-sm text-chalk-muted">{studio.tiktok.handle}</span></span>
+          </a>
+        </p>
+      </div>
+
+      <div class="min-w-0 lg:col-span-3">
+        {
+          pages.length > 0 && (
+            <nav aria-label={copy.nav.footerLabel} class="mb-8">
+              <p class="label text-chalk-muted">{copy.nav.footerLabel}</p>
+              <ul class="mt-2 grid grid-cols-2 gap-x-6 text-[0.9375rem] lg:grid-cols-1">
+                {pages.map((key) => (
+                  <li>
+                    <a class={linkClass} href={url(localizedPath(key, locale))}>
+                      {copy.nav.items[key]}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+        <p class="label text-chalk-muted">{copy.footer.expertLabel}</p>
+        <p class="mt-3 max-w-[22rem] text-sm text-chalk-muted">
+          {copy.footer.expertText}{' '}
+          <a class="link inline-flex items-center gap-1 font-semibold text-chalk" href={expertSite.href} rel="noopener">
+            {expertSite.display}
+            <Icon name="external" size={14} class="shrink-0" />
+          </a>
+        </p>
+      </div>
+    </div>
+  </Container>
+
+  <Container>
+    <div class="mt-12 flex flex-col gap-2 border-t border-chalk/15 py-4 text-sm text-chalk-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {copy.footer.copyright}</p>
+      {
+        legal.length > 0 && (
+          <nav aria-label={copy.nav.legalLabel}>
+            <ul class="flex gap-6">
+              {legal.map((key) => (
+                <li>
+                  <a class={linkClass} href={url(localizedPath(key, locale))}>
+                    {copy.nav.items[key]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+    </div>
+  </Container>
+</footer>

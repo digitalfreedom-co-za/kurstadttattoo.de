@@ -1,0 +1,14 @@
+---
+// Small label above a heading, set like a wall label: a short neon bar, then the words. Never numbered.
+interface Props {
+  tone?: 'wall' | 'night';
+  class?: string;
+}
+
+const { tone = 'wall', class: className } = Astro.props;
+---
+
+<p class:list={['label flex items-center gap-3', tone === 'wall' ? 'text-muted' : 'text-chalk-muted', className]}>
+  <span class:list={['h-[3px] w-5 shrink-0', tone === 'wall' ? 'bg-neon' : 'bg-neon-glow']} aria-hidden="true"></span>
+  <span><slot /></span>
+</p>

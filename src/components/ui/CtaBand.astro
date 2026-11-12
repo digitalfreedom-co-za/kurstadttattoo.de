@@ -1,0 +1,51 @@
+---
+// Closing call to action on the always dark surface (the counter): statement left, the action right.
+// Default action is the telephone, as on the old site (appointments by phone); the booking ticket can
+// pass its own label and href. The email stays as one quiet alternative line.
+import Container from './Container.astro';
+import Button from './Button.astro';
+import { studio } from '../../config/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  text?: string;
+  /** Primary action; default is the phone call. */
+  action?: { label: string; href: string };
+}
+
+const { locale, title, text, action } = Astro.props;
+const copy = t(locale).cta;
+---
+
+<section class="bg-night pt-section pb-16 text-chalk md:pb-20" aria-label={copy.label}>
+  <Container>
+    <span class="basin-rule text-chalk/40" data-reveal="rule" aria-hidden="true"></span>
+    <div class="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:gap-x-8">
+      <div class="min-w-0 md:col-span-7">
+        <h2 class="text-h2">{title}</h2>
+        {text && <p class="mt-6 max-w-[34rem] text-lead text-chalk-muted" data-reveal>{text}</p>}
+      </div>
+      <div class="flex min-w-0 flex-col gap-4 md:col-span-4 md:col-start-9 md:justify-end">
+        {
+          action ? (
+            <Button href={action.href} variant="inverse" icon="calendar" class="self-start">
+              {action.label}
+            </Button>
+          ) : (
+            <Button href={studio.phone.href} variant="inverse" icon="phone" class="self-start">
+              <span class="sr-only">{copy.callPrefix}: </span>
+              {studio.phone.display}
+            </Button>
+          )
+        }
+        <p class="text-sm">
+          <a class="link inline-flex min-h-11 items-center font-semibold break-all" href={studio.email.href}>
+            {copy.emailLink}
+          </a>
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>
