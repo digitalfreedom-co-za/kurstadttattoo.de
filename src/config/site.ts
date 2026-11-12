@@ -37,6 +37,9 @@ export const studio = {
 /**
  * Operator of the website and controller under the GDPR, as stated in the imprint of the old site
  * (docs/source-content/pages/kontakt-und-impressum.md). Read by the privacy policy and the imprint.
+ * The old site gives no register entry; court and number are those the same company publishes in the
+ * imprint of tattoogutachten.de. The tax number of the old imprint stays out (§ 5 DDG asks only for the
+ * VAT ID).
  */
 export const operator = {
   name: 'RuW Lifestyle GmbH',
@@ -44,6 +47,9 @@ export const operator = {
   postalCode: '61231',
   city: 'Bad Nauheim',
   managingDirector: 'Patrick Wolf',
+  registerCourt: 'Amtsgericht Friedberg (Hessen)',
+  registerNumber: 'HRB 8945',
+  vatId: 'DE323734171',
 } as const;
 
 /**

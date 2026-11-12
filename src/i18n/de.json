@@ -708,6 +708,68 @@
         "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
       }
     },
+    "imprint": {
+      "title": "Impressum | KurstadtTattoo Bad Nauheim",
+      "description": "Impressum von kurstadttattoo.de: Anbieter ist die {operator} in {city}, vertreten durch den Geschäftsführer {name}. Kontakt, Handelsregister und Umsatzsteuer-ID.",
+      "eyebrow": "Rechtliches",
+      "heading": "Impressum",
+      "lead": "Anbieter dieser Website ist die {operator} mit Sitz in {city}, vertreten durch den Geschäftsführer {name}.",
+      "updated": "Stand: 12. November 2026",
+      "provider": {
+        "title": "Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)",
+        "represented": "Vertreten durch den Geschäftsführer {name}"
+      },
+      "contact": {
+        "title": "Kontakt"
+      },
+      "register": {
+        "title": "Handelsregister",
+        "court": "Registergericht",
+        "number": "Registernummer"
+      },
+      "vat": {
+        "title": "Umsatzsteuer-Identifikations­nummer",
+        "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
+      },
+      "profession": {
+        "title": "Berufsbezeichnung",
+        "text": "{name}, Tätowierer und Piercer"
+      },
+      "studio": {
+        "title": "Anschrift des Studios",
+        "reopening": "Das Studio öffnet am 1. Dezember 2026 an dieser neuen Adresse."
+      },
+      "dispute": {
+        "title": "Verbraucher­streit­beilegung",
+        "text": "Die {operator} ist weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+      },
+      "content": {
+        "title": "Haftung für Inhalte",
+        "paragraphs": [
+          "Als Diensteanbieter ist die {operator} für die eigenen Inhalte dieser Website nach den allgemeinen Gesetzen verantwortlich. Wir erstellen sie mit Sorgfalt, für Vollständigkeit und Aktualität können wir jedoch keine Gewähr übernehmen.",
+          "Sobald wir von einer konkreten Rechtsverletzung erfahren, entfernen wir den betreffenden Inhalt umgehend."
+        ]
+      },
+      "links": {
+        "title": "Haftung für Links",
+        "paragraphs": [
+          "Diese Website verweist auf Seiten anderer Anbieter, etwa auf TikTok, YouTube, Google Maps oder cal.com. Für deren Inhalte ist der jeweilige Anbieter verantwortlich; wir machen sie uns nicht zu eigen.",
+          "Beim Setzen der Links waren keine Rechtsverstöße erkennbar. Eine ständige Kontrolle der verlinkten Seiten ist ohne konkreten Anlass nicht zumutbar. Erfahren wir von einer Rechtsverletzung, entfernen wir den Link umgehend."
+        ]
+      },
+      "copyright": {
+        "title": "Urheberrecht",
+        "paragraphs": [
+          "Texte, Fotos, Grafiken und das Logo auf dieser Website unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Rechteinhabers.",
+          "Sollten Sie auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen Hinweis. Wir entfernen betroffene Inhalte dann umgehend."
+        ]
+      },
+      "privacy": {
+        "label": "Datenschutz",
+        "text": "Welche Daten beim Besuch dieser Website und bei der Terminbuchung verarbeitet werden, steht in der",
+        "link": "Datenschutzerklärung"
+      }
+    },
     "privacy": {
       "title": "Datenschutzerklärung | KurstadtTattoo Bad Nauheim",
       "description": "Datenschutzerklärung von kurstadttattoo.de: Hosting bei GitHub Pages, Einwilligung, Terminbuchung über cal.com, Kontakt per Telefon und E-Mail, Ihre Rechte.",

@@ -1,0 +1,109 @@
+---
+// Imprint (§ 5 DDG) for both locales. Provider data from src/config/site.ts (operator), taken from the
+// imprint of the old site; the studio address is the new location. Reworked from the old imprint:
+// TMG references replaced, the link to the EU online dispute platform dropped (shut down on 20 July
+// 2025), no tax number, no design credit of the old site.
+// The consent dialog does not open by itself here (ConsentDialog, routeKey imprint).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../ui/PageHeader.astro';
+import Container from '../ui/Container.astro';
+import LegalProse from '../legal/LegalProse.astro';
+import { operator, reopening, studio } from '../../config/site';
+import { localizedPath, t, type Locale } from '../../i18n';
+import { url } from '../../lib/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.imprint;
+const breadcrumbs = [
+  { name: dict.nav.items.home, path: localizedPath('home', locale) },
+  { name: dict.nav.items.imprint, path: localizedPath('imprint', locale) },
+];
+const fill = (text: string) =>
+  text
+    .replaceAll('{operator}', operator.name)
+    .replaceAll('{city}', operator.city)
+    .replaceAll('{name}', operator.managingDirector);
+const { address } = studio;
+---
+
+<BaseLayout
+  title={copy.title}
+  description={fill(copy.description)}
+  locale={locale}
+  routeKey="imprint"
+  breadcrumbs={breadcrumbs}
+>
+  <PageHeader locale={locale} breadcrumbs={breadcrumbs} eyebrow={copy.eyebrow} heading={copy.heading} lead={fill(copy.lead)} />
+
+  <Container class="py-14 md:py-20">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-x-8">
+      <LegalProse class="lg:col-span-8">
+        <h2>{copy.provider.title}</h2>
+        <p>
+          {operator.name}<br />
+          {operator.street}<br />
+          {operator.postalCode} {operator.city}<br />
+          {dict.studio.country}
+        </p>
+        <p>{fill(copy.provider.represented)}</p>
+
+        <h2>{copy.contact.title}</h2>
+        <p>
+          {dict.studio.phoneLabel}: <a href={studio.phone.href}>{studio.phone.display}</a><br />
+          {dict.studio.emailLabel}: <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
+        </p>
+
+        <h2>{copy.register.title}</h2>
+        <p>
+          {copy.register.court}: {operator.registerCourt}<br />
+          {copy.register.number}: {operator.registerNumber}
+        </p>
+
+        <h2>{copy.vat.title}</h2>
+        <p>
+          {copy.vat.text}<br />
+          {operator.vatId}
+        </p>
+
+        <h2>{copy.profession.title}</h2>
+        <p>{fill(copy.profession.text)}</p>
+
+        <h2>{copy.studio.title}</h2>
+        <p>
+          {studio.name}<br />
+          {address.street}<br />
+          {address.postalCode} {address.city}
+        </p>
+        {reopening.active && <p>{copy.studio.reopening}</p>}
+
+        <h2>{copy.dispute.title}</h2>
+        <p>{fill(copy.dispute.text)}</p>
+
+        <h2>{copy.content.title}</h2>
+        {copy.content.paragraphs.map((text) => <p>{fill(text)}</p>)}
+
+        <h2>{copy.links.title}</h2>
+        {copy.links.paragraphs.map((text) => <p>{fill(text)}</p>)}
+
+        <h2>{copy.copyright.title}</h2>
+        {copy.copyright.paragraphs.map((text) => <p>{fill(text)}</p>)}
+      </LegalProse>
+
+      <aside class="min-w-0 lg:col-span-3 lg:col-start-10">
+        <div class="border-t border-ink pt-4 lg:sticky lg:top-[calc(var(--header-height)+2rem)]">
+          <p class="label text-muted">{copy.privacy.label}</p>
+          <p class="mt-3 text-[0.9375rem] text-ink-soft">
+            {copy.privacy.text}
+            <a class="link" href={url(localizedPath('privacy', locale))}>{copy.privacy.link}</a>.
+          </p>
+          <p class="mt-6 text-sm text-muted">{copy.updated}</p>
+        </div>
+      </aside>
+    </div>
+  </Container>
+</BaseLayout>
