@@ -18,7 +18,7 @@ const copy = t(locale).related;
 const links = existingRoutes(keys, locale).map((key) => ({
   key,
   href: url(localizedPath(key, locale)),
-  ...copy.items[key],
+  ...copy.items[key as RelatedKey],
 }));
 ---
 
