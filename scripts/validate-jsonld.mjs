@@ -127,7 +127,10 @@ for (const { page, canonical, nodes } of pages) {
 
   const webPage = nodes.find(({ node }) => String(node['@id'] ?? '').endsWith('#webpage'))?.node;
   if (!webPage) fail(page, 'WebPage node (#webpage) missing');
-  else if (canonical && webPage.url !== canonical) fail(page, `WebPage url ${webPage.url} differs from canonical ${canonical}`);
+  // Typed with WebPage or a subtype listed in REQUIRED, so the required field check below applies to it.
+  else if (!typesOf(webPage).some((type) => type.endsWith('Page') && type in REQUIRED)) {
+    fail(page, `#webpage node has no known page @type (${JSON.stringify(webPage['@type'])})`);
+  } else if (canonical && webPage.url !== canonical) fail(page, `WebPage url ${webPage.url} differs from canonical ${canonical}`);
 
   for (const { node, path } of nodes) {
     for (const type of typesOf(node)) {
