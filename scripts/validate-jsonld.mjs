@@ -8,7 +8,8 @@
 // the site, @ids and canonical URLs sit under the site root, the WebPage url equals the canonical URL.
 // Every hreflang alternate points to a built page, the page lists itself among its alternates, and
 // x-default is present. Title and description are unique across pages and follow the copy rules (no
-// en or em dash, no typographic quotes, no arrows). og:image and twitter:image point to a built file.
+// en or em dash, no hyphen between spaces used as a dash, no typographic quotes, no arrows). og:image
+// and twitter:image point to a built file. A text/markdown alternate points to a built Markdown file.
 // Local SEO: the studio's street and phone number in the JSON-LD are the ones the page shows (NAP).
 // llms.txt and llms-full.txt exist per locale and link only built URLs. The 404 page must carry
 // noindex and neither canonical nor JSON-LD. Exits with 1 if anything fails.
@@ -57,6 +58,11 @@ const FORBIDDEN_PROPERTIES = ['aggregateRating', 'review', 'award', 'priceRange'
 
 /** Copy rules for titles and descriptions: no en or em dash, no typographic quotes, no arrows. */
 const FORBIDDEN_CHARACTERS = /[\u2013\u2014\u201C\u201D\u201E\u2018\u2019\u201A\u00AB\u00BB\u2190-\u21FF]/;
+/** A hyphen between spaces stands in for a dash, which the copy rules forbid as well. */
+const SPACED_HYPHEN = /\s-\s/;
+
+/** Leftovers of a template value that was never filled in. */
+const UNFILLED = /undefined|\[object Object\]|\{(phone|email|count|holder)\}/;
 
 const LLMS_FILES = ['llms.txt', 'llms-full.txt', 'en/llms.txt', 'en/llms-full.txt'];
 
@@ -65,6 +71,7 @@ const LD_JSON = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
 const HREFLANG = /<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g;
 const TITLE = /<title>([^<]*)<\/title>/;
 const DESCRIPTION = /<meta name="description" content="([^"]*)"/;
+const MARKDOWN_ALTERNATE = /<link rel="alternate" type="text\/markdown" href="([^"]+)"/g;
 const META_IMAGE = /<meta (?:property="og:image"|name="twitter:image") content="([^"]+)"/g;
 
 /** HTML attribute and text values come entity encoded; enough decoding for the comparisons below. */
@@ -125,6 +132,7 @@ const exists = (path) =>
     () => false,
   );
 const seenTitles = new Map();
+let markdownFiles = 0;
 const seenDescriptions = new Map();
 
 const definedIds = new Set();
@@ -154,13 +162,29 @@ for (const file of files) {
     if (!value) fail(page, `${label} missing`);
     else if (seen.has(value)) fail(page, `${label} duplicates ${seen.get(value)}`);
     else seen.set(value, page);
-    if (FORBIDDEN_CHARACTERS.test(value)) fail(page, `${label} breaks the copy rules (dash, typographic quote or arrow)`);
+    if (FORBIDDEN_CHARACTERS.test(value) || SPACED_HYPHEN.test(value)) {
+      fail(page, `${label} breaks the copy rules (dash, typographic quote or arrow)`);
+    }
   }
   const images = [...html.matchAll(META_IMAGE)].map((match) => match[1]);
   if (images.length !== 2) fail(page, `expected og:image and twitter:image, found ${images.length}`);
   for (const image of images) {
     const file = builtFile(image);
     if (!file || !(await exists(file))) fail(page, `social image ${image} is not a built file`);
+  }
+
+  // Markdown version of the page (llmstxt.org): built, under the page URL, an H1 first, every value filled.
+  for (const [, href] of html.matchAll(MARKDOWN_ALTERNATE)) {
+    const file = builtFile(href);
+    if (!canonical || href !== `${canonical}index.md`) fail(page, `Markdown alternate ${href} is not <canonical>index.md`);
+    if (!file || !(await exists(file))) {
+      fail(page, `Markdown alternate ${href} is not a built file`);
+      continue;
+    }
+    const markdown = await readFile(file, 'utf8');
+    if (!markdown.startsWith('# ')) fail(page, `Markdown version ${href} must start with an H1`);
+    if (UNFILLED.test(markdown)) fail(page, `Markdown version ${href} contains an unfilled value`);
+    markdownFiles += 1;
   }
 
   if (!canonical) fail(page, 'canonical URL missing');
@@ -242,7 +266,7 @@ for (const name of LLMS_FILES) {
   }
   const text = await readFile(path, 'utf8');
   if (!text.startsWith('# ')) fail(name, 'must start with an H1 (llmstxt.org)');
-  if (/undefined|\[object Object\]|\{(phone|email)\}/.test(text)) fail(name, 'contains an unfilled value');
+  if (UNFILLED.test(text)) fail(name, 'contains an unfilled value');
   // Markdown links and bare URLs. Every URL on the site's origin must sit under the base path and be built.
   for (const [match] of text.matchAll(/https?:\/\/[^\s)]+/g)) {
     const href = match.replace(/[.,;:]+$/, '');
@@ -258,5 +282,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `SEO layer valid: ${pages.length} pages, ${definedIds.size} entities, ${LLMS_FILES.length} llms files, site root ${siteRoot}`,
+  `SEO layer valid: ${pages.length} pages, ${definedIds.size} entities, ${markdownFiles} Markdown versions, ${LLMS_FILES.length} llms files, site root ${siteRoot}`,
 );
