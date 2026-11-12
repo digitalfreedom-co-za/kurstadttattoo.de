@@ -52,3 +52,45 @@ export function faqPageNode(
     })),
   };
 }
+
+export interface Crumb {
+  name: string;
+  /** Site path without base. */
+  path: string;
+}
+
+export const breadcrumbId = (path: string, base: URL | undefined) => `${absoluteUrl(path, base)}#breadcrumb`;
+
+/** BreadcrumbList for the trail shown by Breadcrumbs.astro (home first, the current page last). */
+export function breadcrumbNode(path: string, crumbs: Crumb[], base: URL | undefined): JsonLdNode {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': breadcrumbId(path, base),
+    itemListElement: crumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: absoluteUrl(crumb.path, base),
+    })),
+  };
+}
+
+/** Patrick Wolf as the artist of the studio. One node, defined on the artists page, referenced by @id. */
+export const personId = (base: URL | undefined) => `${absoluteUrl('/', base)}#patrick-wolf`;
+
+export function personNode(
+  person: { name: string; jobTitle: string; description: string; knowsAbout: string[]; sameAs: string[]; path: string },
+  base: URL | undefined,
+): JsonLdNode {
+  return {
+    '@type': 'Person',
+    '@id': personId(base),
+    name: person.name,
+    jobTitle: person.jobTitle,
+    description: person.description,
+    knowsAbout: person.knowsAbout,
+    sameAs: person.sameAs,
+    url: absoluteUrl(person.path, base),
+    mainEntityOfPage: { '@id': webPageId(person.path, base) },
+  };
+}

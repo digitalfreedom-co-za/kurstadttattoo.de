@@ -1,0 +1,132 @@
+---
+// Artists page for both locales: Patrick Wolf, the only artist the source names. His focus links into
+// the gallery groups, the way he works shows the three stated standards, his story is his own video.
+// Carries the Person node of the JSON-LD graph. The expert office stays a secondary link.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import ArtImage from '../ui/ArtImage.astro';
+import Icon from '../ui/Icon.astro';
+import VideoLinks from '../ui/VideoLinks.astro';
+import ExpertTeaser from '../ui/ExpertTeaser.astro';
+import { expertSite, studio } from '../../config/site';
+import { styleGroups } from '../../data/gallery';
+import { videos } from '../../data/videos';
+import { personNode } from '../../lib/schema';
+import { url } from '../../lib/url';
+import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
+import { pageExists } from '../../lib/pages';
+
+import patrickStanding from '../../assets/images/patrick-wolf-stehend-studio.jpg';
+import patrickPortrait from '../../assets/images/patrick-wolf-arme-verschraenkt-neonlogo.jpg';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.artists;
+const groupAnchor = (id: (typeof styleGroups)[number]['id']) => dict.pages.gallery.groups[id].id;
+const link = (key: RouteKey, hash = '') => (pageExists(key, locale) ? url(localizedPath(key, locale)) + hash : undefined);
+const focusLinks = [link('gallery', `#${groupAnchor('realism')}`), link('gallery', `#${groupAnchor('fineLine')}`), link('consultation')];
+
+const person = personNode(
+  {
+    name: studio.artist,
+    jobTitle: copy.person.jobTitle,
+    description: copy.person.description,
+    knowsAbout: copy.person.knowsAbout,
+    sameAs: [studio.tiktok.href, expertSite.href],
+    path: localizedPath('artists', locale),
+  },
+  Astro.site,
+);
+---
+
+<SubpageLayout locale={locale} routeKey="artists" related={['gallery', 'consultation', 'hygiene']} schema={[person]}>
+  <figure slot="media" class="relative">
+    <span class="absolute -top-3 -right-3 bottom-10 left-6 border border-neon md:-top-5 md:-right-5" aria-hidden="true"></span>
+    <ArtImage
+      src={patrickStanding}
+      alt={copy.imageAlt}
+      ratio={4 / 5}
+      position="top"
+      widths={[420, 640, 860]}
+      sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
+      loading="eager"
+      fetchpriority="high"
+      reveal={false}
+      class="relative"
+    />
+  </figure>
+
+  <Section id={copy.focus.id} eyebrow={copy.focus.eyebrow} title={copy.focus.title} intro={copy.focus.intro}>
+    <ul class="grid gap-x-8 border-t border-ink md:grid-cols-3" data-reveal-group>
+      {
+        copy.focus.items.map((item, index) => (
+          <li class="flex min-w-0 flex-col border-b border-line py-6 md:border-b-0 md:py-8" data-reveal>
+            <h3 class="text-h3">{item.title}</h3>
+            <p class="mt-3 text-muted">{item.text}</p>
+            {focusLinks[index] && (
+              <a class="link mt-4 inline-flex min-h-11 items-center self-start font-semibold" href={focusLinks[index]}>
+                {item.link}
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <section id={copy.values.id} class="bg-night py-section text-chalk" aria-labelledby={`${copy.values.id}-titel`}>
+    <Container class="grid gap-10 md:grid-cols-12 md:items-center md:gap-x-8">
+      <div class="min-w-0 md:col-span-5">
+        <ArtImage
+          src={patrickPortrait}
+          alt={copy.values.imageAlt}
+          ratio={4 / 5}
+          position="top"
+          widths={[420, 640, 960]}
+          sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
+          parallax
+        />
+      </div>
+      <div class="min-w-0 md:col-span-6 md:col-start-7">
+        <span class="basin-rule text-chalk/40" data-reveal="rule" aria-hidden="true"></span>
+        <Eyebrow tone="night" class="mt-8">{copy.values.eyebrow}</Eyebrow>
+        <h2 id={`${copy.values.id}-titel`} class="mt-4 text-h2">{copy.values.title}</h2>
+        <p class="mt-6 font-display text-h3" data-reveal>{copy.values.lead}</p>
+        <p class="mt-6 max-w-[34rem] text-chalk-muted" data-reveal>{copy.values.text}</p>
+        <dl class="mt-8 border-t border-chalk/40" data-reveal-group>
+          {
+            copy.values.items.map((item) => (
+              <div class="grid gap-1 border-b border-chalk/15 py-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-6" data-reveal>
+                <dt class="font-semibold">{item.title}</dt>
+                <dd class="text-chalk-muted">{item.text}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </Container>
+  </section>
+
+  <Section id={copy.story.id} eyebrow={copy.story.eyebrow} title={copy.story.title} intro={copy.story.text}>
+    <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
+      <div class="min-w-0 md:col-span-7">
+        <VideoLinks items={videos(['howStarted', 'finishing'], locale)} locale={locale} />
+      </div>
+      <div class="min-w-0 md:col-span-4 md:col-start-9">
+        <p class="label text-muted">{dict.studio.followLabel}</p>
+        <a class="link mt-2 inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline" href={studio.tiktok.href} rel="noopener" target="_blank">
+          <Icon name="tiktok" size={20} class="shrink-0 text-neon" />
+          <span>{dict.studio.tiktok} <span class="font-normal text-muted">{studio.tiktok.handle}</span></span>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <ExpertTeaser {...copy.expert} />
+</SubpageLayout>

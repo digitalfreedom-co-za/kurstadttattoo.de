@@ -1,0 +1,46 @@
+---
+// Opening of a subpage: breadcrumbs, the eyebrow, the h1 and an answer first lead. With a picture in
+// the "media" slot the words sit left and the picture hangs right like a work on the wall; without one
+// the heading runs wide. The default slot takes the actions under the lead. Whether the slots are filled
+// is passed as props, because the subpage layout always forwards both slots.
+import Container from './Container.astro';
+import Eyebrow from './Eyebrow.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import type { Crumb } from '../../lib/schema';
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  breadcrumbs: Crumb[];
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  /** Render the "media" slot (picture beside the heading). */
+  hasMedia?: boolean;
+  /** Render the default slot (actions under the lead). */
+  hasActions?: boolean;
+}
+
+const { locale, breadcrumbs, eyebrow, heading, lead, hasMedia = false, hasActions = false } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-ink" aria-labelledby="seite-titel">
+  <Container class="pt-4 pb-14 md:pt-6 md:pb-20">
+    <Breadcrumbs items={breadcrumbs} locale={locale} />
+    <div class:list={['mt-8 grid gap-12 md:mt-12 md:grid-cols-12 md:gap-x-8', hasMedia && 'lg:items-end']}>
+      <div class:list={['min-w-0', hasMedia ? 'md:col-span-7' : 'md:col-span-11 lg:col-span-10']}>
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h1 id="seite-titel" class:list={['mt-5 text-h1', hasMedia ? 'max-w-[16ch]' : 'max-w-[20ch]']}>{heading}</h1>
+        <p class="mt-6 max-w-[38rem] text-lead text-muted" data-reveal>{lead}</p>
+        {hasActions && <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4" data-reveal><slot /></div>}
+      </div>
+      {
+        hasMedia && (
+          <div class="relative min-w-0 md:col-span-5">
+            <slot name="media" />
+          </div>
+        )
+      }
+    </div>
+  </Container>
+</section>

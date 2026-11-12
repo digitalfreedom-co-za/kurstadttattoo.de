@@ -212,6 +212,455 @@
       "heading": "Seite nicht gefunden",
       "text": "Die Adresse ist nicht oder nicht mehr vorhanden.",
       "homeLink": "Zur Startseite"
+    },
+    "gallery": {
+      "title": "Tattoo Galerie Bad Nauheim nach Stilen | KurstadtTattoo",
+      "description": "Echte Tattoos aus dem Studio KurstadtTattoo in Bad Nauheim: realistische Porträts, Farbe, Fine Line, Schriftzüge, Blackwork und Tribal, nach Stilen sortiert.",
+      "eyebrow": "Galerie",
+      "heading": "Tattoo Galerie: Arbeiten aus dem Studio in Bad Nauheim",
+      "lead": "Hier sehen Sie echte Tattoos aus dem Studio KurstadtTattoo, sortiert nach Stil: Realistik und Porträts, Farbe, Fine Line, Schriftzüge sowie Blackwork und Tribal. Tippen Sie auf ein Bild, um es groß zu sehen.",
+      "stylesLabel": "Stile in der Galerie",
+      "countLabel": "{count} Arbeiten",
+      "groups": {
+        "realism": {
+          "id": "realistik",
+          "title": "Realistik und Porträts",
+          "intro": "Realistische Porträts sind Patricks Schwerpunkt: Tiere, Symbole und Figuren in Black and Grey, gestochen mit einem Auge für Details."
+        },
+        "colour": {
+          "id": "farbe",
+          "title": "Farbe",
+          "intro": "Farbige Motive von realistisch bis verspielt: der Fuchs in Orange, der Hase vor dem Mond, der Schlumpf als Cyborg."
+        },
+        "fineLine": {
+          "id": "fine-line",
+          "title": "Fine Line und Blüten",
+          "intro": "Feine Linien sind der zweite Schwerpunkt im Studio, für filigrane Motive wie die Libelle und zarte Blütenzweige."
+        },
+        "lettering": {
+          "id": "schriftzuege",
+          "title": "Schriftzüge",
+          "intro": "Namen, Daten, Unterschriften und Sätze, die bleiben sollen, in Schreibschrift, Fraktur und Druckbuchstaben."
+        },
+        "blackwork": {
+          "id": "blackwork",
+          "title": "Blackwork und Tribal",
+          "intro": "Flächiges Schwarz, geometrische Muster, Tribal und ornamentale Arbeiten, vom Armband bis zum ganzen Arm."
+        }
+      },
+      "ownDesign": {
+        "title": "Ihr Motiv ist nicht dabei?",
+        "text": "Die Galerie zeigt eine Auswahl. Sie können Ihre eigene Vorlage mitbringen, und wir planen daraus gemeinsam Ihr Tattoo.",
+        "link": "So läuft die Beratung ab"
+      },
+      "video": {
+        "title": "Ein großes Rückentattoo im Video",
+        "text": "Ein Adlermotiv über den ganzen Rücken zeigt Patrick in einem Video auf YouTube."
+      },
+      "cta": {
+        "title": "Welches Motiv soll es werden?",
+        "text": "Erzählen Sie uns Ihre Idee am Telefon. Ab dem 1. Dezember 2026 tätowieren wir im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "artists": {
+      "title": "Tätowierer in Bad Nauheim: Patrick Wolf | KurstadtTattoo",
+      "description": "Patrick Wolf führt KurstadtTattoo in Bad Nauheim und ist Spezialist für realistische Porträts und Fine Line. Lernen Sie den Künstler, seine Schwerpunkte und seine Arbeitsweise kennen.",
+      "eyebrow": "Künstler",
+      "heading": "Patrick Wolf, Tätowierer in Bad Nauheim",
+      "lead": "Patrick Wolf führt KurstadtTattoo und ist unser Spezialist für realistische Porträts und feine Linien. Mit seinem Auge für Details und seiner ruhigen Hand bringt er Ihre Erinnerungen und Ideen als Kunstwerk auf die Haut.",
+      "imageAlt": "Patrick Wolf lächelnd im schwarzen KurstadtTattoo Shirt mit tätowierten Armen in einem hellen Studio",
+      "focus": {
+        "id": "schwerpunkte",
+        "eyebrow": "Schwerpunkte",
+        "title": "Worauf ist Patrick Wolf spezialisiert?",
+        "intro": "Auf realistische Porträts und feine Linien. Eine fertige Zeichnung brauchen Sie dafür nicht: Fotos, Erinnerungen oder eine Idee sind ein guter Ausgangspunkt.",
+        "items": [
+          {
+            "title": "Realistische Porträts",
+            "text": "Menschen, Tiere und Erinnerungen, detailgenau umgesetzt, zum Beispiel das Porträt eines Hundes in einer Pfote.",
+            "link": "Realistik in der Galerie"
+          },
+          {
+            "title": "Fine Line",
+            "text": "Filigrane Motive mit feinen Linien, von der Libelle bis zu Blütenzweigen.",
+            "link": "Fine Line in der Galerie"
+          },
+          {
+            "title": "Ihre eigene Vorlage",
+            "text": "Eigene Designs setzt Patrick als individuelles Tattoo um, ganz nach Ihren Wünschen.",
+            "link": "Mehr zur Beratung"
+          }
+        ]
+      },
+      "values": {
+        "id": "arbeitsweise",
+        "eyebrow": "Arbeitsweise",
+        "title": "Wie arbeitet Patrick Wolf?",
+        "lead": "Eng mit Ihnen zusammen, bis das Motiv genau Ihren Vorstellungen entspricht.",
+        "text": "Jeder bei KurstadtTattoo arbeitet nach drei Maßstäben: Hygiene, Professionalität und Kundenzufriedenheit.",
+        "items": [
+          {
+            "title": "Hygiene",
+            "text": "Eine angenehme und sichere Atmosphäre im Studio und eine saubere Heilung danach."
+          },
+          {
+            "title": "Professionalität",
+            "text": "Sorgfalt und eine ruhige Hand, vom Entwurf bis zum letzten Stich."
+          },
+          {
+            "title": "Kundenzufriedenheit",
+            "text": "Ihr Tattoo soll Ihren Wünschen entsprechen. Deshalb planen wir es gemeinsam."
+          }
+        ],
+        "imageAlt": "Patrick Wolf mit Sonnenbrille und verschränkten, tätowierten Armen vor der Neon Wand mit dem KurstadtTattoo Logo"
+      },
+      "story": {
+        "id": "geschichte",
+        "eyebrow": "Geschichte",
+        "title": "Wie ist Patrick zum Tätowieren gekommen?",
+        "text": "Das erzählt er am besten selbst, in einem Video auf dem YouTube Kanal von KurstadtTattoo. Auf TikTok finden Sie Patrick unter @patrickkurstadttattoo."
+      },
+      "expert": {
+        "title": "Gutachten zu Tattoos",
+        "text": "Neben dem Tätowieren erstellt Patrick Wolf als geprüfter und zertifizierter Gutachter des DGuSV Gutachten zu Tattoos und Piercings, auf seiner eigenen Website.",
+        "link": "Zu tattoogutachten.de"
+      },
+      "person": {
+        "jobTitle": "Tätowierer",
+        "description": "Tätowierer bei KurstadtTattoo in Bad Nauheim, spezialisiert auf realistische Porträts und Fine Line.",
+        "knowsAbout": [
+          "Realistische Tattoos",
+          "Porträt Tattoos",
+          "Fine Line Tattoos"
+        ]
+      },
+      "cta": {
+        "title": "Sprechen Sie mit Patrick über Ihr Motiv.",
+        "text": "Terminanfragen nehmen wir telefonisch an. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "hygiene": {
+      "title": "Hygiene im Tattoo Studio Bad Nauheim | KurstadtTattoo",
+      "description": "Was Hygiene bei KurstadtTattoo in Bad Nauheim bedeutet: ein Grundwert seit der Gründung, im Studio und in der Heilung Ihres Tattoos, mit Warnzeichen und Nachsorge.",
+      "eyebrow": "Hygiene",
+      "heading": "Hygiene bei KurstadtTattoo, im Studio und in der Heilung",
+      "lead": "Hygiene gehört seit der Gründung von KurstadtTattoo zu den Werten, auf die wir am meisten achten, gemeinsam mit Qualität und Ihrer Zufriedenheit. Sie beginnt im Studio und geht in der Heilung zu Hause weiter.",
+      "imageAlt": "Patrick Wolf tätowiert mit schwarzen Handschuhen und abgedeckter Tattoomaschine einen Unterarm",
+      "value": {
+        "id": "grundwert",
+        "eyebrow": "Grundwert",
+        "title": "Welchen Stellenwert hat Hygiene bei KurstadtTattoo?",
+        "intro": "Den höchsten. Jeder, der bei uns arbeitet, richtet sich nach drei Maßstäben: Hygiene, Professionalität und Kundenzufriedenheit.",
+        "items": [
+          {
+            "title": "Hygiene",
+            "text": "Steht bei uns seit der Gründung des Studios an erster Stelle."
+          },
+          {
+            "title": "Professionalität",
+            "text": "Sorgfalt vom ersten Gespräch bis zur Nachsorge."
+          },
+          {
+            "title": "Kundenzufriedenheit",
+            "text": "Sie sollen sich im Studio sicher und wohl fühlen."
+          }
+        ]
+      },
+      "studio": {
+        "id": "im-studio",
+        "eyebrow": "Im Studio",
+        "title": "Wie sieht Hygiene im Studio aus?",
+        "intro": "Unsere Räume sind modern und gut ausgestattet und bieten Ihnen eine angenehme und sichere Atmosphäre. Die Bilder aus dem Studio zeigen, wie Patrick arbeitet: mit Handschuhen und abgedeckter Tattoomaschine.",
+        "figures": [
+          {
+            "caption": "Beim Tätowieren: schwarze Handschuhe, die Maschine ist abgedeckt."
+          },
+          {
+            "caption": "Patrick an seinem Arbeitsplatz, mit Handschuhen.",
+            "alt": "Patrick Wolf sitzt lachend mit schwarzen Handschuhen an seinem Arbeitsplatz im Studio"
+          }
+        ],
+        "questions": "Sie möchten genauer wissen, wie wir arbeiten? Fragen Sie uns, am Telefon oder bei der Beratung im Studio."
+      },
+      "healing": {
+        "id": "heilung",
+        "eyebrow": "In der Heilung",
+        "title": "Was gehört nach dem Termin zur Hygiene?",
+        "intro": "Saubere Hände und eine saubere Wunde. Ein frisches Tattoo ist eine Wunde, die Sie zu Hause selbst pflegen.",
+        "items": [
+          "Waschen Sie gründlich die Hände, bevor Sie das Tattoo berühren.",
+          "Reinigen Sie die Stelle vorsichtig mit lauwarmem Wasser und milder Seife und tupfen Sie sie trocken.",
+          "Tragen Sie eine dünne Schicht Heilsalbe auf.",
+          "Tragen Sie lockere Kleidung, die nicht am Tattoo reibt, und schlafen Sie nicht auf der frischen Stelle.",
+          "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pools oder Seen, bis die Haut verheilt ist."
+        ],
+        "warningTitle": "Wann Sie zum Arzt gehen",
+        "warning": "Bei Anzeichen einer Infektion wie starker Rötung, Schwellung oder eitrigen Absonderungen gehen Sie bitte umgehend zum Arzt.",
+        "link": "Alle Pflegetipps nach Phasen"
+      },
+      "cta": {
+        "title": "Fragen zu Hygiene und Ablauf? Rufen Sie an.",
+        "text": "Ab dem 1. Dezember 2026 empfangen wir Sie im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "consultation": {
+      "title": "Tattoo Beratung und Ablauf in Bad Nauheim | KurstadtTattoo",
+      "description": "So läuft Ihr Tattoo bei KurstadtTattoo in Bad Nauheim ab: Anruf, gemeinsame Planung des Motivs, Termin im Studio und Nachsorge. Was Sie zur Beratung mitbringen können.",
+      "eyebrow": "Beratung und Ablauf",
+      "heading": "Tattoo Beratung: vom ersten Anruf bis zur Nachsorge",
+      "lead": "Ein Tattoo bei KurstadtTattoo entsteht in vier Schritten: Anruf, gemeinsame Planung des Motivs, Termin im Studio und Nachsorge. Bevor die erste Linie gestochen wird, planen wir das Motiv eng mit Ihnen zusammen.",
+      "process": {
+        "id": "ablauf",
+        "eyebrow": "Ablauf",
+        "title": "Wie läuft ein Tattoo bei KurstadtTattoo ab?",
+        "intro": "Schritt für Schritt, in dieser Reihenfolge. Den ersten Schritt machen Sie mit einem Anruf."
+      },
+      "bring": {
+        "id": "mitbringen",
+        "eyebrow": "Vorbereitung",
+        "title": "Was können Sie zur Beratung mitbringen?",
+        "intro": "Alles, was zeigt, wie Ihr Tattoo aussehen soll. Eine fertige Zeichnung brauchen Sie nicht.",
+        "items": [
+          {
+            "title": "Ihre Idee und die Körperstelle",
+            "text": "Erzählen Sie, welches Motiv Sie sich vorstellen und an welcher Stelle es sitzen soll."
+          },
+          {
+            "title": "Eine eigene Vorlage",
+            "text": "Eigene Designs setzen wir als individuelles Tattoo um, ganz nach Ihren Wünschen."
+          },
+          {
+            "title": "Fotos und Erinnerungen",
+            "text": "Für ein realistisches Porträt sind Fotos von Mensch oder Tier ein guter Ausgangspunkt."
+          },
+          {
+            "title": "Ein begonnenes Tattoo",
+            "text": "Tattoos, die in einem anderen Studio begonnen wurden, stellen wir fertig. Zeigen Sie uns den aktuellen Stand."
+          }
+        ]
+      },
+      "plan": {
+        "id": "planung",
+        "eyebrow": "Planung",
+        "title": "Wie planen wir Ihr Motiv?",
+        "lead": "Gemeinsam mit Ihnen, bis es Ihren Vorstellungen entspricht.",
+        "text": "Sie bringen Idee, Vorlage oder Fotos mit, wir setzen daraus Ihr individuelles Tattoo um. Welche Stile im Studio entstehen, zeigt die Galerie, von realistischen Porträts bis Blackwork.",
+        "link": "Galerie nach Stilen ansehen"
+      },
+      "cost": {
+        "id": "kosten",
+        "eyebrow": "Kosten",
+        "title": "Was kostet ein Tattoo?",
+        "text": "Wie sich der Preis eines Tattoos zusammensetzt, erklärt Patrick in einem kurzen Video. Für Ihr Motiv fragen Sie bitte telefonisch an."
+      },
+      "cta": {
+        "title": "Bereit für die Beratung?",
+        "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "aftercare": {
+      "title": "Tattoo Pflege und Heilung: Pflegetipps | KurstadtTattoo",
+      "description": "Tattoo Pflege in drei Phasen: die ersten Stunden, die Heilung und die Zeit danach. Pflegetipps von KurstadtTattoo in Bad Nauheim, mit Warnzeichen und Nachsorge.",
+      "eyebrow": "Pflegetipps",
+      "heading": "Tattoo Pflege nach dem Stechen, in drei Phasen",
+      "lead": "Die richtige Pflege ist entscheidend für die Heilung und dafür, wie Ihr Tattoo auf Dauer aussieht. Hier steht, was in den ersten Stunden, während der Heilung und danach zu tun ist.",
+      "imageAlt": "Patrick Wolf sitzt lachend mit schwarzen Handschuhen an seinem Arbeitsplatz im Studio",
+      "phases": {
+        "id": "phasen",
+        "eyebrow": "Phasen",
+        "title": "Wie pflegen Sie Ihr Tattoo Schritt für Schritt?",
+        "intro": "In drei Phasen, die aufeinander folgen. Für alle gilt: Waschen Sie gründlich die Hände, bevor Sie das Tattoo berühren.",
+        "prefix": "Phase",
+        "items": [
+          {
+            "title": "Die ersten Stunden",
+            "points": [
+              "Nehmen Sie die Folie nach den ersten Stunden ab.",
+              "Reinigen Sie die Stelle vorsichtig mit lauwarmem Wasser und einer milden Seife.",
+              "Tupfen Sie die Stelle trocken und tragen Sie eine dünne Schicht einer empfohlenen Heilsalbe auf."
+            ]
+          },
+          {
+            "title": "Während der Heilung",
+            "points": [
+              "Reinigen Sie das Tattoo regelmäßig und pflegen Sie es mit einer Tattoo Pflegecreme.",
+              "Kratzen Sie nicht.",
+              "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pools oder Seen. Das alles kann die Wundheilung beeinträchtigen.",
+              "Tragen Sie lockere Kleidung, die nicht am Tattoo reibt.",
+              "Schlafen Sie nicht auf der frisch tätowierten Stelle."
+            ]
+          },
+          {
+            "title": "Nach der Heilung",
+            "points": [
+              "Pflegen Sie Ihr Tattoo weiter regelmäßig mit einer Feuchtigkeitscreme ohne Duftstoffe.",
+              "Schützen Sie es vor intensiver Sonne mit einem hohen Lichtschutzfaktor. So bleiben Farben und Aussehen erhalten."
+            ]
+          }
+        ]
+      },
+      "warning": {
+        "id": "warnzeichen",
+        "eyebrow": "Warnzeichen",
+        "title": "Wann sollten Sie zum Arzt gehen?",
+        "text": "Sofort, wenn Sie Anzeichen einer Infektion bemerken: starke Rötung, Schwellung oder eitrige Absonderungen."
+      },
+      "support": {
+        "id": "nachsorge",
+        "eyebrow": "Nachsorge",
+        "title": "Was tun bei Fragen zur Heilung?",
+        "text": "Rufen Sie uns an. Bei Fragen oder Problemen sind wir jederzeit für Sie da und bieten Ihnen gern eine Nachsorge an."
+      },
+      "cta": {
+        "title": "Fragen zur Pflege Ihres Tattoos?",
+        "text": "Rufen Sie uns an. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "faq": {
+      "title": "Tattoo FAQ: Termin, Vorlage, Pflege und Studio | KurstadtTattoo",
+      "description": "Antworten von KurstadtTattoo in Bad Nauheim zu Termin, eigener Vorlage, Fertigstellen, Stilen, Pflege, Nachsorge, Öffnungszeiten und dem neuen Studio. Weitere Antworten von Patrick im Video.",
+      "eyebrow": "FAQ",
+      "heading": "Häufige Fragen zum Tattoo bei KurstadtTattoo",
+      "lead": "Hier finden Sie schriftliche Antworten auf die Fragen, die wir am häufigsten hören. Zu Farben, Kosten, Neurodermitis und veganen Farben antwortet Patrick in kurzen Videos.",
+      "groups": {
+        "booking": {
+          "id": "termin",
+          "title": "Termin und Beratung"
+        },
+        "session": {
+          "id": "heilung",
+          "title": "Tätowieren und Heilung"
+        },
+        "studio": {
+          "id": "studio",
+          "title": "Studio und Öffnungszeiten"
+        }
+      },
+      "videos": {
+        "id": "videos",
+        "eyebrow": "Video",
+        "title": "Welche Fragen beantwortet Patrick im Video?",
+        "intro": "Diese Fragen beantwortet Patrick selbst, in kurzen Videos auf YouTube."
+      },
+      "cta": {
+        "title": "Ihre Frage ist nicht dabei?",
+        "text": "Rufen Sie uns an oder schreiben Sie uns eine E-Mail. Wir beantworten Ihre Frage gern persönlich."
+      }
+    },
+    "engraving": {
+      "title": "Lasergravur Bad Nauheim | Gravur-Service von KurstadtTattoo",
+      "description": "Gravur-Service von KurstadtTattoo in Bad Nauheim: Lasergravuren auf Kunststoff, Aluminium, Messing, Edelstahl, Holz und Glas, auch mit Logos und Grafiken.",
+      "eyebrow": "Gravur-Service",
+      "heading": "Lasergravur auf Kunststoff, Metall, Holz und Glas",
+      "lead": "Neben Tattoos bietet KurstadtTattoo individuelle Lasergravuren an: auf Kunststoff, Aluminium, Messing, Edelstahl, Holz, Glas und Leder. Auch Logos und Grafiken setzen wir als Gravur um.",
+      "materials": {
+        "id": "materialien",
+        "eyebrow": "Materialien",
+        "title": "Auf welchen Materialien graviert KurstadtTattoo?",
+        "intro": "Hier sehen Sie je Material, wofür sich die Gravur eignet.",
+        "items": [
+          {
+            "title": "Kunststoff",
+            "points": [
+              "Für innen und außen geeignet",
+              "Namensschilder, Tür- und Klingelschilder, Kugelschreiber, Hinweisschilder und Pokalschilder",
+              "Größe frei wählbar, bis maximal 400 x 115 mm"
+            ]
+          },
+          {
+            "title": "Aluminium",
+            "points": [
+              "Besonders hochwertig, sehr langlebig und witterungsbeständig",
+              "Zum Beispiel Visitenkarten",
+              "Individuelle Typenschilder nach Ihren Vorgaben"
+            ]
+          },
+          {
+            "title": "Messing und Edelstahl",
+            "points": [
+              "Für innen und außen geeignet",
+              "Edles Design",
+              "Auch Logos und Grafiken"
+            ]
+          },
+          {
+            "title": "Holz",
+            "points": [
+              "Brotzeitbrett, Kochlöffel oder Ihr individuelles Geschenk"
+            ]
+          },
+          {
+            "title": "Glas",
+            "points": [
+              "Weizenglas, Bierkrug oder Sektglas, zum Beispiel für Ihren Hochzeitsempfang"
+            ]
+          }
+        ]
+      },
+      "examples": {
+        "id": "beispiele",
+        "eyebrow": "Beispiele",
+        "title": "Wie sieht eine Lasergravur aus?",
+        "intro": "Das Logo von KurstadtTattoo als Lasergravur auf drei Materialien.",
+        "label": "Beispiele für Lasergravuren",
+        "items": {
+          "glass": {
+            "title": "Glas",
+            "meta": "Logo als Lasergravur",
+            "alt": "Trinkglas mit dem KurstadtTattoo Logo als Lasergravur"
+          },
+          "mug": {
+            "title": "Tasse",
+            "meta": "Logo als Lasergravur",
+            "alt": "Schwarze Tasse mit dem eingravierten KurstadtTattoo Logo"
+          },
+          "wood": {
+            "title": "Holz",
+            "meta": "Logo als Lasergravur",
+            "alt": "Holzscheibe mit dem eingravierten Logo von KurstadtTattoo Bad Nauheim"
+          }
+        }
+      },
+      "cta": {
+        "title": "Sie möchten etwas gravieren lassen?",
+        "text": "Fragen Sie Ihre Gravur telefonisch an. Sagen Sie uns, was graviert werden soll und auf welchem Material."
+      }
+    },
+    "contact": {
+      "title": "Kontakt und Anfahrt | KurstadtTattoo Bad Nauheim",
+      "description": "KurstadtTattoo in Bad Nauheim: ab 1. Dezember 2026 am Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Terminanfragen telefonisch unter {phone}, dazu Öffnungszeiten und Anfahrt.",
+      "eyebrow": "Kontakt",
+      "heading": "Kontakt und Anfahrt zu KurstadtTattoo in Bad Nauheim",
+      "lead": "Terminanfragen nehmen wir telefonisch an, unter {phone}. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim.",
+      "details": {
+        "id": "erreichen",
+        "eyebrow": "Studio",
+        "title": "Wie erreichen Sie KurstadtTattoo?",
+        "intro": "Am schnellsten per Telefon. Für alle weiteren Fragen schreiben Sie uns eine E-Mail.",
+        "phoneNote": "Für Terminanfragen",
+        "emailNote": "Für weitere Fragen",
+        "region": "Bad Nauheim liegt in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt."
+      },
+      "oldAddress": {
+        "title": "Bisheriger Standort",
+        "text": "Das Studio in der Parkstr. 22 ist geschlossen. Ab dem 1. Dezember 2026 finden Sie uns am Friedrich-Ebert-Platz 1A."
+      },
+      "follow": {
+        "id": "online",
+        "eyebrow": "Online",
+        "title": "Wo finden Sie KurstadtTattoo online?",
+        "studioTiktok": "KurstadtTattoo auf TikTok",
+        "youtube": "KurstadtTattoo auf YouTube"
+      },
+      "expert": {
+        "title": "Sie suchen einen Gutachter für Tattoos?",
+        "text": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als geprüfter und zertifizierter Gutachter des DGuSV auf seiner eigenen Website.",
+        "link": "Zu tattoogutachten.de"
+      },
+      "cta": {
+        "title": "Wir freuen uns auf Ihren Anruf.",
+        "text": "Erzählen Sie uns Ihre Idee, wir planen Ihr Tattoo gemeinsam mit Ihnen."
+      }
     }
   },
   "works": {
@@ -259,6 +708,81 @@
       "title": "Geometrisches Blackwork",
       "meta": "Blackwork, Arm",
       "alt": "Geometrisches Blackwork Tattoo mit Mustern auf der Innenseite des Arms"
+    },
+    "blackworkOuter": {
+      "title": "Geometrisches Blackwork, Außenseite",
+      "meta": "Blackwork, Arm",
+      "alt": "Dasselbe geometrische Blackwork mit breiten schwarzen Bändern, von außen auf dem ganzen Arm"
+    },
+    "biomech": {
+      "title": "Biomechanische Hand",
+      "meta": "Realistik, Handrücken",
+      "alt": "Biomechanisches Tattoo einer Roboterhand mit pinken Akzenten auf Handrücken und Fingern"
+    },
+    "lettering": {
+      "title": "Ewigkeit und Its in my DNA",
+      "meta": "Schrift, Bein",
+      "alt": "Mehrere Schriftzüge mit Ewigkeit, Its in my DNA und Der Osten zwischen Black and Grey Motiven auf dem Bein"
+    },
+    "signature": {
+      "title": "Unterschrift Elvis Presley",
+      "meta": "Schrift, Fuß",
+      "alt": "Feine Unterschrift von Elvis Presley als Schriftzug auf dem Fuß"
+    },
+    "maori": {
+      "title": "Blackwork im Maori Stil",
+      "meta": "Blackwork, Unterarm",
+      "alt": "Flächiges Blackwork im Maori Stil mit Dreiecken und Rautenmuster auf dem Unterarm"
+    },
+    "blossoms": {
+      "title": "Blütenzweige",
+      "meta": "Fine Line, Fuß",
+      "alt": "Feine Blütenzweige mit schattierten Blüten vom Knöchel über den Fuß"
+    },
+    "smurf": {
+      "title": "Schlumpf als Cyborg",
+      "meta": "Farbe, Wade",
+      "alt": "Farbiger Schlumpf, zur Hälfte als Cyborg mit Metallschädel und rotem Auge, auf der Wade"
+    },
+    "ankh": {
+      "title": "Ankh mit Strahlen",
+      "meta": "Black and Grey, Oberarm",
+      "alt": "Ankh mit Knotenmuster und Horusauge vor Strahlen in Black and Grey auf dem Oberarm"
+    },
+    "tribalNeck": {
+      "title": "Tribal an Hals und Schulter",
+      "meta": "Tribal, Hals",
+      "alt": "Schwarzes Tribal mit spitzen Linien über Hals und Schulter eines Mannes"
+    },
+    "tribalWeb": {
+      "title": "Tribal mit Spinnennetz",
+      "meta": "Tribal, Hals",
+      "alt": "Schwarzes Tribal mit Spinnennetz an Hals und Schulter einer Frau"
+    },
+    "crossDove": {
+      "title": "Kreuz mit Tauben",
+      "meta": "Realistik, Unterarm",
+      "alt": "Holzkreuz mit Tuch und zwei Tauben vor Wolken in Black and Grey, darunter eine farbige Krone, auf dem Unterarm"
+    },
+    "valknut": {
+      "title": "Armband mit Valknut",
+      "meta": "Blackwork, Unterarm",
+      "alt": "Armband aus schwarzen Linien und Pfeilmuster mit einem Valknut in der Mitte um den Unterarm"
+    },
+    "memories": {
+      "title": "Schriftzug Memories",
+      "meta": "Schrift, Unterarm",
+      "alt": "Schriftzug Memories in geschwungenen Buchstaben auf dem Unterarm"
+    },
+    "fist": {
+      "title": "Faust mit Schriftzug",
+      "meta": "Realistik, Unterarm",
+      "alt": "Geballte Faust in Black and Grey mit einem Spruch in Schreibschrift auf dem Unterarm"
+    },
+    "eye": {
+      "title": "Auge im Dreieck",
+      "meta": "Ornamental, Knie",
+      "alt": "Auge in einem Dreieck mit Flügeln und Ornamenten, gepunktet schattiert, auf dem Knie"
     }
   },
   "faq": {
@@ -287,6 +811,26 @@
       "reopening": {
         "question": "Wann öffnet das neue Studio?",
         "answer": "Am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bis dahin bleibt das Studio geschlossen."
+      },
+      "styles": {
+        "question": "Welche Stile tätowiert KurstadtTattoo?",
+        "answer": "Der Schwerpunkt liegt auf realistischen Porträts und feinen Linien. Dazu kommen farbige Motive, Black and Grey, Blackwork, Tribal, Schriftzüge und ornamentale Arbeiten. Beispiele zu jedem Stil zeigt die Galerie."
+      },
+      "artist": {
+        "question": "Wer tätowiert bei KurstadtTattoo?",
+        "answer": "Patrick Wolf führt das Studio und ist der Spezialist für realistische Porträts und feine Linien."
+      },
+      "fainting": {
+        "question": "Ist beim Tätowieren schon mal jemand ohnmächtig geworden?",
+        "answer": "Ja, das ist schon vorgekommen. Patrick erzählt davon in einem kurzen Video auf YouTube."
+      },
+      "aftercare": {
+        "question": "Gibt es nach dem Termin eine Nachsorge?",
+        "answer": "Ja. Wir bieten Ihnen eine Nachsorge an und sind bei Fragen oder Problemen in der Heilung für Sie da."
+      },
+      "hours": {
+        "question": "Wann hat KurstadtTattoo geöffnet?",
+        "answer": "Bisher Montag bis Freitag von 12 bis 18 Uhr oder nach Vereinbarung. Die Zeiten am neuen Standort erfragen Sie bitte telefonisch unter {phone}."
       }
     }
   },
@@ -309,5 +853,89 @@
         "text": "Sie erhalten Hinweise zur Pflege für die Heilung. Bei Fragen sind wir für Sie da und bieten Ihnen eine Nachsorge an."
       }
     ]
+  },
+  "breadcrumb": {
+    "label": "Pfadnavigation"
+  },
+  "related": {
+    "eyebrow": "Weiterlesen",
+    "title": "Mehr rund um Ihr Tattoo",
+    "items": {
+      "gallery": {
+        "title": "Galerie nach Stilen",
+        "text": "Realistik, Farbe, Fine Line, Schriftzüge und Blackwork aus dem Studio."
+      },
+      "artists": {
+        "title": "Patrick Wolf, der Künstler",
+        "text": "Spezialist für realistische Porträts und feine Linien."
+      },
+      "hygiene": {
+        "title": "Hygiene im Studio",
+        "text": "Was Hygiene bei KurstadtTattoo bedeutet, im Studio und in der Heilung."
+      },
+      "consultation": {
+        "title": "Beratung und Ablauf",
+        "text": "Vom ersten Anruf bis zur Nachsorge in vier Schritten."
+      },
+      "aftercare": {
+        "title": "Pflegetipps",
+        "text": "So pflegen Sie Ihr Tattoo in den ersten Stunden, in der Heilung und danach."
+      },
+      "faq": {
+        "title": "Häufige Fragen",
+        "text": "Antworten zu Termin, Vorlage, Heilung und dem neuen Studio."
+      },
+      "engraving": {
+        "title": "Gravur-Service",
+        "text": "Lasergravuren auf Kunststoff, Metall, Holz und Glas."
+      },
+      "contact": {
+        "title": "Kontakt und Anfahrt",
+        "text": "Adresse am Friedrich-Ebert-Platz 1A, Telefon und Öffnungszeiten."
+      }
+    }
+  },
+  "videos": {
+    "label": "Video auf YouTube",
+    "newTab": "öffnet YouTube in einem neuen Tab",
+    "language": "",
+    "items": {
+      "howStarted": {
+        "title": "Wie bist du zum Tätowieren gekommen?",
+        "text": "Patrick erzählt, wie er zum Tätowieren kam."
+      },
+      "care": {
+        "title": "Wie pflegt man ein Tattoo?",
+        "text": "Die Pflege eines frischen Tattoos im Video."
+      },
+      "colour": {
+        "title": "Darf man wieder bunt tätowieren?",
+        "text": "Patrick zu farbigen Tattoos."
+      },
+      "cost": {
+        "title": "Was kostet ein Tattoo?",
+        "text": "Patrick zu den Kosten eines Tattoos."
+      },
+      "finishing": {
+        "title": "Macht ihr auch Tattoos von anderen fertig?",
+        "text": "Ja, machen wir."
+      },
+      "eczema": {
+        "title": "Neurodermitis und Tattoos",
+        "text": "Patrick zum Tätowieren bei Neurodermitis."
+      },
+      "vegan": {
+        "title": "Sind die Farben vegan?",
+        "text": "Patrick zu den Tattoofarben."
+      },
+      "fainting": {
+        "title": "Ist schon mal jemand ohnmächtig geworden?",
+        "text": "Ja, und Patrick erzählt davon."
+      },
+      "eagleBack": {
+        "title": "Rückentattoo XXL mit Adler",
+        "text": "Ein großes Adlermotiv auf dem Rücken im Video."
+      }
+    }
   }
 }

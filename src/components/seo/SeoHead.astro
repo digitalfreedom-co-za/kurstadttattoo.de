@@ -6,7 +6,7 @@
 import JsonLd from './JsonLd.astro';
 import { site, indexable } from '../../config/site';
 import { absoluteUrl, withoutBase } from '../../lib/url';
-import { websiteNode, webPageNode, type JsonLdNode } from '../../lib/schema';
+import { breadcrumbId, breadcrumbNode, websiteNode, webPageNode, type Crumb, type JsonLdNode } from '../../lib/schema';
 import { defaultLocale, locales, localeMeta, localizedPath, type Locale, type RouteKey } from '../../i18n/routes';
 
 export interface SeoProps {
@@ -19,11 +19,13 @@ export interface SeoProps {
   noindex?: boolean;
   /** Page specific JSON-LD nodes (e.g. FAQPage), appended to the @graph. */
   schema?: JsonLdNode[];
+  /** Breadcrumb trail of a subpage (home first, this page last); adds the BreadcrumbList. */
+  breadcrumbs?: Crumb[];
 }
 
 type Props = SeoProps;
 
-const { title, description, locale, routeKey, noindex = false, schema = [] } = Astro.props;
+const { title, description, locale, routeKey, noindex = false, schema = [], breadcrumbs = [] } = Astro.props;
 
 const path = withoutBase(Astro.url.pathname);
 const canonical = absoluteUrl(path, Astro.site);
@@ -31,9 +33,10 @@ const robots = noindex || !indexable ? 'noindex' : 'index, follow, max-image-pre
 const alternates = routeKey
   ? locales.map((alt) => ({ hreflang: localeMeta[alt].lang, href: absoluteUrl(localizedPath(routeKey, alt), Astro.site) }))
   : [];
-const graph = noindex
-  ? null
-  : { '@graph': [websiteNode(Astro.site), webPageNode({ path, name: title, description, locale }, Astro.site), ...schema] };
+const webPage = webPageNode({ path, name: title, description, locale }, Astro.site);
+const trail = breadcrumbs.length > 0 ? [breadcrumbNode(path, breadcrumbs, Astro.site)] : [];
+if (trail.length > 0) webPage.breadcrumb = { '@id': breadcrumbId(path, Astro.site) };
+const graph = noindex ? null : { '@graph': [websiteNode(Astro.site), webPage, ...trail, ...schema] };
 ---
 
 <title>{title}</title>

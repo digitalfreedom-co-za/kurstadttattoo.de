@@ -27,6 +27,9 @@ export const studio = {
   phone: { display: '0173 160 51 62', href: 'tel:+491731605162' },
   email: { display: 'Kurstadttattoo@web.de', href: 'mailto:Kurstadttattoo@web.de' },
   tiktok: { handle: '@patrickkurstadttattoo', href: 'https://www.tiktok.com/@patrickkurstadttattoo' },
+  /** The studio's own channels, both checked to exist (docs/source-content, Social media). */
+  studioTiktok: { handle: '@kurstadttattoo', href: 'https://www.tiktok.com/@kurstadttattoo' },
+  youtube: { handle: '@KurstadtTattoo', href: 'https://www.youtube.com/@KurstadtTattoo' },
   /** Route planner link instead of an embedded map: no third party request without consent. */
   mapHref: 'https://www.google.com/maps/search/?api=1&query=Friedrich-Ebert-Platz%201A%2C%2061231%20Bad%20Nauheim',
 } as const;
