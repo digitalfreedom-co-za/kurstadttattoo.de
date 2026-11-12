@@ -998,7 +998,7 @@
     "timezoneHint": "The calendar shows free times in this time zone.",
     "timezoneDevice": "your device",
     "demoLabel": "Preview",
-    "demoText": "The calendar below is a demo calendar for the preview of this website. Bookings made with it do not create an appointment at KurstadtTattoo. Until the studio's own calendar is live, please arrange your appointment by phone or email.",
+    "demoText": "The calendar below is a demo calendar for the preview of this website. Bookings made with it do not create an appointment at KurstadtTattoo. Details entered in a booking go to the cal.com account of the web developer of this website, {holder}. Until the studio's own calendar is live, please arrange your appointment by phone or email.",
     "emailButton": "Send an email",
     "placeholderTitle": "The calendar comes from cal.com.",
     "placeholderText": "So that you can pick an appointment right here, we embed the booking calendar of Cal.com, Inc. (USA). It only loads once you agree. Your browser then sends your IP address, among other data, to cal.com in the USA, and cal.com sets a cookie to fend off automated access. You can withdraw your consent at any time under Cookie settings at the bottom of the page.",

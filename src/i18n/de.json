@@ -998,7 +998,7 @@
     "timezoneHint": "Der Kalender zeigt freie Uhrzeiten in dieser Zeitzone.",
     "timezoneDevice": "Ihr Gerät",
     "demoLabel": "Vorschau",
-    "demoText": "Der Kalender unten ist ein Demo-Kalender für die Vorschau dieser Website. Über ihn kommt kein Termin bei KurstadtTattoo zustande. Bis der Kalender des Studios freigeschaltet ist, vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail.",
+    "demoText": "Der Kalender unten ist ein Demo-Kalender für die Vorschau dieser Website. Über ihn kommt kein Termin bei KurstadtTattoo zustande. Angaben aus einer Buchung gehen an das cal.com Konto des Webentwicklers dieser Website, {holder}. Bis der Kalender des Studios freigeschaltet ist, vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail.",
     "emailButton": "E-Mail schreiben",
     "placeholderTitle": "Der Kalender kommt von cal.com.",
     "placeholderText": "Damit Sie hier direkt einen Termin wählen können, binden wir den Buchungskalender der Cal.com, Inc. (USA) ein. Er lädt erst, wenn Sie zustimmen. Dabei überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Ihre Einwilligung können Sie jederzeit unter Cookie-Einstellungen am Ende der Seite widerrufen.",

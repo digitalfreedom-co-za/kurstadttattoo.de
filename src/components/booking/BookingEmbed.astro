@@ -10,7 +10,7 @@
 // the alternatives (cal.com booking page, phone, email) sit in the normal flow.
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
-import { BOOKING_PRIVACY_ANCHOR, CAL_EMBED_SCRIPT, CAL_IS_DEMO, CAL_LINK, CAL_ORIGIN, CAL_PUBLIC_URL } from '../../config/booking';
+import { BOOKING_PRIVACY_ANCHOR, CAL_DEMO_ACCOUNT_HOLDER, CAL_EMBED_SCRIPT, CAL_IS_DEMO, CAL_LINK, CAL_ORIGIN, CAL_PUBLIC_URL } from '../../config/booking';
 import { CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
 import { studio } from '../../config/site';
 import { pageExists } from '../../lib/pages';
@@ -80,7 +80,7 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
       <div class="mb-6 border-l-2 border-neon bg-wall px-4 py-4 md:px-6 md:py-5">
         <p class="text-muted">
           <span class="label mr-2 text-neon">{copy.demoLabel}</span>
-          {copy.demoText}
+          {copy.demoText.replaceAll('{holder}', CAL_DEMO_ACCOUNT_HOLDER)}
         </p>
         <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
           <Button href={studio.phone.href} icon="phone">

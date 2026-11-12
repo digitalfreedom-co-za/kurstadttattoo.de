@@ -3,9 +3,9 @@
 // window.loadGtag and restored a stored grant. Here the visitor's later answers take effect:
 // - granted: consent update, then gtag.js is injected, then the consent event. No reload.
 // - withdrawn after gtag.js loaded: consent update to denied, the _ga cookies are deleted and the page
-//   reloads, so the loaded tag is gone.
+//   reloads, so the loaded tag is gone (unless storage refused the withdrawal, see below).
 // - declined before anything loaded: nothing happens, no Google request, no event.
-import { CONSENT_CHANGE_EVENT, hasConsent } from './consent';
+import { CONSENT_CHANGE_EVENT, hasConsent, readConsent } from './consent';
 
 declare global {
   interface Window {
@@ -42,5 +42,7 @@ window.addEventListener(CONSENT_CHANGE_EVENT, () => {
   if (!window.__gtagLoaded) return;
   gtag('consent', 'update', { analytics_storage: 'denied' });
   deleteGaCookies();
-  window.location.reload();
+  // If the withdrawal could not be stored, a reload would restore the old grant and load the tag again;
+  // the denied consent state then stays in force for this page view instead.
+  if (readConsent()?.categories.analytics !== true) window.location.reload();
 });
