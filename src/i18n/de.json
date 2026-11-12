@@ -111,7 +111,7 @@
       "hero": {
         "eyebrow": "Tattoo Studio Bad Nauheim, Wetterau",
         "heading": "Tattoo Studio in Bad Nauheim für realistische Porträts und feine Linien",
-        "intro": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in der Wetterau, direkt neben Friedberg und kurz vor den Toren von Frankfurt. Sie bringen Ihre Idee oder Ihre eigene Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
+        "intro": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt. Sie bringen Ihre Idee oder Ihre eigene Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
         "worksLink": "Arbeiten ansehen",
         "imageCaption": "Arbeit aus dem Studio",
         "addressLabel": "Neues Studio ab 1. Dezember 2026"
@@ -177,7 +177,7 @@
         "eyebrow": "Künstler",
         "title": "Wer tätowiert bei KurstadtTattoo?",
         "lead": "Patrick Wolf führt KurstadtTattoo und ist unser Spezialist für realistische Porträts und feine Linien.",
-        "text": "Mit seinem Auge für Details und einer ruhigen Hand verwandelt er Erinnerungen und Ideen in Kunstwerke auf der Haut: das Porträt eines Hundes, einen Schriftzug für die Familie oder eine filigrane Libelle.",
+        "text": "Mit seinem Auge für Details und seiner ruhigen Hand verwandelt er Ihre Erinnerungen und Ideen in Kunstwerke auf Ihrer Haut.",
         "imageAlt": "Patrick Wolf mit Sonnenbrille und verschränkten, tätowierten Armen vor der Neon Wand mit dem KurstadtTattoo Logo",
         "artistsLink": "Mehr über unsere Künstler"
       },
@@ -185,7 +185,7 @@
         "id": "studio",
         "eyebrow": "Standort",
         "title": "Wo finden Sie KurstadtTattoo?",
-        "intro": "Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bad Nauheim liegt in der Wetterau, direkt neben Friedberg und kurz vor den Toren von Frankfurt.",
+        "intro": "Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bad Nauheim liegt in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt.",
         "mapLink": "Route in Google Maps öffnen",
         "mapNote": "öffnet Google Maps in einem neuen Tab"
       },
@@ -297,7 +297,7 @@
         "text": "Terminanfragen nehmen wir telefonisch an. Erzählen Sie uns kurz, welches Motiv Sie sich vorstellen und an welcher Stelle es sitzen soll."
       },
       {
-        "title": "Beratung zu Motiv und Stelle",
+        "title": "Motiv gemeinsam planen",
         "text": "Wir planen Ihr Tattoo eng mit Ihnen zusammen, bis es Ihren Vorstellungen entspricht. Bringen Sie gern eine eigene Vorlage, Fotos oder Ideen mit."
       },
       {

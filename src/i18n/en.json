@@ -111,7 +111,7 @@
       "hero": {
         "eyebrow": "Tattoo studio Bad Nauheim, Wetterau",
         "heading": "Tattoo studio in Bad Nauheim for realistic portraits and fine lines",
-        "intro": "KurstadtTattoo is the tattoo studio of Patrick Wolf in the Wetterau region, right next to Friedberg and just outside Frankfurt. You bring your idea or your own design, and we plan the piece together with you.",
+        "intro": "KurstadtTattoo is the tattoo studio of Patrick Wolf in the Wetterau region, near Friedberg and just outside Frankfurt. You bring your idea or your own design, and we plan the piece together with you.",
         "worksLink": "See our work",
         "imageCaption": "Work from the studio",
         "addressLabel": "New studio from 1 December 2026"
@@ -177,7 +177,7 @@
         "eyebrow": "Artists",
         "title": "Who tattoos at KurstadtTattoo?",
         "lead": "Patrick Wolf runs KurstadtTattoo and is our specialist for realistic portraits and fine lines.",
-        "text": "With his eye for detail and a steady hand he turns memories and ideas into art on skin: the portrait of a dog, lettering for the family or a delicate dragonfly.",
+        "text": "With his eye for detail and his steady hand he turns your memories and ideas into works of art on your skin.",
         "imageAlt": "Patrick Wolf in sunglasses with crossed, tattooed arms in front of the neon wall with the KurstadtTattoo logo",
         "artistsLink": "More about our artists"
       },
@@ -185,7 +185,7 @@
         "id": "studio",
         "eyebrow": "Location",
         "title": "Where is KurstadtTattoo?",
-        "intro": "From 1 December 2026 in our new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Bad Nauheim lies in the Wetterau region, right next to Friedberg and just outside Frankfurt.",
+        "intro": "From 1 December 2026 in our new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Bad Nauheim lies in the Wetterau region, near Friedberg and just outside Frankfurt.",
         "mapLink": "Open the route in Google Maps",
         "mapNote": "opens Google Maps in a new tab"
       },
@@ -297,7 +297,7 @@
         "text": "We take appointment requests by phone. Tell us briefly which design you have in mind and where it should go."
       },
       {
-        "title": "Consultation on design and placement",
+        "title": "Planning the design together",
         "text": "We plan your tattoo closely with you until it matches what you have in mind. Feel free to bring your own design, photos or ideas."
       },
       {
