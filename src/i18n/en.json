@@ -708,6 +708,68 @@
         "text": "Call us and tell us your idea. From 1 December 2026 in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
       }
     },
+    "imprint": {
+      "title": "Imprint | KurstadtTattoo Bad Nauheim",
+      "description": "Imprint of kurstadttattoo.de: the provider is {operator} in {city}, represented by its managing director {name}. Contact, commercial register and VAT ID.",
+      "eyebrow": "Legal",
+      "heading": "Imprint",
+      "lead": "This website is provided by {operator}, based in {city} and represented by its managing director {name}.",
+      "updated": "Last updated: 12 November 2026",
+      "provider": {
+        "title": "Information under section 5 of the German Digital Services Act (DDG)",
+        "represented": "Represented by the managing director {name}"
+      },
+      "contact": {
+        "title": "Contact"
+      },
+      "register": {
+        "title": "Commercial register",
+        "court": "Register court",
+        "number": "Register number"
+      },
+      "vat": {
+        "title": "VAT identification number",
+        "text": "VAT identification number under section 27a of the German VAT Act:"
+      },
+      "profession": {
+        "title": "Job title",
+        "text": "{name}, tattoo artist and piercer"
+      },
+      "studio": {
+        "title": "Studio address",
+        "reopening": "The studio opens at this new address on 1 December 2026."
+      },
+      "dispute": {
+        "title": "Consumer dispute resolution",
+        "text": "{operator} is neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board."
+      },
+      "content": {
+        "title": "Liability for content",
+        "paragraphs": [
+          "As a service provider, {operator} is responsible for its own content on this website under the general laws. We create it with care, but we cannot guarantee that it is complete and up to date.",
+          "As soon as we learn of a specific infringement, we remove the content concerned without delay."
+        ]
+      },
+      "links": {
+        "title": "Liability for links",
+        "paragraphs": [
+          "This website links to pages of other providers, such as TikTok, YouTube, Google Maps or cal.com. The respective provider is responsible for their content; we do not adopt it as our own.",
+          "No infringements were apparent when the links were set. Constant monitoring of the linked pages is not reasonable without a concrete reason. If we learn of an infringement, we remove the link without delay."
+        ]
+      },
+      "copyright": {
+        "title": "Copyright",
+        "paragraphs": [
+          "Texts, photos, graphics and the logo on this website are protected by German copyright law. Copying, editing, distributing or any other use beyond the limits of copyright law requires the written consent of the respective rights holder.",
+          "If you notice a copyright infringement, please let us know. We will then remove the content concerned without delay."
+        ]
+      },
+      "privacy": {
+        "label": "Privacy",
+        "text": "Which data is processed when you visit this website or book an appointment is set out in the",
+        "link": "privacy policy"
+      }
+    },
     "privacy": {
       "title": "Privacy policy | KurstadtTattoo Bad Nauheim",
       "description": "Privacy policy of kurstadttattoo.de: hosting on GitHub Pages, consent, booking via cal.com, contact by phone and email, your rights.",

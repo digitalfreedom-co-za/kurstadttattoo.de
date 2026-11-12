@@ -12,6 +12,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../ui/PageHeader.astro';
 import Container from '../ui/Container.astro';
 import BookingPrivacy from '../legal/BookingPrivacy.astro';
+import LegalProse from '../legal/LegalProse.astro';
 import { BOOKING_PRIVACY_ANCHOR } from '../../config/booking';
 import { ANALYTICS_ENABLED } from '../../config/analytics';
 import { CONSENT_ANCHOR, CONSENT_STORAGE_KEY } from '../../config/consent';
@@ -81,7 +82,7 @@ const toc = [
         </div>
       </nav>
 
-      <article class="legal prose max-w-none min-w-0 lg:col-span-8 lg:col-start-5">
+      <LegalProse class="lg:col-span-8 lg:col-start-5">
         <h2 id="verantwortlicher">{copy.controller.title}</h2>
         <p>{copy.controller.intro}</p>
         <p>
@@ -202,33 +203,7 @@ const toc = [
 
         <h2 id="pflicht">{copy.duty.title}</h2>
         <p>{copy.duty.text}</p>
-      </article>
+      </LegalProse>
     </div>
   </Container>
 </BaseLayout>
-
-<style>
-  /* Typography plugin colours mapped to the site tokens, so the text follows the light and dark theme. */
-  .legal {
-    --tw-prose-body: var(--color-ink-soft);
-    --tw-prose-headings: var(--color-ink);
-    --tw-prose-links: var(--color-neon);
-    --tw-prose-bold: var(--color-ink);
-    --tw-prose-bullets: var(--color-muted);
-    --tw-prose-counters: var(--color-muted);
-    --tw-prose-hr: var(--color-line);
-    --tw-prose-code: var(--color-ink);
-    --tw-prose-th-borders: var(--color-ink);
-    --tw-prose-td-borders: var(--color-line);
-  }
-
-  .legal :global(code::before),
-  .legal :global(code::after) {
-    content: none;
-  }
-
-  .legal :global(th),
-  .legal :global(td) {
-    min-width: 9rem;
-  }
-</style>
