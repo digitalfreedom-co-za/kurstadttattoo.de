@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import HomeIntro from '../../components/ui/HomeIntro.astro';
-import { t } from '../../i18n';
+import HomePage from '../../components/home/HomePage.astro';
+import { faqEntries, featuredFaqIds } from '../../data/faq';
+import { faqPageNode } from '../../lib/schema';
+import { localizedPath, t } from '../../i18n';
 
 const copy = t('en').pages.home;
+const faq = faqPageNode({ path: localizedPath('home', 'en'), locale: 'en' }, faqEntries(featuredFaqIds, 'en'), Astro.site);
 ---
 
-<BaseLayout title={copy.title} description={copy.description} locale="en" routeKey="home">
-  <HomeIntro locale="en" />
+<BaseLayout title={copy.title} description={copy.description} locale="en" routeKey="home" schema={[faq]}>
+  <HomePage locale="en" />
 </BaseLayout>

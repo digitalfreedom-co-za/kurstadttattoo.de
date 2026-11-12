@@ -1,0 +1,100 @@
+---
+// Language suggestion instead of an automatic redirect (wiki websites.md; Google: "Avoid automatically
+// redirecting users from one language version of a site to a different language version"). Only on the
+// two start pages: the German root offers English to browsers without German in their language list, the
+// English root offers German to browsers whose first language is German. Fixed below the header, so it
+// never shifts the layout; hidden until the inline script decides to show it. Not shown again after a
+// dismissal or an explicit choice in the language switch (both store localStorage locale-explicit, listed
+// in the privacy policy). Text and link are in the offered language and carry its lang.
+import Icon from '../ui/Icon.astro';
+import { t, locales, localeMeta, localizedPath, anchorMap, type Locale } from '../../i18n';
+import { url } from '../../lib/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const target = locales.find((alt) => alt !== locale) ?? locale;
+const copy = t(target).languageHint;
+const anchors = anchorMap('home', locale, target);
+---
+
+<div
+  id="language-hint"
+  data-inert-when-menu
+  role="region"
+  aria-label={copy.region}
+  lang={localeMeta[target].lang}
+  hidden
+  class="fixed inset-x-3 z-30 mx-auto flex max-w-md items-center gap-3 border border-ink bg-wall py-2 pr-2 pl-4 shadow-[0_18px_40px_-20px_rgb(0_0_0/0.45)] sm:right-6 sm:left-auto sm:mx-0"
+>
+  <p class="flex-1 text-sm leading-snug">
+    {copy.text}{' '}
+    <a
+      href={url(localizedPath('home', target))}
+      hreflang={localeMeta[target].lang}
+      data-language-hint-link
+      class="font-semibold underline underline-offset-4 hover:text-neon"
+    >
+      {copy.action}
+    </a>
+  </p>
+  <button
+    type="button"
+    data-language-hint-close
+    aria-label={copy.dismiss}
+    title={copy.dismiss}
+    class="inline-flex size-11 shrink-0 items-center justify-center transition-colors hover:text-neon"
+  >
+    <Icon name="close" size={18} />
+  </button>
+</div>
+
+<script is:inline define:vars={{ target, anchors }}>
+  (function () {
+    var el = document.getElementById('language-hint');
+    var header = document.getElementById('site-header');
+    if (!el) return;
+    try {
+      if (localStorage.getItem('locale-explicit')) return;
+    } catch (e) {}
+    var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+    var langs = [];
+    for (var i = 0; i < prefs.length; i++) langs.push(String(prefs[i]).toLowerCase().split('-')[0]);
+    // German root: offer English when German is not among the browser languages at all.
+    // English root: offer German when German is the first browser language.
+    var offer = target === 'de' ? langs[0] === 'de' : langs.indexOf('de') === -1;
+    if (!offer) return;
+
+    function remember() {
+      try {
+        localStorage.setItem('locale-explicit', '1');
+      } catch (e) {}
+    }
+    // The reopening strip above the sticky header scrolls away, so the hint follows the header bottom.
+    function place() {
+      var bottom = header ? Math.max(header.getBoundingClientRect().bottom, 0) : 0;
+      el.style.top = bottom + 12 + 'px';
+    }
+    // The link follows the section in the address (#arbeiten becomes #work), also for a new tab.
+    var link = el.querySelector('[data-language-hint-link]');
+    function followHash() {
+      var hash = location.hash.slice(1);
+      link.hash = anchors[hash] || hash;
+    }
+    followHash();
+    window.addEventListener('hashchange', followHash);
+    link.addEventListener('click', remember);
+    el.querySelector('[data-language-hint-close]').addEventListener('click', function () {
+      remember();
+      el.hidden = true;
+      window.removeEventListener('scroll', place);
+      window.removeEventListener('resize', place);
+    });
+    place();
+    window.addEventListener('scroll', place, { passive: true });
+    window.addEventListener('resize', place);
+    el.hidden = false;
+  })();
+</script>

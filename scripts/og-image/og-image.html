@@ -1,0 +1,142 @@
+<!doctype html>
+<!-- Source of public/og/kurstadttattoo-og-{de,en}.png (1200 x 630). Rendered with scripts/og-image/render.sh,
+     which opens this file with ?lang=de or ?lang=en. Site fonts, the studio logo and the hero piece of the
+     landing page; colours from the design tokens in src/styles/global.css (night, chalk, neon). Only facts
+     that do not expire: no reopening date on the card. -->
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: 'Syne';
+        src: url('../../node_modules/@fontsource-variable/syne/files/syne-latin-wght-normal.woff2') format('woff2');
+        font-weight: 400 800;
+      }
+      @font-face {
+        font-family: 'Instrument Sans';
+        src: url('../../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2') format('woff2');
+        font-weight: 400 700;
+      }
+      :root {
+        --night: #0f0e10;
+        --night-soft: #1a181c;
+        --chalk: #f1efeb;
+        --chalk-muted: #aaa6ae;
+        --neon-glow: #f472d0;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 1200px; height: 630px; overflow: hidden; }
+      body {
+        background: var(--night);
+        color: var(--chalk);
+        font-family: 'Instrument Sans', Arial, sans-serif;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+      }
+      .sheet {
+        position: relative;
+        padding: 56px 60px 52px 64px;
+        display: flex;
+        flex-direction: column;
+      }
+      .label {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .brand { display: flex; align-items: center; gap: 22px; }
+      .brand img { width: 92px; height: 92px; filter: invert(1); }
+      .brand .name {
+        font-family: 'Syne', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        letter-spacing: -0.01em;
+      }
+      .brand .place { margin-top: 6px; color: var(--chalk-muted); }
+      h1 {
+        margin-top: auto;
+        font-family: 'Syne', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 66px;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+      }
+      h1 span { color: var(--neon-glow); white-space: nowrap; }
+      .lead {
+        margin-top: 22px;
+        max-width: 620px;
+        font-size: 24px;
+        line-height: 1.4;
+        color: var(--chalk-muted);
+      }
+      /* Double rule: thin rim over a heavy base, the basin of the fountain in the logo. */
+      .foot {
+        position: relative;
+        margin-top: 44px;
+        padding-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .foot::before, .foot::after { content: ''; position: absolute; left: 0; right: 0; background: var(--chalk); }
+      .foot::before { top: -10px; height: 1px; opacity: 0.6; }
+      .foot::after { top: -4px; height: 4px; }
+      .address { font-size: 21px; }
+      .domain { color: var(--neon-glow); }
+      .photo { position: relative; overflow: hidden; }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 42%;
+        display: block;
+      }
+      .photo::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 6px 0 0 var(--neon-glow);
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <div class="brand">
+        <img src="../../src/assets/brand/logo.svg" alt="" />
+        <div>
+          <p class="name">KurstadtTattoo</p>
+          <p class="label place" data-text="place"></p>
+        </div>
+      </div>
+      <h1 data-html="heading"></h1>
+      <p class="lead" data-text="lead"></p>
+      <div class="foot">
+        <span class="address">Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim</span>
+        <span class="label domain">kurstadttattoo.de</span>
+      </div>
+    </main>
+    <aside class="photo">
+      <img src="../../src/assets/images/galerie-fuchs-farbe-unterarm.jpg" alt="" />
+    </aside>
+    <script>
+      const copy = {
+        de: {
+          place: 'Bad Nauheim, Wetterau',
+          heading: 'Tattoo Studio <span>Bad Nauheim</span>',
+          lead: 'Realistische Porträts und Fine Line von Patrick Wolf. Beratung, Hygiene und Pflege im Mittelpunkt.',
+        },
+        en: {
+          place: 'Bad Nauheim, Wetterau region',
+          heading: 'Tattoo studio in <span>Bad Nauheim</span>',
+          lead: 'Realistic portraits and fine line work by Patrick Wolf. Consultation, hygiene and aftercare at the centre.',
+        },
+      };
+      const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'de';
+      document.documentElement.lang = lang;
+      for (const el of document.querySelectorAll('[data-text]')) el.textContent = copy[lang][el.dataset.text];
+      for (const el of document.querySelectorAll('[data-html]')) el.innerHTML = copy[lang][el.dataset.html];
+    </script>
+  </body>
+</html>

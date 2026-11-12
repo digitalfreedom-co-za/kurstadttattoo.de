@@ -15,8 +15,21 @@ export const localeMeta: Record<Locale, { lang: string; ogLocale: string }> = {
 };
 
 /** Site path (without base) of every page per locale. */
+// German slugs as planned in the subpage and legal tickets (#6, #8). A route may be listed before its
+// page exists: navigation only links pages that are built (src/lib/pages.ts).
 export const routes = {
   home: { de: '/', en: '/en/' },
+  gallery: { de: '/galerie/', en: '/en/gallery/' },
+  artists: { de: '/kuenstler/', en: '/en/artists/' },
+  hygiene: { de: '/hygiene/', en: '/en/hygiene/' },
+  consultation: { de: '/beratung-ablauf/', en: '/en/consultation/' },
+  aftercare: { de: '/pflegetipps/', en: '/en/aftercare/' },
+  faq: { de: '/haeufige-fragen/', en: '/en/faq/' },
+  engraving: { de: '/gravur-service/', en: '/en/engraving/' },
+  contact: { de: '/kontakt/', en: '/en/contact/' },
+  booking: { de: '/termin/', en: '/en/appointment/' },
+  imprint: { de: '/impressum/', en: '/en/imprint/' },
+  privacy: { de: '/datenschutz/', en: '/en/privacy/' },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type RouteKey = keyof typeof routes;

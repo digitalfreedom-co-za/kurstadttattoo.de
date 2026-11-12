@@ -1,0 +1,58 @@
+---
+// GA4 with Consent Mode v2 Basic, head part (wiki websites.md, section 1). Rendered only while a
+// measurement ID is configured (src/config/analytics.ts). Inline, no external request: dataLayer, gtag
+// stub, consent defaults all denied, loadGtag() and the restore of a stored grant. There is no static
+// gtag.js tag; it is injected only by loadGtag(), on a stored grant or on accept (src/scripts/analytics.ts).
+// The stored choice is the consent record of the dialog (src/config/consent.ts), checked like readConsent().
+import { ANALYTICS_ENABLED, GA4_ID } from '../../config/analytics';
+import { CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
+---
+
+{
+  ANALYTICS_ENABLED && (
+    <>
+      <script is:inline define:vars={{ gaId: GA4_ID, key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION }}>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          dataLayer.push(arguments);
+        };
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+        });
+
+        window.loadGtag = function () {
+          if (window.__gtagLoaded) return;
+          window.__gtagLoaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(s);
+          gtag('js', new Date());
+          gtag('config', gaId);
+        };
+
+        try {
+          var record = JSON.parse(localStorage.getItem(key) || 'null');
+          if (
+            record &&
+            record.version === version &&
+            typeof record.timestamp === 'string' &&
+            !isNaN(Date.parse(record.timestamp)) &&
+            record.categories &&
+            typeof record.categories.booking === 'boolean' &&
+            record.categories.analytics === true
+          ) {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+            window.loadGtag();
+          }
+        } catch (e) {}
+      </script>
+      <script>
+        import '../../scripts/analytics';
+      </script>
+    </>
+  )
+}
