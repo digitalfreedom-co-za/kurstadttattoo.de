@@ -1,0 +1,25 @@
+{
+  "a11y": {
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "languageSwitch": {
+    "label": "English",
+    "title": "Diese Seite auf Englisch lesen"
+  },
+  "pages": {
+    "home": {
+      "title": "Tattoo Studio Bad Nauheim | KurstadtTattoo",
+      "description": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in Bad Nauheim. Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
+      "heading": "KurstadtTattoo Bad Nauheim",
+      "intro": "Tattoos und Piercings in Bad Nauheim. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
+      "status": "Die neue Website entsteht gerade."
+    },
+    "notFound": {
+      "title": "Seite nicht gefunden | KurstadtTattoo",
+      "description": "Diese Seite gibt es nicht.",
+      "heading": "Seite nicht gefunden",
+      "text": "Die Adresse ist nicht oder nicht mehr vorhanden.",
+      "homeLink": "Zur Startseite"
+    }
+  }
+}

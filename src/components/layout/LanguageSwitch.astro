@@ -1,0 +1,55 @@
+---
+// Link to the same page in the other locale. An explicit choice is remembered in
+// localStorage["locale-explicit"] (wiki websites.md), so a later language hint stays away.
+// Below sm the switch is a labelled globe icon, from sm up the text label shows (wiki websites.md).
+import { t, locales, localeMeta, localizedPath, type Locale, type RouteKey } from '../../i18n';
+import { url } from '../../lib/url';
+
+interface Props {
+  locale: Locale;
+  routeKey: RouteKey;
+}
+
+const { locale, routeKey } = Astro.props;
+const target = locales.find((alt) => alt !== locale) ?? locale;
+const copy = t(locale).languageSwitch;
+---
+
+<a
+  href={url(localizedPath(routeKey, target))}
+  hreflang={localeMeta[target].lang}
+  lang={localeMeta[target].lang}
+  title={copy.title}
+  aria-label={copy.label}
+  data-locale-switch
+  class="inline-flex h-9 w-9 items-center justify-center sm:h-auto sm:min-h-11 sm:w-auto sm:gap-2 sm:px-3"
+>
+  <svg
+    class="h-[18px] w-[18px] sm:h-4 sm:w-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M2 12h20"></path>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+  <span class="hidden underline underline-offset-4 sm:inline">{copy.label}</span>
+</a>
+
+<script>
+  document.querySelectorAll('[data-locale-switch]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try {
+        localStorage.setItem('locale-explicit', '1');
+      } catch {
+        // Storage blocked: the switch still works, only the choice is not remembered.
+      }
+    });
+  });
+</script>
