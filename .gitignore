@@ -1,0 +1,61 @@
+# === Node / Astro ===
+node_modules/
+dist/
+.astro/
+.cache/
+.output/
+
+# === Logs ===
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# === Env ===
+.env
+.env.local
+.env.*.local
+
+# === Editor / OS ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# === Claude Code / AI Tools ===
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+.claude.json
+.claude.local.json
+.aider*
+.cursorrules
+.cursor/
+.continue/
+.windsurf/
+.github/copilot-instructions.md
+.codeium/
+*.claude.*
+docs/superpowers/
+
+# === Build artifacts ===
+*.tsbuildinfo
+.vercel/
+
+# === Playwright / local debug artifacts ===
+.playwright-mcp/
+*-debug.png
+*-debug-top.png
+*-scrolled.png
+*-clean.png
+*-clean-top.png
+subpage-*.png
+home-scrolled.png
+
+# === Scaffold artifact (one-time, from create-astro misparse) ===
+--typescript/
+
+
+__pycache__/
