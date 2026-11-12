@@ -7,9 +7,12 @@
 //   opens the settings view.
 // - settings: Notwendig (always on) and one switch per optional category (off unless consented), save,
 //   reject, accept. Opened from the footer link Cookie-Einstellungen on every page, via CONSENT_OPEN_EVENT.
-// Shown automatically while there is no stored choice of the current CONSENT_VERSION, except on the
-// privacy policy and the imprint, which must stay readable before a decision (they load no third party
-// content). Focus moves to the title, Tab is held inside the dialog, Escape closes it without a decision:
+// While the booking calendar is the only optional service, the dialog never opens by itself: the calendar
+// asks for consent in its own placeholder when the visitor wants to load it, so browsing the art is never
+// interrupted. Only with statistics configured (ANALYTICS_ENABLED) is it shown automatically while there
+// is no stored choice of the current CONSENT_VERSION, except on the privacy policy and the imprint, which
+// must stay readable before a decision (they load no third party content). The settings view has no
+// dialog description: its categories carry their own descriptions on the switches. Focus moves to the title, Tab is held inside the dialog, Escape closes it without a decision:
 // nothing is stored or loaded, and the notice returns on the next page. Closing returns focus to the
 // control that opened it. Without JS the dialog never opens and nothing loads.
 import Button from '../ui/Button.astro';
@@ -42,7 +45,7 @@ const categories = [
   aria-labelledby="consent-notice-title"
   aria-describedby="consent-notice-text"
   data-consent-dialog
-  data-auto-open={legalPage ? undefined : ''}
+  data-auto-open={ANALYTICS_ENABLED && !legalPage ? '' : undefined}
 >
   <Container class="py-6 md:py-8">
     <section data-consent-view="notice" class="grid gap-5 lg:grid-cols-12 lg:gap-x-8">
@@ -100,7 +103,7 @@ const categories = [
         </button>
       </div>
 
-      <div id="consent-settings-text" class="mt-4 grid border-t border-ink text-sm">
+      <div class="mt-4 grid border-t border-ink text-sm">
         <div class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-b border-line py-4 sm:gap-x-8">
           <h3 class="font-semibold">{copy.necessaryTitle}</h3>
           <p class="label pt-0.5 text-muted sm:row-span-2">{copy.alwaysOn}</p>
@@ -277,7 +280,8 @@ const categories = [
       views.notice.hidden = view !== 'notice';
       views.settings.hidden = view !== 'settings';
       dialog.setAttribute('aria-labelledby', `consent-${view}-title`);
-      dialog.setAttribute('aria-describedby', `consent-${view}-text`);
+      if (view === 'notice') dialog.setAttribute('aria-describedby', 'consent-notice-text');
+      else dialog.removeAttribute('aria-describedby');
       const categories = currentConsent()?.categories;
       switches.forEach((input) => {
         input.checked = categories?.[input.dataset.consentCategory as ConsentCategory] === true;

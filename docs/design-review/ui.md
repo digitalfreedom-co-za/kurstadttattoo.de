@@ -20,6 +20,8 @@ The screenshots include a consent dialog on non-legal pages. Its dimming obscure
 
 2. **Major | Sitewide typography: search-style headings overwhelm the visual voice**
 
+   **Wiki alignment (re-review):** the content rules in the wiki (`websites.md`, Content writing rules for AI bots, rule 2: question-shaped headings) require questions for section headings, so the h2 questions stay. Implemented within that rule: the h1 page headings are shortened (home, gallery, hygiene, consultation, FAQ, contact) with location and studio name moved into the eyebrow, and the SEO titles and descriptions are unchanged.
+
    **Location:** `src/i18n/de.json:118`, `:127`, `:225`, `:351`, `:638`; corresponding `pages` entries in `src/i18n/en.json`; `src/components/ui/PageHeader.astro:33`.
 
    **Problem:** Repeated formulations such as “Welche Rolle spielt Hygiene bei KurstadtTattoo?” and “Kontakt und Anfahrt zu KurstadtTattoo in Bad Nauheim” consume several lines of a wide display face. Almost every section asks another question and repeats the brand. The result resembles an FAQ or search landing page even when presenting art.

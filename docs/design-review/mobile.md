@@ -18,19 +18,22 @@ Positive source checks: the header already sticks; desktop navigation has an ove
    **Why it matters:** Someone opening a tattoo photograph or reading aftercare must first make an unrelated third-party booking decision. This competes directly with the requested art-first experience.  
    **Fix:** While booking is the only optional service, request permission at the calendar placeholder when the visitor chooses to load it. Retain footer settings and the ability to decline or withdraw. If analytics is enabled later, handle its consent separately without prematurely loading either service.
 
-2. **Minor | Mobile header controls are smaller than the site's other touch controls.**  
+2. **Minor, superseded by the wiki rule | Mobile header controls are smaller than the site's other touch controls.**  
+   **Wiki alignment:** the binding header rule in [wiki `websites.md`, Header](https://github.com/digitalfreedom-co-za/wiki/blob/main/websites.md) requires every header control to be a 36 × 36 px icon-only button below 640 px, with `aria-label` and `title` from the same i18n key. The 44 px recommendation below conflicts with it and is not implemented; no exception has been decided. The header keeps the wiki pattern.  
    **Location:** `src/components/layout/Header.astro:58`, `:64`, `:75`; `src/components/layout/LanguageSwitch.astro:29`; `src/components/layout/ThemeToggle.astro:16`.  
    **Evidence:** Source: below 640 px all four controls are 36 by 36 px, separated by only 4 px. The lightbox and general buttons use at least 44 px.  
    **Why it matters:** The most frequently repeated navigation controls require more precise thumb placement, especially when walking or holding the phone in one hand. This is a usability target, not a claim that 36 px alone violates an accessibility criterion.  
    **Fix:** Use non-overlapping hit areas of at least 44 by 44 px. Rebalance the wordmark and move the theme control into the menu if necessary. Check the entire row at 320, 360, 375 and 640 px, including enlarged text; do not simply increase widths and create overflow.
 
-3. **Major | The sticky mobile booking CTA loses its visible meaning.**  
+3. **Major, superseded by the wiki rule | The sticky mobile booking CTA loses its visible meaning.**  
+   **Wiki alignment:** a visible `Termin` / `Book` label below 640 px is what the wiki header rule excludes (icon-only below `sm`; the row must not break at 360 to 414 px). Not implemented; the accessible name and title stay. Visible booking actions remain in the hero, the closing band and the page actions.  
    **Location:** `src/components/layout/Header.astro:61` and `:69`.  
    **Evidence:** Screenshots and source. The persistent action becomes only a calendar icon below 640 px. Its accessible label exists, but sighted touch users cannot rely on a hover title to understand it.  
    **Why it matters:** Once the introductory buttons scroll away, the only persistent booking action can be mistaken for opening hours or an events calendar.  
    **Fix:** Preserve a short visible label such as `Termin` / `Book` beside the icon in the sticky header. Reallocate the theme control or wordmark space together with finding 2. Keep one persistent CTA; a second bottom bar is unnecessary if the header action is clear and reachable.
 
-4. **Minor | The mobile language switch does not reveal its destination.**  
+4. **Minor, superseded by the wiki rule | The mobile language switch does not reveal its destination.**  
+   **Wiki alignment:** an `EN` / `DE` text inside the 36 px control is a text label, which the wiki header rule excludes below 640 px. Not implemented; the switch keeps its localized `aria-label` and `title` naming the target language.  
    **Location:** `src/components/layout/LanguageSwitch.astro:31` and `:46`.  
    **Evidence:** Screenshots and source. Mobile visitors see a globe, but tapping it immediately navigates to the other language. The destination label is hidden.  
    **Why it matters:** A globe commonly suggests a language picker; an immediate page change is less predictable, particularly on long pages.  
@@ -99,7 +102,7 @@ Positive source checks: the header already sticks; desktop navigation has an ove
 ## Top 5 quick wins
 
 1. Remove automatic booking-consent interruption from ordinary browsing pages; retain contextual permission at the calendar.
-2. Make mobile header targets at least 44 px and show a short visible booking label.
-3. Show `EN` / `DE` on the mobile language switch.
+2. (Superseded by the wiki header rule, see findings 2 and 3.)
+3. (Superseded by the wiki header rule, see finding 4.)
 4. Keep gallery expand badges visible on touch devices.
 5. Shorten the image/rule reveals and remove parallax on narrow touch screens.

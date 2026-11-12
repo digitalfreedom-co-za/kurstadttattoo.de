@@ -52,7 +52,8 @@
     "hoursNote": "oder nach Vereinbarung",
     "hoursUnconfirmed": "Bisherige Zeiten. Die Zeiten am neuen Standort erfragen Sie bitte telefonisch.",
     "followLabel": "Folgen",
-    "tiktok": "Patrick auf TikTok"
+    "tiktok": "Patrick auf TikTok",
+    "closedNote": "Bis zur Neueröffnung am 1. Dezember 2026 geschlossen."
   },
   "footer": {
     "about": "Tattoos von Patrick Wolf in Bad Nauheim: realistische Porträts, feine Linien und Motive nach Ihrer eigenen Vorlage.",
@@ -91,7 +92,8 @@
         "title": "Neueröffnung",
         "text": "Ab dem 1. Dezember 2026 am Friedrich-Ebert-Platz 1A in Bad Nauheim."
       }
-    ]
+    ],
+    "linkPrefix": "Mehr zu"
   },
   "gallery": {
     "open": "Vergrößern",
@@ -99,7 +101,12 @@
     "close": "Schließen",
     "prev": "Vorheriges Bild",
     "next": "Nächstes Bild",
-    "counter": "Bild {current} von {total}"
+    "counter": "Bild {current} von {total}",
+    "loading": "Bild wird geladen.",
+    "failed": "Das Bild konnte nicht geladen werden.",
+    "retry": "Erneut laden",
+    "original": "Bild direkt öffnen",
+    "enquire": "Über ein Motiv wie dieses sprechen"
   },
   "steps": {
     "stepPrefix": "Schritt"
@@ -107,7 +114,7 @@
   "cta": {
     "label": "Kontakt aufnehmen",
     "callPrefix": "Anrufen",
-    "emailLink": "Oder schreiben Sie uns eine E-Mail"
+    "emailLink": "Fragen? Schreiben Sie uns eine E-Mail."
   },
   "pages": {
     "home": {
@@ -115,11 +122,10 @@
       "description": "KurstadtTattoo, Ihr Tattoo Studio in Bad Nauheim nahe Frankfurt: realistische Porträts und Fine Line von Patrick Wolf. Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
       "hero": {
         "eyebrow": "Tattoo Studio Bad Nauheim, Wetterau",
-        "heading": "Tattoo Studio in Bad Nauheim für realistische Porträts und feine Linien",
-        "intro": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt. Sie bringen Ihre Idee oder Ihre eigene Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
+        "heading": "Realistische Porträts. Feine Linien.",
+        "intro": "KurstadtTattoo ist das Studio von Patrick Wolf in Bad Nauheim, bei Friedberg und Frankfurt. Sie bringen Ihre Idee oder Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
         "worksLink": "Arbeiten ansehen",
-        "imageCaption": "Arbeit aus dem Studio",
-        "addressLabel": "Neues Studio ab 1. Dezember 2026"
+        "imageCaption": "Arbeit aus dem Studio"
       },
       "art": {
         "id": "arbeiten",
@@ -168,7 +174,8 @@
           "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pool oder See, bis die Haut verheilt ist.",
           "Bei starker Rötung, Schwellung oder eitrigen Absonderungen gehen Sie bitte umgehend zum Arzt."
         ],
-        "aftercareLink": "Alle Pflegetipps"
+        "aftercareLink": "Alle Pflegetipps",
+        "hygieneLink": "Mehr zur Hygiene"
       },
       "process": {
         "id": "ablauf",
@@ -221,8 +228,8 @@
     "gallery": {
       "title": "Tattoo Galerie Bad Nauheim nach Stilen | KurstadtTattoo",
       "description": "Echte Tattoos aus dem Studio KurstadtTattoo in Bad Nauheim: realistische Porträts, Farbe, Fine Line, Schriftzüge, Blackwork und Tribal, nach Stilen sortiert.",
-      "eyebrow": "Galerie",
-      "heading": "Tattoo Galerie: Arbeiten aus dem Studio in Bad Nauheim",
+      "eyebrow": "Galerie, KurstadtTattoo Bad Nauheim",
+      "heading": "Arbeiten aus dem Studio",
       "lead": "Hier sehen Sie echte Tattoos aus dem Studio KurstadtTattoo, sortiert nach Stil: Realistik und Porträts, Farbe, Fine Line, Schriftzüge sowie Blackwork und Tribal. Tippen Sie auf ein Bild, um es groß zu sehen.",
       "stylesLabel": "Stile in der Galerie",
       "countLabel": "{count} Arbeiten",
@@ -265,7 +272,10 @@
       "cta": {
         "title": "Welches Motiv soll es werden?",
         "text": "Erzählen Sie uns Ihre Idee am Telefon. Ab dem 1. Dezember 2026 tätowieren wir im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
-      }
+      },
+      "discuss": "Eine Idee in diesem Stil besprechen",
+      "discussNote": "Die Arbeiten sind Anregungen. Ihr Motiv planen wir eigens für Sie.",
+      "backToStyles": "Zurück zu den Stilen"
     },
     "artists": {
       "title": "Tätowierer in Bad Nauheim: Patrick Wolf | KurstadtTattoo",
@@ -342,13 +352,17 @@
       "cta": {
         "title": "Sprechen Sie mit Patrick über Ihr Motiv.",
         "text": "Terminanfragen nehmen wir telefonisch an. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      },
+      "works": {
+        "label": "Zwei Arbeiten von Patrick",
+        "link": "In der Galerie ansehen"
       }
     },
     "hygiene": {
       "title": "Hygiene im Tattoo Studio Bad Nauheim | KurstadtTattoo",
       "description": "Was Hygiene bei KurstadtTattoo in Bad Nauheim bedeutet: ein Grundwert seit der Gründung, im Studio und in der Heilung Ihres Tattoos, mit Warnzeichen und Nachsorge.",
-      "eyebrow": "Hygiene",
-      "heading": "Hygiene bei KurstadtTattoo, im Studio und in der Heilung",
+      "eyebrow": "Hygiene bei KurstadtTattoo",
+      "heading": "Hygiene im Studio und in der Heilung",
       "lead": "Hygiene gehört seit der Gründung von KurstadtTattoo zu den Werten, auf die wir am meisten achten, gemeinsam mit Qualität und Ihrer Zufriedenheit. Sie beginnt im Studio und geht in der Heilung zu Hause weiter.",
       "imageAlt": "Patrick Wolf tätowiert mit schwarzen Handschuhen und abgedeckter Tattoomaschine einen Unterarm",
       "value": {
@@ -411,8 +425,8 @@
     "consultation": {
       "title": "Tattoo Beratung und Ablauf in Bad Nauheim | KurstadtTattoo",
       "description": "So läuft Ihr Tattoo bei KurstadtTattoo in Bad Nauheim ab: Anruf, gemeinsame Planung des Motivs, Termin im Studio und Nachsorge. Was Sie zur Beratung mitbringen können.",
-      "eyebrow": "Beratung und Ablauf",
-      "heading": "Tattoo Beratung: vom ersten Anruf bis zur Nachsorge",
+      "eyebrow": "Tattoo Beratung in Bad Nauheim",
+      "heading": "Beratung und Ablauf",
       "lead": "Ein Tattoo bei KurstadtTattoo entsteht in vier Schritten: Anruf, gemeinsame Planung des Motivs, Termin im Studio und Nachsorge. Bevor die erste Linie gestochen wird, planen wir das Motiv eng mit Ihnen zusammen.",
       "process": {
         "id": "ablauf",
@@ -450,7 +464,8 @@
         "title": "Wie planen wir Ihr Motiv?",
         "lead": "Gemeinsam mit Ihnen, bis es Ihren Vorstellungen entspricht.",
         "text": "Sie bringen Idee, Vorlage oder Fotos mit, wir setzen daraus Ihr individuelles Tattoo um. Welche Stile im Studio entstehen, zeigt die Galerie, von realistischen Porträts bis Blackwork.",
-        "link": "Galerie nach Stilen ansehen"
+        "link": "Galerie nach Stilen ansehen",
+        "exampleCaption": "Beispiel für ein fertiges Tattoo aus dem Studio, kein Foto aus einer Beratung."
       },
       "cost": {
         "id": "kosten",
@@ -514,7 +529,7 @@
         "id": "nachsorge",
         "eyebrow": "Nachsorge",
         "title": "Was tun bei Fragen zur Heilung?",
-        "text": "Rufen Sie uns an. Bei Fragen oder Problemen sind wir jederzeit für Sie da und bieten Ihnen gern eine Nachsorge an."
+        "text": "Rufen Sie uns an. Bei Fragen oder Problemen während der Heilung sind wir für Sie da und bieten Ihnen gern eine Nachsorge an."
       },
       "cta": {
         "title": "Fragen zur Pflege Ihres Tattoos?",
@@ -525,7 +540,7 @@
       "title": "Tattoo FAQ: Termin, Vorlage, Pflege und Studio | KurstadtTattoo",
       "description": "Antworten von KurstadtTattoo in Bad Nauheim zu Termin, eigener Vorlage, Fertigstellen, Stilen, Pflege, Nachsorge, Öffnungszeiten und dem neuen Studio. Weitere Antworten von Patrick im Video.",
       "eyebrow": "FAQ",
-      "heading": "Häufige Fragen zum Tattoo bei KurstadtTattoo",
+      "heading": "Häufige Fragen zum Tattoo",
       "lead": "Hier finden Sie schriftliche Antworten auf die Fragen, die wir am häufigsten hören. Zu Farben, Kosten, Neurodermitis und veganen Farben antwortet Patrick in kurzen Videos.",
       "groups": {
         "booking": {
@@ -634,8 +649,8 @@
     "contact": {
       "title": "Kontakt und Anfahrt | KurstadtTattoo Bad Nauheim",
       "description": "KurstadtTattoo in Bad Nauheim: ab 1. Dezember 2026 am Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Terminanfragen telefonisch unter {phone}, dazu Öffnungszeiten und Anfahrt.",
-      "eyebrow": "Kontakt",
-      "heading": "Kontakt und Anfahrt zu KurstadtTattoo in Bad Nauheim",
+      "eyebrow": "Kontakt, KurstadtTattoo Bad Nauheim",
+      "heading": "Kontakt und Anfahrt",
       "lead": "Terminanfragen nehmen wir telefonisch an, unter {phone}. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim.",
       "details": {
         "id": "erreichen",
@@ -677,8 +692,8 @@
       "calendar": {
         "id": "kalender",
         "eyebrow": "Kalender",
-        "title": "Wählen Sie einen freien Termin.",
-        "intro": "Tag wählen, Uhrzeit wählen, Name und E-Mail-Adresse eintragen. Kein passender Termin dabei? Rufen Sie an oder schreiben Sie eine E-Mail."
+        "title": "Wählen Sie einen passenden Termin.",
+        "intro": "Tag wählen, Uhrzeit wählen, Name und E-Mail-Adresse eintragen. Kein passender Termin dabei? Rufen Sie uns an."
       },
       "prepare": {
         "id": "vorbereiten",
@@ -712,6 +727,12 @@
       "cta": {
         "title": "Lieber direkt sprechen?",
         "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      },
+      "demo": {
+        "description": "Beratungstermin bei KurstadtTattoo in Bad Nauheim telefonisch unter {phone} anfragen. Mit Hinweisen, was Sie für die Tattoo Beratung vorbereiten können.",
+        "eyebrow": "Termin anfragen",
+        "heading": "Beratungstermin für Ihr Tattoo anfragen",
+        "lead": "Terminanfragen nehmen wir telefonisch an, unter {phone}. In der Beratung planen wir Ihr Motiv gemeinsam mit Ihnen."
       }
     },
     "imprint": {
@@ -833,11 +854,13 @@
           }
         },
         "necessary": "nicht nötig, unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG)",
-        "basis": "Rechtsgrundlage für diese Einträge ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt darin, die von Ihnen gewählten Einstellungen beizubehalten und Ihre Entscheidung zur Einwilligung zu beachten und nachweisen zu können (Art. 7 Abs. 1 DSGVO)."
+        "basis": "Rechtsgrundlage für diese Einträge ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt darin, die von Ihnen gewählten Einstellungen beizubehalten und Ihre Entscheidung zur Einwilligung zu beachten und nachweisen zu können (Art. 7 Abs. 1 DSGVO).",
+        "tableLabel": "Einträge im Speicher Ihres Browsers",
+        "scrollHint": "Die Tabelle lässt sich seitlich verschieben."
       },
       "consent": {
         "title": "Einwilligung und Cookie-Einstellungen",
-        "intro": "Beim ersten Besuch fragen wir, ob der Buchungskalender von cal.com laden darf. Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com geladen und keine Verbindung zu cal.com aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder den Termin telefonisch oder per E-Mail vereinbaren können.",
+        "intro": "Wir fragen erst dann, ob der Buchungskalender von cal.com laden darf, wenn Sie ihn auf der Seite Termin laden möchten. Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com geladen und keine Verbindung zu cal.com aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder Ihren Termin telefonisch anfragen können.",
         "introAnalytics": "Beim ersten Besuch fragen wir, ob der Buchungskalender von cal.com und die Statistik mit Google Analytics laden dürfen. Beides können Sie einzeln wählen, Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com oder Google geladen und keine Verbindung zu diesen Diensten aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder den Termin telefonisch oder per E-Mail vereinbaren können.",
         "record": "Ihre Antwort speichern wir im Eintrag {key} in Ihrem Browser, damit wir nicht auf jeder Seite erneut fragen. Ändert sich der Hinweis inhaltlich, fragen wir erneut.",
         "withdraw": "Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen oder ändern, über den Link Cookie-Einstellungen am Ende jeder Seite oder",
@@ -1120,7 +1143,7 @@
       },
       "booking": {
         "title": "Termin buchen",
-        "text": "Beratungstermin online im Kalender wählen oder telefonisch vereinbaren."
+        "text": "Beratungstermin anfragen und vorbereiten."
       }
     }
   },
@@ -1130,7 +1153,7 @@
     "language": "",
     "items": {
       "howStarted": {
-        "title": "Wie bist du zum Tätowieren gekommen?",
+        "title": "Patricks Weg zum Tätowieren",
         "text": "Patrick erzählt, wie er zum Tätowieren kam."
       },
       "care": {
@@ -1146,8 +1169,8 @@
         "text": "Patrick zu den Kosten eines Tattoos."
       },
       "finishing": {
-        "title": "Macht ihr auch Tattoos von anderen fertig?",
-        "text": "Ja, machen wir."
+        "title": "Begonnene Tattoos fertigstellen",
+        "text": "Ja, auch das übernimmt Patrick."
       },
       "eczema": {
         "title": "Neurodermitis und Tattoos",
@@ -1177,25 +1200,28 @@
     "timezoneHint": "Der Kalender zeigt freie Uhrzeiten in dieser Zeitzone.",
     "timezoneDevice": "Ihr Gerät",
     "demoLabel": "Vorschau",
-    "demoText": "Der Kalender unten ist ein Demo-Kalender für die Vorschau dieser Website. Über ihn kommt kein Termin bei KurstadtTattoo zustande. Angaben aus einer Buchung gehen an das cal.com Konto des Webentwicklers dieser Website, {holder}. Bis der Kalender des Studios freigeschaltet ist, vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail.",
+    "demoText": "Dieser Kalender ist ein Test für die Vorschau dieser Website. Über ihn kommt kein Termin bei KurstadtTattoo zustande, und Angaben aus einer Buchung gehen an das cal.com Konto des Webentwicklers dieser Website, {holder}. Ihren Termin fragen Sie bitte telefonisch an.",
     "emailButton": "E-Mail schreiben",
     "placeholderTitle": "Der Kalender kommt von cal.com.",
     "placeholderText": "Damit Sie hier direkt einen Termin wählen können, binden wir den Buchungskalender der Cal.com, Inc. (USA) ein. Er lädt erst, wenn Sie zustimmen. Dabei überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Ihre Einwilligung können Sie jederzeit unter Cookie-Einstellungen am Ende der Seite widerrufen.",
     "consentButton": "Kalender laden und zustimmen",
     "withoutLabel": "Ohne cal.com",
-    "withoutText": "Vereinbaren Sie Ihren Termin telefonisch oder per E-Mail.",
+    "withoutText": "Fragen Sie Ihren Termin telefonisch an. Für weitere Fragen schreiben Sie uns eine E-Mail.",
     "fallbackNoJs": "Der Buchungskalender braucht JavaScript.",
     "fallbackFailed": "Der Buchungskalender konnte nicht geladen werden.",
-    "fallbackText": "Vereinbaren Sie Ihren Termin telefonisch oder per E-Mail, oder buchen Sie direkt auf der Buchungsseite von cal.com.",
+    "fallbackText": "Fragen Sie Ihren Termin telefonisch an. Für weitere Fragen schreiben Sie uns eine E-Mail.",
     "calPage": "Buchungsseite bei cal.com",
     "newWindow": "(öffnet in einem neuen Fenster)",
     "statusLoading": "Der Kalender wird geladen.",
     "statusReady": "Der Kalender ist geladen.",
-    "statusFailed": "Der Kalender konnte nicht geladen werden. Sie können direkt bei cal.com, telefonisch oder per E-Mail einen Termin vereinbaren.",
+    "statusFailed": "Der Kalender konnte nicht geladen werden. Ihren Termin fragen Sie telefonisch an.",
     "note": "Der Kalender lädt nur mit Ihrer Einwilligung und erst, wenn dieser Bereich sichtbar wird.",
     "notePrivacy": "Was dabei verarbeitet wird, steht in der Datenschutzerklärung.",
     "privacyLink": "Datenschutzerklärung",
-    "emailPrefix": "E-Mail an"
+    "emailPrefix": "E-Mail an",
+    "requestLabel": "Termin anfragen",
+    "demoSummary": "Kalender-Vorschau: nur ein Test, keine Buchung möglich",
+    "iframeTitle": "Buchungskalender für die Tattoo Beratung"
   },
   "consent": {
     "eyebrow": "Datenschutz",
@@ -1203,7 +1229,7 @@
     "noticeTitleAnalytics": "Dürfen wir externe Dienste laden?",
     "noticeBooking": "Diese Website setzt keine Cookies zur Analyse oder Werbung. Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Lädt er, überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Das geschieht nur mit Ihrer Einwilligung.",
     "noticeBookingAnalytics": "Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Mit Google Analytics der Google Ireland Limited werten wir aus, wie unsere Seiten genutzt werden. Beide Dienste erhalten dabei unter anderem Ihre IP-Adresse, setzen Cookies und können Daten in die USA übermitteln. Das geschieht nur mit Ihrer Einwilligung, und Sie können beide getrennt wählen.",
-    "noticeRest": "Ohne Einwilligung funktioniert die Website vollständig, den Termin vereinbaren Sie dann telefonisch oder per E-Mail. Ihre Wahl ändern oder widerrufen Sie jederzeit unter Cookie-Einstellungen am Ende jeder Seite.",
+    "noticeRest": "Ohne Einwilligung funktioniert die Website vollständig, Ihren Termin fragen Sie dann telefonisch an. Ihre Wahl ändern oder widerrufen Sie jederzeit unter Cookie-Einstellungen am Ende jeder Seite.",
     "privacyMore": "Mehr in der Datenschutzerklärung",
     "reject": "Ablehnen",
     "accept": "Akzeptieren",
@@ -1215,7 +1241,7 @@
     "necessaryTitle": "Notwendig",
     "necessaryText": "Speichert Ihre Auswahl in diesem Browser (localStorage, Eintrag kt-consent mit Fassung des Hinweises, Zeitpunkt und Auswahl), damit wir nicht erneut fragen. Ohne Kennung, nur von dieser Website gelesen. Keine Einwilligung nötig, § 25 Abs. 2 Nr. 2 TDDDG.",
     "bookingTitle": "Externe Medien: Terminbuchung über cal.com",
-    "bookingText": "Lädt den Buchungskalender der Cal.com, Inc., San Francisco, USA, auf der Seite Termin buchen, sobald er sichtbar wird. Dabei erhält cal.com Ihre IP-Adresse, Angaben zu Browser und Gerät und die Adresse der Seite. Der Dienstleister Cloudflare setzt das Cookie __cf_bm gegen automatisierte Zugriffe (30 Minuten), technische Fehlerberichte gehen an Sentry. Übermittlung in die USA auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie bleibt der Kalender aus, Termine gibt es telefonisch oder per E-Mail.",
+    "bookingText": "Lädt den Buchungskalender der Cal.com, Inc., San Francisco, USA, auf der Seite Termin buchen, sobald er sichtbar wird. Dabei erhält cal.com Ihre IP-Adresse, Angaben zu Browser und Gerät und die Adresse der Seite. Der Dienstleister Cloudflare setzt das Cookie __cf_bm gegen automatisierte Zugriffe (30 Minuten), technische Fehlerberichte gehen an Sentry. Übermittlung in die USA auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie bleibt der Kalender aus, Termine fragen Sie telefonisch an.",
     "analyticsTitle": "Statistik: Google Analytics",
     "analyticsText": "Lädt Google Analytics 4 der Google Ireland Limited, Dublin, Irland, und wertet aus, welche Seiten wie genutzt werden. Dabei erhält Google Ihre IP-Adresse, Angaben zu Browser und Gerät und die aufgerufenen Seiten und setzt die Cookies _ga und _ga_ mit der Kennung der Website (bis zu 2 Jahre). Eine Übermittlung in die USA ist möglich, auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie wird Google Analytics nicht geladen und nichts an Google gesendet.",
     "details": "Einzelheiten in der Datenschutzerklärung."
@@ -1240,7 +1266,7 @@
     "retentionTitle": "Speicherdauer und Alternativen",
     "retentionDemo": "Buchungsdaten aus dem Demo-Kalender erhalten wir nicht. Sie liegen im cal.com Konto von {holder} und werden nach den Regeln von cal.com gespeichert und gelöscht.",
     "retentionLive": "Buchungsdaten löschen wir, sobald sie für die Durchführung und Nachbereitung des Termins nicht mehr benötigt werden, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.",
-    "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, vereinbaren Sie Ihren Termin telefonisch oder per E-Mail."
+    "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, fragen Sie Ihren Termin telefonisch an."
   },
   "seo": {
     "ogImageAlt": "KurstadtTattoo, Tattoo Studio in Bad Nauheim: realistisches Fuchs Tattoo in Farbe auf einem Unterarm, daneben Name und Adresse des Studios",

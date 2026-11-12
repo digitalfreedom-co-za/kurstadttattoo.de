@@ -4,7 +4,7 @@
 // Every sentence comes from the dictionaries, src/config and src/data, exactly as the pages use them,
 // so the Markdown never says more than the page.
 import { CAL_IS_DEMO } from '../config/booking';
-import { expertSite, reopening, studio } from '../config/site';
+import { expertSite, phoneDisplay, reopening, studio } from '../config/site';
 import { faqEntries, faqGroups, featuredFaqIds } from '../data/faq';
 import { galleryItems, styleGroups } from '../data/gallery';
 import { videos, type VideoId } from '../data/videos';
@@ -50,7 +50,7 @@ const videoList = (ids: VideoId[], locale: Locale) =>
 
 /** Phone and email as the page shows them in its location, support and closing sections. */
 const contactList = (locale: Locale) =>
-  bullets([`${t(locale).studio.phoneLabel}: ${studio.phone.display}`, `${t(locale).studio.emailLabel}: ${studio.email.display}`]);
+  bullets([`${t(locale).studio.phoneLabel}: ${phoneDisplay(locale)}`, `${t(locale).studio.emailLabel}: ${studio.email.display}`]);
 
 function pageBody(key: RouteKey, locale: Locale, base: URL | undefined): string {
   const dict = t(locale);
@@ -59,7 +59,8 @@ function pageBody(key: RouteKey, locale: Locale, base: URL | undefined): string 
   const { address } = studio;
   const addressLine = `${studio.name}, ${address.street}, ${address.postalCode} ${address.city}, ${dict.studio.country}`;
   const contactLines = contactList(locale);
-  const hours = join(`${dict.studio.hoursLabel}: ${dict.studio.hours}, ${dict.studio.hoursNote}.`, dict.studio.hoursUnconfirmed);
+  // Like the pages: the closure first, then the previous hours.
+  const hours = join(`${dict.studio.hoursLabel}: ${reopening.active ? `${dict.studio.closedNote} ` : ''}${dict.studio.hours}, ${dict.studio.hoursNote}.`, dict.studio.hoursUnconfirmed);
   const reopeningNotice = reopening.active && subsection(dict.reopening.title, dict.reopening.text);
   const steps = numbered(dict.process.steps.map((step) => `${step.title}: ${step.text}`));
   const expert = (copy: { title: string; text: string; link: string }) =>
@@ -161,7 +162,7 @@ function pageBody(key: RouteKey, locale: Locale, base: URL | undefined): string 
           addressLine,
           `[${pages.home.location.mapLink}](${studio.mapHref})`,
           bullets([
-            `${dict.studio.phoneLabel}: ${studio.phone.display} (${copy.details.phoneNote})`,
+            `${dict.studio.phoneLabel}: ${phoneDisplay(locale)} (${copy.details.phoneNote})`,
             `${dict.studio.emailLabel}: ${studio.email.display} (${copy.details.emailNote})`,
           ]),
           hours,
@@ -205,16 +206,16 @@ export function pageMarkdown(key: RouteKey, locale: Locale, base: URL | undefine
   const htmlUrl = absoluteUrl(localizedPath(key, locale), base);
   if (key === 'home') {
     const copy = dict.pages.home;
-    return `${join(`# ${copy.hero.heading}`, `> ${fillStudio(copy.description)}`, `Website: ${htmlUrl}`, pageBody(key, locale, base))}\n`;
+    return `${join(`# ${copy.hero.heading}`, `> ${fillStudio(copy.description, locale)}`, `Website: ${htmlUrl}`, pageBody(key, locale, base))}\n`;
   }
   const copy = dict.pages[key as Exclude<RouteKey, 'home' | 'imprint' | 'privacy'>];
   return `${join(
     `# ${copy.heading}`,
-    `> ${fillStudio(copy.lead)}`,
+    `> ${fillStudio(copy.lead, locale)}`,
     `Website: ${htmlUrl}`,
     pageBody(key, locale, base),
     // The closing call (CtaBand) always offers the phone number and the email as well.
-    section(copy.cta.title, fillStudio(copy.cta.text), contactList(locale)),
+    section(copy.cta.title, fillStudio(copy.cta.text, locale), contactList(locale)),
   )}\n`;
 }
 

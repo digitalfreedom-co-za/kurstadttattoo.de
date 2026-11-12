@@ -6,6 +6,8 @@ Reviewed on 12 November 2026 for [ticket #11](https://github.com/digitalfreedom-
 
 This is a UX review of rendered pages, supplied screenshots and source, not a completed interactive booking test or a legal/medical audit. No appointment, email or phone call was submitted. Competitor comparisons use `docs/competitor-analysis.md`, dated 12 November 2026; competitor claims were not independently revalidated. Legal pages are readable without the automatic consent modal, distinguish operator and studio addresses, and have no additional standalone UX finding here. Numbering is confined to genuine process/aftercare steps; no prohibited decorative 01/02/03 pattern was found. Product source remains unchanged.
 
+**Rating note (re-review, 12 November 2026).** Gaps that only Patrick or Marcello can close (hygiene procedures, price guidance, consultation terms, consultation languages, style classification, the personal story, arrival details, review evidence, continuation of engraving) are listed as open content questions or open owner decisions and carry no major or blocker rating: missing confirmed facts are not a defect of the site, and the site must not invent them. The ratings that remain concern what the site itself does. Finding 9 conflicts with the binding header rule in the wiki (`websites.md`: icon-only 36 × 36 px controls below 640 px) and is superseded by it. The fix status of every finding is in [`status.md`](status.md).
+
 1. **[blocker] The primary conversion action offers a booking that is not a studio appointment.**
 
    **Where:** All primary CTAs; /termin/ and /en/appointment/. `src/config/booking.ts:8`, `src/components/pages/BookingPage.astro:28`, `src/components/booking/BookingEmbed.astro:79`.
@@ -22,7 +24,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
    **Fix:** With analytics disabled, request booking consent only when the visitor explicitly loads the calendar. Retain the inline consent placeholder and footer settings. If analytics is enabled later, handle that choice separately without making calendar consent a prerequisite to browsing. Keep rejection as straightforward as acceptance.
 
-3. **[major] The site gives conflicting instructions about how to request an appointment.**
+3. **[minor; owner confirmation open] The site gives conflicting instructions about how to request an appointment.**
 
    **Where:** Home process, consultation, contact, FAQ and booking. `src/i18n/de.json:645`, `:1016`, `src/i18n/en.json:645`, `:1016`, `src/data/process.ts`, `src/components/ui/CtaBand.astro:33`.
 
@@ -30,7 +32,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
    **Fix:** Confirm the accepted channels with Patrick and use one consistent first step across both dictionaries, FAQs, process, header and CTAs. Distinguish requesting a consultation from a confirmed tattoo session. For an approved email route, provide a concise subject and optional prompts for motif, placement and approximate size. Do not invent response-time promises.
 
-4. **[major] Hygiene is prominently named but weakly evidenced.**
+4. **[open content question, not rated] Hygiene is prominently named but weakly evidenced.**
 
    **Where:** Home hygiene section and /hygiene/ in both languages. `src/components/home/HomePage.astro:128`, `src/i18n/de.json:348`, `src/i18n/en.json:348`.
 
@@ -38,7 +40,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
    **Fix:** Obtain Patrick's confirmation of actual preparation, materials, cleaning and between-client procedures; publish a short explanation organised around the session. Keep unsupported measures and certifications out. Link the home section directly to the hygiene page and reduce duplicated aftercare content. Until facts are confirmed, describe only what the images establish and clearly offer a consultation about the procedures.
 
-5. **[major] Price is a key decision question with no written answer.**
+5. **[open content question, not rated] Price is a key decision question with no written answer.**
 
    **Where:** Consultation, FAQ and home FAQ selection. `src/components/pages/ConsultationPage.astro:58`, `src/components/pages/FaqPage.astro:42`, `src/data/faq.ts:11`, `src/i18n/de.json:455`.
 
@@ -46,7 +48,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
    **Fix:** Get an approved written explanation of how an individual quote is prepared, what information is needed and when the client learns the price. Add it to consultation and both FAQ versions, including the homepage preview. Publish minimum charges, deposit rules or ranges only if confirmed. Keep the video as supplementary content.
 
-6. **[major] Visitors cannot assess the commitment involved in a consultation.**
+6. **[open content question, not rated] Visitors cannot assess the commitment involved in a consultation.**
 
    **Where:** /beratung-ablauf/, /termin/ and English equivalents. `src/components/pages/BookingPage.astro:2`, `src/i18n/de.json:412` and `:670`; corresponding EN entries.
 
@@ -70,7 +72,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
    **Fix:** Shorten the visible hero copy while keeping location and specialty clear. Put a real work image before the extended logistics block. Offer compact, linked entry points to art, hygiene and consultation near the top. Move style explanations beside the relevant images or into the gallery; keep closure status concise and prominent.
 
-9. **[minor] Mobile conversion and language controls lose their visible labels.**
+9. **[superseded by the wiki header rule] Mobile conversion and language controls lose their visible labels.**
 
    **Where:** Shared header at 375 px. `src/components/layout/Header.astro:64`, `src/components/layout/LanguageSwitch.astro:46`.
 
@@ -78,7 +80,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
    **Fix:** Keep a short visible consultation/request label and an EN/DE label at narrow widths. Give these tasks priority over the theme control, which can move into the menu. Preserve the existing equivalent-page language routing.
 
-10. **[minor] English pages do not clarify the language of the actual consultation.**
+10. **[minor; consultation languages are an open content question] English pages do not clarify the language of the actual consultation.**
 
     **Where:** EN consultation/contact/appointment pages and shared phone display. `src/i18n/en.json:412`, `:645`, `:670`; `src/config/site.ts:27`.
 
@@ -86,7 +88,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
     **Fix:** Confirm supported consultation languages and state them near the EN contact action. Display +49 173 160 51 62 in EN while keeping the correct tel link. Offer a written request route if the studio accepts it. Do not infer spoken-language capability from the translated website.
 
-11. **[minor] Gallery categories do not consistently support style comparison.**
+11. **[open content question, not rated] Gallery categories do not consistently support style comparison.**
 
     **Where:** /galerie/ and /en/gallery/. `src/data/gallery.ts:75`, `src/i18n/de.json:232`; corresponding EN entries.
 
@@ -102,7 +104,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
     **Fix:** Add a discreet “Discuss an idea in this style” action after each group and an enquiry action associated with the selected work. Carry its title/reference into an approved request route. Explain that examples inspire a personal design; avoid implying another client's tattoo will simply be copied. No separate project-page system is necessary.
 
-13. **[minor] Patrick's personal story is outsourced instead of supporting trust on-site.**
+13. **[open content question, not rated] Patrick's personal story is outsourced instead of supporting trust on-site.**
 
     **Where:** Artist page and shared video FAQ. `src/components/pages/ArtistsPage.astro:103`, `src/i18n/de.json:322`, `src/i18n/en.json:322`.
 
@@ -110,7 +112,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
     **Fix:** Obtain an approved short story or accurately summarise the source video, then translate it. Retain the original video as supporting evidence. Apply the same written-summary approach to the remaining video-only decision questions in the FAQ, after confirming their content and currency. Do not manufacture years of experience or credentials.
 
-14. **[minor] The contact page promises directions but offers little arrival guidance.**
+14. **[open content question, not rated] The contact page promises directions but offers little arrival guidance.**
 
     **Where:** /kontakt/ and /en/contact/. `src/components/pages/ContactPage.astro:45`, `src/i18n/de.json:647`, `src/i18n/en.json:647`.
 
@@ -118,7 +120,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
     **Fix:** Add a compact arrival block after verifying the new location: entrance, useful public transport, legitimate parking options and physical access details. Link to route planning. Avoid invented journey times, parking availability or accessibility claims. Use one useful local section rather than interchangeable city pages.
 
-15. **[minor] Trust evidence lacks a customer perspective near the enquiry decision.**
+15. **[open content question, not rated] Trust evidence lacks a customer perspective near the enquiry decision.**
 
     **Where:** Home trust strip and booking/contact conversion areas. `src/components/ui/TrustStrip.astro:28`, `src/components/pages/BookingPage.astro:26`.
 
@@ -126,7 +128,7 @@ This is a UX review of rendered pages, supplied screenshots and source, not a co
 
     **Fix:** Verify the studio's own review profile and add a plain link near the request action. If suitable permission and sourcing are available, add one or two accurately attributed excerpts about consultation or the experience. Link translations to their originals and identify them as translations. If no verified evidence is available, leave testimonials out; never invent ratings or testimonials, or use the separate expert service's credentials as tattoo-service reviews.
 
-16. **[major] Engraving expands the public promise beyond the tattoo-and-art brief.**
+16. **[open owner decision, not rated] Engraving expands the public promise beyond the tattoo-and-art brief.**
 
     **Where:** /gravur-service/, /en/engraving/ and footer. `src/components/pages/EngravingPage.astro:34`, `src/config/site.ts:95`, `src/i18n/de.json:556`.
 

@@ -63,8 +63,29 @@ export const works: Record<WorkId, ImageMetadata> = {
 /** The piece in the landing page hero: realism in colour, the studio's speciality. */
 export const heroWork: WorkId = 'fox';
 
-/** Landing page preview, realism first, then fine line, colour and blackwork (competitor analysis #2). */
-export const previewWorks: WorkId[] = ['dogPortrait', 'chessKing', 'shark', 'dragonfly', 'flower', 'rabbit', 'compass', 'blackwork'];
+/**
+ * Landing page preview: two lead works, a portrait and a fine line piece (the stated specialities, chosen
+ * from the clearer photos without large overlaid branding), then one row of four supporting works.
+ */
+export const leadWorks: WorkId[] = ['dogPortrait', 'dragonfly'];
+export const previewWorks: WorkId[] = [...leadWorks, 'chessKing', 'rabbit', 'compass', 'blackwork'];
+
+/**
+ * Thumbnail framing per work, checked against the source photos. contain shows the whole photo where the
+ * 4:5 crop would cut the composition: wide or near square pieces (lettering across the forearm, the shark,
+ * the chess king, the neck tribal) and long placements (portrait, lettering on the leg, blossom, compass).
+ * Every other work takes the centred 4:5 crop. The lightbox always shows the full, unchanged photo.
+ */
+const framing: Partial<Record<WorkId, Pick<GalleryItem, 'fit' | 'position'>>> = {
+  memories: { fit: 'contain' },
+  shark: { fit: 'contain' },
+  chessKing: { fit: 'contain' },
+  tribalNeck: { fit: 'contain' },
+  dogPortrait: { fit: 'contain' },
+  lettering: { fit: 'contain' },
+  flower: { fit: 'contain' },
+  compass: { fit: 'contain' },
+};
 
 export type StyleGroupId = keyof Dictionary['pages']['gallery']['groups'];
 
@@ -82,7 +103,7 @@ export const styleGroups: { id: StyleGroupId; works: WorkId[] }[] = [
 
 export function work(id: WorkId, locale: Locale): GalleryItem {
   const copy = t(locale).works[id];
-  return { src: works[id], alt: copy.alt, title: copy.title, meta: copy.meta };
+  return { src: works[id], alt: copy.alt, title: copy.title, meta: copy.meta, ...framing[id], featured: leadWorks.includes(id) };
 }
 
 export function galleryItems(ids: readonly WorkId[], locale: Locale): GalleryItem[] {

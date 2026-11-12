@@ -21,5 +21,5 @@ export const faqGroups: { id: FaqGroupId; ids: FaqId[] }[] = [
 
 export function faqEntries(ids: readonly FaqId[], locale: Locale): FaqEntry[] {
   const items = t(locale).faq.items;
-  return ids.map((id) => ({ question: items[id].question, answer: fillStudio(items[id].answer) }));
+  return ids.map((id) => ({ question: items[id].question, answer: fillStudio(items[id].answer, locale) }));
 }

@@ -52,7 +52,8 @@
     "hoursNote": "or by appointment",
     "hoursUnconfirmed": "Previous hours. Please call to ask about the hours at the new location.",
     "followLabel": "Follow",
-    "tiktok": "Patrick on TikTok"
+    "tiktok": "Patrick on TikTok",
+    "closedNote": "Closed until we reopen on 1 December 2026."
   },
   "footer": {
     "about": "Tattoos by Patrick Wolf in Bad Nauheim: realistic portraits, fine lines and designs based on your own artwork.",
@@ -91,7 +92,8 @@
         "title": "Reopening",
         "text": "From 1 December 2026 at Friedrich-Ebert-Platz 1A in Bad Nauheim."
       }
-    ]
+    ],
+    "linkPrefix": "More about"
   },
   "gallery": {
     "open": "Enlarge",
@@ -99,7 +101,12 @@
     "close": "Close",
     "prev": "Previous image",
     "next": "Next image",
-    "counter": "Image {current} of {total}"
+    "counter": "Image {current} of {total}",
+    "loading": "Loading the picture.",
+    "failed": "The picture could not be loaded.",
+    "retry": "Try again",
+    "original": "Open the picture directly",
+    "enquire": "Talk about a design like this"
   },
   "steps": {
     "stepPrefix": "Step"
@@ -107,7 +114,7 @@
   "cta": {
     "label": "Get in touch",
     "callPrefix": "Call",
-    "emailLink": "Or send us an email"
+    "emailLink": "Questions? Send us an email."
   },
   "pages": {
     "home": {
@@ -115,11 +122,10 @@
       "description": "KurstadtTattoo, your tattoo studio in Bad Nauheim near Frankfurt: realistic portraits and fine line work by Patrick Wolf. Reopening on 1 December 2026 at Friedrich-Ebert-Platz 1A.",
       "hero": {
         "eyebrow": "Tattoo studio Bad Nauheim, Wetterau",
-        "heading": "Tattoo studio in Bad Nauheim for realistic portraits and fine lines",
-        "intro": "KurstadtTattoo is the tattoo studio of Patrick Wolf in the Wetterau region, near Friedberg and just outside Frankfurt. You bring your idea or your own design, and we plan the piece together with you.",
+        "heading": "Realistic portraits. Fine lines.",
+        "intro": "KurstadtTattoo is Patrick Wolf's studio in Bad Nauheim, near Friedberg and Frankfurt. You bring your idea or artwork, and we plan the design together with you.",
         "worksLink": "See our work",
-        "imageCaption": "Work from the studio",
-        "addressLabel": "New studio from 1 December 2026"
+        "imageCaption": "Work from the studio"
       },
       "art": {
         "id": "work",
@@ -168,7 +174,8 @@
           "Avoid direct sunlight, sunbeds and swimming in pools or lakes until the skin has healed.",
           "If you notice strong redness, swelling or pus, please see a doctor straight away."
         ],
-        "aftercareLink": "All aftercare tips"
+        "aftercareLink": "All aftercare tips",
+        "hygieneLink": "More about hygiene"
       },
       "process": {
         "id": "process",
@@ -221,8 +228,8 @@
     "gallery": {
       "title": "Tattoo Gallery Bad Nauheim by Style | KurstadtTattoo",
       "description": "Real tattoos from the KurstadtTattoo studio in Bad Nauheim: realistic portraits, colour, fine line, lettering, blackwork and tribal, sorted by style.",
-      "eyebrow": "Gallery",
-      "heading": "Tattoo gallery: work from the studio in Bad Nauheim",
+      "eyebrow": "Gallery, KurstadtTattoo Bad Nauheim",
+      "heading": "Work from the studio",
       "lead": "These are real tattoos from the KurstadtTattoo studio, sorted by style: realism and portraits, colour, fine line, lettering, and blackwork and tribal. Tap a picture to see it large.",
       "stylesLabel": "Styles in the gallery",
       "countLabel": "{count} pieces",
@@ -265,7 +272,10 @@
       "cta": {
         "title": "Which motif will it be?",
         "text": "Tell us your idea on the phone. From 1 December 2026 we tattoo in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
-      }
+      },
+      "discuss": "Discuss an idea in this style",
+      "discussNote": "These works are for inspiration. We plan your design specifically for you.",
+      "backToStyles": "Back to the styles"
     },
     "artists": {
       "title": "Tattoo Artist in Bad Nauheim: Patrick Wolf | KurstadtTattoo",
@@ -342,13 +352,17 @@
       "cta": {
         "title": "Talk to Patrick about your motif.",
         "text": "We take appointment requests by phone. From 1 December 2026 in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      },
+      "works": {
+        "label": "Two pieces by Patrick",
+        "link": "See it in the gallery"
       }
     },
     "hygiene": {
       "title": "Hygiene at the Tattoo Studio in Bad Nauheim | KurstadtTattoo",
       "description": "What hygiene means at KurstadtTattoo in Bad Nauheim: a core value since the studio was founded, in the studio and while your tattoo heals, with warning signs and aftercare.",
-      "eyebrow": "Hygiene",
-      "heading": "Hygiene at KurstadtTattoo, in the studio and while you heal",
+      "eyebrow": "Hygiene at KurstadtTattoo",
+      "heading": "Hygiene in the studio and while you heal",
       "lead": "Since KurstadtTattoo was founded, hygiene has been one of the values we care about most, together with quality and your satisfaction. It starts in the studio and continues at home while your tattoo heals.",
       "imageAlt": "Patrick Wolf tattooing a forearm with black gloves and a covered tattoo machine",
       "value": {
@@ -411,8 +425,8 @@
     "consultation": {
       "title": "Tattoo Consultation and Process in Bad Nauheim | KurstadtTattoo",
       "description": "How your tattoo comes about at KurstadtTattoo in Bad Nauheim: a call, planning the motif together, the session in the studio and aftercare. What you can bring to the consultation.",
-      "eyebrow": "Consultation and process",
-      "heading": "Tattoo consultation: from the first call to aftercare",
+      "eyebrow": "Tattoo consultation in Bad Nauheim",
+      "heading": "Consultation and process",
       "lead": "A tattoo at KurstadtTattoo comes about in four steps: a call, planning the motif together, the session in the studio and aftercare. Before the first line is tattooed, we plan the motif closely with you.",
       "process": {
         "id": "process",
@@ -450,7 +464,8 @@
         "title": "How do we plan your motif?",
         "lead": "Together with you, until it matches what you have in mind.",
         "text": "You bring your idea, design or photos, and we turn them into your individual tattoo. The gallery shows the styles that come out of the studio, from realistic portraits to blackwork.",
-        "link": "See the gallery by style"
+        "link": "See the gallery by style",
+        "exampleCaption": "An example of a finished tattoo from the studio, not a photo from a consultation."
       },
       "cost": {
         "id": "cost",
@@ -514,7 +529,7 @@
         "id": "support",
         "eyebrow": "Aftercare support",
         "title": "Questions while your tattoo heals?",
-        "text": "Give us a call. If you have questions or problems, we are always there for you and are happy to offer aftercare."
+        "text": "Give us a call. If you have questions or problems while your tattoo heals, we are there for you and are happy to offer aftercare."
       },
       "cta": {
         "title": "Questions about caring for your tattoo?",
@@ -525,7 +540,7 @@
       "title": "Tattoo FAQ: Booking, Designs, Aftercare and Studio | KurstadtTattoo",
       "description": "Answers from KurstadtTattoo in Bad Nauheim on booking, your own design, finishing tattoos, styles, aftercare, opening hours and the new studio. More answers from Patrick on video.",
       "eyebrow": "FAQ",
-      "heading": "Frequently asked questions about getting tattooed at KurstadtTattoo",
+      "heading": "Frequently asked questions",
       "lead": "Here are written answers to the questions we hear most often. On colour, cost, eczema and vegan inks, Patrick answers in short videos.",
       "groups": {
         "booking": {
@@ -634,8 +649,8 @@
     "contact": {
       "title": "Contact and Directions | KurstadtTattoo Bad Nauheim",
       "description": "KurstadtTattoo in Bad Nauheim: from 1 December 2026 at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim, Germany. Appointment requests by phone at {phone}, plus opening hours and directions.",
-      "eyebrow": "Contact",
-      "heading": "Contact and directions to KurstadtTattoo in Bad Nauheim",
+      "eyebrow": "Contact, KurstadtTattoo Bad Nauheim",
+      "heading": "Contact and directions",
       "lead": "We take appointment requests by phone at {phone}. From 1 December 2026 you will find us in the new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
       "details": {
         "id": "reach-us",
@@ -677,8 +692,8 @@
       "calendar": {
         "id": "kalender",
         "eyebrow": "Calendar",
-        "title": "Pick a free slot.",
-        "intro": "Choose a day, choose a time, enter your name and email address. No suitable time? Call us or send an email."
+        "title": "Pick an available time.",
+        "intro": "Choose a day, choose a time, enter your name and email address. No suitable time? Give us a call."
       },
       "prepare": {
         "id": "prepare",
@@ -712,6 +727,12 @@
       "cta": {
         "title": "Rather talk in person?",
         "text": "Call us and tell us your idea. From 1 December 2026 in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      },
+      "demo": {
+        "description": "Request a consultation at KurstadtTattoo in Bad Nauheim by phone at {phone}. With tips on what to prepare for your tattoo consultation.",
+        "eyebrow": "Request appointment",
+        "heading": "Request a consultation for your tattoo",
+        "lead": "We take appointment requests by phone at {phone}. In the consultation we plan your design together with you."
       }
     },
     "imprint": {
@@ -833,11 +854,13 @@
           }
         },
         "necessary": "not required, strictly necessary (§ 25(2) No. 2 TDDDG)",
-        "basis": "The legal basis for these entries is Art. 6(1)(f) GDPR. Our legitimate interest lies in keeping the settings you chose and in respecting and being able to demonstrate your consent decision (Art. 7(1) GDPR)."
+        "basis": "The legal basis for these entries is Art. 6(1)(f) GDPR. Our legitimate interest lies in keeping the settings you chose and in respecting and being able to demonstrate your consent decision (Art. 7(1) GDPR).",
+        "tableLabel": "Entries in your browser storage",
+        "scrollHint": "Scroll the table sideways to see every column."
       },
       "consent": {
         "title": "Consent and cookie settings",
-        "intro": "On your first visit we ask whether the cal.com booking calendar may load. Declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com and no connection to cal.com is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or arrange the appointment by phone or email.",
+        "intro": "We only ask whether the cal.com booking calendar may load when you want to load it on the appointment page. Declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com and no connection to cal.com is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or request your appointment by phone.",
         "introAnalytics": "On your first visit we ask whether the cal.com booking calendar and statistics with Google Analytics may load. You can choose each separately, declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com or Google and no connection to these services is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or arrange the appointment by phone or email.",
         "record": "We store your answer in the entry {key} in your browser so that we do not ask again on every page. If the notice changes in substance, we ask again.",
         "withdraw": "You can withdraw or change your consent at any time with effect for the future, via the link Cookie settings at the bottom of every page or",
@@ -1120,7 +1143,7 @@
       },
       "booking": {
         "title": "Book appointment",
-        "text": "Pick a consultation slot in the online calendar or arrange it by phone."
+        "text": "Request a consultation and prepare for it."
       }
     }
   },
@@ -1130,7 +1153,7 @@
     "language": "in German",
     "items": {
       "howStarted": {
-        "title": "How did you get into tattooing?",
+        "title": "Patrick's path into tattooing",
         "text": "Patrick tells how he came to tattooing."
       },
       "care": {
@@ -1146,8 +1169,8 @@
         "text": "Patrick on the cost of a tattoo."
       },
       "finishing": {
-        "title": "Do you finish tattoos started by others?",
-        "text": "Yes, we do."
+        "title": "Finishing tattoos started elsewhere",
+        "text": "Yes, Patrick takes those on too."
       },
       "eczema": {
         "title": "Eczema and tattoos",
@@ -1177,25 +1200,28 @@
     "timezoneHint": "The calendar shows free times in this time zone.",
     "timezoneDevice": "your device",
     "demoLabel": "Preview",
-    "demoText": "The calendar below is a demo calendar for the preview of this website. Bookings made with it do not create an appointment at KurstadtTattoo. Details entered in a booking go to the cal.com account of the web developer of this website, {holder}. Until the studio's own calendar is live, please arrange your appointment by phone or email.",
+    "demoText": "This calendar is a test for the preview of this website. Bookings made with it do not create an appointment at KurstadtTattoo, and details entered in a booking go to the cal.com account of the web developer of this website, {holder}. Please request your appointment by phone.",
     "emailButton": "Send an email",
     "placeholderTitle": "The calendar comes from cal.com.",
     "placeholderText": "So that you can pick an appointment right here, we embed the booking calendar of Cal.com, Inc. (USA). It only loads once you agree. Your browser then sends your IP address, among other data, to cal.com in the USA, and cal.com sets a cookie to fend off automated access. You can withdraw your consent at any time under Cookie settings at the bottom of the page.",
     "consentButton": "Agree and load calendar",
     "withoutLabel": "Without cal.com",
-    "withoutText": "Arrange your appointment by phone or email.",
+    "withoutText": "Request your appointment by phone. For other questions, send us an email.",
     "fallbackNoJs": "The booking calendar needs JavaScript.",
     "fallbackFailed": "The booking calendar could not be loaded.",
-    "fallbackText": "Arrange your appointment by phone or email, or book directly on the cal.com booking page.",
+    "fallbackText": "Request your appointment by phone. For other questions, send us an email.",
     "calPage": "Booking page on cal.com",
     "newWindow": "(opens in a new window)",
     "statusLoading": "The calendar is loading.",
     "statusReady": "The calendar has loaded.",
-    "statusFailed": "The calendar could not be loaded. You can book directly on cal.com, by phone or by email.",
+    "statusFailed": "The calendar could not be loaded. Please request your appointment by phone.",
     "note": "The calendar only loads with your consent, and only once this area comes into view.",
     "notePrivacy": "What is processed is described in the privacy policy.",
     "privacyLink": "privacy policy",
-    "emailPrefix": "Email"
+    "emailPrefix": "Email",
+    "requestLabel": "Request appointment",
+    "demoSummary": "Calendar preview: a test only, no booking possible",
+    "iframeTitle": "Tattoo consultation booking calendar"
   },
   "consent": {
     "eyebrow": "Privacy",
@@ -1203,7 +1229,7 @@
     "noticeTitleAnalytics": "May we load external services?",
     "noticeBooking": "This website sets no cookies for analytics or advertising. For online booking we embed the calendar of cal.com (Cal.com, Inc., USA). When it loads, your browser sends your IP address, among other data, to cal.com in the USA, and cal.com sets a cookie to fend off automated access. This only happens with your consent.",
     "noticeBookingAnalytics": "For online booking we embed the calendar of cal.com (Cal.com, Inc., USA). With Google Analytics by Google Ireland Limited we evaluate how our pages are used. Both services receive your IP address, among other data, set cookies and may transfer data to the USA. This only happens with your consent, and you can choose each service separately.",
-    "noticeRest": "Without consent the website works fully, and you arrange your appointment by phone or email. You can change or withdraw your choice at any time under Cookie settings at the bottom of every page.",
+    "noticeRest": "Without consent the website works fully, and you request your appointment by phone. You can change or withdraw your choice at any time under Cookie settings at the bottom of every page.",
     "privacyMore": "More in the privacy policy",
     "reject": "Reject",
     "accept": "Accept",
@@ -1215,7 +1241,7 @@
     "necessaryTitle": "Necessary",
     "necessaryText": "Stores your choice in this browser (localStorage, entry kt-consent with the version of the notice, the time and your selection), so we do not ask again. No identifier, read only by this website. No consent needed, § 25(2) no. 2 TDDDG.",
     "bookingTitle": "External media: booking via cal.com",
-    "bookingText": "Loads the booking calendar of Cal.com, Inc., San Francisco, USA, on the Book appointment page once it comes into view. cal.com then receives your IP address, browser and device details and the address of the page. Its service provider Cloudflare sets the cookie __cf_bm against automated access (30 minutes), and technical error reports go to Sentry. Transfer to the USA on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it the calendar stays off, and appointments are made by phone or email.",
+    "bookingText": "Loads the booking calendar of Cal.com, Inc., San Francisco, USA, on the Book appointment page once it comes into view. cal.com then receives your IP address, browser and device details and the address of the page. Its service provider Cloudflare sets the cookie __cf_bm against automated access (30 minutes), and technical error reports go to Sentry. Transfer to the USA on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it the calendar stays off, and you request appointments by phone.",
     "analyticsTitle": "Statistics: Google Analytics",
     "analyticsText": "Loads Google Analytics 4 by Google Ireland Limited, Dublin, Ireland, and evaluates which pages are used and how. Google then receives your IP address, browser and device details and the pages you visit, and sets the cookies _ga and _ga_ with the website's ID (up to 2 years). A transfer to the USA is possible, on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it Google Analytics is not loaded and nothing is sent to Google.",
     "details": "Details in the privacy policy."
@@ -1240,7 +1266,7 @@
     "retentionTitle": "Retention and alternatives",
     "retentionDemo": "We do not receive booking data from the demo calendar. It is held in the cal.com account of {holder} and stored and deleted under the rules of cal.com.",
     "retentionLive": "We delete booking data once it is no longer needed to hold and follow up on the appointment, unless statutory retention duties apply.",
-    "alternative": "If you do not consent or do not want to use cal.com, simply arrange your appointment by phone or email."
+    "alternative": "If you do not consent or do not want to use cal.com, simply request your appointment by phone."
   },
   "seo": {
     "ogImageAlt": "KurstadtTattoo, tattoo studio in Bad Nauheim: realistic fox tattoo in colour on a forearm, next to the name and address of the studio",

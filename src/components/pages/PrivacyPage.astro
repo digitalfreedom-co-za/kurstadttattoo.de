@@ -16,7 +16,7 @@ import LegalProse from '../legal/LegalProse.astro';
 import { BOOKING_PRIVACY_ANCHOR } from '../../config/booking';
 import { ANALYTICS_ENABLED } from '../../config/analytics';
 import { CONSENT_ANCHOR, CONSENT_STORAGE_KEY } from '../../config/consent';
-import { operator, studio } from '../../config/site';
+import { operator, studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
@@ -93,7 +93,7 @@ const toc = [
           {copy.controller.represented.replaceAll('{name}', operator.managingDirector)}
         </p>
         <p>
-          {dict.studio.phoneLabel}: <a href={studio.phone.href}>{studio.phone.display}</a><br />
+          {dict.studio.phoneLabel}: <a href={studio.phone.href}>{phoneDisplay(locale)}</a><br />
           {dict.studio.emailLabel}: <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
         </p>
         <p>{copy.controller.questions}</p>
@@ -113,33 +113,71 @@ const toc = [
         <h2 id="speicher">{copy.storage.title}</h2>
         <p>{copy.storage.fonts}</p>
         <p>{copy.storage.entries}</p>
-        <div class="overflow-x-auto">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">{copy.storage.columns.entry}</th>
-                <th scope="col">{copy.storage.columns.written}</th>
-                <th scope="col">{copy.storage.columns.purpose}</th>
-                <th scope="col">{copy.storage.columns.duration}</th>
-                <th scope="col">{copy.storage.columns.consent}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                storageRows.map((row) => (
-                  <tr>
-                    <th scope="row">
-                      <code>{row.key}</code>
-                    </th>
-                    <td>{row.written}</td>
-                    <td>{row.purpose}</td>
-                    <td>{row.duration}</td>
-                    <td>{copy.storage.necessary}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
+        {/* Below 640px each entry is a labelled block, so no column hides off screen. From 640px the table,
+            in a named, keyboard focusable region: Tab reaches it and the arrow keys scroll it (WCAG 2.1.1). */}
+        <div class="not-prose sm:hidden">
+          <p id="speicher-liste" class="sr-only">{copy.storage.tableLabel}</p>
+          <ul class="grid border-t border-ink" aria-labelledby="speicher-liste">
+            {
+              storageRows.map((row) => (
+                <li class="border-b border-line py-4">
+                  <p class="font-semibold">
+                    <code>{row.key}</code>
+                  </p>
+                  <dl class="mt-2 grid gap-2 text-sm">
+                    <div>
+                      <dt class="font-semibold text-ink">{copy.storage.columns.written}</dt>
+                      <dd class="text-ink-soft">{row.written}</dd>
+                    </div>
+                    <div>
+                      <dt class="font-semibold text-ink">{copy.storage.columns.purpose}</dt>
+                      <dd class="text-ink-soft">{row.purpose}</dd>
+                    </div>
+                    <div>
+                      <dt class="font-semibold text-ink">{copy.storage.columns.duration}</dt>
+                      <dd class="text-ink-soft">{row.duration}</dd>
+                    </div>
+                    <div>
+                      <dt class="font-semibold text-ink">{copy.storage.columns.consent}</dt>
+                      <dd class="text-ink-soft">{copy.storage.necessary}</dd>
+                    </div>
+                  </dl>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="hidden sm:block">
+          <p id="speicher-hinweis" class="text-sm text-muted lg:hidden">{copy.storage.scrollHint}</p>
+          <div class="overflow-x-auto" role="region" aria-labelledby="speicher-tabelle" aria-describedby="speicher-hinweis" tabindex="0">
+            <table>
+              <caption id="speicher-tabelle" class="sr-only">{copy.storage.tableLabel}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">{copy.storage.columns.entry}</th>
+                  <th scope="col">{copy.storage.columns.written}</th>
+                  <th scope="col">{copy.storage.columns.purpose}</th>
+                  <th scope="col">{copy.storage.columns.duration}</th>
+                  <th scope="col">{copy.storage.columns.consent}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  storageRows.map((row) => (
+                    <tr>
+                      <th scope="row">
+                        <code>{row.key}</code>
+                      </th>
+                      <td>{row.written}</td>
+                      <td>{row.purpose}</td>
+                      <td>{row.duration}</td>
+                      <td>{copy.storage.necessary}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
         <p>{copy.storage.basis}</p>
         <p>{ANALYTICS_ENABLED ? copy.storage.noTrackingAnalytics : copy.storage.noTracking}</p>

@@ -8,7 +8,8 @@ import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
 import ReopeningNotice from '../ui/ReopeningNotice.astro';
 import ExpertTeaser from '../ui/ExpertTeaser.astro';
-import { reopening, studio } from '../../config/site';
+import { bookingLabel } from '../../config/booking';
+import { reopening, studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
@@ -30,9 +31,9 @@ const channels = [
 <SubpageLayout locale={locale} routeKey="contact" related={['consultation', 'faq', 'gallery']}>
   <Fragment slot="actions">
     <Button href={studio.phone.href} icon="phone">
-      <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+      <span class="sr-only">{dict.cta.callPrefix}: </span>{phoneDisplay(locale)}
     </Button>
-    <Button href={localizedPath('booking', locale)} variant="secondary" icon="calendar">{dict.booking.label}</Button>
+    <Button href={localizedPath('booking', locale)} variant="secondary" icon="calendar">{bookingLabel(dict.booking)}</Button>
   </Fragment>
 
   <Section id={copy.details.id} eyebrow={copy.details.eyebrow} title={copy.details.title} intro={copy.details.intro}>
@@ -56,7 +57,7 @@ const channels = [
         <p class="label text-muted">{dict.studio.phoneLabel}</p>
         <a class="link mt-2 inline-flex min-h-11 items-center gap-3 text-lg font-semibold no-underline hover:underline" href={studio.phone.href}>
           <Icon name="phone" size={18} class="shrink-0 text-neon" />
-          {studio.phone.display}
+          {phoneDisplay(locale)}
         </a>
         <p class="text-sm text-muted">{copy.details.phoneNote}</p>
       </div>
@@ -73,6 +74,7 @@ const channels = [
         <p class="mt-3 flex gap-3">
           <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
           <span>
+            {reopening.active && <span class="mb-2 block font-semibold">{dict.studio.closedNote}</span>}
             {dict.studio.hours}<span class="block text-muted">{dict.studio.hoursNote}</span>
             <span class="mt-2 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
           </span>
