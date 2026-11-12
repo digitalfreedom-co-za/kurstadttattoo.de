@@ -6,6 +6,12 @@
     "label": "Deutsch",
     "title": "Read this page in German"
   },
+  "languageHint": {
+    "region": "Language notice",
+    "text": "This website is also available in English.",
+    "action": "Go to the English version",
+    "dismiss": "Close notice"
+  },
   "nav": {
     "label": "Main navigation",
     "mobileLabel": "Main navigation, mobile",
@@ -821,8 +827,8 @@
             "duration": "until you clear your browser's storage"
           },
           "locale": {
-            "written": "when you choose the language in the language switch",
-            "purpose": "remember that you chose the language yourself",
+            "written": "when you choose the language in the language switch or close the language notice",
+            "purpose": "remember that you chose the language yourself, so the language notice does not appear again",
             "duration": "until you clear your browser's storage"
           }
         },

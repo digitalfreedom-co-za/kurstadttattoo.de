@@ -6,6 +6,12 @@
     "label": "English",
     "title": "Diese Seite auf Englisch lesen"
   },
+  "languageHint": {
+    "region": "Sprachhinweis",
+    "text": "Diese Website gibt es auch auf Deutsch.",
+    "action": "Zur deutschen Fassung",
+    "dismiss": "Hinweis schließen"
+  },
   "nav": {
     "label": "Hauptnavigation",
     "mobileLabel": "Hauptnavigation mobil",
@@ -821,8 +827,8 @@
             "duration": "bis Sie den Speicher Ihres Browsers löschen"
           },
           "locale": {
-            "written": "wenn Sie über den Sprachwechsel die Sprache wählen",
-            "purpose": "sich merken, dass Sie die Sprache selbst gewählt haben",
+            "written": "wenn Sie über den Sprachwechsel die Sprache wählen oder den Sprachhinweis schließen",
+            "purpose": "sich merken, dass Sie die Sprache selbst gewählt haben, damit der Sprachhinweis nicht erneut erscheint",
             "duration": "bis Sie den Speicher Ihres Browsers löschen"
           }
         },

@@ -1,10 +1,11 @@
 ---
 // HTML frame for every page: html lang per locale, theme and JS bootstrap, fonts, SEO head, skip link,
-// reopening strip, header, main, footer, consent dialog, analytics (only with a GA4 ID), motion script. Extra head tags go into the "head" slot.
+// reopening strip, header, language hint (start pages only), main, footer, consent dialog, analytics (only with a GA4 ID), motion script. Extra head tags go into the "head" slot.
 import '../styles/global.css';
 import { Font } from 'astro:assets';
 import SeoHead, { type SeoProps } from '../components/seo/SeoHead.astro';
 import Header from '../components/layout/Header.astro';
+import LanguageHint from '../components/layout/LanguageHint.astro';
 import Footer from '../components/layout/Footer.astro';
 import ConsentDialog from '../components/layout/ConsentDialog.astro';
 import Analytics from '../components/seo/Analytics.astro';
@@ -56,6 +57,7 @@ const { locale, routeKey } = Astro.props;
       <ReopeningNotice locale={locale} variant="strip" />
     </div>
     <Header locale={locale} routeKey={routeKey} />
+    {routeKey === 'home' && <LanguageHint locale={locale} />}
     <main id="inhalt" data-inert-when-menu tabindex="-1" class="flex-1 focus:outline-none">
       <slot />
     </main>

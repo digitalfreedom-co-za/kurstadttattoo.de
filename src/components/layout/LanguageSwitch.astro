@@ -1,8 +1,10 @@
 ---
 // Link to the same page in the other locale. An explicit choice is remembered in
-// localStorage["locale-explicit"] (wiki websites.md), so a later language hint stays away.
+// localStorage["locale-explicit"] (wiki websites.md), so a later language hint stays away. A section
+// anchor in the address is carried over in its translated form (#arbeiten becomes #work); anchors both
+// locales share (legal pages) stay as they are. The href follows the address, so a new tab keeps it too.
 // Below sm the switch is a labelled globe icon, from sm up the text label shows (wiki websites.md).
-import { t, locales, localeMeta, localizedPath, type Locale, type RouteKey } from '../../i18n';
+import { t, locales, localeMeta, localizedPath, anchorMap, type Locale, type RouteKey } from '../../i18n';
 import { url } from '../../lib/url';
 
 interface Props {
@@ -13,6 +15,7 @@ interface Props {
 const { locale, routeKey } = Astro.props;
 const target = locales.find((alt) => alt !== locale) ?? locale;
 const copy = t(locale).languageSwitch;
+const anchors = anchorMap(routeKey, locale, target);
 ---
 
 <a
@@ -22,6 +25,7 @@ const copy = t(locale).languageSwitch;
   title={copy.title}
   aria-label={copy.label}
   data-locale-switch
+  data-anchors={JSON.stringify(anchors)}
   class="inline-flex size-9 items-center justify-center rounded-xs text-sm font-semibold transition-colors hover:text-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-3"
 >
   <svg
@@ -43,7 +47,14 @@ const copy = t(locale).languageSwitch;
 </a>
 
 <script>
-  document.querySelectorAll('[data-locale-switch]').forEach((link) => {
+  document.querySelectorAll<HTMLAnchorElement>('[data-locale-switch]').forEach((link) => {
+    const anchors: Record<string, string> = JSON.parse(link.dataset.anchors ?? '{}');
+    const followHash = () => {
+      const hash = location.hash.slice(1);
+      link.hash = anchors[hash] ?? hash;
+    };
+    followHash();
+    window.addEventListener('hashchange', followHash);
     link.addEventListener('click', () => {
       try {
         localStorage.setItem('locale-explicit', '1');
