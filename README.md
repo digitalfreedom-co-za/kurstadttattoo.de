@@ -78,7 +78,7 @@ Der Schalter `PUBLIC_INDEXABLE` (gesetzt im Deploy Workflow) steuert die Suchmas
 
 ## Deploy
 
-`.github/workflows/deploy.yml` läuft bei jedem Push auf `main`: `npm ci`, `astro check`, Build, JSON-LD Prüfung, Upload als Pages Artefakt, Deploy. Pull Requests prüft zusätzlich `.github/workflows/commit-policy.yaml` (Commit Message Policy aus `org-ci-config`). Die CodeQL Analyse läuft über das Default Setup in den Repository Einstellungen. Dependabot schlägt wöchentlich Updates vor, Astro Major Updates und Vite Major Updates sind ausgenommen.
+`.github/workflows/deploy.yml` läuft bei jedem Push auf `main`: `npm ci`, `astro check`, Build, JSON-LD Prüfung, Upload als Pages Artefakt, Deploy. Pull Requests prüft zusätzlich `.github/workflows/commit-policy.yaml` mit der Commit Message Policy aus `org-ci-config`. Die Prüfung steht direkt im Repository, weil ein öffentliches Repository keine Workflows aus dem privaten `org-ci-config` aufrufen darf. Die CodeQL Analyse für JavaScript, TypeScript und die Workflows läuft über `.github/workflows/codeql.yml` bei jedem Pull Request, jedem Push auf `main` und wöchentlich. Das Default Setup in den Repository Einstellungen bleibt aus, weil es neben dem Workflow nicht laufen darf. Dependabot schlägt wöchentlich Updates vor, Astro Major Updates und Vite Major Updates sind ausgenommen.
 
 ## Domainwechsel auf www.kurstadttattoo.de
 
