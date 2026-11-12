@@ -1,7 +1,7 @@
 ---
 // Artists page for both locales: Patrick Wolf, the only artist the source names. His focus links into
 // the gallery groups, the way he works shows the three stated standards, his story is his own video.
-// Carries the Person node of the JSON-LD graph. The expert office stays a secondary link.
+// Its WebPage is about the Person node of the site wide JSON-LD graph. The expert office stays a secondary link.
 import SubpageLayout from '../../layouts/SubpageLayout.astro';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
@@ -10,10 +10,9 @@ import ArtImage from '../ui/ArtImage.astro';
 import Icon from '../ui/Icon.astro';
 import VideoLinks from '../ui/VideoLinks.astro';
 import ExpertTeaser from '../ui/ExpertTeaser.astro';
-import { expertSite, studio } from '../../config/site';
+import { studio } from '../../config/site';
 import { styleGroups } from '../../data/gallery';
 import { videos } from '../../data/videos';
-import { personNode } from '../../lib/schema';
 import { url } from '../../lib/url';
 import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
 import { pageExists } from '../../lib/pages';
@@ -31,21 +30,9 @@ const copy = dict.pages.artists;
 const groupAnchor = (id: (typeof styleGroups)[number]['id']) => dict.pages.gallery.groups[id].id;
 const link = (key: RouteKey, hash = '') => (pageExists(key, locale) ? url(localizedPath(key, locale)) + hash : undefined);
 const focusLinks = [link('gallery', `#${groupAnchor('realism')}`), link('gallery', `#${groupAnchor('fineLine')}`), link('consultation')];
-
-const person = personNode(
-  {
-    name: studio.artist,
-    jobTitle: copy.person.jobTitle,
-    description: copy.person.description,
-    knowsAbout: copy.person.knowsAbout,
-    sameAs: [studio.tiktok.href, expertSite.href],
-    path: localizedPath('artists', locale),
-  },
-  Astro.site,
-);
 ---
 
-<SubpageLayout locale={locale} routeKey="artists" related={['gallery', 'consultation', 'hygiene']} schema={[person]}>
+<SubpageLayout locale={locale} routeKey="artists" related={['gallery', 'consultation', 'hygiene']}>
   <figure slot="media" class="relative">
     <span class="absolute -top-3 -right-3 bottom-10 left-6 border border-neon md:-top-5 md:-right-5" aria-hidden="true"></span>
     <ArtImage

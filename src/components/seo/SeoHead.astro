@@ -1,13 +1,15 @@
 ---
-// SEO tags of a page: title, description, robots, canonical, hreflang alternates for both locales plus
-// x-default, basic Open Graph and one JSON-LD @graph. Absolute URLs come from Astro.site plus the base
-// path, indexing from the switch in config/site.ts. OG image, Twitter card and the full entity graph
-// follow in the SEO ticket (#9).
+// SEO tags of a page: title, description, author, robots, canonical, hreflang alternates for both locales
+// plus x-default, Open Graph and Twitter with the OG card of the page locale, the llms.txt hint and one
+// JSON-LD @graph (site wide entities, the WebPage, its breadcrumb trail and the page's own nodes).
+// Absolute URLs come from Astro.site plus the base path, indexing from the switch in config/site.ts.
+import { getImage } from 'astro:assets';
 import JsonLd from './JsonLd.astro';
-import { site, indexable } from '../../config/site';
+import { site, studio, indexable, ogImage } from '../../config/site';
 import { absoluteUrl, withoutBase } from '../../lib/url';
-import { breadcrumbId, breadcrumbNode, websiteNode, webPageNode, type Crumb, type JsonLdNode } from '../../lib/schema';
-import { defaultLocale, locales, localeMeta, localizedPath, type Locale, type RouteKey } from '../../i18n/routes';
+import { breadcrumbId, breadcrumbNode, siteGraph, webPageNode, type Crumb, type JsonLdNode } from '../../lib/schema';
+import { defaultLocale, locales, localeMeta, localizedPath, t, type Locale, type RouteKey } from '../../i18n';
+import portrait from '../../assets/images/patrick-wolf-arme-verschraenkt-neonlogo.jpg';
 
 export interface SeoProps {
   title: string;
@@ -33,14 +35,25 @@ const robots = noindex || !indexable ? 'noindex' : 'index, follow, max-image-pre
 const alternates = routeKey
   ? locales.map((alt) => ({ hreflang: localeMeta[alt].lang, href: absoluteUrl(localizedPath(routeKey, alt), Astro.site) }))
   : [];
-const webPage = webPageNode({ path, name: title, description, locale }, Astro.site);
-const trail = breadcrumbs.length > 0 ? [breadcrumbNode(path, breadcrumbs, Astro.site)] : [];
-if (trail.length > 0) webPage.breadcrumb = { '@id': breadcrumbId(path, Astro.site) };
-const graph = noindex ? null : { '@graph': [websiteNode(Astro.site), webPage, ...trail, ...schema] };
+const image = absoluteUrl(ogImage.path[locale], Astro.site);
+const imageAlt = t(locale).seo.ogImageAlt;
+const llmsTxt = absoluteUrl(`${localizedPath('home', locale)}llms.txt`, Astro.site);
+
+let graph: Record<string, unknown> | null = null;
+if (!noindex) {
+  const portraitImage = await getImage({ src: portrait, width: 800, format: 'jpeg' });
+  const webPage = webPageNode({ path, name: title, description, locale, routeKey }, Astro.site);
+  const trail = breadcrumbs.length > 0 ? [breadcrumbNode(path, breadcrumbs, Astro.site)] : [];
+  if (trail.length > 0) webPage.breadcrumb = { '@id': breadcrumbId(path, Astro.site) };
+  graph = {
+    '@graph': [...siteGraph(Astro.site, locale, new URL(portraitImage.src, Astro.site).href), webPage, ...trail, ...schema],
+  };
+}
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="author" content={studio.artist} />
 <meta name="robots" content={robots} />
 {!noindex && <link rel="canonical" href={canonical} />}
 {
@@ -64,5 +77,17 @@ const graph = noindex ? null : { '@graph': [websiteNode(Astro.site), webPage, ..
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {!noindex && <meta property="og:url" content={canonical} />}
+<meta property="og:image" content={image} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content={String(ogImage.width)} />
+<meta property="og:image:height" content={String(ogImage.height)} />
+<meta property="og:image:alt" content={imageAlt} />
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+<link rel="alternate" type="text/plain" title="llms.txt" href={llmsTxt} />
 {graph && <JsonLd data={graph} />}

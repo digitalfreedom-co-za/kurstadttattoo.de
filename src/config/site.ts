@@ -32,6 +32,28 @@ export const studio = {
   youtube: { handle: '@KurstadtTattoo', href: 'https://www.youtube.com/@KurstadtTattoo' },
   /** Route planner link instead of an embedded map: no third party request without consent. */
   mapHref: 'https://www.google.com/maps/search/?api=1&query=Friedrich-Ebert-Platz%201A%2C%2061231%20Bad%20Nauheim',
+  /**
+   * Coordinates of Friedrich-Ebert-Platz 1A: Google Geocoding API, location_type ROOFTOP, checked
+   * 2026-11-12; OpenStreetMap places the square within 50 m of it.
+   */
+  geo: { latitude: 50.36023, longitude: 8.73802 },
+  region: 'Hessen',
+  /**
+   * Opening hours of the old site (Montag bis Freitag 12 bis 18 Uhr oder nach Vereinbarung), the only
+   * stated hours. The ticket asks for them in the JSON-LD; the pages mark them as not yet confirmed for
+   * the new location.
+   */
+  openingHours: { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '12:00', closes: '18:00' },
+  /** Towns for areaServed, from the competitor analysis (docs/competitor-analysis.md), plus the district. */
+  areaServed: ['Bad Nauheim', 'Friedberg (Hessen)', 'Butzbach', 'Rosbach vor der Höhe', 'Ober-Mörlen', 'Bad Vilbel', 'Frankfurt am Main'],
+  areaServedRegion: 'Wetteraukreis',
+} as const;
+
+/** Social preview card per locale, rendered by scripts/og-image/render.sh (1200 x 630, committed PNGs). */
+export const ogImage = {
+  path: { de: '/og/kurstadttattoo-og-de.png', en: '/og/kurstadttattoo-og-en.png' },
+  width: 1200,
+  height: 630,
 } as const;
 
 /**

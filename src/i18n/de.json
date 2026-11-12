@@ -1235,5 +1235,27 @@
     "retentionDemo": "Buchungsdaten aus dem Demo-Kalender erhalten wir nicht. Sie liegen im cal.com Konto von {holder} und werden nach den Regeln von cal.com gespeichert und gelöscht.",
     "retentionLive": "Buchungsdaten löschen wir, sobald sie für die Durchführung und Nachbereitung des Termins nicht mehr benötigt werden, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.",
     "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, vereinbaren Sie Ihren Termin telefonisch oder per E-Mail."
+  },
+  "seo": {
+    "ogImageAlt": "KurstadtTattoo, Tattoo Studio in Bad Nauheim: realistisches Fuchs Tattoo in Farbe auf einem Unterarm, daneben Name und Adresse des Studios",
+    "websiteDescription": "Website von KurstadtTattoo, dem Tattoo Studio von Patrick Wolf in Bad Nauheim in der Wetterau: realistische Porträts, Fine Line, Beratung, Hygiene und Pflege.",
+    "studioDescription": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in Bad Nauheim in der Wetterau, nahe Friedberg und Frankfurt. Schwerpunkte sind realistische Porträts und Fine Line, dazu Farbe, Black and Grey, Blackwork und Schriftzüge. Ab dem 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
+    "catalogName": "Leistungen von KurstadtTattoo",
+    "services": {
+      "tattoo": {
+        "name": "Tätowierungen",
+        "description": "Tattoos nach eigenem oder gemeinsam geplantem Motiv: realistische Porträts, Fine Line, Farbe, Black and Grey, Blackwork und Schriftzüge. Auch das Fertigstellen begonnener Tattoos."
+      },
+      "consultation": {
+        "name": "Tattoo Beratung",
+        "description": "Persönliche Beratung zu Motiv, Stil, Größe und Körperstelle vor dem Tattoo."
+      },
+      "engraving": {
+        "name": "Lasergravur",
+        "description": "Lasergravuren auf Kunststoff, Aluminium, Messing, Edelstahl, Holz, Glas und Leder, auch mit Logos und Grafiken."
+      }
+    },
+    "register": "Handelsregister",
+    "region": "Wetterau"
   }
 }
