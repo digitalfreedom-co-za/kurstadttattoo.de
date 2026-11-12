@@ -831,10 +831,6 @@
       "hours": {
         "question": "When is KurstadtTattoo open?",
         "answer": "Until now Monday to Friday from 12 noon to 6 pm or by appointment. Please call {phone} to ask about the hours at the new location."
-      },
-      "expert": {
-        "question": "Does Patrick Wolf also write expert reports on tattoos?",
-        "answer": "Yes, as a DGuSV certified assessor. Expert reports are not part of this website, you will find everything about them on tattoogutachten.de."
       }
     }
   },

@@ -16,7 +16,7 @@ export type FaqGroupId = keyof Dictionary['pages']['faq']['groups'];
 export const faqGroups: { id: FaqGroupId; ids: FaqId[] }[] = [
   { id: 'booking', ids: ['booking', 'ownDesign', 'finishing', 'styles', 'artist'] },
   { id: 'session', ids: ['fainting', 'care', 'aftercare', 'removal'] },
-  { id: 'studio', ids: ['reopening', 'hours', 'expert'] },
+  { id: 'studio', ids: ['reopening', 'hours'] },
 ];
 
 export function faqEntries(ids: readonly FaqId[], locale: Locale): FaqEntry[] {

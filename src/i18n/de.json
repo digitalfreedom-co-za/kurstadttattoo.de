@@ -831,10 +831,6 @@
       "hours": {
         "question": "Wann hat KurstadtTattoo geöffnet?",
         "answer": "Bisher Montag bis Freitag von 12 bis 18 Uhr oder nach Vereinbarung. Die Zeiten am neuen Standort erfragen Sie bitte telefonisch unter {phone}."
-      },
-      "expert": {
-        "question": "Erstellt Patrick Wolf auch Gutachten zu Tattoos?",
-        "answer": "Ja, als geprüfter und zertifizierter Gutachter des DGuSV. Gutachten sind kein Thema dieser Website, alles dazu finden Sie auf tattoogutachten.de."
       }
     }
   },
