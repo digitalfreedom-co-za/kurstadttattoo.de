@@ -35,6 +35,18 @@ export const studio = {
 } as const;
 
 /**
+ * Operator of the website and controller under the GDPR, as stated in the imprint of the old site
+ * (docs/source-content/pages/kontakt-und-impressum.md). Read by the privacy policy and the imprint.
+ */
+export const operator = {
+  name: 'RuW Lifestyle GmbH',
+  street: 'Beneke Str. 9',
+  postalCode: '61231',
+  city: 'Bad Nauheim',
+  managingDirector: 'Patrick Wolf',
+} as const;
+
+/**
  * Reopening at the new location. While active, the layout shows the reopening strip and the footer marks
  * the address as new. Switch off after the opening day; the build stays free of date logic so the HTML
  * is deterministic (wiki websites.md, IndexNow).

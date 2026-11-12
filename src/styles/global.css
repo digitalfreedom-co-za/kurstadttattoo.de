@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /*
  * Design tokens. Direction: a gallery for skin art. White studio walls, black ink and the black

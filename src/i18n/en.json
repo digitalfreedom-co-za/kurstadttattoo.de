@@ -707,6 +707,117 @@
         "title": "Rather talk in person?",
         "text": "Call us and tell us your idea. From 1 December 2026 in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
       }
+    },
+    "privacy": {
+      "title": "Privacy policy | KurstadtTattoo Bad Nauheim",
+      "description": "Privacy policy of kurstadttattoo.de: hosting on GitHub Pages, consent, booking via cal.com, contact by phone and email, your rights.",
+      "eyebrow": "Legal",
+      "heading": "Privacy policy",
+      "lead": "This website works without cookies of its own, without analytics and without advertising services. Besides the hosting on GitHub Pages, one more service only comes into play with your consent: the online booking calendar.",
+      "leadAnalytics": "This website sets no cookies of its own and uses no advertising services. Besides the hosting on GitHub Pages, further services only come into play with your consent: the online booking calendar and statistics with Google Analytics.",
+      "updated": "Last updated: 12 November 2026",
+      "tocLabel": "On this page",
+      "tocNavLabel": "Contents of the privacy policy",
+      "newWindow": "(opens in a new window)",
+      "controller": {
+        "title": "Controller",
+        "intro": "The controller responsible for processing personal data on this website is:",
+        "represented": "Represented by the managing director {name}",
+        "questions": "Please send questions about data protection to the contact details above."
+      },
+      "hosting": {
+        "title": "Hosting on GitHub Pages",
+        "provider": "This website is served by GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. When you open a page, your browser transmits technically necessary data to GitHub's servers. This includes your IP address, the date and time of the request, the requested address, the previously visited page (referrer) and details about your browser and operating system.",
+        "logs": "According to GitHub, it stores the IP address of visitors to GitHub Pages for security purposes. We have no access to these logs and do not analyse them. GitHub decides how long it keeps them.",
+        "basis": "The legal basis is Art. 6(1)(f) GDPR. Our legitimate interest lies in providing the website securely and reliably.",
+        "transfer": "Data is transferred to the USA in the process. GitHub is certified under the EU-U.S. Data Privacy Framework; the transfer is therefore covered by the adequacy decision of the European Commission under Art. 45 GDPR. In addition, GitHub relies on the standard contractual clauses of the European Commission. Details are in the",
+        "privacyLink": "privacy statement of GitHub",
+        "https": "All pages are transmitted encrypted via HTTPS."
+      },
+      "storage": {
+        "title": "Fonts, storage and cookies",
+        "fonts": "The fonts of this website sit on the same server as the pages themselves. No data is sent to font providers such as Google Fonts when they load.",
+        "entries": "Our own pages set no cookies. In your browser's storage (localStorage) they only keep the following entries, each only once you use the related function. None of these entries contains an identifier, and none of them leaves your browser.",
+        "noTracking": "We use no analytics or audience measurement, no advertising services and no social media plugins. One third party service, the cal.com calendar, only loads with your consent.",
+        "noTrackingAnalytics": "We use no advertising services and no social media plugins. The cal.com calendar and statistics with Google Analytics only load with your consent.",
+        "columns": {
+          "entry": "Entry",
+          "written": "Written",
+          "purpose": "Purpose",
+          "duration": "Storage period",
+          "consent": "Consent"
+        },
+        "rows": {
+          "consent": {
+            "written": "when you make a choice in the notice, in the cookie settings or in the booking area",
+            "purpose": "store your choice: version of the notice, time and which services may load",
+            "duration": "until you change your choice or clear your browser's storage"
+          },
+          "theme": {
+            "written": "when you switch the display between light and dark",
+            "purpose": "keep the chosen display on the next page view",
+            "duration": "until you clear your browser's storage"
+          },
+          "locale": {
+            "written": "when you choose the language in the language switch",
+            "purpose": "remember that you chose the language yourself",
+            "duration": "until you clear your browser's storage"
+          }
+        },
+        "necessary": "not required, strictly necessary (§ 25(2) No. 2 TDDDG)",
+        "basis": "The legal basis for these entries is Art. 6(1)(f) GDPR. Our legitimate interest lies in keeping the settings you chose and in respecting and being able to demonstrate your consent decision (Art. 7(1) GDPR)."
+      },
+      "consent": {
+        "title": "Consent and cookie settings",
+        "intro": "On your first visit we ask whether the cal.com booking calendar may load. Declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com and no connection to cal.com is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or arrange the appointment by phone or email.",
+        "introAnalytics": "On your first visit we ask whether the cal.com booking calendar and statistics with Google Analytics may load. You can choose each separately, declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com or Google and no connection to these services is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or arrange the appointment by phone or email.",
+        "record": "We store your answer in the entry {key} in your browser so that we do not ask again on every page. If the notice changes in substance, we ask again.",
+        "withdraw": "You can withdraw or change your consent at any time with effect for the future, via the link Cookie settings at the bottom of every page or",
+        "withdrawLink": "right here",
+        "withdrawRest": "If the calendar has already loaded, the page reloads after the withdrawal so that it is removed. The lawfulness of processing up to the withdrawal remains unaffected."
+      },
+      "analytics": {
+        "title": "Statistics with Google Analytics",
+        "provider": "With your consent we use Google Analytics 4, a service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland.",
+        "data": "Google Analytics shows us how visitors use the website, for example which pages are viewed and on what kind of device. For this Google processes your IP address, the pages viewed, date and time, browser and device details, the approximate location and the page you came from. Google sets the cookies _ga and _ga_ with the identifier of our property for this, which recognise your browser and expire after two years.",
+        "consentMode": "Google Analytics only loads after your consent (Consent Mode v2, basic implementation). Before your consent and after declining, no Google script is loaded and no data is sent to Google, not even cookieless signals.",
+        "basis": "The only legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG). If you withdraw it in the cookie settings, the _ga cookies are deleted and the page reloads so that Google Analytics is removed.",
+        "transfer": "Google may also transfer data to the USA. Google LLC is certified under the EU-U.S. Data Privacy Framework; the transfer is therefore based on the adequacy decision of the European Commission under Art. 45 GDPR. Data in Google Analytics is kept for no more than 14 months. Details are in the",
+        "privacyLink": "privacy policy of Google"
+      },
+      "contact": {
+        "title": "Contact by phone and email",
+        "data": "When you call us or send an email, we process your details, such as your name, contact details, your request and any pictures you send, such as motif references, in order to handle your request. Where it concerns an appointment or a tattoo, the legal basis is Art. 6(1)(b) GDPR, otherwise Art. 6(1)(f) GDPR with the legitimate interest of answering requests.",
+        "mailbox": "The email mailbox is run at the provider WEB.DE of 1&1 Mail & Media GmbH, Brauerstraße 48, 76135 Karlsruhe, Germany. Your messages are therefore also stored on its servers.",
+        "retention": "We delete your request once it has been dealt with, unless statutory retention duties apply."
+      },
+      "links": {
+        "title": "Links to other services",
+        "text": "Some pages link to other providers, for example to Google Maps for directions to the studio, to TikTok and YouTube, to tattoogutachten.de or to the cal.com booking page. Such links are plain references: data only goes to the provider once you click the link. From then on the privacy policy of that provider applies."
+      },
+      "rights": {
+        "title": "Your rights",
+        "intro": "Towards {operator} you have, at any time, the right of",
+        "items": [
+          "access to the data stored about you (Art. 15 GDPR),",
+          "rectification of incorrect data (Art. 16 GDPR),",
+          "erasure of your data (Art. 17 GDPR),",
+          "restriction of processing (Art. 18 GDPR),",
+          "data portability (Art. 20 GDPR),",
+          "withdrawal of consent you have given, with effect for the future (Art. 7(3) GDPR)."
+        ],
+        "request": "An email to this address is enough for any request:",
+        "objectionTitle": "Right to object",
+        "objection": "Where we process data on the basis of Art. 6(1)(f) GDPR, you may object at any time on grounds relating to your particular situation (Art. 21 GDPR). We then no longer process the data unless there are compelling legitimate grounds for the processing or it serves the establishment, exercise or defence of legal claims."
+      },
+      "complaint": {
+        "title": "Complaint to a supervisory authority",
+        "text": "You have the right to lodge a complaint with a data protection supervisory authority (Art. 77 GDPR), in particular in the member state of your habitual residence, your place of work or the place of the alleged infringement. The authority competent for {operator}, based in Hesse, is the Hessian Commissioner for Data Protection and Freedom of Information:"
+      },
+      "duty": {
+        "title": "Obligation to provide data and automated decisions",
+        "text": "You are not obliged to provide us with data. Without contact details, however, we cannot handle a request or an appointment. There is no automated decision making, including profiling."
+      }
     }
   },
   "works": {

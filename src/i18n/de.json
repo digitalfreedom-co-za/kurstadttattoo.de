@@ -707,6 +707,117 @@
         "title": "Lieber direkt sprechen?",
         "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
       }
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung | KurstadtTattoo Bad Nauheim",
+      "description": "Datenschutzerklärung von kurstadttattoo.de: Hosting bei GitHub Pages, Einwilligung, Terminbuchung über cal.com, Kontakt per Telefon und E-Mail, Ihre Rechte.",
+      "eyebrow": "Rechtliches",
+      "heading": "Datenschutzerklärung",
+      "lead": "Diese Website kommt ohne eigene Cookies, ohne Analyse und ohne Werbedienste aus. Neben dem Hosting bei GitHub Pages kommt ein weiterer Dienst nur mit Ihrer Einwilligung ins Spiel: der Kalender der Online-Terminbuchung.",
+      "leadAnalytics": "Diese Website setzt keine eigenen Cookies und nutzt keine Werbedienste. Neben dem Hosting bei GitHub Pages kommen weitere Dienste nur mit Ihrer Einwilligung ins Spiel: der Kalender der Online-Terminbuchung und die Statistik mit Google Analytics.",
+      "updated": "Stand: 12. November 2026",
+      "tocLabel": "Auf dieser Seite",
+      "tocNavLabel": "Inhalt der Datenschutzerklärung",
+      "newWindow": "(öffnet in einem neuen Fenster)",
+      "controller": {
+        "title": "Verantwortlicher",
+        "intro": "Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:",
+        "represented": "Vertreten durch den Geschäftsführer {name}",
+        "questions": "Fragen zum Datenschutz richten Sie bitte an die oben genannten Kontaktdaten."
+      },
+      "hosting": {
+        "title": "Hosting bei GitHub Pages",
+        "provider": "Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an die Server von GitHub. Dazu gehören Ihre IP-Adresse, Datum und Uhrzeit des Abrufs, die aufgerufene Adresse, die zuvor besuchte Seite (Referrer) sowie Angaben zu Browser und Betriebssystem.",
+        "logs": "Nach eigenen Angaben speichert GitHub die IP-Adresse der Besucher von GitHub Pages zu Sicherheitszwecken. Auf diese Protokolle haben wir keinen Zugriff, und wir werten sie nicht aus. Wie lange GitHub sie aufbewahrt, legt GitHub fest.",
+        "basis": "Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einer sicheren und zuverlässigen Bereitstellung der Website.",
+        "transfer": "Dabei werden Daten in die USA übermittelt. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert; für die Übermittlung gilt damit der Angemessenheitsbeschluss der Europäischen Kommission nach Art. 45 DSGVO. Ergänzend stützt sich GitHub auf die Standardvertragsklauseln der Europäischen Kommission. Einzelheiten stehen in der",
+        "privacyLink": "Datenschutzerklärung von GitHub",
+        "https": "Alle Seiten werden verschlüsselt über HTTPS übertragen."
+      },
+      "storage": {
+        "title": "Schriften, Speicher und Cookies",
+        "fonts": "Die Schriften dieser Website liegen auf demselben Server wie die Seiten selbst. Beim Laden werden keine Daten an Schriftanbieter wie Google Fonts übertragen.",
+        "entries": "Unsere eigenen Seiten setzen keine Cookies. Im Speicher Ihres Browsers (localStorage) legen sie nur die folgenden Einträge ab, jeweils erst, wenn Sie die zugehörige Funktion nutzen. Keiner dieser Einträge enthält eine Kennung, und keiner verlässt Ihren Browser.",
+        "noTracking": "Wir verwenden keine Analyse oder Reichweitenmessung, keine Werbedienste und keine Social-Media-Plugins. Ein Dienst eines Dritten, der Kalender von cal.com, lädt nur mit Ihrer Einwilligung.",
+        "noTrackingAnalytics": "Wir verwenden keine Werbedienste und keine Social-Media-Plugins. Der Kalender von cal.com und die Statistik mit Google Analytics laden nur mit Ihrer Einwilligung.",
+        "columns": {
+          "entry": "Eintrag",
+          "written": "Geschrieben",
+          "purpose": "Zweck",
+          "duration": "Speicherdauer",
+          "consent": "Einwilligung"
+        },
+        "rows": {
+          "consent": {
+            "written": "wenn Sie im Hinweis, in den Cookie-Einstellungen oder im Buchungsbereich eine Wahl treffen",
+            "purpose": "Ihre Wahl speichern: Fassung des Hinweises, Zeitpunkt und welche Dienste laden dürfen",
+            "duration": "bis Sie die Wahl ändern oder den Speicher Ihres Browsers löschen"
+          },
+          "theme": {
+            "written": "wenn Sie die Darstellung zwischen hell und dunkel umschalten",
+            "purpose": "die gewählte Darstellung beim nächsten Seitenaufruf beibehalten",
+            "duration": "bis Sie den Speicher Ihres Browsers löschen"
+          },
+          "locale": {
+            "written": "wenn Sie über den Sprachwechsel die Sprache wählen",
+            "purpose": "sich merken, dass Sie die Sprache selbst gewählt haben",
+            "duration": "bis Sie den Speicher Ihres Browsers löschen"
+          }
+        },
+        "necessary": "nicht nötig, unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG)",
+        "basis": "Rechtsgrundlage für diese Einträge ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt darin, die von Ihnen gewählten Einstellungen beizubehalten und Ihre Entscheidung zur Einwilligung zu beachten und nachweisen zu können (Art. 7 Abs. 1 DSGVO)."
+      },
+      "consent": {
+        "title": "Einwilligung und Cookie-Einstellungen",
+        "intro": "Beim ersten Besuch fragen wir, ob der Buchungskalender von cal.com laden darf. Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com geladen und keine Verbindung zu cal.com aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder den Termin telefonisch oder per E-Mail vereinbaren können.",
+        "introAnalytics": "Beim ersten Besuch fragen wir, ob der Buchungskalender von cal.com und die Statistik mit Google Analytics laden dürfen. Beides können Sie einzeln wählen, Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com oder Google geladen und keine Verbindung zu diesen Diensten aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder den Termin telefonisch oder per E-Mail vereinbaren können.",
+        "record": "Ihre Antwort speichern wir im Eintrag {key} in Ihrem Browser, damit wir nicht auf jeder Seite erneut fragen. Ändert sich der Hinweis inhaltlich, fragen wir erneut.",
+        "withdraw": "Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen oder ändern, über den Link Cookie-Einstellungen am Ende jeder Seite oder",
+        "withdrawLink": "direkt hier",
+        "withdrawRest": "Ist der Kalender bereits geladen, lädt die Seite nach dem Widerruf neu, damit er entfernt ist. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt davon unberührt."
+      },
+      "analytics": {
+        "title": "Statistik mit Google Analytics",
+        "provider": "Mit Ihrer Einwilligung nutzen wir Google Analytics 4, einen Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.",
+        "data": "Google Analytics zeigt uns, wie Besucher die Website nutzen, etwa welche Seiten aufgerufen werden und mit welcher Art von Gerät. Dazu verarbeitet Google Ihre IP-Adresse, die aufgerufenen Seiten, Datum und Uhrzeit, Angaben zu Browser und Gerät, den ungefähren Standort sowie die Seite, von der Sie kommen. Google setzt dafür die Cookies _ga und _ga_ mit der Kennung unserer Property, die Ihren Browser wiedererkennen und nach zwei Jahren ablaufen.",
+        "consentMode": "Google Analytics lädt nur nach Ihrer Einwilligung (Einwilligungsmodus v2 in der Basis-Variante). Vor Ihrer Einwilligung und nach einer Ablehnung wird kein Skript von Google geladen, und es werden keine Daten an Google gesendet, auch keine Signale ohne Cookies.",
+        "basis": "Rechtsgrundlage ist allein Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Widerrufen Sie sie in den Cookie-Einstellungen, werden die Cookies _ga gelöscht und die Seite lädt neu, damit Google Analytics entfernt ist.",
+        "transfer": "Google kann Daten auch in die USA übermitteln. Google LLC ist nach dem EU-U.S. Data Privacy Framework zertifiziert; die Übermittlung erfolgt damit auf Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission nach Art. 45 DSGVO. Die Daten werden in Google Analytics höchstens 14 Monate gespeichert. Einzelheiten stehen in der",
+        "privacyLink": "Datenschutzerklärung von Google"
+      },
+      "contact": {
+        "title": "Kontakt per Telefon und E-Mail",
+        "data": "Wenn Sie uns anrufen oder eine E-Mail schreiben, verarbeiten wir Ihre Angaben, also etwa Name, Kontaktdaten, Ihr Anliegen und mitgesendete Bilder wie Motivvorlagen, um Ihre Anfrage zu bearbeiten. Geht es um einen Termin oder ein Tattoo, ist Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO, im Übrigen Art. 6 Abs. 1 lit. f DSGVO mit dem berechtigten Interesse, Anfragen zu beantworten.",
+        "mailbox": "Das E-Mail-Postfach wird beim Anbieter WEB.DE der 1&1 Mail & Media GmbH, Brauerstraße 48, 76135 Karlsruhe, betrieben. Ihre Nachrichten liegen deshalb auch auf deren Servern.",
+        "retention": "Wir löschen Ihre Anfrage, sobald sie erledigt ist und keine gesetzlichen Aufbewahrungspflichten bestehen."
+      },
+      "links": {
+        "title": "Links zu anderen Diensten",
+        "text": "Einige Seiten verlinken auf andere Anbieter, etwa auf Google Maps für die Route zum Studio, auf TikTok und YouTube, auf tattoogutachten.de oder auf die Buchungsseite von cal.com. Solche Links sind einfache Verweise: Daten an den Anbieter gehen erst, wenn Sie den Link anklicken. Ab dann gilt die Datenschutzerklärung des jeweiligen Anbieters."
+      },
+      "rights": {
+        "title": "Ihre Rechte",
+        "intro": "Sie haben gegenüber der {operator} jederzeit das Recht auf",
+        "items": [
+          "Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO),",
+          "Berichtigung unrichtiger Daten (Art. 16 DSGVO),",
+          "Löschung Ihrer Daten (Art. 17 DSGVO),",
+          "Einschränkung der Verarbeitung (Art. 18 DSGVO),",
+          "Datenübertragbarkeit (Art. 20 DSGVO),",
+          "Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)."
+        ],
+        "request": "Für Anfragen genügt eine E-Mail an",
+        "objectionTitle": "Widerspruchsrecht",
+        "objection": "Soweit wir Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeiten, können Sie aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch einlegen (Art. 21 DSGVO). Wir verarbeiten die Daten dann nicht mehr, es sei denn, es bestehen zwingende schutzwürdige Gründe für die Verarbeitung oder sie dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen."
+      },
+      "complaint": {
+        "title": "Beschwerde bei einer Aufsichtsbehörde",
+        "text": "Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren (Art. 77 DSGVO), insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für die {operator} mit Sitz in Hessen zuständig ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit:"
+      },
+      "duty": {
+        "title": "Pflicht zur Bereitstellung und automatisierte Entscheidungen",
+        "text": "Sie sind nicht verpflichtet, uns Daten bereitzustellen. Ohne Kontaktdaten können wir eine Anfrage oder einen Termin allerdings nicht bearbeiten. Eine automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt."
+      }
     }
   },
   "works": {
