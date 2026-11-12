@@ -52,5 +52,5 @@ export const expertSite = {
 
 /** Header and footer navigation, in this order. Pages that do not exist yet are left out (see lib/pages). */
 export const mainNav: RouteKey[] = ['gallery', 'artists', 'hygiene', 'consultation', 'aftercare', 'faq', 'contact'];
-export const footerNav: RouteKey[] = [...mainNav, 'engraving'];
+export const footerNav: RouteKey[] = [...mainNav, 'booking', 'engraving'];
 export const legalNav: RouteKey[] = ['imprint', 'privacy'];

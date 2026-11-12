@@ -24,9 +24,12 @@ const galleryHref = pageExists('gallery', locale) ? localizedPath('gallery', loc
 ---
 
 <SubpageLayout locale={locale} routeKey="consultation" related={['gallery', 'hygiene', 'aftercare', 'faq']}>
-  <Button slot="actions" href={studio.phone.href} icon="phone">
-    <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
-  </Button>
+  <Fragment slot="actions">
+    <Button href={localizedPath('booking', locale)} icon="calendar">{dict.booking.label}</Button>
+    <Button href={studio.phone.href} variant="secondary" icon="phone">
+      <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+    </Button>
+  </Fragment>
 
   <Section id={copy.process.id} eyebrow={copy.process.eyebrow} title={copy.process.title} intro={copy.process.intro}>
     <Steps steps={processSteps(locale)} locale={locale} />

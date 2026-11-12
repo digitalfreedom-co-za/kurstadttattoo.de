@@ -1,0 +1,335 @@
+---
+// Booking calendar (cal.com inline embed) in a reserved frame. Nothing from cal.com loads with the page, and
+// nothing at all without consent (src/config/consent.ts): until the visitor consents, the frame holds a
+// click to load placeholder that explains cal.com, offers consent inline and the direct alternatives
+// (phone, email). With consent, src/scripts/booking.ts injects the official embed once the frame scrolls
+// into view. Above the frame: the confirmation and the timezone and, while the demo calendar is configured
+// (CAL_IS_DEMO), a notice that makes phone and email the real way to book.
+// While it loads, a calendar sheet skeleton holds the height of the month view, so nothing shifts; once
+// ready, the frame follows the iframe. Without JavaScript, or when cal.com fails, no height is reserved:
+// the alternatives (cal.com booking page, phone, email) sit in the normal flow.
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { BOOKING_PRIVACY_ANCHOR, CAL_EMBED_SCRIPT, CAL_IS_DEMO, CAL_LINK, CAL_ORIGIN, CAL_PUBLIC_URL } from '../../config/booking';
+import { CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
+import { studio } from '../../config/site';
+import { pageExists } from '../../lib/pages';
+import { url } from '../../lib/url';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className } = Astro.props;
+const dict = t(locale);
+const copy = dict.booking;
+const privacyHref = pageExists('privacy', locale)
+  ? url(`${localizedPath('privacy', locale)}#${BOOKING_PRIVACY_ANCHOR}`)
+  : undefined;
+const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
+const rootId = 'buchung';
+const targetId = 'buchung-kalender';
+const timezoneId = 'buchung-zeitzone';
+const weekdays = locale === 'de' ? ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline';
+---
+
+<div
+  class:list={['booking', className]}
+  id={rootId}
+  data-booking
+  data-booking-link={CAL_LINK}
+  data-cal-origin={CAL_ORIGIN}
+  data-cal-script={CAL_EMBED_SCRIPT}
+  data-namespace="beratung"
+  data-target={targetId}
+  data-state="idle"
+  data-status-loading={copy.statusLoading}
+  data-status-ready={copy.statusReady}
+  data-status-failed={copy.statusFailed}
+>
+  <dl class="mb-6 grid gap-x-8 gap-y-4 border-y border-ink py-4 text-sm sm:grid-cols-2">
+    <div class="min-w-0">
+      <dt class="label text-muted">{copy.confirmationTerm}</dt>
+      <dd class="mt-1">{copy.confirmationValue}</dd>
+    </div>
+    <!-- The calendar shows its times in this timezone (cal.com query parameter cal.tz). The script fills
+         the select with every IANA zone and preselects the one of the device; without JS the static
+         wording stays. Our own control, because the cal.com one sits in the hidden event details. -->
+    <div class="min-w-0">
+      <dt class="label text-muted"><label for={timezoneId}>{copy.timezoneTerm}</label></dt>
+      <dd class="mt-1">
+        <span data-timezone-static>{copy.timezoneStatic}</span>
+        <select
+          id={timezoneId}
+          class="timezone-select -my-2 min-h-11 w-full max-w-full cursor-pointer truncate border-0 border-b border-ink bg-transparent py-2 pr-6 text-sm text-ink"
+          data-timezone
+          data-device-label={copy.timezoneDevice}
+          aria-describedby={`${timezoneId}-hint`}
+          hidden
+        ></select>
+        <span id={`${timezoneId}-hint`} class="sr-only">{copy.timezoneHint}</span>
+      </dd>
+    </div>
+  </dl>
+
+  {
+    CAL_IS_DEMO && (
+      <div class="mb-6 border-l-2 border-neon bg-wall px-4 py-4 md:px-6 md:py-5">
+        <p class="text-muted">
+          <span class="label mr-2 text-neon">{copy.demoLabel}</span>
+          {copy.demoText}
+        </p>
+        <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Button href={studio.phone.href} icon="phone">
+            <span class="sr-only">{dict.cta.callPrefix}: </span>
+            {studio.phone.display}
+          </Button>
+          <Button href={studio.email.href} variant="text" icon="mail">
+            {copy.emailButton}
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  <div class="booking-frame relative overflow-hidden border border-ink bg-wall" role="region" aria-label={copy.regionLabel} tabindex="-1">
+    <!-- No consent yet: click to load placeholder, in normal flow and only as tall as its content. -->
+    <div class="booking-consent relative z-20 grid gap-6 bg-wall p-6 md:grid-cols-12 md:gap-x-8 md:p-8">
+      <div class="min-w-0 md:col-span-7">
+        <p class="font-display text-h4 font-semibold">{copy.placeholderTitle}</p>
+        <p class="mt-3 max-w-[36rem] text-muted">
+          {copy.placeholderText}
+          {
+            privacyHref && (
+              <>
+                {' '}
+                <a class="link" href={privacyHref}>
+                  {copy.notePrivacy}
+                </a>
+              </>
+            )
+          }
+        </p>
+        <div class="mt-5">
+          <Button icon="calendar" data-booking-consent>{copy.consentButton}</Button>
+        </div>
+      </div>
+      <div class="min-w-0 border-t border-line pt-5 text-sm md:col-span-5 md:border-t-0 md:border-l md:pt-0 md:pl-8">
+        <p class="label text-muted">{copy.withoutLabel}</p>
+        <p class="mt-2 text-muted">{copy.withoutText}</p>
+        <ul class="mt-2 grid">
+          <li>
+            <a class={contactLinkClass} href={studio.phone.href}>
+              <Icon name="phone" size={18} class="shrink-0 text-neon" />
+              <span><span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}</span>
+            </a>
+          </li>
+          <li>
+            <a class={contactLinkClass} href={studio.email.href}>
+              <Icon name="mail" size={18} class="shrink-0 text-neon" />
+              <span class="break-all"><span class="sr-only">{copy.emailPrefix} </span>{studio.email.display}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id={targetId} class="booking-target relative z-10"></div>
+
+    <!-- Calendar sheet placeholder, same footprint as the loaded month view. -->
+    <div class="booking-skeleton absolute inset-0 p-5 md:p-8" aria-hidden="true">
+      <div class="flex h-full flex-col gap-6 md:flex-row md:gap-10">
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <span class="skeleton-bar h-5 w-36"></span>
+            <span class="skeleton-bar w-14"></span>
+          </div>
+          <div class="mt-6 grid grid-cols-7 gap-1.5 md:gap-2">
+            {weekdays.map((day) => <span class="label pb-1 text-center text-[0.625rem] text-muted">{day}</span>)}
+            {Array.from({ length: 35 }, (_, index) => <span class:list={['skeleton-cell', index % 7 > 4 && 'opacity-40']} />)}
+          </div>
+        </div>
+        <div class="hidden w-52 shrink-0 flex-col gap-2 md:flex">
+          <span class="skeleton-bar mb-2 w-24"></span>
+          {Array.from({ length: 6 }, () => <span class="skeleton-slot" />)}
+        </div>
+      </div>
+    </div>
+
+    <!-- Without JavaScript, or when cal.com is blocked: the direct ways to an appointment, in normal flow
+         and only as tall as its content. -->
+    <div class="booking-fallback relative z-20 bg-wall p-6 md:p-8">
+      <p class="font-display text-h4 font-semibold">
+        <span class="booking-fallback-nojs">{copy.fallbackNoJs}</span>
+        <span class="booking-fallback-failed">{copy.fallbackFailed}</span>
+      </p>
+      <p class="mt-3 max-w-[34rem] text-muted">{copy.fallbackText}</p>
+      <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <Button href={studio.phone.href} icon="phone">
+          <span class="sr-only">{dict.cta.callPrefix}: </span>
+          {studio.phone.display}
+        </Button>
+        <a class={contactLinkClass} href={studio.email.href}>
+          <Icon name="mail" size={18} class="shrink-0 text-neon" />
+          <span class="break-all"><span class="sr-only">{copy.emailPrefix} </span>{studio.email.display}</span>
+        </a>
+      </div>
+      <p class="mt-4 text-sm">
+        <a class={contactLinkClass} href={CAL_PUBLIC_URL} {...external}>
+          <Icon name="external" size={16} class="shrink-0 text-neon" />
+          {copy.calPage}<span class="sr-only"> {copy.newWindow}</span>
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Sets the state before first paint (placeholder without consent, reserved calendar height with it), so
+       the frame does not change size once the module script runs. Mirrors readConsent() in
+       src/scripts/consent.ts for the booking category. -->
+  <script is:inline define:vars={{ key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, id: rootId }}>
+    (function (root) {
+      if (!root) return;
+      var granted = false;
+      try {
+        var record = JSON.parse(localStorage.getItem(key) || 'null');
+        granted =
+          !!record &&
+          record.version === version &&
+          typeof record.timestamp === 'string' &&
+          !isNaN(Date.parse(record.timestamp)) &&
+          !!record.categories &&
+          record.categories.booking === true;
+      } catch (e) {}
+      root.dataset.state = granted ? 'pending' : 'blocked';
+    })(document.getElementById(id));
+  </script>
+
+  <p class="sr-only" role="status" data-booking-status></p>
+
+  <p class="mt-6 max-w-[40rem] text-sm text-muted">
+    {copy.note}
+    {
+      privacyHref && (
+        <>
+          {' '}
+          <a class="link" href={privacyHref}>
+            {copy.notePrivacy}
+          </a>
+        </>
+      )
+    }
+  </p>
+</div>
+
+<style>
+  /* Reserved height of the loaded cal.com month view (event details hidden), only while the calendar is
+     pending or loading, so the embed lands without moving anything below it. Measured against the
+     rendered embed (November 2026, tattoogutachten.de, same embed options): below a frame width of
+     770px cal.com stacks its layout and the height grows linearly with the width; from 770px it is
+     fixed. Re-measure if cal.com changes its layout. Idle (no JS) and failed keep no reservation; ready
+     follows the iframe height. */
+  .booking {
+    container: booking / inline-size;
+  }
+
+  .booking:is([data-state='pending'], [data-state='loading']) .booking-frame {
+    min-height: calc(1018px + 0.819 * 100cqw);
+  }
+
+  @container booking (min-width: 770px) {
+    .booking:is([data-state='pending'], [data-state='loading']) .booking-frame {
+      min-height: 572px;
+    }
+  }
+
+  .timezone-select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+      right 0.6rem center,
+      right 0.25rem center;
+    background-size: 0.35rem 0.35rem;
+    background-repeat: no-repeat;
+  }
+
+  .skeleton-bar {
+    display: block;
+    height: 0.75rem;
+    background: var(--color-wall-deep);
+  }
+
+  .skeleton-cell {
+    aspect-ratio: 1;
+    background: var(--color-wall-deep);
+  }
+
+  .skeleton-slot {
+    display: block;
+    height: 2.5rem;
+    border: 1px solid var(--color-line);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton-bar,
+    .skeleton-cell {
+      animation: booking-pulse 1.6s ease-in-out infinite;
+    }
+  }
+
+  @keyframes booking-pulse {
+    50% {
+      opacity: 0.55;
+    }
+  }
+
+  /* State machine from src/scripts/booking.ts. Without JS the state stays idle and only the fallback
+     shows. Without consent the script sets blocked (placeholder above); with consent it sets pending, so
+     the skeleton holds the place until cal.com is ready; on failure the fallback returns with the
+     failure wording. */
+  .booking-skeleton,
+  .booking-consent,
+  .booking-fallback-failed {
+    display: none;
+  }
+
+  .booking[data-state='blocked'] .booking-consent {
+    display: grid;
+  }
+
+  .booking[data-state='blocked'] .booking-skeleton,
+  .booking[data-state='blocked'] .booking-fallback {
+    display: none !important;
+  }
+
+  .booking:not([data-state='idle']) .booking-skeleton {
+    display: block;
+    transition: opacity 400ms ease;
+  }
+
+  .booking:not([data-state='idle'], [data-state='failed']) .booking-fallback {
+    display: none;
+  }
+
+  .booking[data-state='ready'] .booking-skeleton {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Failed: a half loaded iframe takes no space above the fallback. */
+  .booking[data-state='failed'] .booking-target,
+  .booking[data-state='failed'] .booking-skeleton,
+  .booking[data-state='failed'] .booking-fallback-nojs {
+    display: none;
+  }
+
+  .booking[data-state='failed'] .booking-fallback-failed {
+    display: inline;
+  }
+</style>
+
+<script>
+  import '../../scripts/booking';
+</script>

@@ -26,11 +26,9 @@
       "engraving": "Gravur-Service",
       "contact": "Kontakt",
       "imprint": "Impressum",
-      "privacy": "Datenschutz"
+      "privacy": "Datenschutz",
+      "booking": "Termin buchen"
     }
-  },
-  "call": {
-    "label": "Anrufen"
   },
   "theme": {
     "label": "Dunkles Design"
@@ -54,7 +52,8 @@
     "about": "Tattoos von Patrick Wolf in Bad Nauheim: realistische Porträts, feine Linien und Motive nach Ihrer eigenen Vorlage.",
     "expertLabel": "Gutachten",
     "expertText": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als zertifizierter Gutachter auf",
-    "copyright": "KurstadtTattoo Bad Nauheim"
+    "copyright": "KurstadtTattoo Bad Nauheim",
+    "cookieSettings": "Cookie-Einstellungen"
   },
   "reopening": {
     "label": "Neueröffnung",
@@ -661,6 +660,53 @@
         "title": "Wir freuen uns auf Ihren Anruf.",
         "text": "Erzählen Sie uns Ihre Idee, wir planen Ihr Tattoo gemeinsam mit Ihnen."
       }
+    },
+    "booking": {
+      "title": "Beratungstermin buchen | KurstadtTattoo Bad Nauheim",
+      "description": "Beratungstermin bei KurstadtTattoo in Bad Nauheim online im Kalender wählen oder telefonisch unter {phone} vereinbaren. Mit Hinweisen, was Sie für die Tattoo Beratung vorbereiten können.",
+      "eyebrow": "Termin buchen",
+      "heading": "Beratungstermin für Ihr Tattoo buchen",
+      "lead": "Wählen Sie im Kalender einen freien Termin für die Beratung oder rufen Sie uns an unter {phone}. In der Beratung planen wir Ihr Motiv gemeinsam mit Ihnen.",
+      "prepareLink": "Was Sie vorbereiten können",
+      "calendar": {
+        "id": "kalender",
+        "eyebrow": "Kalender",
+        "title": "Wählen Sie einen freien Termin.",
+        "intro": "Tag wählen, Uhrzeit wählen, Name und E-Mail-Adresse eintragen. Kein passender Termin dabei? Rufen Sie an oder schreiben Sie eine E-Mail."
+      },
+      "prepare": {
+        "id": "vorbereiten",
+        "eyebrow": "Vorbereitung",
+        "title": "Was können Sie für die Beratung vorbereiten?",
+        "intro": "Je klarer Ihre Idee, desto besser lässt sich das Motiv planen. Eine fertige Zeichnung brauchen Sie nicht.",
+        "items": [
+          {
+            "title": "Ihre Motividee",
+            "text": "Was soll Ihr Tattoo zeigen? Ein paar Stichworte reichen für den Anfang."
+          },
+          {
+            "title": "Die Körperstelle",
+            "text": "An welcher Stelle soll das Tattoo sitzen?"
+          },
+          {
+            "title": "Die ungefähre Größe",
+            "text": "Eine grobe Angabe hilft, das Motiv auf die Stelle abzustimmen."
+          },
+          {
+            "title": "Den Stil",
+            "text": "Realistisch, farbig, feine Linien, Schrift oder Blackwork. Die Galerie zeigt Beispiele aus dem Studio."
+          },
+          {
+            "title": "Vorlagen und Fotos",
+            "text": "Eigene Designs, Bilder als Inspiration oder Fotos für ein Porträt von Mensch oder Tier."
+          }
+        ],
+        "consultationLink": "Wie die Beratung abläuft"
+      },
+      "cta": {
+        "title": "Lieber direkt sprechen?",
+        "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
     }
   },
   "works": {
@@ -892,6 +938,10 @@
       "contact": {
         "title": "Kontakt und Anfahrt",
         "text": "Adresse am Friedrich-Ebert-Platz 1A, Telefon und Öffnungszeiten."
+      },
+      "booking": {
+        "title": "Termin buchen",
+        "text": "Beratungstermin online im Kalender wählen oder telefonisch vereinbaren."
       }
     }
   },
@@ -937,5 +987,80 @@
         "text": "Ein großes Adlermotiv auf dem Rücken im Video."
       }
     }
+  },
+  "booking": {
+    "label": "Termin buchen",
+    "regionLabel": "Buchungskalender",
+    "confirmationTerm": "Bestätigung",
+    "confirmationValue": "Per E-Mail von cal.com, mit Links zum Verschieben und Absagen",
+    "timezoneTerm": "Zeitzone",
+    "timezoneStatic": "Die Ihres Geräts",
+    "timezoneHint": "Der Kalender zeigt freie Uhrzeiten in dieser Zeitzone.",
+    "timezoneDevice": "Ihr Gerät",
+    "demoLabel": "Vorschau",
+    "demoText": "Der Kalender unten ist ein Demo-Kalender für die Vorschau dieser Website. Über ihn kommt kein Termin bei KurstadtTattoo zustande. Bis der Kalender des Studios freigeschaltet ist, vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail.",
+    "emailButton": "E-Mail schreiben",
+    "placeholderTitle": "Der Kalender kommt von cal.com.",
+    "placeholderText": "Damit Sie hier direkt einen Termin wählen können, binden wir den Buchungskalender der Cal.com, Inc. (USA) ein. Er lädt erst, wenn Sie zustimmen. Dabei überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Ihre Einwilligung können Sie jederzeit unter Cookie-Einstellungen am Ende der Seite widerrufen.",
+    "consentButton": "Kalender laden und zustimmen",
+    "withoutLabel": "Ohne cal.com",
+    "withoutText": "Vereinbaren Sie Ihren Termin telefonisch oder per E-Mail.",
+    "fallbackNoJs": "Der Buchungskalender braucht JavaScript.",
+    "fallbackFailed": "Der Buchungskalender konnte nicht geladen werden.",
+    "fallbackText": "Vereinbaren Sie Ihren Termin telefonisch oder per E-Mail, oder buchen Sie direkt auf der Buchungsseite von cal.com.",
+    "calPage": "Buchungsseite bei cal.com",
+    "newWindow": "(öffnet in einem neuen Fenster)",
+    "statusLoading": "Der Kalender wird geladen.",
+    "statusReady": "Der Kalender ist geladen.",
+    "statusFailed": "Der Kalender konnte nicht geladen werden. Sie können direkt bei cal.com, telefonisch oder per E-Mail einen Termin vereinbaren.",
+    "note": "Der Kalender lädt nur mit Ihrer Einwilligung und erst, wenn dieser Bereich sichtbar wird.",
+    "notePrivacy": "Was dabei verarbeitet wird, steht in der Datenschutzerklärung.",
+    "privacyLink": "Datenschutzerklärung",
+    "emailPrefix": "E-Mail an"
+  },
+  "consent": {
+    "eyebrow": "Datenschutz",
+    "noticeTitle": "Darf der Buchungskalender von cal.com laden?",
+    "noticeTitleAnalytics": "Dürfen wir externe Dienste laden?",
+    "noticeBooking": "Diese Website setzt keine Cookies zur Analyse oder Werbung. Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Lädt er, überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Das geschieht nur mit Ihrer Einwilligung.",
+    "noticeBookingAnalytics": "Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Mit Google Analytics der Google Ireland Limited werten wir aus, wie unsere Seiten genutzt werden. Beide Dienste erhalten dabei unter anderem Ihre IP-Adresse, setzen Cookies und können Daten in die USA übermitteln. Das geschieht nur mit Ihrer Einwilligung, und Sie können beide getrennt wählen.",
+    "noticeRest": "Ohne Einwilligung funktioniert die Website vollständig, den Termin vereinbaren Sie dann telefonisch oder per E-Mail. Ihre Wahl ändern oder widerrufen Sie jederzeit unter Cookie-Einstellungen am Ende jeder Seite.",
+    "privacyMore": "Mehr in der Datenschutzerklärung",
+    "reject": "Ablehnen",
+    "accept": "Akzeptieren",
+    "settings": "Einstellungen",
+    "save": "Auswahl speichern",
+    "settingsTitle": "Cookie-Einstellungen",
+    "close": "Schließen ohne Änderung",
+    "alwaysOn": "Immer aktiv",
+    "necessaryTitle": "Notwendig",
+    "necessaryText": "Speichert Ihre Auswahl in diesem Browser (localStorage, Eintrag kt-consent mit Fassung des Hinweises, Zeitpunkt und Auswahl), damit wir nicht erneut fragen. Ohne Kennung, nur von dieser Website gelesen. Keine Einwilligung nötig, § 25 Abs. 2 Nr. 2 TDDDG.",
+    "bookingTitle": "Externe Medien: Terminbuchung über cal.com",
+    "bookingText": "Lädt den Buchungskalender der Cal.com, Inc., San Francisco, USA, auf der Seite Termin buchen, sobald er sichtbar wird. Dabei erhält cal.com Ihre IP-Adresse, Angaben zu Browser und Gerät und die Adresse der Seite. Der Dienstleister Cloudflare setzt das Cookie __cf_bm gegen automatisierte Zugriffe (30 Minuten), technische Fehlerberichte gehen an Sentry. Übermittlung in die USA auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie bleibt der Kalender aus, Termine gibt es telefonisch oder per E-Mail.",
+    "analyticsTitle": "Statistik: Google Analytics",
+    "analyticsText": "Lädt Google Analytics 4 der Google Ireland Limited, Dublin, Irland, und wertet aus, welche Seiten wie genutzt werden. Dabei erhält Google Ihre IP-Adresse, Angaben zu Browser und Gerät und die aufgerufenen Seiten und setzt die Cookies _ga und _ga_ mit der Kennung der Website (bis zu 2 Jahre). Eine Übermittlung in die USA ist möglich, auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie wird Google Analytics nicht geladen und nichts an Google gesendet.",
+    "details": "Einzelheiten in der Datenschutzerklärung."
+  },
+  "privacyBooking": {
+    "title": "Online-Terminbuchung über cal.com",
+    "intro": "Für die Online-Terminbuchung binden wir einen Kalender des Dienstes cal.com ein. Anbieter ist die Cal.com, Inc., 2261 Market Street #4382, San Francisco, CA 94114, USA.",
+    "whenTitle": "Wann der Kalender lädt",
+    "when": "Der Kalender steht auf der Seite Termin buchen. Er lädt nur, wenn Sie eingewilligt haben, im Hinweis zum Datenschutz, in den Cookie-Einstellungen oder mit der Schaltfläche Kalender laden und zustimmen im Buchungsbereich. Auch dann wird er nicht mit der Seite geladen, sondern erst, wenn der Buchungsbereich sichtbar wird. Ab diesem Moment ruft Ihr Browser Inhalte von Servern von cal.com ab. Auf allen anderen Seiten wird nichts von cal.com geladen.",
+    "dataTitle": "Welche Daten verarbeitet werden",
+    "data": "Schon beim Laden des Kalenders erhält cal.com technische Daten: Ihre IP-Adresse, Angaben zu Browser und Gerät, die Adresse der Seite, auf der der Kalender eingebunden ist, sowie Datum und Uhrzeit. Dabei setzt der von cal.com genutzte Dienstleister Cloudflare das Cookie __cf_bm, das zur Abwehr automatisierter Zugriffe (Bots) dient und nach 30 Minuten ohne Aktivität abläuft. Außerdem sendet der Kalender technische Fehlerberichte an den Dienst Sentry, den cal.com zur Fehleranalyse einsetzt.",
+    "booking": "Wenn Sie einen Termin buchen, verarbeitet cal.com zusätzlich die Angaben, die Sie im Buchungsformular machen, insbesondere Name, E-Mail-Adresse, den gewählten Termin und Ihre Nachricht. Die Terminbestätigung versendet cal.com per E-Mail.",
+    "recipientDemo": "Derzeit ist auf dieser Website ein Demo-Kalender für die Vorschau eingebunden. Er liegt im cal.com Konto des Webentwicklers dieser Website, {holder}, nicht in einem Konto von KurstadtTattoo. Angaben aus einer Buchung gehen deshalb an dieses Konto und nicht an uns, ein Termin bei KurstadtTattoo kommt darüber nicht zustande. Für einen echten Termin rufen Sie bitte an oder schreiben Sie eine E-Mail. Sobald der Kalender des Studios eingebunden ist, wird dieser Hinweis entfernt.",
+    "recipientLive": "Diese Angaben erhalten wir, um den Termin mit Ihnen durchzuführen.",
+    "basisTitle": "Rechtsgrundlage",
+    "basis": "Das Laden des Kalenders und die damit verbundene Übertragung an cal.com beruhen auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Soweit dabei Informationen auf Ihrem Gerät gespeichert oder ausgelesen werden, etwa das Cookie __cf_bm, ist Rechtsgrundlage ebenfalls Ihre Einwilligung (§ 25 Abs. 1 TDDDG). Die Verarbeitung Ihrer Angaben bei einer Buchung dient der Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage (Art. 6 Abs. 1 lit. b DSGVO).",
+    "withdraw": "Sie können die Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, über die Cookie-Einstellungen. Danach lädt der Kalender nicht mehr. Cookies, die cal.com auf seiner eigenen Domain gesetzt hat, laufen ab (__cf_bm nach 30 Minuten ohne Aktivität) oder lassen sich in Ihrem Browser löschen.",
+    "withdrawLink": "Cookie-Einstellungen öffnen",
+    "transferTitle": "Übermittlung in die USA",
+    "transfer": "Cal.com verarbeitet die Daten in den USA. Cal.com, Inc. ist nach dem EU-U.S. Data Privacy Framework zertifiziert (Stand der Prüfung: 12. November 2026); die Übermittlung erfolgt damit auf Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission nach Art. 45 DSGVO. Für Übermittlungen außerhalb dieses Rahmens nutzt cal.com die Standardvertragsklauseln der Europäischen Kommission.",
+    "calPrivacy": "Datenschutzerklärung von cal.com",
+    "retentionTitle": "Speicherdauer und Alternativen",
+    "retentionDemo": "Buchungsdaten aus dem Demo-Kalender erhalten wir nicht. Sie liegen im cal.com Konto von {holder} und werden nach den Regeln von cal.com gespeichert und gelöscht.",
+    "retentionLive": "Buchungsdaten löschen wir, sobald sie für die Durchführung und Nachbereitung des Termins nicht mehr benötigt werden, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.",
+    "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, vereinbaren Sie Ihren Termin telefonisch oder per E-Mail."
   }
 }

@@ -1,0 +1,53 @@
+---
+// The cal.com section of the privacy policy, for both locales, to be placed in the privacy page (#8).
+// Describes what the booking embed really does (src/scripts/booking.ts): nothing before consent, then the
+// embed only once the calendar comes into view, cal.com with Cloudflare __cf_bm and Sentry. Facts about
+// cal.com as verified for tattoogutachten.de on 2026-11-12 (same embed): DPF participant 2960, active.
+// While the demo calendar is configured (CAL_IS_DEMO in src/config/booking.ts), recipient and retention
+// name the holder of the demo account; with the real link the wording switches to the studio.
+import { BOOKING_PRIVACY_ANCHOR, CAL_DEMO_ACCOUNT_HOLDER, CAL_IS_DEMO } from '../../config/booking';
+import { studio } from '../../config/site';
+import { CONSENT_ANCHOR } from '../../config/consent';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.privacyBooking;
+const withHolder = (text: string) => text.replaceAll('{holder}', CAL_DEMO_ACCOUNT_HOLDER);
+const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
+---
+
+<h2 id={BOOKING_PRIVACY_ANCHOR}>{copy.title}</h2>
+<p>{copy.intro}</p>
+<h3>{copy.whenTitle}</h3>
+<p>{copy.when}</p>
+<h3>{copy.dataTitle}</h3>
+<p>{copy.data}</p>
+<p>{copy.booking}</p>
+<p>{CAL_IS_DEMO ? withHolder(copy.recipientDemo) : copy.recipientLive}</p>
+<h3>{copy.basisTitle}</h3>
+<p>{copy.basis}</p>
+<p>
+  {copy.withdraw} <a href={`#${CONSENT_ANCHOR}`} data-consent-open aria-haspopup="dialog">{copy.withdrawLink}</a>
+</p>
+<h3>{copy.transferTitle}</h3>
+<p>
+  {copy.transfer}
+  <a href="https://cal.com/privacy" {...external}>
+    {copy.calPrivacy}<span class="sr-only"> {dict.booking.newWindow}</span>
+  </a>
+</p>
+<h3>{copy.retentionTitle}</h3>
+<p>
+  {CAL_IS_DEMO ? withHolder(copy.retentionDemo) : copy.retentionLive}
+  {copy.alternative}
+</p>
+<p>
+  {dict.studio.phoneLabel}: <a href={studio.phone.href}>{studio.phone.display}</a>
+  <br />
+  {dict.studio.emailLabel}: <a href={studio.email.href}>{studio.email.display}</a>
+</p>

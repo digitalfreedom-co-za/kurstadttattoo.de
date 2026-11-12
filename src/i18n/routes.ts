@@ -27,6 +27,7 @@ export const routes = {
   faq: { de: '/haeufige-fragen/', en: '/en/faq/' },
   engraving: { de: '/gravur-service/', en: '/en/engraving/' },
   contact: { de: '/kontakt/', en: '/en/contact/' },
+  booking: { de: '/termin/', en: '/en/appointment/' },
   imprint: { de: '/impressum/', en: '/en/imprint/' },
   privacy: { de: '/datenschutz/', en: '/en/privacy/' },
 } as const satisfies Record<string, Record<Locale, string>>;

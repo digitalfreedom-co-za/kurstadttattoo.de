@@ -9,7 +9,7 @@ import Button from '../ui/Button.astro';
 import ReopeningNotice from '../ui/ReopeningNotice.astro';
 import ExpertTeaser from '../ui/ExpertTeaser.astro';
 import { reopening, studio } from '../../config/site';
-import { t, type Locale } from '../../i18n';
+import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
   locale: Locale;
@@ -28,9 +28,12 @@ const channels = [
 ---
 
 <SubpageLayout locale={locale} routeKey="contact" related={['consultation', 'faq', 'gallery']}>
-  <Button slot="actions" href={studio.phone.href} icon="phone">
-    <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
-  </Button>
+  <Fragment slot="actions">
+    <Button href={studio.phone.href} icon="phone">
+      <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+    </Button>
+    <Button href={localizedPath('booking', locale)} variant="secondary" icon="calendar">{dict.booking.label}</Button>
+  </Fragment>
 
   <Section id={copy.details.id} eyebrow={copy.details.eyebrow} title={copy.details.title} intro={copy.details.intro}>
     <div class="grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-4">

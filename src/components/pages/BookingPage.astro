@@ -1,0 +1,53 @@
+---
+// Booking page for both locales: the page header with the phone as the direct alternative, then straight
+// to the cal.com calendar (behind consent, then lazy, see BookingEmbed), then what to prepare for the
+// consultation. Whether the consultation is free and how long it takes are open questions to Patrick,
+// so the page states neither.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import BookingEmbed from '../booking/BookingEmbed.astro';
+import { BOOKING_ANCHOR } from '../../config/booking';
+import { studio } from '../../config/site';
+import { pageExists } from '../../lib/pages';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.booking;
+const consultationHref = pageExists('consultation', locale) ? localizedPath('consultation', locale) : undefined;
+---
+
+<SubpageLayout locale={locale} routeKey="booking" related={['consultation', 'gallery', 'hygiene', 'contact']}>
+  <Fragment slot="actions">
+    <Button href={`#${BOOKING_ANCHOR}`} icon="calendar">{dict.booking.label}</Button>
+    <a class="link inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline" href={studio.phone.href}>
+      <Icon name="phone" size={18} class="shrink-0 text-neon" />
+      <span><span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}</span>
+    </a>
+    <a class="link inline-flex min-h-11 items-center text-sm" href={`#${copy.prepare.id}`}>{copy.prepareLink}</a>
+  </Fragment>
+
+  <Section id={BOOKING_ANCHOR} eyebrow={copy.calendar.eyebrow} title={copy.calendar.title} intro={copy.calendar.intro} tone="deep">
+    <BookingEmbed locale={locale} />
+  </Section>
+
+  <Section id={copy.prepare.id} eyebrow={copy.prepare.eyebrow} title={copy.prepare.title} intro={copy.prepare.intro}>
+    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+      {
+        copy.prepare.items.map((item) => (
+          <li class="min-w-0 border-b border-line py-6" data-reveal>
+            <h3 class="font-sans text-h4">{item.title}</h3>
+            <p class="mt-2 max-w-[32rem] text-muted">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+    {consultationHref && <Button href={consultationHref} variant="text" class="mt-8">{copy.prepare.consultationLink}</Button>}
+  </Section>
+</SubpageLayout>

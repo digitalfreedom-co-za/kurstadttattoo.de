@@ -1,5 +1,5 @@
 ---
-// Site header: logo, main navigation, language switch, theme toggle and the call button. Every control
+// Site header: logo, main navigation, language switch, theme toggle and the booking button. Every control
 // is a 36px icon button below sm and shows its label from sm up (wiki websites.md). Below lg, and whenever
 // the desktop row does not fit (enlarged text), the navigation moves into a full screen panel behind a
 // menu button (aria-expanded, Escape closes, focus is trapped and returned, the page behind is inert).
@@ -59,13 +59,14 @@ const hasNav = navItems.length > 0;
       {routeKey && <LanguageSwitch locale={locale} routeKey={routeKey} />}
       <ThemeToggle locale={locale} />
       <a
-        href={studio.phone.href}
+        href={url(localizedPath('booking', locale))}
+        aria-current={routeKey === 'booking' ? 'page' : undefined}
         class="header-call inline-flex size-9 items-center justify-center rounded-xs bg-ink text-wall transition-colors hover:bg-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-4"
-        aria-label={copy.call.label}
-        title={copy.call.label}
+        aria-label={copy.booking.label}
+        title={copy.booking.label}
       >
-        <Icon name="phone" class="h-[18px] w-[18px] sm:h-4 sm:w-4" />
-        <span class="hidden text-sm font-semibold sm:inline">{copy.call.label}</span>
+        <Icon name="calendar" class="h-[18px] w-[18px] sm:h-4 sm:w-4" />
+        <span class="hidden text-sm font-semibold whitespace-nowrap sm:inline">{copy.booking.label}</span>
       </a>
       {
         hasNav && (
@@ -222,7 +223,7 @@ const hasNav = navItems.length > 0;
   const desktop = window.matchMedia('(min-width: 64rem)');
 
   if (header && toggle && panel) {
-    // Every visible control of the header row plus the panel: logo, language, theme, call, menu button, links.
+    // Every visible control of the header row plus the panel: logo, language, theme, booking, menu button, links.
     const focusables = () =>
       Array.from(header.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')).filter(
         (el) => el.offsetParent !== null || el === toggle,
