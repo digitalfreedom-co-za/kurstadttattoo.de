@@ -21,10 +21,20 @@ interface Props {
   locale: Locale;
   /** Accessible name of the gallery, e.g. the style group. */
   label: string;
+  /** wall: the full gallery grid. preview: two rows of four on wide screens, for a teaser of eight. */
+  layout?: 'wall' | 'preview';
   class?: string;
 }
 
-const { items, locale, label, class: className } = Astro.props;
+const { items, locale, label, layout = 'wall', class: className } = Astro.props;
+const gridClass =
+  layout === 'preview'
+    ? 'grid-cols-2 md:grid-cols-4'
+    : 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4';
+const thumbSizes =
+  layout === 'preview'
+    ? '(min-width: 84rem) 20rem, (min-width: 48rem) 23vw, 46vw'
+    : '(min-width: 80rem) 20rem, (min-width: 48rem) 30vw, (min-width: 22.5rem) 46vw, 100vw';
 const copy = t(locale).gallery;
 
 const THUMB_RATIO = 4 / 5;
@@ -58,7 +68,7 @@ const prepared = await Promise.all(
 ---
 
 <div class:list={['gallery', className]} data-gallery>
-  <ul class="grid grid-cols-1 gap-x-4 gap-y-8 min-[360px]:grid-cols-2 md:grid-cols-3 md:gap-x-6 md:gap-y-10 xl:grid-cols-4" aria-label={label} data-reveal-group>
+  <ul class:list={['grid gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10', gridClass]} aria-label={label} data-reveal-group>
     {
       prepared.map((item) => (
         <li class="min-w-0" data-reveal>
@@ -75,7 +85,7 @@ const prepared = await Promise.all(
               <img
                 src={item.thumb.src}
                 srcset={item.thumb.srcset}
-                sizes="(min-width: 80rem) 20rem, (min-width: 48rem) 30vw, (min-width: 22.5rem) 46vw, 100vw"
+                sizes={thumbSizes}
                 width={item.thumb.width}
                 height={item.thumb.height}
                 alt={item.alt}

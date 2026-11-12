@@ -16,6 +16,8 @@ const dist = process.argv[2] ?? 'dist';
 const REQUIRED = {
   WebSite: ['name', 'url', 'inLanguage'],
   WebPage: ['name', 'url', 'description', 'inLanguage', 'isPartOf'],
+  FAQPage: ['mainEntity'],
+  Question: ['name', 'acceptedAnswer.text'],
 };
 
 /** Entities every indexable page carries. */

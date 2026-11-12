@@ -6,7 +6,7 @@
 import JsonLd from './JsonLd.astro';
 import { site, indexable } from '../../config/site';
 import { absoluteUrl, withoutBase } from '../../lib/url';
-import { websiteNode, webPageNode } from '../../lib/schema';
+import { websiteNode, webPageNode, type JsonLdNode } from '../../lib/schema';
 import { defaultLocale, locales, localeMeta, localizedPath, type Locale, type RouteKey } from '../../i18n/routes';
 
 export interface SeoProps {
@@ -17,11 +17,13 @@ export interface SeoProps {
   routeKey?: RouteKey;
   /** Never index this page, whatever the switch says (404). */
   noindex?: boolean;
+  /** Page specific JSON-LD nodes (e.g. FAQPage), appended to the @graph. */
+  schema?: JsonLdNode[];
 }
 
 type Props = SeoProps;
 
-const { title, description, locale, routeKey, noindex = false } = Astro.props;
+const { title, description, locale, routeKey, noindex = false, schema = [] } = Astro.props;
 
 const path = withoutBase(Astro.url.pathname);
 const canonical = absoluteUrl(path, Astro.site);
@@ -31,7 +33,7 @@ const alternates = routeKey
   : [];
 const graph = noindex
   ? null
-  : { '@graph': [websiteNode(Astro.site), webPageNode({ path, name: title, description, locale }, Astro.site)] };
+  : { '@graph': [websiteNode(Astro.site), webPageNode({ path, name: title, description, locale }, Astro.site), ...schema] };
 ---
 
 <title>{title}</title>

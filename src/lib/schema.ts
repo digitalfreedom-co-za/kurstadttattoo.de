@@ -33,3 +33,22 @@ export function webPageNode(
     isPartOf: { '@id': websiteId(base) },
   };
 }
+
+/** FAQPage for a page that shows questions and answers; the answers are plain text. */
+export function faqPageNode(
+  page: { path: string; locale: Locale },
+  items: { question: string; answer: string }[],
+  base: URL | undefined,
+): JsonLdNode {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${absoluteUrl(page.path, base)}#faq`,
+    inLanguage: localeMeta[page.locale].lang,
+    isPartOf: { '@id': webPageId(page.path, base) },
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  };
+}

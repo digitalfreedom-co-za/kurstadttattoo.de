@@ -1,0 +1,269 @@
+---
+// Landing page for both locales. Weight of the sections follows the brief (#5) and the competitor
+// analysis (#2): art first, then hygiene, consultation with the real process, the artist, the new
+// location, FAQ, a secondary pointer to the expert office and the closing call. Facts come from
+// src/config/site.ts and src/data, copy from the dictionaries. Links to subpages appear only once the
+// page exists (src/lib/pages.ts), so the preview never links to a 404.
+import Container from '../ui/Container.astro';
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import ArtImage from '../ui/ArtImage.astro';
+import Gallery from '../ui/Gallery.astro';
+import Steps from '../ui/Steps.astro';
+import Faq from '../ui/Faq.astro';
+import CtaBand from '../ui/CtaBand.astro';
+import TrustStrip from '../ui/TrustStrip.astro';
+import ReopeningNotice from '../ui/ReopeningNotice.astro';
+import { expertSite, reopening, studio } from '../../config/site';
+import { galleryItems, heroWork, previewWorks, work } from '../../data/gallery';
+import { faqEntries, featuredFaqIds } from '../../data/faq';
+import { processSteps } from '../../data/process';
+import { pageExists } from '../../lib/pages';
+import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
+
+import patrickPortrait from '../../assets/images/patrick-wolf-arme-verschraenkt-neonlogo.jpg';
+import patrickAtWork from '../../assets/images/patrick-wolf-beim-taetowieren-breit.jpg';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.home;
+const { address } = studio;
+
+const hero = work(heroWork, locale);
+const faq = faqEntries(featuredFaqIds, locale);
+
+/** Site path of a subpage, or undefined while it is not built yet. */
+const subpage = (key: RouteKey) => (pageExists(key, locale) ? localizedPath(key, locale) : undefined);
+const galleryHref = subpage('gallery');
+const aftercareHref = subpage('aftercare');
+const consultationHref = subpage('consultation');
+const artistsHref = subpage('artists');
+const faqHref = subpage('faq');
+---
+
+<!-- Opening: the claim and the call on the left, a finished piece hung like a work on the wall on the right. -->
+<section class="relative overflow-hidden" aria-labelledby="start-titel">
+  <Container class="grid gap-12 pt-10 pb-16 md:grid-cols-12 md:gap-x-8 md:pt-14 md:pb-24 lg:items-center">
+    <div class="min-w-0 md:col-span-7">
+      <Eyebrow>{copy.hero.eyebrow}</Eyebrow>
+      <h1 id="start-titel" class="mt-5 max-w-[18ch] text-h1">{copy.hero.heading}</h1>
+      <p class="mt-6 max-w-[36rem] text-lead text-muted" data-reveal>{copy.hero.intro}</p>
+      <div class="mt-8 flex flex-wrap gap-3" data-reveal>
+        <Button href={studio.phone.href} icon="phone">
+          <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+        </Button>
+        <Button href={`#${copy.art.id}`} variant="secondary">{copy.hero.worksLink}</Button>
+      </div>
+      <dl class="mt-10 grid max-w-[36rem] gap-6 border-t border-ink pt-5 text-[0.9375rem] sm:grid-cols-2" data-reveal>
+        <div class="flex gap-3">
+          <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon" />
+          <div>
+            <dt class="label text-muted">{reopening.active ? copy.hero.addressLabel : dict.studio.addressLabel}</dt>
+            <dd class="mt-1">{address.street}, {`${address.postalCode} ${address.city}`}</dd>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
+          <div>
+            <dt class="label text-muted">{dict.studio.hoursLabel}</dt>
+            <dd class="mt-1">
+              {dict.studio.hours}, {dict.studio.hoursNote}
+              <span class="mt-1 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
+            </dd>
+          </div>
+        </div>
+      </dl>
+    </div>
+
+    <figure class="relative min-w-0 md:col-span-5">
+      <span class="absolute -top-3 -right-3 bottom-10 left-6 border border-neon md:-top-5 md:-right-5" aria-hidden="true"></span>
+      <ArtImage
+        src={hero.src}
+        alt={hero.alt}
+        ratio={4 / 5}
+        position="center"
+        widths={[420, 640, 860]}
+        sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
+        loading="eager"
+        fetchpriority="high"
+        reveal={false}
+        class="relative"
+      />
+      <figcaption class="relative mt-3 border-t border-line pt-2">
+        <span class="block text-[0.9375rem] font-semibold leading-snug">{hero.title}</span>
+        <span class="label mt-1 block text-muted">{hero.meta}. {copy.hero.imageCaption}</span>
+      </figcaption>
+    </figure>
+  </Container>
+</section>
+
+<TrustStrip locale={locale} />
+
+<!-- Art: styles as wall labels (never numbered), then a preview of real work. -->
+<Section id={copy.art.id} eyebrow={copy.art.eyebrow} title={copy.art.title} intro={copy.art.intro}>
+  <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-5" aria-label={copy.art.stylesLabel} data-reveal-group>
+    {
+      copy.art.styles.map((style) => (
+        <li class="min-w-0 border-b border-line py-5 lg:border-b-0 lg:py-6" data-reveal>
+          <h3 class="font-sans text-h4">{style.title}</h3>
+          <p class="mt-2 text-sm text-muted">{style.text}</p>
+        </li>
+      ))
+    }
+  </ul>
+  <Gallery items={galleryItems(previewWorks, locale)} locale={locale} label={copy.art.galleryLabel} layout="preview" class="mt-12 md:mt-16" />
+  <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <p class="max-w-[36rem] text-sm text-muted">{copy.art.galleryNote}</p>
+    {galleryHref && <Button href={galleryHref} variant="secondary">{copy.art.galleryLink}</Button>}
+  </div>
+</Section>
+
+<!-- Hygiene: the stated values and the concrete care steps from the old aftercare page. -->
+<Section id={copy.hygiene.id} eyebrow={copy.hygiene.eyebrow} title={copy.hygiene.title} intro={copy.hygiene.intro} tone="deep">
+  <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
+    <div class="min-w-0 md:col-span-6">
+      <ArtImage
+        src={patrickAtWork}
+        alt={copy.hygiene.imageAlt}
+        ratio={4 / 3}
+        crops={[{ media: '(min-width: 48rem)', ratio: 16 / 11 }]}
+        position="right"
+        widths={[480, 720, 1120]}
+        sizes="(min-width: 84rem) 40rem, (min-width: 48rem) 50vw, 100vw"
+      />
+      <p class="mt-6 max-w-[34rem]" data-reveal>{copy.hygiene.text}</p>
+    </div>
+    <div class="min-w-0 md:col-span-5 md:col-start-8">
+      <h3 class="text-h3">{copy.hygiene.careTitle}</h3>
+      <ul class="mt-6 border-t border-ink" data-reveal-group>
+        {
+          copy.hygiene.care.map((item) => (
+            <li class="flex gap-4 border-b border-line py-4" data-reveal>
+              <Icon name="drop" size={20} class="mt-0.5 shrink-0 text-neon" />
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      {aftercareHref && <Button href={aftercareHref} variant="text" class="mt-6">{copy.hygiene.aftercareLink}</Button>}
+    </div>
+  </div>
+</Section>
+
+<!-- Consultation: the one place with numbers, because the steps happen in this order. -->
+<Section id={copy.process.id} eyebrow={copy.process.eyebrow} title={copy.process.title} intro={copy.process.intro}>
+  <Steps steps={processSteps(locale)} locale={locale} />
+  <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+    <Button href={studio.phone.href} icon="phone">
+      <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+    </Button>
+    {consultationHref && <Button href={consultationHref} variant="text">{copy.process.consultationLink}</Button>}
+  </div>
+</Section>
+
+<!-- Artist: portrait beside the words, on the always dark surface like the neon wall behind him. -->
+<section id={copy.artists.id} class="bg-night py-section text-chalk" aria-labelledby={`${copy.artists.id}-titel`}>
+  <Container class="grid gap-10 md:grid-cols-12 md:items-center md:gap-x-8">
+    <div class="min-w-0 md:col-span-5">
+      <ArtImage
+        src={patrickPortrait}
+        alt={copy.artists.imageAlt}
+        ratio={4 / 5}
+        position="top"
+        widths={[420, 640, 960]}
+        sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
+        parallax
+      />
+    </div>
+    <div class="min-w-0 md:col-span-6 md:col-start-7">
+      <span class="basin-rule text-chalk/40" data-reveal="rule" aria-hidden="true"></span>
+      <Eyebrow tone="night" class="mt-8">{copy.artists.eyebrow}</Eyebrow>
+      <h2 id={`${copy.artists.id}-titel`} class="mt-4 text-h2">{copy.artists.title}</h2>
+      <p class="mt-6 font-display text-h3" data-reveal>{copy.artists.lead}</p>
+      <p class="mt-6 max-w-[34rem] text-chalk-muted" data-reveal>{copy.artists.text}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <a class="link inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline" href={studio.tiktok.href} rel="noopener" target="_blank">
+          <Icon name="tiktok" size={20} class="shrink-0 text-neon-glow" />
+          <span>{dict.studio.tiktok} <span class="text-chalk-muted">{studio.tiktok.handle}</span></span>
+        </a>
+        {artistsHref && <Button href={artistsHref} variant="inverse">{copy.artists.artistsLink}</Button>}
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- Location: the reopening, the address with a route link (no embedded map without consent), hours, contact. -->
+<Section id={copy.location.id} eyebrow={copy.location.eyebrow} title={copy.location.title} intro={copy.location.intro}>
+  <ReopeningNotice locale={locale} headingLevel="h3" />
+  <div class="mt-10 grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="min-w-0">
+      <p class="label text-muted">{dict.studio.addressLabel}</p>
+      <address class="mt-3 flex gap-3 not-italic">
+        <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon" />
+        <span>{studio.name}<br />{address.street}<br />{`${address.postalCode} ${address.city}`}</span>
+      </address>
+      <a class="link mt-3 inline-flex min-h-11 items-center gap-2 font-semibold" href={studio.mapHref} rel="noopener" target="_blank">
+        {copy.location.mapLink}
+        <Icon name="external" size={14} class="shrink-0" />
+        <span class="sr-only">({copy.location.mapNote})</span>
+      </a>
+    </div>
+    <div class="min-w-0">
+      <p class="label text-muted">{dict.studio.hoursLabel}</p>
+      <p class="mt-3 flex gap-3">
+        <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
+        <span>
+          {dict.studio.hours}<span class="block text-muted">{dict.studio.hoursNote}</span>
+          <span class="mt-2 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
+        </span>
+      </p>
+    </div>
+    <div class="min-w-0">
+      <p class="label text-muted">{dict.studio.contactLabel}</p>
+      <p class="mt-2">
+        <a class="link inline-flex min-h-11 items-center gap-3 no-underline hover:underline" href={studio.phone.href}>
+          <Icon name="phone" size={18} class="shrink-0 text-neon" />
+          <span><span class="sr-only">{dict.studio.phoneLabel} </span>{studio.phone.display}</span>
+        </a>
+      </p>
+      <p>
+        <a class="link inline-flex min-h-11 items-center gap-3 break-all no-underline hover:underline" href={studio.email.href}>
+          <Icon name="mail" size={18} class="shrink-0 text-neon" />
+          <span><span class="sr-only">{dict.studio.emailLabel} </span>{studio.email.display}</span>
+        </a>
+      </p>
+    </div>
+  </div>
+</Section>
+
+<Section id={copy.faq.id} eyebrow={copy.faq.eyebrow} title={copy.faq.title} tone="deep">
+  <div class="grid md:grid-cols-12 md:gap-x-8">
+    <Faq items={faq} name="start-faq" class="md:col-span-10 lg:col-span-8" />
+  </div>
+  {faqHref && <Button href={faqHref} variant="secondary" class="mt-10">{copy.faq.faqLink}</Button>}
+</Section>
+
+<!-- Secondary: the expert office has its own site; one short pointer, no content of its own here. -->
+<Section density="support">
+  <div class="grid gap-6 border-y border-line py-8 md:grid-cols-12 md:items-center md:gap-x-8">
+    <div class="min-w-0 md:col-span-8">
+      <Eyebrow>{copy.expert.eyebrow}</Eyebrow>
+      <h2 class="mt-3 text-h3">{copy.expert.title}</h2>
+      <p class="mt-3 max-w-[40rem] text-muted">{copy.expert.text}</p>
+    </div>
+    <div class="min-w-0 md:col-span-4 md:justify-self-end">
+      <a class="link inline-flex min-h-11 items-center gap-2 font-semibold" href={expertSite.href} rel="noopener">
+        {copy.expert.link}
+        <Icon name="external" size={14} class="shrink-0" />
+      </a>
+    </div>
+  </div>
+</Section>
+
+<CtaBand locale={locale} title={copy.cta.title} text={copy.cta.text} />
