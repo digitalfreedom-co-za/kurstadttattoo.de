@@ -1,0 +1,49 @@
+---
+// What visitors can rely on, at a glance: hygiene, consultation, aftercare and the reopening. Concrete
+// statements from the dictionary instead of a checkmark list; each item leads with a line icon.
+import Container from './Container.astro';
+import Icon, { type IconName } from './Icon.astro';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className } = Astro.props;
+const copy = t(locale).trust;
+
+const icons: Record<string, IconName> = {
+  hygiene: 'drop',
+  consultation: 'dialog',
+  aftercare: 'leaf',
+  reopening: 'calendar',
+};
+---
+
+<section aria-label={copy.label} class:list={['border-y border-ink bg-wall-deep', className]}>
+  <Container>
+    <ul class="grid divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4" data-reveal-group>
+      {
+        copy.items.map((item, index) => (
+          <li
+            class:list={[
+              'flex min-w-0 gap-4 py-6 sm:py-8 sm:pr-6 lg:pl-6',
+              index % 2 === 1 && 'sm:pl-6 sm:border-l sm:border-line',
+              index > 1 && 'sm:border-t sm:border-line lg:border-t-0',
+              index > 0 && 'lg:border-l lg:border-line',
+              index === 0 && 'lg:pl-0',
+            ]}
+            data-reveal
+          >
+            <Icon name={icons[item.key] ?? 'calendar'} size={24} class="mt-0.5 shrink-0 text-neon" />
+            <div class="min-w-0">
+              <p class="font-display text-lg font-semibold">{item.title}</p>
+              <p class="mt-1 text-sm text-muted">{item.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</section>

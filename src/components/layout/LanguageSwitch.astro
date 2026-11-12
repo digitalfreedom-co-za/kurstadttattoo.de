@@ -22,14 +22,14 @@ const copy = t(locale).languageSwitch;
   title={copy.title}
   aria-label={copy.label}
   data-locale-switch
-  class="inline-flex h-9 w-9 items-center justify-center sm:h-auto sm:min-h-11 sm:w-auto sm:gap-2 sm:px-3"
+  class="inline-flex size-9 items-center justify-center rounded-xs text-sm font-semibold transition-colors hover:text-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-3"
 >
   <svg
     class="h-[18px] w-[18px] sm:h-4 sm:w-4"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="1.5"
     stroke-linecap="round"
     stroke-linejoin="round"
     aria-hidden="true"
@@ -39,7 +39,7 @@ const copy = t(locale).languageSwitch;
     <path d="M2 12h20"></path>
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
   </svg>
-  <span class="hidden underline underline-offset-4 sm:inline">{copy.label}</span>
+  <span class="hidden sm:inline">{copy.label}</span>
 </a>
 
 <script>

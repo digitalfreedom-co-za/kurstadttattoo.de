@@ -6,6 +6,103 @@
     "label": "English",
     "title": "Diese Seite auf Englisch lesen"
   },
+  "nav": {
+    "label": "Hauptnavigation",
+    "mobileLabel": "Hauptnavigation mobil",
+    "footerLabel": "Seiten",
+    "legalLabel": "Rechtliches",
+    "menu": "Menü",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "logoLabel": "KurstadtTattoo Bad Nauheim, zur Startseite",
+    "items": {
+      "home": "Start",
+      "gallery": "Galerie",
+      "artists": "Künstler",
+      "hygiene": "Hygiene",
+      "consultation": "Beratung",
+      "aftercare": "Pflegetipps",
+      "faq": "FAQ",
+      "engraving": "Gravur-Service",
+      "contact": "Kontakt",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz"
+    }
+  },
+  "call": {
+    "label": "Anrufen"
+  },
+  "theme": {
+    "label": "Dunkles Design"
+  },
+  "studio": {
+    "tagline": "Tattoo Studio in Bad Nauheim",
+    "addressLabel": "Studio",
+    "newAddressNote": "Neuer Standort ab 1. Dezember 2026",
+    "country": "Deutschland",
+    "contactLabel": "Kontakt",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-Mail",
+    "hoursLabel": "Öffnungszeiten",
+    "hours": "Montag bis Freitag, 12 bis 18 Uhr",
+    "hoursNote": "oder nach Vereinbarung",
+    "followLabel": "Folgen",
+    "tiktok": "Patrick auf TikTok"
+  },
+  "footer": {
+    "about": "Tattoos von Patrick Wolf in Bad Nauheim: realistische Porträts, feine Linien und Motive nach Ihrer eigenen Vorlage.",
+    "expertLabel": "Gutachten",
+    "expertText": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als zertifizierter Gutachter auf",
+    "copyright": "KurstadtTattoo Bad Nauheim"
+  },
+  "reopening": {
+    "label": "Neueröffnung",
+    "strip": "Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A",
+    "title": "Neues Studio ab dem 1. Dezember 2026",
+    "text": "KurstadtTattoo zieht um. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim. Bis dahin bleibt das Studio geschlossen.",
+    "closing": "Neuer Standort, neues Studio, die gleiche Leidenschaft."
+  },
+  "trust": {
+    "label": "Worauf Sie sich verlassen können",
+    "items": [
+      {
+        "key": "hygiene",
+        "title": "Hygiene",
+        "text": "Wir legen großen Wert auf Hygiene und eine sichere Atmosphäre im Studio."
+      },
+      {
+        "key": "consultation",
+        "title": "Beratung",
+        "text": "Wir planen Ihr Motiv eng mit Ihnen zusammen, gern auch nach Ihrer eigenen Vorlage."
+      },
+      {
+        "key": "aftercare",
+        "title": "Nachsorge",
+        "text": "Nach dem Termin bieten wir Ihnen eine Nachsorge an und erklären die Pflege."
+      },
+      {
+        "key": "reopening",
+        "title": "Neueröffnung",
+        "text": "Ab dem 1. Dezember 2026 am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    ]
+  },
+  "gallery": {
+    "open": "Vergrößern",
+    "dialogLabel": "Bildansicht",
+    "close": "Schließen",
+    "prev": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "counter": "Bild {current} von {total}"
+  },
+  "steps": {
+    "stepPrefix": "Schritt"
+  },
+  "cta": {
+    "label": "Kontakt aufnehmen",
+    "callPrefix": "Anrufen",
+    "emailLink": "Oder schreiben Sie uns eine E-Mail"
+  },
   "pages": {
     "home": {
       "title": "Tattoo Studio Bad Nauheim | KurstadtTattoo",

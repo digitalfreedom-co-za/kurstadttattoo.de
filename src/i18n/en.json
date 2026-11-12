@@ -6,6 +6,103 @@
     "label": "Deutsch",
     "title": "Read this page in German"
   },
+  "nav": {
+    "label": "Main navigation",
+    "mobileLabel": "Main navigation, mobile",
+    "footerLabel": "Pages",
+    "legalLabel": "Legal",
+    "menu": "Menu",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "logoLabel": "KurstadtTattoo Bad Nauheim, go to the home page",
+    "items": {
+      "home": "Home",
+      "gallery": "Gallery",
+      "artists": "Artists",
+      "hygiene": "Hygiene",
+      "consultation": "Consultation",
+      "aftercare": "Aftercare",
+      "faq": "FAQ",
+      "engraving": "Engraving",
+      "contact": "Contact",
+      "imprint": "Imprint",
+      "privacy": "Privacy"
+    }
+  },
+  "call": {
+    "label": "Call"
+  },
+  "theme": {
+    "label": "Dark mode"
+  },
+  "studio": {
+    "tagline": "Tattoo studio in Bad Nauheim",
+    "addressLabel": "Studio",
+    "newAddressNote": "New location from 1 December 2026",
+    "country": "Germany",
+    "contactLabel": "Contact",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Opening hours",
+    "hours": "Monday to Friday, 12 noon to 6 pm",
+    "hoursNote": "or by appointment",
+    "followLabel": "Follow",
+    "tiktok": "Patrick on TikTok"
+  },
+  "footer": {
+    "about": "Tattoos by Patrick Wolf in Bad Nauheim: realistic portraits, fine lines and designs based on your own artwork.",
+    "expertLabel": "Expert reports",
+    "expertText": "Patrick Wolf writes expert reports on tattoos and piercings as a certified assessor on",
+    "copyright": "KurstadtTattoo Bad Nauheim"
+  },
+  "reopening": {
+    "label": "Reopening",
+    "strip": "Reopening on 1 December 2026 at Friedrich-Ebert-Platz 1A",
+    "title": "New studio from 1 December 2026",
+    "text": "KurstadtTattoo is moving. From 1 December 2026 you will find us in our new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim. Until then the studio is closed.",
+    "closing": "New location, new studio, the same passion."
+  },
+  "trust": {
+    "label": "What you can rely on",
+    "items": [
+      {
+        "key": "hygiene",
+        "title": "Hygiene",
+        "text": "We put great emphasis on hygiene and a safe atmosphere in the studio."
+      },
+      {
+        "key": "consultation",
+        "title": "Consultation",
+        "text": "We plan your design closely with you, based on your own artwork if you like."
+      },
+      {
+        "key": "aftercare",
+        "title": "Aftercare",
+        "text": "After your session we offer aftercare and explain how to look after your tattoo."
+      },
+      {
+        "key": "reopening",
+        "title": "Reopening",
+        "text": "From 1 December 2026 at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    ]
+  },
+  "gallery": {
+    "open": "Enlarge",
+    "dialogLabel": "Image view",
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image",
+    "counter": "Image {current} of {total}"
+  },
+  "steps": {
+    "stepPrefix": "Step"
+  },
+  "cta": {
+    "label": "Get in touch",
+    "callPrefix": "Call",
+    "emailLink": "Or send us an email"
+  },
   "pages": {
     "home": {
       "title": "Tattoo Studio in Bad Nauheim | KurstadtTattoo",

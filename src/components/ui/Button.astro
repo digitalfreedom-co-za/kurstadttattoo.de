@@ -1,0 +1,56 @@
+---
+// Renders an <a> when href is set, otherwise a <button>. Internal hrefs (starting with /) get the base
+// path through url(). Hover: the fill turns neon, the icon nudges; no motion under reduced motion.
+import type { HTMLAttributes } from 'astro/types';
+import Icon, { type IconName } from './Icon.astro';
+import { url } from '../../lib/url';
+
+type Variant = 'primary' | 'secondary' | 'inverse' | 'text';
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  icon?: IconName;
+  type?: 'button' | 'submit';
+  class?: string;
+  target?: HTMLAttributes<'a'>['target'];
+  rel?: string;
+  title?: string;
+  'aria-label'?: string;
+}
+
+const { href, variant = 'primary', icon, type = 'button', class: className, ...rest } = Astro.props;
+
+const resolvedHref = href?.startsWith('/') ? url(href) : href;
+
+const variants: Record<Variant, string> = {
+  primary: 'bg-ink text-wall border border-ink hover:bg-neon hover:border-neon px-5 py-3 sm:px-6',
+  secondary: 'bg-transparent text-ink border border-ink hover:bg-ink hover:text-wall px-5 py-3 sm:px-6',
+  inverse: 'bg-chalk text-night border border-chalk hover:bg-neon-glow hover:border-neon-glow px-5 py-3 sm:px-6',
+  text: 'border-b border-current/40 hover:border-neon hover:text-neon py-1',
+};
+
+const classes = [
+  'group/btn inline-flex min-h-11 items-center gap-3 rounded-xs font-sans text-[0.9375rem] font-semibold leading-none transition-colors duration-200',
+  variants[variant],
+  className,
+];
+---
+
+{
+  resolvedHref ? (
+    <a href={resolvedHref} class:list={classes} {...rest}>
+      {icon && <Icon name={icon} size={18} class="shrink-0 transition-transform duration-300 ease-out-quint group-hover/btn:-rotate-6" />}
+      <span>
+        <slot />
+      </span>
+    </a>
+  ) : (
+    <button type={type} class:list={classes} {...rest}>
+      {icon && <Icon name={icon} size={18} class="shrink-0" />}
+      <span>
+        <slot />
+      </span>
+    </button>
+  )
+}

@@ -1,0 +1,228 @@
+---
+// Gallery wall: uniform 4:5 crops in a grid, each with a wall label (motif, then style and placement).
+// Every picture is a link to the full image, so it works without JS. With JS the link opens a lightbox
+// (native modal dialog: focus moves in and is trapped, Escape closes, focus returns to the picture last
+// shown). Arrow keys and a horizontal swipe step through the pictures; the counter is announced politely.
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+import Icon from './Icon.astro';
+import { t, type Locale } from '../../i18n';
+
+export interface GalleryItem {
+  src: ImageMetadata;
+  /** Describes the tattoo itself: motif, style, body part. */
+  alt: string;
+  title: string;
+  meta?: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+  locale: Locale;
+  /** Accessible name of the gallery, e.g. the style group. */
+  label: string;
+  class?: string;
+}
+
+const { items, locale, label, class: className } = Astro.props;
+const copy = t(locale).gallery;
+
+const THUMB_RATIO = 4 / 5;
+const THUMB_WIDTHS = [320, 480, 640];
+const FULL_MAX_WIDTH = 1600;
+
+const prepared = await Promise.all(
+  items.map(async (item) => {
+    const maxThumb = Math.min(item.src.width, Math.floor(item.src.height * THUMB_RATIO));
+    const widths = [...new Set([...THUMB_WIDTHS.filter((w) => w < maxThumb), Math.min(maxThumb, THUMB_WIDTHS.at(-1) ?? maxThumb)])];
+    const thumbs = await Promise.all(
+      widths.map((w) =>
+        getImage({ src: item.src, width: w, height: Math.round(w / THUMB_RATIO), fit: 'cover', position: 'center', format: 'webp' }),
+      ),
+    );
+    const fullWidth = Math.min(item.src.width, FULL_MAX_WIDTH);
+    const full = await getImage({ src: item.src, width: fullWidth, format: 'webp' });
+    const thumbWidth = widths.at(-1) ?? maxThumb;
+    return {
+      ...item,
+      thumb: {
+        src: thumbs.at(-1)?.src ?? full.src,
+        srcset: thumbs.map((img, i) => `${img.src} ${widths[i]}w`).join(', '),
+        width: thumbWidth,
+        height: Math.round(thumbWidth / THUMB_RATIO),
+      },
+      full: { src: full.src, width: fullWidth, height: Math.round((fullWidth * item.src.height) / item.src.width) },
+    };
+  }),
+);
+---
+
+<div class:list={['gallery', className]} data-gallery>
+  <ul class="grid grid-cols-1 gap-x-4 gap-y-8 min-[360px]:grid-cols-2 md:grid-cols-3 md:gap-x-6 md:gap-y-10 xl:grid-cols-4" aria-label={label} data-reveal-group>
+    {
+      prepared.map((item) => (
+        <li class="min-w-0" data-reveal>
+          <figure class="group/item">
+            <a
+              href={item.full.src}
+              class="relative block overflow-hidden bg-wall-deep"
+              data-gallery-item
+              data-alt={item.alt}
+              data-caption={item.meta ? `${item.title}. ${item.meta}` : item.title}
+              data-width={item.full.width}
+              data-height={item.full.height}
+            >
+              <img
+                src={item.thumb.src}
+                srcset={item.thumb.srcset}
+                sizes="(min-width: 80rem) 20rem, (min-width: 48rem) 30vw, (min-width: 22.5rem) 46vw, 100vw"
+                width={item.thumb.width}
+                height={item.thumb.height}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                class="aspect-[4/5] size-full object-cover transition-transform duration-700 ease-out-quint group-hover/item:scale-[1.03]"
+              />
+              <span class="absolute right-2 bottom-2 flex size-9 items-center justify-center bg-wall/90 text-ink opacity-0 transition-opacity duration-200 group-hover/item:opacity-100 group-focus-within/item:opacity-100" aria-hidden="true">
+                <Icon name="expand" size={16} />
+              </span>
+              <span class="sr-only">, {copy.open}</span>
+            </a>
+            <figcaption class="mt-3 border-t border-line pt-2">
+              <span class="block text-[0.9375rem] font-semibold leading-snug">{item.title}</span>
+              {item.meta && <span class="label mt-1 block text-muted">{item.meta}</span>}
+            </figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ul>
+
+  <dialog class="lightbox m-0 h-dvh max-h-none w-screen max-w-none bg-night p-0 text-chalk" aria-label={copy.dialogLabel} data-lightbox>
+    <div class="relative flex h-full flex-col">
+      <div class="flex items-center justify-between gap-4 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] md:px-6">
+        <p class="label text-chalk-muted" aria-live="polite" data-lightbox-counter data-template={copy.counter}></p>
+        <button
+          type="button"
+          class="flex size-11 items-center justify-center text-chalk transition-colors hover:text-neon-glow"
+          aria-label={copy.close}
+          title={copy.close}
+          data-lightbox-close
+        >
+          <Icon name="close" size={22} />
+        </button>
+      </div>
+      <figure class="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 px-4 py-2 md:px-20">
+        <img class="min-h-0 max-w-full flex-1 object-contain" alt="" data-lightbox-img />
+        <figcaption class="max-w-[40rem] text-center text-sm text-chalk-muted" data-lightbox-caption></figcaption>
+      </figure>
+      <div class="flex justify-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:pointer-events-none md:absolute md:inset-x-4 md:top-1/2 md:-translate-y-1/2 md:justify-between md:pb-0">
+        <button
+          type="button"
+          class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-neon-glow hover:text-neon-glow"
+          aria-label={copy.prev}
+          title={copy.prev}
+          data-lightbox-prev
+        >
+          <Icon name="chevron-left" size={22} />
+        </button>
+        <button
+          type="button"
+          class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-neon-glow hover:text-neon-glow"
+          aria-label={copy.next}
+          title={copy.next}
+          data-lightbox-next
+        >
+          <Icon name="chevron-right" size={22} />
+        </button>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<style>
+  .lightbox::backdrop {
+    background: var(--color-night);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lightbox[open] {
+      animation: lightbox-in 220ms var(--ease-out-quint);
+    }
+  }
+
+  @keyframes lightbox-in {
+    from {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const SWIPE_MIN_PX = 50;
+
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((root) => {
+    const dialog = root.querySelector<HTMLDialogElement>('[data-lightbox]');
+    const image = dialog?.querySelector<HTMLImageElement>('[data-lightbox-img]');
+    const caption = dialog?.querySelector<HTMLElement>('[data-lightbox-caption]');
+    const counter = dialog?.querySelector<HTMLElement>('[data-lightbox-counter]');
+    const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-gallery-item]'));
+    if (!dialog || !image || !caption || !counter || links.length === 0) return;
+
+    let index = 0;
+    const template = counter.dataset.template ?? '{current} / {total}';
+
+    const show = (next: number) => {
+      index = (next + links.length) % links.length;
+      const link = links[index];
+      // Hidden until the new picture has loaded, so the caption never describes the previous one.
+      if (image.src !== link.href) image.style.opacity = '0';
+      image.src = link.href;
+      image.alt = link.dataset.alt ?? '';
+      image.width = Number(link.dataset.width) || 0;
+      image.height = Number(link.dataset.height) || 0;
+      caption.textContent = link.dataset.caption ?? '';
+      counter.textContent = template.replace('{current}', String(index + 1)).replace('{total}', String(links.length));
+    };
+
+    // A failed picture shows again too, so its alt text stays visible instead of a blank dialog.
+    image.addEventListener('load', () => image.style.removeProperty('opacity'));
+    image.addEventListener('error', () => image.style.removeProperty('opacity'));
+
+    links.forEach((link, i) => {
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        show(i);
+        document.documentElement.style.overflow = 'hidden';
+        dialog.showModal();
+      });
+    });
+
+    dialog.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('[data-lightbox-next]')?.addEventListener('click', () => show(index + 1));
+    dialog.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') show(index - 1);
+      if (event.key === 'ArrowRight') show(index + 1);
+    });
+
+    let startX: number | null = null;
+    dialog.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse') startX = event.clientX;
+    });
+    dialog.addEventListener('pointerup', (event) => {
+      if (startX === null) return;
+      const dx = event.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) >= SWIPE_MIN_PX) show(dx > 0 ? index - 1 : index + 1);
+    });
+
+    // Focus goes back to the picture last shown, which may differ from the one that opened the dialog.
+    dialog.addEventListener('close', () => {
+      document.documentElement.style.overflow = '';
+      links[index].focus();
+    });
+  });
+</script>
