@@ -1,0 +1,69 @@
+---
+// Gallery for both locales: every work once, grouped by style, realism first (competitor analysis #2).
+// A row of style links under the header jumps to the groups; each group is its own gallery with lightbox.
+// The alt texts describe motif, style and body part (dictionary works.<id>).
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Gallery from '../ui/Gallery.astro';
+import Button from '../ui/Button.astro';
+import VideoLinks from '../ui/VideoLinks.astro';
+import { galleryItems, styleGroups } from '../../data/gallery';
+import { videos } from '../../data/videos';
+import { pageExists } from '../../lib/pages';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = t(locale).pages.gallery;
+const groups = styleGroups.map((group) => ({ ...group, ...copy.groups[group.id] }));
+const consultationHref = pageExists('consultation', locale) ? localizedPath('consultation', locale) : undefined;
+---
+
+<SubpageLayout locale={locale} routeKey="gallery" related={['artists', 'consultation', 'aftercare']}>
+  <nav aria-label={copy.stylesLabel} class="border-b border-line bg-wall">
+    <Container>
+      <ul class="-mx-1 flex gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
+        {
+          groups.map((group) => (
+            <li class="shrink-0">
+              <a
+                href={`#${group.id}`}
+                class="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold whitespace-nowrap transition-colors hover:text-neon"
+              >
+                {group.title}
+                <span class="label text-muted">{group.works.length}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
+  </nav>
+
+  {
+    groups.map((group, index) => (
+      <Section id={group.id} eyebrow={copy.countLabel.replace('{count}', String(group.works.length))} title={group.title} intro={group.intro} tone={index % 2 === 1 ? 'deep' : 'wall'}>
+        <Gallery items={galleryItems(group.works, locale)} locale={locale} label={group.title} />
+      </Section>
+    ))
+  }
+
+  <Section density="support">
+    <div class="grid gap-10 border-t border-ink pt-8 md:grid-cols-12 md:gap-x-8">
+      <div class="min-w-0 md:col-span-6">
+        <h2 class="text-h3">{copy.ownDesign.title}</h2>
+        <p class="mt-3 max-w-[34rem] text-muted">{copy.ownDesign.text}</p>
+        {consultationHref && <Button href={consultationHref} variant="text" class="mt-5">{copy.ownDesign.link}</Button>}
+      </div>
+      <div class="min-w-0 md:col-span-5 md:col-start-8">
+        <h2 class="text-h3">{copy.video.title}</h2>
+        <p class="mt-3 text-muted">{copy.video.text}</p>
+        <VideoLinks items={videos(['eagleBack'], locale)} locale={locale} class="mt-5" />
+      </div>
+    </div>
+  </Section>
+</SubpageLayout>

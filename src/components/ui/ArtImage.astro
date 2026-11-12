@@ -1,0 +1,112 @@
+---
+// Art directed responsive image. Each crop is a media query with its own aspect ratio and
+// focal position; sharp crops at build time. Every <source> carries width and height so the
+// browser reserves the right box per breakpoint (no layout shift).
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+export type FocalPosition = 'center' | 'top' | 'bottom' | 'left' | 'right' | 'left top' | 'right top' | 'left bottom' | 'right bottom' | 'attention' | 'entropy';
+
+export interface Crop {
+  /** Media query, e.g. "(min-width: 768px)". Order crops from widest to narrowest query. */
+  media: string;
+  /** Aspect ratio as width / height, e.g. 4 / 5. */
+  ratio: number;
+  position?: FocalPosition;
+}
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** Fallback crop for the smallest screens (no media query). */
+  ratio: number;
+  position?: FocalPosition;
+  crops?: Crop[];
+  /** Candidate widths in px; capped at the source width. */
+  widths?: number[];
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  /** Adds a slow scroll parallax to the image inside its frame. */
+  parallax?: boolean;
+  /** Adds the clip reveal when the frame scrolls into view. */
+  reveal?: boolean;
+  class?: string;
+  imgClass?: string;
+}
+
+const {
+  src,
+  alt,
+  ratio,
+  position = 'center',
+  crops = [],
+  widths = [480, 720, 960, 1280],
+  sizes = '100vw',
+  loading = 'lazy',
+  fetchpriority,
+  parallax = false,
+  reveal = true,
+  class: className,
+  imgClass,
+} = Astro.props;
+
+// Largest crop that fits inside the source for a given ratio.
+function maxCrop(r: number) {
+  const width = Math.min(src.width, Math.floor(src.height * r));
+  return { width, height: Math.round(width / r) };
+}
+
+async function buildSet(r: number, pos: FocalPosition) {
+  const max = maxCrop(r);
+  const candidates = [...new Set([...widths.filter((w) => w < max.width), max.width])];
+  const images = await Promise.all(
+    candidates.map((w) =>
+      getImage({ src, width: w, height: Math.round(w / r), fit: 'cover', position: pos, format: 'webp' }),
+    ),
+  );
+  const largest = images[images.length - 1];
+  return {
+    srcset: images.map((img, i) => `${img.src} ${candidates[i]}w`).join(', '),
+    src: largest.src,
+    width: max.width,
+    height: max.height,
+  };
+}
+
+const sources = await Promise.all(
+  crops.map(async (crop) => ({ media: crop.media, ...(await buildSet(crop.ratio, crop.position ?? position)) })),
+);
+const fallback = await buildSet(ratio, position);
+
+// Per breakpoint aspect ratio for the frame, so the box is correct even before the image decodes.
+const frameKey = JSON.stringify([src.src, fallback.width, fallback.height, sources.map((s) => [s.media, s.width, s.height])]);
+const frameId = `art-${Math.abs([...frameKey].reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) | 0, 7)).toString(36)}`;
+const frameCss = [
+  `.${frameId}{aspect-ratio:${fallback.width}/${fallback.height}}`,
+  ...[...sources].reverse().map((s) => `@media ${s.media}{.${frameId}{aspect-ratio:${s.width}/${s.height}}}`),
+].join('');
+---
+
+<style set:html={frameCss}></style>
+<div
+  class:list={['relative overflow-hidden bg-wall-deep', frameId, className]}
+  data-reveal={reveal ? 'image' : undefined}
+>
+  <picture>
+    {sources.map((s) => <source media={s.media} srcset={s.srcset} sizes={sizes} width={s.width} height={s.height} type="image/webp" />)}
+    <img
+      src={fallback.src}
+      srcset={fallback.srcset}
+      sizes={sizes}
+      width={fallback.width}
+      height={fallback.height}
+      alt={alt}
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+      class:list={['absolute inset-0 size-full object-cover', parallax && 'scale-[1.12]', imgClass]}
+      data-parallax={parallax ? '0.05' : undefined}
+    />
+  </picture>
+</div>

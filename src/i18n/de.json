@@ -6,13 +6,210 @@
     "label": "English",
     "title": "Diese Seite auf Englisch lesen"
   },
+  "languageHint": {
+    "region": "Sprachhinweis",
+    "text": "Diese Website gibt es auch auf Deutsch.",
+    "action": "Zur deutschen Fassung",
+    "dismiss": "Hinweis schließen"
+  },
+  "nav": {
+    "label": "Hauptnavigation",
+    "mobileLabel": "Hauptnavigation mobil",
+    "footerLabel": "Seiten",
+    "legalLabel": "Rechtliches",
+    "menu": "Menü",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "logoLabel": "KurstadtTattoo Bad Nauheim, zur Startseite",
+    "items": {
+      "home": "Start",
+      "gallery": "Galerie",
+      "artists": "Künstler",
+      "hygiene": "Hygiene",
+      "consultation": "Beratung",
+      "aftercare": "Pflegetipps",
+      "faq": "FAQ",
+      "engraving": "Gravur-Service",
+      "contact": "Kontakt",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz",
+      "booking": "Termin buchen"
+    }
+  },
+  "theme": {
+    "label": "Dunkles Design"
+  },
+  "studio": {
+    "tagline": "Tattoo Studio in Bad Nauheim",
+    "addressLabel": "Studio",
+    "newAddressNote": "Neuer Standort ab 1. Dezember 2026",
+    "country": "Deutschland",
+    "contactLabel": "Kontakt",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-Mail",
+    "hoursLabel": "Öffnungszeiten",
+    "hours": "Montag bis Freitag, 12 bis 18 Uhr",
+    "hoursNote": "oder nach Vereinbarung",
+    "hoursUnconfirmed": "Bisherige Zeiten. Die Zeiten am neuen Standort erfragen Sie bitte telefonisch.",
+    "followLabel": "Folgen",
+    "tiktok": "Patrick auf TikTok"
+  },
+  "footer": {
+    "about": "Tattoos von Patrick Wolf in Bad Nauheim: realistische Porträts, feine Linien und Motive nach Ihrer eigenen Vorlage.",
+    "expertLabel": "Gutachten",
+    "expertText": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als zertifizierter Gutachter auf",
+    "copyright": "KurstadtTattoo Bad Nauheim",
+    "cookieSettings": "Cookie-Einstellungen"
+  },
+  "reopening": {
+    "label": "Neueröffnung",
+    "strip": "Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A",
+    "title": "Neues Studio ab dem 1. Dezember 2026",
+    "text": "KurstadtTattoo zieht um. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim. Bis dahin bleibt das Studio geschlossen.",
+    "closing": "Neuer Standort, neues Studio, die gleiche Leidenschaft."
+  },
+  "trust": {
+    "label": "Worauf Sie sich verlassen können",
+    "items": [
+      {
+        "key": "hygiene",
+        "title": "Hygiene",
+        "text": "Wir legen großen Wert auf Hygiene und eine sichere Atmosphäre im Studio."
+      },
+      {
+        "key": "consultation",
+        "title": "Beratung",
+        "text": "Wir planen Ihr Motiv eng mit Ihnen zusammen, gern auch nach Ihrer eigenen Vorlage."
+      },
+      {
+        "key": "aftercare",
+        "title": "Nachsorge",
+        "text": "Nach dem Termin bieten wir Ihnen eine Nachsorge an und erklären die Pflege."
+      },
+      {
+        "key": "reopening",
+        "title": "Neueröffnung",
+        "text": "Ab dem 1. Dezember 2026 am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    ]
+  },
+  "gallery": {
+    "open": "Vergrößern",
+    "dialogLabel": "Bildansicht",
+    "close": "Schließen",
+    "prev": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "counter": "Bild {current} von {total}"
+  },
+  "steps": {
+    "stepPrefix": "Schritt"
+  },
+  "cta": {
+    "label": "Kontakt aufnehmen",
+    "callPrefix": "Anrufen",
+    "emailLink": "Oder schreiben Sie uns eine E-Mail"
+  },
   "pages": {
     "home": {
       "title": "Tattoo Studio Bad Nauheim | KurstadtTattoo",
-      "description": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in Bad Nauheim. Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
-      "heading": "KurstadtTattoo Bad Nauheim",
-      "intro": "Tattoos und Piercings in Bad Nauheim. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
-      "status": "Die neue Website entsteht gerade."
+      "description": "KurstadtTattoo, Ihr Tattoo Studio in Bad Nauheim nahe Frankfurt: realistische Porträts und Fine Line von Patrick Wolf. Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
+      "hero": {
+        "eyebrow": "Tattoo Studio Bad Nauheim, Wetterau",
+        "heading": "Tattoo Studio in Bad Nauheim für realistische Porträts und feine Linien",
+        "intro": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt. Sie bringen Ihre Idee oder Ihre eigene Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
+        "worksLink": "Arbeiten ansehen",
+        "imageCaption": "Arbeit aus dem Studio",
+        "addressLabel": "Neues Studio ab 1. Dezember 2026"
+      },
+      "art": {
+        "id": "arbeiten",
+        "eyebrow": "Kunst",
+        "title": "Welche Tattoos entstehen bei KurstadtTattoo?",
+        "intro": "Unser Schwerpunkt sind realistische Porträts und feine Linien. Dazu kommen farbige Motive, Black and Grey, Blackwork, Schriftzüge und ornamentale Arbeiten.",
+        "stylesLabel": "Stile und Schwerpunkte",
+        "styles": [
+          {
+            "title": "Realistik und Porträts",
+            "text": "Tiere, Menschen und Erinnerungen, detailgenau auf die Haut gebracht."
+          },
+          {
+            "title": "Fine Line",
+            "text": "Filigrane Motive mit feinen Linien, von der Libelle bis zum Schriftzug."
+          },
+          {
+            "title": "Farbe, Black and Grey, Blackwork",
+            "text": "Von farbenfrohen Designs bis zu ornamental gestalteten Arbeiten in Schwarz."
+          },
+          {
+            "title": "Ihre eigene Vorlage",
+            "text": "Sie bringen ein eigenes Design mit, wir setzen es als Ihr individuelles Tattoo um."
+          },
+          {
+            "title": "Fertigstellen",
+            "text": "Tattoos, die in einem anderen Studio begonnen wurden, stellen wir fertig."
+          }
+        ],
+        "galleryLabel": "Auswahl an Tattoos aus dem Studio",
+        "galleryNote": "Echte Arbeiten aus dem Studio KurstadtTattoo. Tippen Sie auf ein Bild, um es groß zu sehen.",
+        "galleryLink": "Zur ganzen Galerie"
+      },
+      "hygiene": {
+        "id": "hygiene",
+        "eyebrow": "Hygiene",
+        "title": "Welche Rolle spielt Hygiene bei KurstadtTattoo?",
+        "intro": "Hygiene gehört seit der Gründung zu den Werten, auf die wir am meisten achten, gemeinsam mit Qualität und Ihrer Zufriedenheit.",
+        "text": "Jeder bei uns arbeitet nach diesen Maßstäben: Hygiene, Professionalität und Kundenzufriedenheit. Zur Sauberkeit gehört auch die Zeit danach. Wir erklären Ihnen die Pflege in der Heilung und bieten Ihnen eine Nachsorge an.",
+        "imageAlt": "Patrick Wolf tätowiert mit schwarzen Handschuhen und abgedeckter Tattoomaschine einen Unterarm",
+        "careTitle": "Was Sie in der Heilung beachten",
+        "care": [
+          "Waschen Sie gründlich die Hände, bevor Sie das Tattoo berühren.",
+          "Nehmen Sie die Folie nach den ersten Stunden ab, reinigen Sie die Stelle mit lauwarmem Wasser und milder Seife und tupfen Sie sie trocken.",
+          "Tragen Sie eine dünne Schicht Heilsalbe auf.",
+          "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pool oder See, bis die Haut verheilt ist.",
+          "Bei starker Rötung, Schwellung oder eitrigen Absonderungen gehen Sie bitte umgehend zum Arzt."
+        ],
+        "aftercareLink": "Alle Pflegetipps"
+      },
+      "process": {
+        "id": "ablauf",
+        "eyebrow": "Beratung und Ablauf",
+        "title": "Wie läuft ein Tattoo bei KurstadtTattoo ab?",
+        "intro": "In vier Schritten: Anruf, Beratung zu Motiv und Stelle, Termin im Studio und Nachsorge. Bevor die erste Linie gestochen wird, planen wir das Motiv gemeinsam mit Ihnen.",
+        "consultationLink": "Mehr zu Beratung und Ablauf"
+      },
+      "artists": {
+        "id": "kuenstler",
+        "eyebrow": "Künstler",
+        "title": "Wer tätowiert bei KurstadtTattoo?",
+        "lead": "Patrick Wolf führt KurstadtTattoo und ist unser Spezialist für realistische Porträts und feine Linien.",
+        "text": "Mit seinem Auge für Details und seiner ruhigen Hand verwandelt er Ihre Erinnerungen und Ideen in Kunstwerke auf Ihrer Haut.",
+        "imageAlt": "Patrick Wolf mit Sonnenbrille und verschränkten, tätowierten Armen vor der Neon Wand mit dem KurstadtTattoo Logo",
+        "artistsLink": "Mehr über unsere Künstler"
+      },
+      "location": {
+        "id": "studio",
+        "eyebrow": "Standort",
+        "title": "Wo finden Sie KurstadtTattoo?",
+        "intro": "Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bad Nauheim liegt in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt.",
+        "mapLink": "Route in Google Maps öffnen",
+        "mapNote": "öffnet Google Maps in einem neuen Tab"
+      },
+      "faq": {
+        "id": "fragen",
+        "eyebrow": "FAQ",
+        "title": "Häufige Fragen vor dem ersten Tattoo",
+        "faqLink": "Alle Fragen und Antworten"
+      },
+      "expert": {
+        "eyebrow": "Gutachten",
+        "title": "Sie brauchen ein Gutachten zu einem Tattoo?",
+        "text": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als geprüfter und zertifizierter Gutachter des DGuSV. Alles dazu finden Sie auf seiner eigenen Website.",
+        "link": "Zu tattoogutachten.de"
+      },
+      "cta": {
+        "title": "Ihr nächstes Tattoo beginnt mit einem Gespräch.",
+        "text": "Erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 empfangen wir Sie im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
     },
     "notFound": {
       "title": "Seite nicht gefunden | KurstadtTattoo",
@@ -20,6 +217,1051 @@
       "heading": "Seite nicht gefunden",
       "text": "Die Adresse ist nicht oder nicht mehr vorhanden.",
       "homeLink": "Zur Startseite"
+    },
+    "gallery": {
+      "title": "Tattoo Galerie Bad Nauheim nach Stilen | KurstadtTattoo",
+      "description": "Echte Tattoos aus dem Studio KurstadtTattoo in Bad Nauheim: realistische Porträts, Farbe, Fine Line, Schriftzüge, Blackwork und Tribal, nach Stilen sortiert.",
+      "eyebrow": "Galerie",
+      "heading": "Tattoo Galerie: Arbeiten aus dem Studio in Bad Nauheim",
+      "lead": "Hier sehen Sie echte Tattoos aus dem Studio KurstadtTattoo, sortiert nach Stil: Realistik und Porträts, Farbe, Fine Line, Schriftzüge sowie Blackwork und Tribal. Tippen Sie auf ein Bild, um es groß zu sehen.",
+      "stylesLabel": "Stile in der Galerie",
+      "countLabel": "{count} Arbeiten",
+      "groups": {
+        "realism": {
+          "id": "realistik",
+          "title": "Realistik und Porträts",
+          "intro": "Realistische Porträts sind Patricks Schwerpunkt: Tiere, Symbole und Figuren in Black and Grey, gestochen mit einem Auge für Details."
+        },
+        "colour": {
+          "id": "farbe",
+          "title": "Farbe",
+          "intro": "Farbige Motive von realistisch bis verspielt: der Fuchs in Orange, der Hase vor dem Mond, der Schlumpf als Cyborg."
+        },
+        "fineLine": {
+          "id": "fine-line",
+          "title": "Fine Line und Blüten",
+          "intro": "Feine Linien sind der zweite Schwerpunkt im Studio, für filigrane Motive wie die Libelle und zarte Blütenzweige."
+        },
+        "lettering": {
+          "id": "schriftzuege",
+          "title": "Schriftzüge",
+          "intro": "Namen, Daten, Unterschriften und Sätze, die bleiben sollen, in Schreibschrift, Fraktur und Druckbuchstaben."
+        },
+        "blackwork": {
+          "id": "blackwork",
+          "title": "Blackwork und Tribal",
+          "intro": "Flächiges Schwarz, geometrische Muster, Tribal und ornamentale Arbeiten, vom Armband bis zum ganzen Arm."
+        }
+      },
+      "ownDesign": {
+        "title": "Ihr Motiv ist nicht dabei?",
+        "text": "Die Galerie zeigt eine Auswahl. Sie können Ihre eigene Vorlage mitbringen, und wir planen daraus gemeinsam Ihr Tattoo.",
+        "link": "So läuft die Beratung ab"
+      },
+      "video": {
+        "title": "Ein großes Rückentattoo im Video",
+        "text": "Ein Adlermotiv über den ganzen Rücken zeigt Patrick in einem Video auf YouTube."
+      },
+      "cta": {
+        "title": "Welches Motiv soll es werden?",
+        "text": "Erzählen Sie uns Ihre Idee am Telefon. Ab dem 1. Dezember 2026 tätowieren wir im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "artists": {
+      "title": "Tätowierer in Bad Nauheim: Patrick Wolf | KurstadtTattoo",
+      "description": "Patrick Wolf führt KurstadtTattoo in Bad Nauheim und ist Spezialist für realistische Porträts und Fine Line. Lernen Sie den Künstler, seine Schwerpunkte und seine Arbeitsweise kennen.",
+      "eyebrow": "Künstler",
+      "heading": "Patrick Wolf, Tätowierer in Bad Nauheim",
+      "lead": "Patrick Wolf führt KurstadtTattoo und ist unser Spezialist für realistische Porträts und feine Linien. Mit seinem Auge für Details und seiner ruhigen Hand bringt er Ihre Erinnerungen und Ideen als Kunstwerk auf die Haut.",
+      "imageAlt": "Patrick Wolf lächelnd im schwarzen KurstadtTattoo Shirt mit tätowierten Armen in einem hellen Studio",
+      "focus": {
+        "id": "schwerpunkte",
+        "eyebrow": "Schwerpunkte",
+        "title": "Worauf ist Patrick Wolf spezialisiert?",
+        "intro": "Auf realistische Porträts und feine Linien. Eine fertige Zeichnung brauchen Sie dafür nicht: Fotos, Erinnerungen oder eine Idee sind ein guter Ausgangspunkt.",
+        "items": [
+          {
+            "title": "Realistische Porträts",
+            "text": "Menschen, Tiere und Erinnerungen, detailgenau umgesetzt, zum Beispiel das Porträt eines Hundes in einer Pfote.",
+            "link": "Realistik in der Galerie"
+          },
+          {
+            "title": "Fine Line",
+            "text": "Filigrane Motive mit feinen Linien, von der Libelle bis zu Blütenzweigen.",
+            "link": "Fine Line in der Galerie"
+          },
+          {
+            "title": "Ihre eigene Vorlage",
+            "text": "Eigene Designs setzt Patrick als individuelles Tattoo um, ganz nach Ihren Wünschen.",
+            "link": "Mehr zur Beratung"
+          }
+        ]
+      },
+      "values": {
+        "id": "arbeitsweise",
+        "eyebrow": "Arbeitsweise",
+        "title": "Wie arbeitet Patrick Wolf?",
+        "lead": "Eng mit Ihnen zusammen, bis das Motiv genau Ihren Vorstellungen entspricht.",
+        "text": "Jeder bei KurstadtTattoo arbeitet nach drei Maßstäben: Hygiene, Professionalität und Kundenzufriedenheit.",
+        "items": [
+          {
+            "title": "Hygiene",
+            "text": "Eine angenehme und sichere Atmosphäre im Studio und eine saubere Heilung danach."
+          },
+          {
+            "title": "Professionalität",
+            "text": "Sorgfalt und eine ruhige Hand, vom Entwurf bis zum letzten Stich."
+          },
+          {
+            "title": "Kundenzufriedenheit",
+            "text": "Ihr Tattoo soll Ihren Wünschen entsprechen. Deshalb planen wir es gemeinsam."
+          }
+        ],
+        "imageAlt": "Patrick Wolf mit Sonnenbrille und verschränkten, tätowierten Armen vor der Neon Wand mit dem KurstadtTattoo Logo"
+      },
+      "story": {
+        "id": "geschichte",
+        "eyebrow": "Geschichte",
+        "title": "Wie ist Patrick zum Tätowieren gekommen?",
+        "text": "Das erzählt er am besten selbst, in einem Video auf dem YouTube Kanal von KurstadtTattoo. Auf TikTok finden Sie Patrick unter @patrickkurstadttattoo."
+      },
+      "expert": {
+        "title": "Gutachten zu Tattoos",
+        "text": "Neben dem Tätowieren erstellt Patrick Wolf als geprüfter und zertifizierter Gutachter des DGuSV Gutachten zu Tattoos und Piercings, auf seiner eigenen Website.",
+        "link": "Zu tattoogutachten.de"
+      },
+      "person": {
+        "jobTitle": "Tätowierer",
+        "description": "Tätowierer bei KurstadtTattoo in Bad Nauheim, spezialisiert auf realistische Porträts und Fine Line.",
+        "knowsAbout": [
+          "Realistische Tattoos",
+          "Porträt Tattoos",
+          "Fine Line Tattoos"
+        ]
+      },
+      "cta": {
+        "title": "Sprechen Sie mit Patrick über Ihr Motiv.",
+        "text": "Terminanfragen nehmen wir telefonisch an. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "hygiene": {
+      "title": "Hygiene im Tattoo Studio Bad Nauheim | KurstadtTattoo",
+      "description": "Was Hygiene bei KurstadtTattoo in Bad Nauheim bedeutet: ein Grundwert seit der Gründung, im Studio und in der Heilung Ihres Tattoos, mit Warnzeichen und Nachsorge.",
+      "eyebrow": "Hygiene",
+      "heading": "Hygiene bei KurstadtTattoo, im Studio und in der Heilung",
+      "lead": "Hygiene gehört seit der Gründung von KurstadtTattoo zu den Werten, auf die wir am meisten achten, gemeinsam mit Qualität und Ihrer Zufriedenheit. Sie beginnt im Studio und geht in der Heilung zu Hause weiter.",
+      "imageAlt": "Patrick Wolf tätowiert mit schwarzen Handschuhen und abgedeckter Tattoomaschine einen Unterarm",
+      "value": {
+        "id": "grundwert",
+        "eyebrow": "Grundwert",
+        "title": "Welchen Stellenwert hat Hygiene bei KurstadtTattoo?",
+        "intro": "Den höchsten. Jeder, der bei uns arbeitet, richtet sich nach drei Maßstäben: Hygiene, Professionalität und Kundenzufriedenheit.",
+        "items": [
+          {
+            "title": "Hygiene",
+            "text": "Steht bei uns seit der Gründung des Studios an erster Stelle."
+          },
+          {
+            "title": "Professionalität",
+            "text": "Sorgfalt vom ersten Gespräch bis zur Nachsorge."
+          },
+          {
+            "title": "Kundenzufriedenheit",
+            "text": "Sie sollen sich im Studio sicher und wohl fühlen."
+          }
+        ]
+      },
+      "studio": {
+        "id": "im-studio",
+        "eyebrow": "Im Studio",
+        "title": "Wie sieht Hygiene im Studio aus?",
+        "intro": "Unsere Räume sind modern und gut ausgestattet und bieten Ihnen eine angenehme und sichere Atmosphäre. Die Bilder aus dem Studio zeigen, wie Patrick arbeitet: mit Handschuhen und abgedeckter Tattoomaschine.",
+        "figures": [
+          {
+            "caption": "Beim Tätowieren: schwarze Handschuhe, die Maschine ist abgedeckt."
+          },
+          {
+            "caption": "Patrick an seinem Arbeitsplatz, mit Handschuhen.",
+            "alt": "Patrick Wolf sitzt lachend mit schwarzen Handschuhen an seinem Arbeitsplatz im Studio"
+          }
+        ],
+        "questions": "Sie möchten genauer wissen, wie wir arbeiten? Fragen Sie uns, am Telefon oder bei der Beratung im Studio."
+      },
+      "healing": {
+        "id": "heilung",
+        "eyebrow": "In der Heilung",
+        "title": "Was gehört nach dem Termin zur Hygiene?",
+        "intro": "Saubere Hände und eine saubere Wunde. Ein frisches Tattoo ist eine Wunde, die Sie zu Hause selbst pflegen.",
+        "items": [
+          "Waschen Sie gründlich die Hände, bevor Sie das Tattoo berühren.",
+          "Reinigen Sie die Stelle vorsichtig mit lauwarmem Wasser und milder Seife und tupfen Sie sie trocken.",
+          "Tragen Sie eine dünne Schicht Heilsalbe auf.",
+          "Tragen Sie lockere Kleidung, die nicht am Tattoo reibt, und schlafen Sie nicht auf der frischen Stelle.",
+          "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pools oder Seen, bis die Haut verheilt ist."
+        ],
+        "warningTitle": "Wann Sie zum Arzt gehen",
+        "warning": "Bei Anzeichen einer Infektion wie starker Rötung, Schwellung oder eitrigen Absonderungen gehen Sie bitte umgehend zum Arzt.",
+        "link": "Alle Pflegetipps nach Phasen"
+      },
+      "cta": {
+        "title": "Fragen zu Hygiene und Ablauf? Rufen Sie an.",
+        "text": "Ab dem 1. Dezember 2026 empfangen wir Sie im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "consultation": {
+      "title": "Tattoo Beratung und Ablauf in Bad Nauheim | KurstadtTattoo",
+      "description": "So läuft Ihr Tattoo bei KurstadtTattoo in Bad Nauheim ab: Anruf, gemeinsame Planung des Motivs, Termin im Studio und Nachsorge. Was Sie zur Beratung mitbringen können.",
+      "eyebrow": "Beratung und Ablauf",
+      "heading": "Tattoo Beratung: vom ersten Anruf bis zur Nachsorge",
+      "lead": "Ein Tattoo bei KurstadtTattoo entsteht in vier Schritten: Anruf, gemeinsame Planung des Motivs, Termin im Studio und Nachsorge. Bevor die erste Linie gestochen wird, planen wir das Motiv eng mit Ihnen zusammen.",
+      "process": {
+        "id": "ablauf",
+        "eyebrow": "Ablauf",
+        "title": "Wie läuft ein Tattoo bei KurstadtTattoo ab?",
+        "intro": "Schritt für Schritt, in dieser Reihenfolge. Den ersten Schritt machen Sie mit einem Anruf."
+      },
+      "bring": {
+        "id": "mitbringen",
+        "eyebrow": "Vorbereitung",
+        "title": "Was können Sie zur Beratung mitbringen?",
+        "intro": "Alles, was zeigt, wie Ihr Tattoo aussehen soll. Eine fertige Zeichnung brauchen Sie nicht.",
+        "items": [
+          {
+            "title": "Ihre Idee und die Körperstelle",
+            "text": "Erzählen Sie, welches Motiv Sie sich vorstellen und an welcher Stelle es sitzen soll."
+          },
+          {
+            "title": "Eine eigene Vorlage",
+            "text": "Eigene Designs setzen wir als individuelles Tattoo um, ganz nach Ihren Wünschen."
+          },
+          {
+            "title": "Fotos und Erinnerungen",
+            "text": "Für ein realistisches Porträt sind Fotos von Mensch oder Tier ein guter Ausgangspunkt."
+          },
+          {
+            "title": "Ein begonnenes Tattoo",
+            "text": "Tattoos, die in einem anderen Studio begonnen wurden, stellen wir fertig. Zeigen Sie uns den aktuellen Stand."
+          }
+        ]
+      },
+      "plan": {
+        "id": "planung",
+        "eyebrow": "Planung",
+        "title": "Wie planen wir Ihr Motiv?",
+        "lead": "Gemeinsam mit Ihnen, bis es Ihren Vorstellungen entspricht.",
+        "text": "Sie bringen Idee, Vorlage oder Fotos mit, wir setzen daraus Ihr individuelles Tattoo um. Welche Stile im Studio entstehen, zeigt die Galerie, von realistischen Porträts bis Blackwork.",
+        "link": "Galerie nach Stilen ansehen"
+      },
+      "cost": {
+        "id": "kosten",
+        "eyebrow": "Kosten",
+        "title": "Was kostet ein Tattoo?",
+        "text": "Wie sich der Preis eines Tattoos zusammensetzt, erklärt Patrick in einem kurzen Video. Für Ihr Motiv fragen Sie bitte telefonisch an."
+      },
+      "cta": {
+        "title": "Bereit für die Beratung?",
+        "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "aftercare": {
+      "title": "Tattoo Pflege und Heilung: Pflegetipps | KurstadtTattoo",
+      "description": "Tattoo Pflege in drei Phasen: die ersten Stunden, die Heilung und die Zeit danach. Pflegetipps von KurstadtTattoo in Bad Nauheim, mit Warnzeichen und Nachsorge.",
+      "eyebrow": "Pflegetipps",
+      "heading": "Tattoo Pflege nach dem Stechen, in drei Phasen",
+      "lead": "Die richtige Pflege ist entscheidend für die Heilung und dafür, wie Ihr Tattoo auf Dauer aussieht. Hier steht, was in den ersten Stunden, während der Heilung und danach zu tun ist.",
+      "imageAlt": "Patrick Wolf sitzt lachend mit schwarzen Handschuhen an seinem Arbeitsplatz im Studio",
+      "phases": {
+        "id": "phasen",
+        "eyebrow": "Phasen",
+        "title": "Wie pflegen Sie Ihr Tattoo Schritt für Schritt?",
+        "intro": "In drei Phasen, die aufeinander folgen. Für alle gilt: Waschen Sie gründlich die Hände, bevor Sie das Tattoo berühren.",
+        "prefix": "Phase",
+        "items": [
+          {
+            "title": "Die ersten Stunden",
+            "points": [
+              "Nehmen Sie die Folie nach den ersten Stunden ab.",
+              "Reinigen Sie die Stelle vorsichtig mit lauwarmem Wasser und einer milden Seife.",
+              "Tupfen Sie die Stelle trocken und tragen Sie eine dünne Schicht einer empfohlenen Heilsalbe auf."
+            ]
+          },
+          {
+            "title": "Während der Heilung",
+            "points": [
+              "Reinigen Sie das Tattoo regelmäßig und pflegen Sie es mit einer Tattoo Pflegecreme.",
+              "Kratzen Sie nicht.",
+              "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pools oder Seen. Das alles kann die Wundheilung beeinträchtigen.",
+              "Tragen Sie lockere Kleidung, die nicht am Tattoo reibt.",
+              "Schlafen Sie nicht auf der frisch tätowierten Stelle."
+            ]
+          },
+          {
+            "title": "Nach der Heilung",
+            "points": [
+              "Pflegen Sie Ihr Tattoo weiter regelmäßig mit einer Feuchtigkeitscreme ohne Duftstoffe.",
+              "Schützen Sie es vor intensiver Sonne mit einem hohen Lichtschutzfaktor. So bleiben Farben und Aussehen erhalten."
+            ]
+          }
+        ]
+      },
+      "warning": {
+        "id": "warnzeichen",
+        "eyebrow": "Warnzeichen",
+        "title": "Wann sollten Sie zum Arzt gehen?",
+        "text": "Sofort, wenn Sie Anzeichen einer Infektion bemerken: starke Rötung, Schwellung oder eitrige Absonderungen."
+      },
+      "support": {
+        "id": "nachsorge",
+        "eyebrow": "Nachsorge",
+        "title": "Was tun bei Fragen zur Heilung?",
+        "text": "Rufen Sie uns an. Bei Fragen oder Problemen sind wir jederzeit für Sie da und bieten Ihnen gern eine Nachsorge an."
+      },
+      "cta": {
+        "title": "Fragen zur Pflege Ihres Tattoos?",
+        "text": "Rufen Sie uns an. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "faq": {
+      "title": "Tattoo FAQ: Termin, Vorlage, Pflege und Studio | KurstadtTattoo",
+      "description": "Antworten von KurstadtTattoo in Bad Nauheim zu Termin, eigener Vorlage, Fertigstellen, Stilen, Pflege, Nachsorge, Öffnungszeiten und dem neuen Studio. Weitere Antworten von Patrick im Video.",
+      "eyebrow": "FAQ",
+      "heading": "Häufige Fragen zum Tattoo bei KurstadtTattoo",
+      "lead": "Hier finden Sie schriftliche Antworten auf die Fragen, die wir am häufigsten hören. Zu Farben, Kosten, Neurodermitis und veganen Farben antwortet Patrick in kurzen Videos.",
+      "groups": {
+        "booking": {
+          "id": "termin",
+          "title": "Termin und Beratung"
+        },
+        "session": {
+          "id": "heilung",
+          "title": "Tätowieren und Heilung"
+        },
+        "studio": {
+          "id": "studio",
+          "title": "Studio und Öffnungszeiten"
+        }
+      },
+      "videos": {
+        "id": "videos",
+        "eyebrow": "Video",
+        "title": "Welche Fragen beantwortet Patrick im Video?",
+        "intro": "Diese Fragen beantwortet Patrick selbst, in kurzen Videos auf YouTube."
+      },
+      "cta": {
+        "title": "Ihre Frage ist nicht dabei?",
+        "text": "Rufen Sie uns an oder schreiben Sie uns eine E-Mail. Wir beantworten Ihre Frage gern persönlich."
+      }
+    },
+    "engraving": {
+      "title": "Lasergravur Bad Nauheim | Gravur-Service von KurstadtTattoo",
+      "description": "Gravur-Service von KurstadtTattoo in Bad Nauheim: Lasergravuren auf Kunststoff, Aluminium, Messing, Edelstahl, Holz und Glas, auch mit Logos und Grafiken.",
+      "eyebrow": "Gravur-Service",
+      "heading": "Lasergravur auf Kunststoff, Metall, Holz und Glas",
+      "lead": "Neben Tattoos bietet KurstadtTattoo individuelle Lasergravuren an: auf Kunststoff, Aluminium, Messing, Edelstahl, Holz, Glas und Leder. Auch Logos und Grafiken setzen wir als Gravur um.",
+      "materials": {
+        "id": "materialien",
+        "eyebrow": "Materialien",
+        "title": "Auf welchen Materialien graviert KurstadtTattoo?",
+        "intro": "Hier sehen Sie je Material, wofür sich die Gravur eignet.",
+        "items": [
+          {
+            "title": "Kunststoff",
+            "points": [
+              "Für innen und außen geeignet",
+              "Namensschilder, Tür- und Klingelschilder, Kugelschreiber, Hinweisschilder und Pokalschilder",
+              "Größe frei wählbar, bis maximal 400 x 115 mm"
+            ]
+          },
+          {
+            "title": "Aluminium",
+            "points": [
+              "Besonders hochwertig, sehr langlebig und witterungsbeständig",
+              "Zum Beispiel Visitenkarten",
+              "Individuelle Typenschilder nach Ihren Vorgaben"
+            ]
+          },
+          {
+            "title": "Messing und Edelstahl",
+            "points": [
+              "Für innen und außen geeignet",
+              "Edles Design",
+              "Auch Logos und Grafiken"
+            ]
+          },
+          {
+            "title": "Holz",
+            "points": [
+              "Brotzeitbrett, Kochlöffel oder Ihr individuelles Geschenk"
+            ]
+          },
+          {
+            "title": "Glas",
+            "points": [
+              "Weizenglas, Bierkrug oder Sektglas, zum Beispiel für Ihren Hochzeitsempfang"
+            ]
+          }
+        ]
+      },
+      "examples": {
+        "id": "beispiele",
+        "eyebrow": "Beispiele",
+        "title": "Wie sieht eine Lasergravur aus?",
+        "intro": "Das Logo von KurstadtTattoo als Lasergravur auf drei Materialien.",
+        "label": "Beispiele für Lasergravuren",
+        "items": {
+          "glass": {
+            "title": "Glas",
+            "meta": "Logo als Lasergravur",
+            "alt": "Trinkglas mit dem KurstadtTattoo Logo als Lasergravur"
+          },
+          "mug": {
+            "title": "Tasse",
+            "meta": "Logo als Lasergravur",
+            "alt": "Schwarze Tasse mit dem eingravierten KurstadtTattoo Logo"
+          },
+          "wood": {
+            "title": "Holz",
+            "meta": "Logo als Lasergravur",
+            "alt": "Holzscheibe mit dem eingravierten Logo von KurstadtTattoo Bad Nauheim"
+          }
+        }
+      },
+      "cta": {
+        "title": "Sie möchten etwas gravieren lassen?",
+        "text": "Fragen Sie Ihre Gravur telefonisch an. Sagen Sie uns, was graviert werden soll und auf welchem Material."
+      }
+    },
+    "contact": {
+      "title": "Kontakt und Anfahrt | KurstadtTattoo Bad Nauheim",
+      "description": "KurstadtTattoo in Bad Nauheim: ab 1. Dezember 2026 am Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Terminanfragen telefonisch unter {phone}, dazu Öffnungszeiten und Anfahrt.",
+      "eyebrow": "Kontakt",
+      "heading": "Kontakt und Anfahrt zu KurstadtTattoo in Bad Nauheim",
+      "lead": "Terminanfragen nehmen wir telefonisch an, unter {phone}. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim.",
+      "details": {
+        "id": "erreichen",
+        "eyebrow": "Studio",
+        "title": "Wie erreichen Sie KurstadtTattoo?",
+        "intro": "Am schnellsten per Telefon. Für alle weiteren Fragen schreiben Sie uns eine E-Mail.",
+        "phoneNote": "Für Terminanfragen",
+        "emailNote": "Für weitere Fragen",
+        "region": "Bad Nauheim liegt in der Wetterau, bei Friedberg und kurz vor den Toren von Frankfurt."
+      },
+      "oldAddress": {
+        "title": "Bisheriger Standort",
+        "text": "Das Studio in der Parkstr. 22 ist geschlossen. Ab dem 1. Dezember 2026 finden Sie uns am Friedrich-Ebert-Platz 1A."
+      },
+      "follow": {
+        "id": "online",
+        "eyebrow": "Online",
+        "title": "Wo finden Sie KurstadtTattoo online?",
+        "studioTiktok": "KurstadtTattoo auf TikTok",
+        "youtube": "KurstadtTattoo auf YouTube"
+      },
+      "expert": {
+        "title": "Sie suchen einen Gutachter für Tattoos?",
+        "text": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als geprüfter und zertifizierter Gutachter des DGuSV auf seiner eigenen Website.",
+        "link": "Zu tattoogutachten.de"
+      },
+      "cta": {
+        "title": "Wir freuen uns auf Ihren Anruf.",
+        "text": "Erzählen Sie uns Ihre Idee, wir planen Ihr Tattoo gemeinsam mit Ihnen."
+      }
+    },
+    "booking": {
+      "title": "Beratungstermin buchen | KurstadtTattoo Bad Nauheim",
+      "description": "Beratungstermin bei KurstadtTattoo in Bad Nauheim online im Kalender wählen oder telefonisch unter {phone} vereinbaren. Mit Hinweisen, was Sie für die Tattoo Beratung vorbereiten können.",
+      "eyebrow": "Termin buchen",
+      "heading": "Beratungstermin für Ihr Tattoo buchen",
+      "lead": "Wählen Sie im Kalender einen freien Termin für die Beratung oder rufen Sie uns an unter {phone}. In der Beratung planen wir Ihr Motiv gemeinsam mit Ihnen.",
+      "prepareLink": "Was Sie vorbereiten können",
+      "calendar": {
+        "id": "kalender",
+        "eyebrow": "Kalender",
+        "title": "Wählen Sie einen freien Termin.",
+        "intro": "Tag wählen, Uhrzeit wählen, Name und E-Mail-Adresse eintragen. Kein passender Termin dabei? Rufen Sie an oder schreiben Sie eine E-Mail."
+      },
+      "prepare": {
+        "id": "vorbereiten",
+        "eyebrow": "Vorbereitung",
+        "title": "Was können Sie für die Beratung vorbereiten?",
+        "intro": "Je klarer Ihre Idee, desto besser lässt sich das Motiv planen. Eine fertige Zeichnung brauchen Sie nicht.",
+        "items": [
+          {
+            "title": "Ihre Motividee",
+            "text": "Was soll Ihr Tattoo zeigen? Ein paar Stichworte reichen für den Anfang."
+          },
+          {
+            "title": "Die Körperstelle",
+            "text": "An welcher Stelle soll das Tattoo sitzen?"
+          },
+          {
+            "title": "Die ungefähre Größe",
+            "text": "Eine grobe Angabe hilft, das Motiv auf die Stelle abzustimmen."
+          },
+          {
+            "title": "Den Stil",
+            "text": "Realistisch, farbig, feine Linien, Schrift oder Blackwork. Die Galerie zeigt Beispiele aus dem Studio."
+          },
+          {
+            "title": "Vorlagen und Fotos",
+            "text": "Eigene Designs, Bilder als Inspiration oder Fotos für ein Porträt von Mensch oder Tier."
+          }
+        ],
+        "consultationLink": "Wie die Beratung abläuft"
+      },
+      "cta": {
+        "title": "Lieber direkt sprechen?",
+        "text": "Rufen Sie an und erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "imprint": {
+      "title": "Impressum | KurstadtTattoo Bad Nauheim",
+      "description": "Impressum von kurstadttattoo.de: Anbieter ist die {operator} in {city}, vertreten durch den Geschäftsführer {name}. Kontakt, Handelsregister und Umsatzsteuer-ID.",
+      "eyebrow": "Rechtliches",
+      "heading": "Impressum",
+      "lead": "Anbieter dieser Website ist die {operator} mit Sitz in {city}, vertreten durch den Geschäftsführer {name}.",
+      "updated": "Stand: 12. November 2026",
+      "provider": {
+        "title": "Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)",
+        "represented": "Vertreten durch den Geschäftsführer {name}"
+      },
+      "contact": {
+        "title": "Kontakt"
+      },
+      "register": {
+        "title": "Handelsregister",
+        "court": "Registergericht",
+        "number": "Registernummer"
+      },
+      "vat": {
+        "title": "Umsatzsteuer-Identifikations­nummer",
+        "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
+      },
+      "profession": {
+        "title": "Berufsbezeichnung",
+        "text": "{name}, Tätowierer und Piercer"
+      },
+      "studio": {
+        "title": "Anschrift des Studios",
+        "reopening": "Das Studio öffnet am 1. Dezember 2026 an dieser neuen Adresse."
+      },
+      "dispute": {
+        "title": "Verbraucher­streit­beilegung",
+        "text": "Die {operator} ist weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+      },
+      "content": {
+        "title": "Haftung für Inhalte",
+        "paragraphs": [
+          "Als Diensteanbieter ist die {operator} für die eigenen Inhalte dieser Website nach den allgemeinen Gesetzen verantwortlich. Wir erstellen sie mit Sorgfalt, für Vollständigkeit und Aktualität können wir jedoch keine Gewähr übernehmen.",
+          "Sobald wir von einer konkreten Rechtsverletzung erfahren, entfernen wir den betreffenden Inhalt umgehend."
+        ]
+      },
+      "links": {
+        "title": "Haftung für Links",
+        "paragraphs": [
+          "Diese Website verweist auf Seiten anderer Anbieter, etwa auf TikTok, YouTube, Google Maps oder cal.com. Für deren Inhalte ist der jeweilige Anbieter verantwortlich; wir machen sie uns nicht zu eigen.",
+          "Beim Setzen der Links waren keine Rechtsverstöße erkennbar. Eine ständige Kontrolle der verlinkten Seiten ist ohne konkreten Anlass nicht zumutbar. Erfahren wir von einer Rechtsverletzung, entfernen wir den Link umgehend."
+        ]
+      },
+      "copyright": {
+        "title": "Urheberrecht",
+        "paragraphs": [
+          "Texte, Fotos, Grafiken und das Logo auf dieser Website unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Rechteinhabers.",
+          "Sollten Sie auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen Hinweis. Wir entfernen betroffene Inhalte dann umgehend."
+        ]
+      },
+      "privacy": {
+        "label": "Datenschutz",
+        "text": "Welche Daten beim Besuch dieser Website und bei der Terminbuchung verarbeitet werden, steht in der",
+        "link": "Datenschutzerklärung"
+      }
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung | KurstadtTattoo Bad Nauheim",
+      "description": "Datenschutzerklärung von kurstadttattoo.de: Hosting bei GitHub Pages, Einwilligung, Terminbuchung über cal.com, Kontakt per Telefon und E-Mail, Ihre Rechte.",
+      "eyebrow": "Rechtliches",
+      "heading": "Datenschutzerklärung",
+      "lead": "Diese Website kommt ohne eigene Cookies, ohne Analyse und ohne Werbedienste aus. Neben dem Hosting bei GitHub Pages kommt ein weiterer Dienst nur mit Ihrer Einwilligung ins Spiel: der Kalender der Online-Terminbuchung.",
+      "leadAnalytics": "Diese Website setzt keine eigenen Cookies und nutzt keine Werbedienste. Neben dem Hosting bei GitHub Pages kommen weitere Dienste nur mit Ihrer Einwilligung ins Spiel: der Kalender der Online-Terminbuchung und die Statistik mit Google Analytics.",
+      "updated": "Stand: 12. November 2026",
+      "tocLabel": "Auf dieser Seite",
+      "tocNavLabel": "Inhalt der Datenschutzerklärung",
+      "newWindow": "(öffnet in einem neuen Fenster)",
+      "controller": {
+        "title": "Verantwortlicher",
+        "intro": "Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:",
+        "represented": "Vertreten durch den Geschäftsführer {name}",
+        "questions": "Fragen zum Datenschutz richten Sie bitte an die oben genannten Kontaktdaten."
+      },
+      "hosting": {
+        "title": "Hosting bei GitHub Pages",
+        "provider": "Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an die Server von GitHub. Dazu gehören Ihre IP-Adresse, Datum und Uhrzeit des Abrufs, die aufgerufene Adresse, die zuvor besuchte Seite (Referrer) sowie Angaben zu Browser und Betriebssystem.",
+        "logs": "Nach eigenen Angaben speichert GitHub die IP-Adresse der Besucher von GitHub Pages zu Sicherheitszwecken. Auf diese Protokolle haben wir keinen Zugriff, und wir werten sie nicht aus. Wie lange GitHub sie aufbewahrt, legt GitHub fest.",
+        "basis": "Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einer sicheren und zuverlässigen Bereitstellung der Website.",
+        "transfer": "Dabei werden Daten in die USA übermittelt. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert; für die Übermittlung gilt damit der Angemessenheitsbeschluss der Europäischen Kommission nach Art. 45 DSGVO. Ergänzend stützt sich GitHub auf die Standardvertragsklauseln der Europäischen Kommission. Einzelheiten stehen in der",
+        "privacyLink": "Datenschutzerklärung von GitHub",
+        "https": "Alle Seiten werden verschlüsselt über HTTPS übertragen."
+      },
+      "storage": {
+        "title": "Schriften, Speicher und Cookies",
+        "fonts": "Die Schriften dieser Website liegen auf demselben Server wie die Seiten selbst. Beim Laden werden keine Daten an Schriftanbieter wie Google Fonts übertragen.",
+        "entries": "Unsere eigenen Seiten setzen keine Cookies. Im Speicher Ihres Browsers (localStorage) legen sie nur die folgenden Einträge ab, jeweils erst, wenn Sie die zugehörige Funktion nutzen. Keiner dieser Einträge enthält eine Kennung, und keiner verlässt Ihren Browser.",
+        "noTracking": "Wir verwenden keine Analyse oder Reichweitenmessung, keine Werbedienste und keine Social-Media-Plugins. Ein Dienst eines Dritten, der Kalender von cal.com, lädt nur mit Ihrer Einwilligung.",
+        "noTrackingAnalytics": "Wir verwenden keine Werbedienste und keine Social-Media-Plugins. Der Kalender von cal.com und die Statistik mit Google Analytics laden nur mit Ihrer Einwilligung.",
+        "columns": {
+          "entry": "Eintrag",
+          "written": "Geschrieben",
+          "purpose": "Zweck",
+          "duration": "Speicherdauer",
+          "consent": "Einwilligung"
+        },
+        "rows": {
+          "consent": {
+            "written": "wenn Sie im Hinweis, in den Cookie-Einstellungen oder im Buchungsbereich eine Wahl treffen",
+            "purpose": "Ihre Wahl speichern: Fassung des Hinweises, Zeitpunkt und welche Dienste laden dürfen",
+            "duration": "bis Sie die Wahl ändern oder den Speicher Ihres Browsers löschen"
+          },
+          "theme": {
+            "written": "wenn Sie die Darstellung zwischen hell und dunkel umschalten",
+            "purpose": "die gewählte Darstellung beim nächsten Seitenaufruf beibehalten",
+            "duration": "bis Sie den Speicher Ihres Browsers löschen"
+          },
+          "locale": {
+            "written": "wenn Sie über den Sprachwechsel die Sprache wählen oder den Sprachhinweis schließen",
+            "purpose": "sich merken, dass Sie die Sprache selbst gewählt haben, damit der Sprachhinweis nicht erneut erscheint",
+            "duration": "bis Sie den Speicher Ihres Browsers löschen"
+          }
+        },
+        "necessary": "nicht nötig, unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG)",
+        "basis": "Rechtsgrundlage für diese Einträge ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt darin, die von Ihnen gewählten Einstellungen beizubehalten und Ihre Entscheidung zur Einwilligung zu beachten und nachweisen zu können (Art. 7 Abs. 1 DSGVO)."
+      },
+      "consent": {
+        "title": "Einwilligung und Cookie-Einstellungen",
+        "intro": "Beim ersten Besuch fragen wir, ob der Buchungskalender von cal.com laden darf. Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com geladen und keine Verbindung zu cal.com aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder den Termin telefonisch oder per E-Mail vereinbaren können.",
+        "introAnalytics": "Beim ersten Besuch fragen wir, ob der Buchungskalender von cal.com und die Statistik mit Google Analytics laden dürfen. Beides können Sie einzeln wählen, Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von cal.com oder Google geladen und keine Verbindung zu diesen Diensten aufgebaut. Statt des Kalenders sehen Sie einen Platzhalter, über den Sie den Kalender mit Ihrer Zustimmung laden oder den Termin telefonisch oder per E-Mail vereinbaren können.",
+        "record": "Ihre Antwort speichern wir im Eintrag {key} in Ihrem Browser, damit wir nicht auf jeder Seite erneut fragen. Ändert sich der Hinweis inhaltlich, fragen wir erneut.",
+        "withdraw": "Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen oder ändern, über den Link Cookie-Einstellungen am Ende jeder Seite oder",
+        "withdrawLink": "direkt hier",
+        "withdrawRest": "Ist der Kalender bereits geladen, lädt die Seite nach dem Widerruf neu, damit er entfernt ist. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt davon unberührt."
+      },
+      "analytics": {
+        "title": "Statistik mit Google Analytics",
+        "provider": "Mit Ihrer Einwilligung nutzen wir Google Analytics 4, einen Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.",
+        "data": "Google Analytics zeigt uns, wie Besucher die Website nutzen, etwa welche Seiten aufgerufen werden und mit welcher Art von Gerät. Dazu verarbeitet Google Ihre IP-Adresse, die aufgerufenen Seiten, Datum und Uhrzeit, Angaben zu Browser und Gerät, den ungefähren Standort sowie die Seite, von der Sie kommen. Google setzt dafür die Cookies _ga und _ga_ mit der Kennung unserer Property, die Ihren Browser wiedererkennen und nach zwei Jahren ablaufen.",
+        "consentMode": "Google Analytics lädt nur nach Ihrer Einwilligung (Einwilligungsmodus v2 in der Basis-Variante). Vor Ihrer Einwilligung und nach einer Ablehnung wird kein Skript von Google geladen, und es werden keine Daten an Google gesendet, auch keine Signale ohne Cookies.",
+        "basis": "Rechtsgrundlage ist allein Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Widerrufen Sie sie in den Cookie-Einstellungen, werden die Cookies _ga gelöscht und die Seite lädt neu, damit Google Analytics entfernt ist.",
+        "transfer": "Google kann Daten auch in die USA übermitteln. Google LLC ist nach dem EU-U.S. Data Privacy Framework zertifiziert; die Übermittlung erfolgt damit auf Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission nach Art. 45 DSGVO. Die Daten werden in Google Analytics höchstens 14 Monate gespeichert. Einzelheiten stehen in der",
+        "privacyLink": "Datenschutzerklärung von Google"
+      },
+      "contact": {
+        "title": "Kontakt per Telefon und E-Mail",
+        "data": "Wenn Sie uns anrufen oder eine E-Mail schreiben, verarbeiten wir Ihre Angaben, also etwa Name, Kontaktdaten, Ihr Anliegen und mitgesendete Bilder wie Motivvorlagen, um Ihre Anfrage zu bearbeiten. Geht es um einen Termin oder ein Tattoo, ist Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO, im Übrigen Art. 6 Abs. 1 lit. f DSGVO mit dem berechtigten Interesse, Anfragen zu beantworten.",
+        "mailbox": "Das E-Mail-Postfach wird beim Anbieter WEB.DE der 1&1 Mail & Media GmbH, Brauerstraße 48, 76135 Karlsruhe, betrieben. Ihre Nachrichten liegen deshalb auch auf deren Servern.",
+        "retention": "Wir löschen Ihre Anfrage, sobald sie erledigt ist und keine gesetzlichen Aufbewahrungspflichten bestehen."
+      },
+      "links": {
+        "title": "Links zu anderen Diensten",
+        "text": "Einige Seiten verlinken auf andere Anbieter, etwa auf Google Maps für die Route zum Studio, auf TikTok und YouTube, auf tattoogutachten.de oder auf die Buchungsseite von cal.com. Solche Links sind einfache Verweise: Daten an den Anbieter gehen erst, wenn Sie den Link anklicken. Ab dann gilt die Datenschutzerklärung des jeweiligen Anbieters."
+      },
+      "rights": {
+        "title": "Ihre Rechte",
+        "intro": "Sie haben gegenüber der {operator} jederzeit das Recht auf",
+        "items": [
+          "Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO),",
+          "Berichtigung unrichtiger Daten (Art. 16 DSGVO),",
+          "Löschung Ihrer Daten (Art. 17 DSGVO),",
+          "Einschränkung der Verarbeitung (Art. 18 DSGVO),",
+          "Datenübertragbarkeit (Art. 20 DSGVO),",
+          "Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)."
+        ],
+        "request": "Für Anfragen genügt eine E-Mail an",
+        "objectionTitle": "Widerspruchsrecht",
+        "objection": "Soweit wir Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeiten, können Sie aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch einlegen (Art. 21 DSGVO). Wir verarbeiten die Daten dann nicht mehr, es sei denn, es bestehen zwingende schutzwürdige Gründe für die Verarbeitung oder sie dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen."
+      },
+      "complaint": {
+        "title": "Beschwerde bei einer Aufsichtsbehörde",
+        "text": "Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren (Art. 77 DSGVO), insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für die {operator} mit Sitz in Hessen zuständig ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit:"
+      },
+      "duty": {
+        "title": "Pflicht zur Bereitstellung und automatisierte Entscheidungen",
+        "text": "Sie sind nicht verpflichtet, uns Daten bereitzustellen. Ohne Kontaktdaten können wir eine Anfrage oder einen Termin allerdings nicht bearbeiten. Eine automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt."
+      }
     }
+  },
+  "works": {
+    "fox": {
+      "title": "Fuchs mit Blättern",
+      "meta": "Realistik in Farbe, Unterarm",
+      "alt": "Realistisches Tattoo eines Fuchskopfes in Orange und Schwarz mit einem Palmblatt in Blackwork auf dem Unterarm"
+    },
+    "dogPortrait": {
+      "title": "Hundeporträt in einer Pfote",
+      "meta": "Porträt, Unterarm",
+      "alt": "Realistisches Porträt eines Hundes, eingefasst in die Form einer Pfote, mit Name und Datum auf dem Unterarm"
+    },
+    "chessKing": {
+      "title": "Schachkönig",
+      "meta": "Black and Grey, Unterarm",
+      "alt": "Schachfigur König als schattiertes Black and Grey Tattoo auf dem Unterarm"
+    },
+    "shark": {
+      "title": "Hai mit Koordinaten",
+      "meta": "Black and Grey, Oberarm",
+      "alt": "Hai in Black and Grey mit Koordinaten als Schriftzug auf dem Oberarm"
+    },
+    "dragonfly": {
+      "title": "Libelle",
+      "meta": "Fine Line, Unterarm",
+      "alt": "Filigrane Libelle in Fine Line mit einer geometrischen Linie auf dem Unterarm"
+    },
+    "flower": {
+      "title": "Blüte",
+      "meta": "Black and Grey, Handrücken",
+      "alt": "Große schattierte Blüte in Schwarz und Grau auf dem Handrücken"
+    },
+    "rabbit": {
+      "title": "Hase mit Mond",
+      "meta": "Farbe, Wade",
+      "alt": "Farbiges Tattoo eines Hasen vor einem Mond auf der Wade"
+    },
+    "compass": {
+      "title": "Kompass mit Family",
+      "meta": "Schrift und Linien, Rippen",
+      "alt": "Kompass mit dem Schriftzug Family, einer Herzschlaglinie und vier Jahreszahlen auf den Rippen"
+    },
+    "blackwork": {
+      "title": "Geometrisches Blackwork",
+      "meta": "Blackwork, Arm",
+      "alt": "Geometrisches Blackwork Tattoo mit Mustern auf der Innenseite des Arms"
+    },
+    "blackworkOuter": {
+      "title": "Geometrisches Blackwork, Außenseite",
+      "meta": "Blackwork, Arm",
+      "alt": "Dasselbe geometrische Blackwork mit breiten schwarzen Bändern, von außen auf dem ganzen Arm"
+    },
+    "biomech": {
+      "title": "Biomechanische Hand",
+      "meta": "Realistik, Handrücken",
+      "alt": "Biomechanisches Tattoo einer Roboterhand mit pinken Akzenten auf Handrücken und Fingern"
+    },
+    "lettering": {
+      "title": "Ewigkeit und Its in my DNA",
+      "meta": "Schrift, Bein",
+      "alt": "Mehrere Schriftzüge mit Ewigkeit, Its in my DNA und Der Osten zwischen Black and Grey Motiven auf dem Bein"
+    },
+    "signature": {
+      "title": "Unterschrift Elvis Presley",
+      "meta": "Schrift, Fuß",
+      "alt": "Feine Unterschrift von Elvis Presley als Schriftzug auf dem Fuß"
+    },
+    "maori": {
+      "title": "Blackwork im Maori Stil",
+      "meta": "Blackwork, Unterarm",
+      "alt": "Flächiges Blackwork im Maori Stil mit Dreiecken und Rautenmuster auf dem Unterarm"
+    },
+    "blossoms": {
+      "title": "Blütenzweige",
+      "meta": "Fine Line, Fuß",
+      "alt": "Feine Blütenzweige mit schattierten Blüten vom Knöchel über den Fuß"
+    },
+    "smurf": {
+      "title": "Schlumpf als Cyborg",
+      "meta": "Farbe, Wade",
+      "alt": "Farbiger Schlumpf, zur Hälfte als Cyborg mit Metallschädel und rotem Auge, auf der Wade"
+    },
+    "ankh": {
+      "title": "Ankh mit Strahlen",
+      "meta": "Black and Grey, Oberarm",
+      "alt": "Ankh mit Knotenmuster und Horusauge vor Strahlen in Black and Grey auf dem Oberarm"
+    },
+    "tribalNeck": {
+      "title": "Tribal an Hals und Schulter",
+      "meta": "Tribal, Hals",
+      "alt": "Schwarzes Tribal mit spitzen Linien über Hals und Schulter eines Mannes"
+    },
+    "tribalWeb": {
+      "title": "Tribal mit Spinnennetz",
+      "meta": "Tribal, Hals",
+      "alt": "Schwarzes Tribal mit Spinnennetz an Hals und Schulter einer Frau"
+    },
+    "crossDove": {
+      "title": "Kreuz mit Tauben",
+      "meta": "Realistik, Unterarm",
+      "alt": "Holzkreuz mit Tuch und zwei Tauben vor Wolken in Black and Grey, darunter eine farbige Krone, auf dem Unterarm"
+    },
+    "valknut": {
+      "title": "Armband mit Valknut",
+      "meta": "Blackwork, Unterarm",
+      "alt": "Armband aus schwarzen Linien und Pfeilmuster mit einem Valknut in der Mitte um den Unterarm"
+    },
+    "memories": {
+      "title": "Schriftzug Memories",
+      "meta": "Schrift, Unterarm",
+      "alt": "Schriftzug Memories in geschwungenen Buchstaben auf dem Unterarm"
+    },
+    "fist": {
+      "title": "Faust mit Schriftzug",
+      "meta": "Realistik, Unterarm",
+      "alt": "Geballte Faust in Black and Grey mit einem Spruch in Schreibschrift auf dem Unterarm"
+    },
+    "eye": {
+      "title": "Auge im Dreieck",
+      "meta": "Ornamental, Knie",
+      "alt": "Auge in einem Dreieck mit Flügeln und Ornamenten, gepunktet schattiert, auf dem Knie"
+    }
+  },
+  "faq": {
+    "label": "Häufige Fragen",
+    "items": {
+      "booking": {
+        "question": "Wie bekomme ich einen Termin bei KurstadtTattoo?",
+        "answer": "Terminanfragen nehmen wir telefonisch an, unter {phone}. Für weitere Fragen erreichen Sie uns per E-Mail an {email}."
+      },
+      "ownDesign": {
+        "question": "Kann ich meine eigene Vorlage mitbringen?",
+        "answer": "Ja. Sie können eigene Designs einbringen, und wir setzen daraus ein Tattoo um, das Ihren Wünschen entspricht. Auch Fotos und Erinnerungen, zum Beispiel für ein Porträt, sind ein guter Ausgangspunkt."
+      },
+      "finishing": {
+        "question": "Stellen Sie auch Tattoos fertig, die woanders begonnen wurden?",
+        "answer": "Ja, das machen wir. Bringen Sie das begonnene Tattoo zur Beratung mit, dann besprechen wir, wie es weitergeht."
+      },
+      "care": {
+        "question": "Wie pflege ich mein neues Tattoo?",
+        "answer": "Reinigen Sie das Tattoo regelmäßig und tragen Sie eine dünne Schicht Heilsalbe auf. Waschen Sie vorher gründlich die Hände, meiden Sie direkte Sonne und kratzen Sie nicht."
+      },
+      "removal": {
+        "question": "Kann ich ein Tattoo entfernen lassen?",
+        "answer": "Tattoos werden mit dem Laser entfernt und verblassen dabei nach und nach, meist über mehrere Sitzungen. Diese Behandlung bieten Hautärzte an. Informationen dazu bekommen Sie bei uns."
+      },
+      "reopening": {
+        "question": "Wann öffnet das neue Studio?",
+        "answer": "Am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bis dahin bleibt das Studio geschlossen."
+      },
+      "styles": {
+        "question": "Welche Stile tätowiert KurstadtTattoo?",
+        "answer": "Der Schwerpunkt liegt auf realistischen Porträts und feinen Linien. Dazu kommen farbige Motive, Black and Grey, Blackwork, Tribal, Schriftzüge und ornamentale Arbeiten. Beispiele zu jedem Stil zeigt die Galerie."
+      },
+      "artist": {
+        "question": "Wer tätowiert bei KurstadtTattoo?",
+        "answer": "Patrick Wolf führt das Studio und ist der Spezialist für realistische Porträts und feine Linien."
+      },
+      "fainting": {
+        "question": "Ist beim Tätowieren schon mal jemand ohnmächtig geworden?",
+        "answer": "Ja, das ist schon vorgekommen. Patrick erzählt davon in einem kurzen Video auf YouTube."
+      },
+      "aftercare": {
+        "question": "Gibt es nach dem Termin eine Nachsorge?",
+        "answer": "Ja. Wir bieten Ihnen eine Nachsorge an und sind bei Fragen oder Problemen in der Heilung für Sie da."
+      },
+      "hours": {
+        "question": "Wann hat KurstadtTattoo geöffnet?",
+        "answer": "Bisher Montag bis Freitag von 12 bis 18 Uhr oder nach Vereinbarung. Die Zeiten am neuen Standort erfragen Sie bitte telefonisch unter {phone}."
+      }
+    }
+  },
+  "process": {
+    "steps": [
+      {
+        "title": "Anrufen und Termin anfragen",
+        "text": "Terminanfragen nehmen wir telefonisch an. Erzählen Sie uns kurz, welches Motiv Sie sich vorstellen und an welcher Stelle es sitzen soll."
+      },
+      {
+        "title": "Motiv gemeinsam planen",
+        "text": "Wir planen Ihr Tattoo eng mit Ihnen zusammen, bis es Ihren Vorstellungen entspricht. Bringen Sie gern eine eigene Vorlage, Fotos oder Ideen mit."
+      },
+      {
+        "title": "Ihr Termin im Studio",
+        "text": "Das abgestimmte Motiv wird mit Sorgfalt und einem Auge für Details gestochen, in einer angenehmen und sicheren Atmosphäre."
+      },
+      {
+        "title": "Pflege und Nachsorge",
+        "text": "Sie erhalten Hinweise zur Pflege für die Heilung. Bei Fragen sind wir für Sie da und bieten Ihnen eine Nachsorge an."
+      }
+    ]
+  },
+  "breadcrumb": {
+    "label": "Pfadnavigation"
+  },
+  "related": {
+    "eyebrow": "Weiterlesen",
+    "title": "Mehr rund um Ihr Tattoo",
+    "items": {
+      "gallery": {
+        "title": "Galerie nach Stilen",
+        "text": "Realistik, Farbe, Fine Line, Schriftzüge und Blackwork aus dem Studio."
+      },
+      "artists": {
+        "title": "Patrick Wolf, der Künstler",
+        "text": "Spezialist für realistische Porträts und feine Linien."
+      },
+      "hygiene": {
+        "title": "Hygiene im Studio",
+        "text": "Was Hygiene bei KurstadtTattoo bedeutet, im Studio und in der Heilung."
+      },
+      "consultation": {
+        "title": "Beratung und Ablauf",
+        "text": "Vom ersten Anruf bis zur Nachsorge in vier Schritten."
+      },
+      "aftercare": {
+        "title": "Pflegetipps",
+        "text": "So pflegen Sie Ihr Tattoo in den ersten Stunden, in der Heilung und danach."
+      },
+      "faq": {
+        "title": "Häufige Fragen",
+        "text": "Antworten zu Termin, Vorlage, Heilung und dem neuen Studio."
+      },
+      "engraving": {
+        "title": "Gravur-Service",
+        "text": "Lasergravuren auf Kunststoff, Metall, Holz und Glas."
+      },
+      "contact": {
+        "title": "Kontakt und Anfahrt",
+        "text": "Adresse am Friedrich-Ebert-Platz 1A, Telefon und Öffnungszeiten."
+      },
+      "booking": {
+        "title": "Termin buchen",
+        "text": "Beratungstermin online im Kalender wählen oder telefonisch vereinbaren."
+      }
+    }
+  },
+  "videos": {
+    "label": "Video auf YouTube",
+    "newTab": "öffnet YouTube in einem neuen Tab",
+    "language": "",
+    "items": {
+      "howStarted": {
+        "title": "Wie bist du zum Tätowieren gekommen?",
+        "text": "Patrick erzählt, wie er zum Tätowieren kam."
+      },
+      "care": {
+        "title": "Wie pflegt man ein Tattoo?",
+        "text": "Die Pflege eines frischen Tattoos im Video."
+      },
+      "colour": {
+        "title": "Darf man wieder bunt tätowieren?",
+        "text": "Patrick zu farbigen Tattoos."
+      },
+      "cost": {
+        "title": "Was kostet ein Tattoo?",
+        "text": "Patrick zu den Kosten eines Tattoos."
+      },
+      "finishing": {
+        "title": "Macht ihr auch Tattoos von anderen fertig?",
+        "text": "Ja, machen wir."
+      },
+      "eczema": {
+        "title": "Neurodermitis und Tattoos",
+        "text": "Patrick zum Tätowieren bei Neurodermitis."
+      },
+      "vegan": {
+        "title": "Sind die Farben vegan?",
+        "text": "Patrick zu den Tattoofarben."
+      },
+      "fainting": {
+        "title": "Ist schon mal jemand ohnmächtig geworden?",
+        "text": "Ja, und Patrick erzählt davon."
+      },
+      "eagleBack": {
+        "title": "Rückentattoo XXL mit Adler",
+        "text": "Ein großes Adlermotiv auf dem Rücken im Video."
+      }
+    }
+  },
+  "booking": {
+    "label": "Termin buchen",
+    "regionLabel": "Buchungskalender",
+    "confirmationTerm": "Bestätigung",
+    "confirmationValue": "Per E-Mail von cal.com, mit Links zum Verschieben und Absagen",
+    "timezoneTerm": "Zeitzone",
+    "timezoneStatic": "Die Ihres Geräts",
+    "timezoneHint": "Der Kalender zeigt freie Uhrzeiten in dieser Zeitzone.",
+    "timezoneDevice": "Ihr Gerät",
+    "demoLabel": "Vorschau",
+    "demoText": "Der Kalender unten ist ein Demo-Kalender für die Vorschau dieser Website. Über ihn kommt kein Termin bei KurstadtTattoo zustande. Angaben aus einer Buchung gehen an das cal.com Konto des Webentwicklers dieser Website, {holder}. Bis der Kalender des Studios freigeschaltet ist, vereinbaren Sie Ihren Termin bitte telefonisch oder per E-Mail.",
+    "emailButton": "E-Mail schreiben",
+    "placeholderTitle": "Der Kalender kommt von cal.com.",
+    "placeholderText": "Damit Sie hier direkt einen Termin wählen können, binden wir den Buchungskalender der Cal.com, Inc. (USA) ein. Er lädt erst, wenn Sie zustimmen. Dabei überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Ihre Einwilligung können Sie jederzeit unter Cookie-Einstellungen am Ende der Seite widerrufen.",
+    "consentButton": "Kalender laden und zustimmen",
+    "withoutLabel": "Ohne cal.com",
+    "withoutText": "Vereinbaren Sie Ihren Termin telefonisch oder per E-Mail.",
+    "fallbackNoJs": "Der Buchungskalender braucht JavaScript.",
+    "fallbackFailed": "Der Buchungskalender konnte nicht geladen werden.",
+    "fallbackText": "Vereinbaren Sie Ihren Termin telefonisch oder per E-Mail, oder buchen Sie direkt auf der Buchungsseite von cal.com.",
+    "calPage": "Buchungsseite bei cal.com",
+    "newWindow": "(öffnet in einem neuen Fenster)",
+    "statusLoading": "Der Kalender wird geladen.",
+    "statusReady": "Der Kalender ist geladen.",
+    "statusFailed": "Der Kalender konnte nicht geladen werden. Sie können direkt bei cal.com, telefonisch oder per E-Mail einen Termin vereinbaren.",
+    "note": "Der Kalender lädt nur mit Ihrer Einwilligung und erst, wenn dieser Bereich sichtbar wird.",
+    "notePrivacy": "Was dabei verarbeitet wird, steht in der Datenschutzerklärung.",
+    "privacyLink": "Datenschutzerklärung",
+    "emailPrefix": "E-Mail an"
+  },
+  "consent": {
+    "eyebrow": "Datenschutz",
+    "noticeTitle": "Darf der Buchungskalender von cal.com laden?",
+    "noticeTitleAnalytics": "Dürfen wir externe Dienste laden?",
+    "noticeBooking": "Diese Website setzt keine Cookies zur Analyse oder Werbung. Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Lädt er, überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Das geschieht nur mit Ihrer Einwilligung.",
+    "noticeBookingAnalytics": "Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Mit Google Analytics der Google Ireland Limited werten wir aus, wie unsere Seiten genutzt werden. Beide Dienste erhalten dabei unter anderem Ihre IP-Adresse, setzen Cookies und können Daten in die USA übermitteln. Das geschieht nur mit Ihrer Einwilligung, und Sie können beide getrennt wählen.",
+    "noticeRest": "Ohne Einwilligung funktioniert die Website vollständig, den Termin vereinbaren Sie dann telefonisch oder per E-Mail. Ihre Wahl ändern oder widerrufen Sie jederzeit unter Cookie-Einstellungen am Ende jeder Seite.",
+    "privacyMore": "Mehr in der Datenschutzerklärung",
+    "reject": "Ablehnen",
+    "accept": "Akzeptieren",
+    "settings": "Einstellungen",
+    "save": "Auswahl speichern",
+    "settingsTitle": "Cookie-Einstellungen",
+    "close": "Schließen ohne Änderung",
+    "alwaysOn": "Immer aktiv",
+    "necessaryTitle": "Notwendig",
+    "necessaryText": "Speichert Ihre Auswahl in diesem Browser (localStorage, Eintrag kt-consent mit Fassung des Hinweises, Zeitpunkt und Auswahl), damit wir nicht erneut fragen. Ohne Kennung, nur von dieser Website gelesen. Keine Einwilligung nötig, § 25 Abs. 2 Nr. 2 TDDDG.",
+    "bookingTitle": "Externe Medien: Terminbuchung über cal.com",
+    "bookingText": "Lädt den Buchungskalender der Cal.com, Inc., San Francisco, USA, auf der Seite Termin buchen, sobald er sichtbar wird. Dabei erhält cal.com Ihre IP-Adresse, Angaben zu Browser und Gerät und die Adresse der Seite. Der Dienstleister Cloudflare setzt das Cookie __cf_bm gegen automatisierte Zugriffe (30 Minuten), technische Fehlerberichte gehen an Sentry. Übermittlung in die USA auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie bleibt der Kalender aus, Termine gibt es telefonisch oder per E-Mail.",
+    "analyticsTitle": "Statistik: Google Analytics",
+    "analyticsText": "Lädt Google Analytics 4 der Google Ireland Limited, Dublin, Irland, und wertet aus, welche Seiten wie genutzt werden. Dabei erhält Google Ihre IP-Adresse, Angaben zu Browser und Gerät und die aufgerufenen Seiten und setzt die Cookies _ga und _ga_ mit der Kennung der Website (bis zu 2 Jahre). Eine Übermittlung in die USA ist möglich, auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie wird Google Analytics nicht geladen und nichts an Google gesendet.",
+    "details": "Einzelheiten in der Datenschutzerklärung."
+  },
+  "privacyBooking": {
+    "title": "Online-Terminbuchung über cal.com",
+    "intro": "Für die Online-Terminbuchung binden wir einen Kalender des Dienstes cal.com ein. Anbieter ist die Cal.com, Inc., 2261 Market Street #4382, San Francisco, CA 94114, USA.",
+    "whenTitle": "Wann der Kalender lädt",
+    "when": "Der Kalender steht auf der Seite Termin buchen. Er lädt nur, wenn Sie eingewilligt haben, im Hinweis zum Datenschutz, in den Cookie-Einstellungen oder mit der Schaltfläche Kalender laden und zustimmen im Buchungsbereich. Auch dann wird er nicht mit der Seite geladen, sondern erst, wenn der Buchungsbereich sichtbar wird. Ab diesem Moment ruft Ihr Browser Inhalte von Servern von cal.com ab. Auf allen anderen Seiten wird nichts von cal.com geladen.",
+    "dataTitle": "Welche Daten verarbeitet werden",
+    "data": "Schon beim Laden des Kalenders erhält cal.com technische Daten: Ihre IP-Adresse, Angaben zu Browser und Gerät, die Adresse der Seite, auf der der Kalender eingebunden ist, sowie Datum und Uhrzeit. Dabei setzt der von cal.com genutzte Dienstleister Cloudflare das Cookie __cf_bm, das zur Abwehr automatisierter Zugriffe (Bots) dient und nach 30 Minuten ohne Aktivität abläuft. Außerdem sendet der Kalender technische Fehlerberichte an den Dienst Sentry, den cal.com zur Fehleranalyse einsetzt.",
+    "booking": "Wenn Sie einen Termin buchen, verarbeitet cal.com zusätzlich die Angaben, die Sie im Buchungsformular machen, insbesondere Name, E-Mail-Adresse, den gewählten Termin und Ihre Nachricht. Die Terminbestätigung versendet cal.com per E-Mail.",
+    "recipientDemo": "Derzeit ist auf dieser Website ein Demo-Kalender für die Vorschau eingebunden. Er liegt im cal.com Konto des Webentwicklers dieser Website, {holder}, nicht in einem Konto von KurstadtTattoo. Angaben aus einer Buchung gehen deshalb an dieses Konto und nicht an uns, ein Termin bei KurstadtTattoo kommt darüber nicht zustande. Für einen echten Termin rufen Sie bitte an oder schreiben Sie eine E-Mail. Sobald der Kalender des Studios eingebunden ist, wird dieser Hinweis entfernt.",
+    "recipientLive": "Diese Angaben erhalten wir, um den Termin mit Ihnen durchzuführen.",
+    "basisTitle": "Rechtsgrundlage",
+    "basis": "Das Laden des Kalenders und die damit verbundene Übertragung an cal.com beruhen auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Soweit dabei Informationen auf Ihrem Gerät gespeichert oder ausgelesen werden, etwa das Cookie __cf_bm, ist Rechtsgrundlage ebenfalls Ihre Einwilligung (§ 25 Abs. 1 TDDDG). Die Verarbeitung Ihrer Angaben bei einer Buchung dient der Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage (Art. 6 Abs. 1 lit. b DSGVO).",
+    "withdraw": "Sie können die Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, über die Cookie-Einstellungen. Danach lädt der Kalender nicht mehr. Cookies, die cal.com auf seiner eigenen Domain gesetzt hat, laufen ab (__cf_bm nach 30 Minuten ohne Aktivität) oder lassen sich in Ihrem Browser löschen.",
+    "withdrawLink": "Cookie-Einstellungen öffnen",
+    "transferTitle": "Übermittlung in die USA",
+    "transfer": "Cal.com verarbeitet die Daten in den USA. Cal.com, Inc. ist nach dem EU-U.S. Data Privacy Framework zertifiziert (Stand der Prüfung: 12. November 2026); die Übermittlung erfolgt damit auf Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission nach Art. 45 DSGVO. Für Übermittlungen außerhalb dieses Rahmens nutzt cal.com die Standardvertragsklauseln der Europäischen Kommission.",
+    "calPrivacy": "Datenschutzerklärung von cal.com",
+    "retentionTitle": "Speicherdauer und Alternativen",
+    "retentionDemo": "Buchungsdaten aus dem Demo-Kalender erhalten wir nicht. Sie liegen im cal.com Konto von {holder} und werden nach den Regeln von cal.com gespeichert und gelöscht.",
+    "retentionLive": "Buchungsdaten löschen wir, sobald sie für die Durchführung und Nachbereitung des Termins nicht mehr benötigt werden, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.",
+    "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, vereinbaren Sie Ihren Termin telefonisch oder per E-Mail."
+  },
+  "seo": {
+    "ogImageAlt": "KurstadtTattoo, Tattoo Studio in Bad Nauheim: realistisches Fuchs Tattoo in Farbe auf einem Unterarm, daneben Name und Adresse des Studios",
+    "websiteDescription": "Website von KurstadtTattoo, dem Tattoo Studio von Patrick Wolf in Bad Nauheim in der Wetterau: realistische Porträts, Fine Line, Beratung, Hygiene und Pflege.",
+    "studioDescription": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in Bad Nauheim in der Wetterau, nahe Friedberg und Frankfurt. Schwerpunkte sind realistische Porträts und Fine Line, dazu Farbe, Black and Grey, Blackwork und Schriftzüge. Ab dem 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
+    "catalogName": "Leistungen von KurstadtTattoo",
+    "services": {
+      "tattoo": {
+        "name": "Tätowierungen",
+        "description": "Tattoos nach eigenem oder gemeinsam geplantem Motiv: realistische Porträts, Fine Line, Farbe, Black and Grey, Blackwork und Schriftzüge. Auch das Fertigstellen begonnener Tattoos."
+      },
+      "consultation": {
+        "name": "Tattoo Beratung",
+        "description": "Persönliche Beratung zu Motiv, Stil, Größe und Körperstelle vor dem Tattoo."
+      },
+      "engraving": {
+        "name": "Lasergravur",
+        "description": "Lasergravuren auf Kunststoff, Aluminium, Messing, Edelstahl, Holz, Glas und Leder, auch mit Logos und Grafiken."
+      }
+    },
+    "register": "Handelsregister",
+    "region": "Wetterau"
   }
 }

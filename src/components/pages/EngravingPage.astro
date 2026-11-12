@@ -1,0 +1,51 @@
+---
+// Engraving service for both locales, as the old site describes it: laser engraving by material, and
+// the logo engraved on three objects. Linked from the footer only; the site's focus stays on tattoos.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Gallery from '../ui/Gallery.astro';
+import { t, type Locale } from '../../i18n';
+
+import glass from '../../assets/images/gravur-glas-logo.jpg';
+import mug from '../../assets/images/gravur-tasse-schwarz-logo.jpg';
+import wood from '../../assets/images/gravur-holzscheibe-logo.jpg';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = t(locale).pages.engraving;
+const examples = copy.examples.items;
+const exampleItems = [
+  { src: glass, ...examples.glass },
+  { src: mug, ...examples.mug },
+  { src: wood, ...examples.wood },
+];
+---
+
+<SubpageLayout locale={locale} routeKey="engraving" related={['contact', 'gallery', 'faq']}>
+  <Section id={copy.materials.id} eyebrow={copy.materials.eyebrow} title={copy.materials.title} intro={copy.materials.intro}>
+    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+      {
+        copy.materials.items.map((material) => (
+          <li class="min-w-0 border-b border-line py-6" data-reveal>
+            <h3 class="text-h3">{material.title}</h3>
+            <ul class="mt-4 grid gap-2 text-muted">
+              {material.points.map((point) => (
+                <li class="flex gap-3">
+                  <span class="mt-[0.6em] h-[3px] w-3 shrink-0 bg-neon" aria-hidden="true" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id={copy.examples.id} eyebrow={copy.examples.eyebrow} title={copy.examples.title} intro={copy.examples.intro} tone="deep">
+    <Gallery items={exampleItems} locale={locale} label={copy.examples.label} />
+  </Section>
+</SubpageLayout>
