@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Opt into Node.js 24 for all JS-based actions ahead of the Node 20 deprecation.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  # Search engine switch (src/config/site.ts): 'false' keeps the github.io preview on noindex.
+  # Set to 'true' at launch on the real domain to make every page indexable.
+  PUBLIC_INDEXABLE: 'false'
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Type check (.astro and .ts files); fails the deploy on any error.
+      - name: Type check
+        run: npx astro check
+
+      - name: Build
+        run: npm run build
+
+      # Parses every JSON-LD block in dist, checks required fields, @id references, URLs and hreflang alternates.
+      - name: Validate JSON-LD
+        run: npm run validate:jsonld
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

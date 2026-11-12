@@ -1,0 +1,9 @@
+name: Commit Message Policy
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  commit-policy:
+    uses: digitalfreedom-co-za/org-ci-config/.github/workflows/commit-message-policy.yaml@main
