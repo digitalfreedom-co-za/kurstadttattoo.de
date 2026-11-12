@@ -1,19 +1,301 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
-/* Design tokens follow in the design system ticket (#4). */
+/*
+ * Design tokens. Direction: a gallery for skin art. White studio walls, black ink and the black
+ * reception counter, one accent from the magenta neon logo on the studio wall. The double rule
+ * (thin rim over a heavy base) is the basin of the fountain in the logo.
+ *
+ * Theming (wiki websites.md): light is the default, dark only after an explicit choice in the theme
+ * toggle. The themed colours are plain @theme tokens; html[data-theme='dark'] overrides their values,
+ * so every utility (bg-wall, text-ink, border-line, opacity modifiers) follows the theme.
+ * night, chalk and neon-glow stay dark or bright in both themes: surfaces that are always dark
+ * (footer, CTA band, like the counter) and the bright neon that only works on them.
+ */
+@theme {
+  --color-*: initial;
+  --color-wall: #f5f4f1;
+  --color-wall-deep: #eae8e3;
+  --color-ink: #121113;
+  --color-ink-soft: #2b292e;
+  --color-muted: #56535b;
+  --color-line: #cfcbc3;
+  --color-neon: #a3157c;
+  --color-night: #0f0e10;
+  --color-night-soft: #1a181c;
+  --color-chalk: #f1efeb;
+  --color-chalk-muted: #aaa6ae;
+  --color-neon-glow: #f472d0;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-display: var(--font-syne), Arial, sans-serif;
+  --font-sans: var(--font-instrument), Arial, sans-serif;
+
+  /* Fluid type scale, 320px to 1440px. Syne is a wide face, so the display sizes start small enough
+     for a long word like KurstadtTattoo on a 320px phone. */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.14em;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.65;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --text-lead--line-height: 1.5;
+  --text-h4: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-h4--line-height: 1.3;
+  --text-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --text-h3--line-height: 1.15;
+  --text-h2: clamp(1.75rem, 1.3rem + 2.1vw, 3.25rem);
+  --text-h2--line-height: 1.05;
+  --text-h1: clamp(1.875rem, 1.2rem + 3.4vw, 4.75rem);
+  --text-h1--line-height: 1;
+
+  --tracking-display: -0.02em;
+
+  --radius-xs: 2px;
+
+  --spacing-gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --spacing-section: clamp(4rem, 2.8rem + 6vw, 8.5rem);
+  --spacing-section-support: clamp(2.5rem, 2.1rem + 1.6vw, 4rem);
+
+  --container-page: 84rem;
+  --container-prose: 40rem;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-ink: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
 @layer base {
-  html {
-    -webkit-text-size-adjust: 100%;
+  :root {
+    color-scheme: light;
+    --header-height: 4rem;
+    --reveal-distance: 1.25rem;
+    --reveal-duration: 450ms;
+    --reveal-stagger: 70ms;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      scroll-behavior: auto !important;
-      transition-duration: 0.01ms !important;
+  /* Dark theme: the studio after hours. The counter black becomes the wall, the neon gets brighter. */
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --color-wall: #0f0e10;
+    --color-wall-deep: #1a181c;
+    --color-ink: #f1efeb;
+    --color-ink-soft: #dcd9d4;
+    --color-muted: #aaa6ae;
+    --color-line: #36333a;
+    --color-neon: #f472d0;
+    --color-night: #070608;
+    --color-night-soft: #141216;
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --header-height: 4.75rem;
     }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  body {
+    background-color: var(--color-wall);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: var(--tracking-display);
+    text-wrap: balance;
+    /* Display headings keep whole words; a word that cannot fit a narrow phone breaks as a last resort. */
+    hyphens: manual;
+    overflow-wrap: break-word;
+  }
+
+  h4 {
+    font-weight: 600;
+    text-wrap: balance;
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-neon);
+    color: var(--color-wall);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-neon);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  /* On the always dark surfaces the bright neon keeps the focus ring above 3:1. */
+  :where(.bg-night, .bg-night-soft) :focus-visible {
+    outline-color: var(--color-neon-glow);
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Cross document view transitions: a short crossfade between pages, no JS router. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 260ms;
+    animation-timing-function: var(--ease-out-quint);
+  }
+}
+
+@layer components {
+  /* Wall label style: small caps grotesk with wide tracking, as on a museum caption. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The basin of the fountain in the logo: a thin rim over a heavy base. Section openers and the footer. */
+  .basin-rule {
+    display: block;
+    height: 7px;
+    background:
+      linear-gradient(currentColor, currentColor) top left / 100% 1px no-repeat,
+      linear-gradient(currentColor, currentColor) bottom left / 100% 3px no-repeat;
+  }
+
+  /* Inline text link: the underline takes the neon colour on hover. */
+  .link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    transition:
+      text-decoration-color 200ms ease,
+      color 200ms ease;
+  }
+
+  .link:hover {
+    color: var(--color-neon);
+    text-decoration-color: currentColor;
+  }
+
+  :where(.bg-night, .bg-night-soft) .link:hover {
+    color: var(--color-neon-glow);
+  }
+}
+
+/*
+ * Motion. Everything is visible by default; hidden start states only apply once the inline head
+ * script has set html.js, and never under prefers-reduced-motion. src/scripts/motion.ts adds
+ * .is-visible when an element scrolls into view.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+    transition-property: opacity, transform;
+    transition-duration: var(--reveal-duration);
+    transition-timing-function: var(--ease-out-quint);
+    transition-delay: calc(var(--reveal-index, 0) * var(--reveal-stagger));
+  }
+
+  /* The basin rule draws from the left. */
+  .js [data-reveal='rule'] {
+    opacity: 1;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1100ms var(--ease-ink);
+  }
+
+  /* Images uncover from the top like a print being lifted. The clip sits on the inner picture:
+     a clipped observed element would report no intersection. */
+  .js [data-reveal='image'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js [data-reveal='image'] > picture {
+    display: block;
+    height: 100%;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1100ms var(--ease-ink);
+  }
+
+  /* The individual translate property composes with the parallax transform. */
+  .js [data-reveal='image'] img {
+    translate: 0 3%;
+    transition: translate 1500ms var(--ease-out-quint);
+  }
+
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js [data-reveal='image'].is-visible > picture {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .js [data-reveal='image'].is-visible img {
+    translate: 0 0;
+  }
+
+  /* Focused content never waits for a reveal (safeguard next to the focusin handler in motion.ts). */
+  .js [data-reveal]:focus-within {
+    opacity: 1;
+    transform: none;
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
+
+  [data-parallax] {
+    will-change: transform;
+  }
+}
+
+/* Safety net: under prefers-reduced-motion no transition or animation runs anywhere, hover included. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }

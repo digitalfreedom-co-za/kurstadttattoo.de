@@ -14,6 +14,10 @@ env:
   # Search engine switch (src/config/site.ts): 'false' keeps the github.io preview on noindex.
   # Set to 'true' at launch on the real domain to make every page indexable.
   PUBLIC_INDEXABLE: 'false'
+  # Booking (src/config/booking.ts): unset repository variable = hidden cal.com demo event with notice.
+  PUBLIC_CAL_LINK: ${{ vars.PUBLIC_CAL_LINK }}
+  # GA4 Consent Mode v2 Basic (src/config/analytics.ts): unset repository variable = no analytics at all.
+  PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
 
 concurrency:
   group: pages

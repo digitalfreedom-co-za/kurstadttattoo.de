@@ -1,0 +1,316 @@
+---
+// Site header: logo, main navigation, language switch, theme toggle and the booking button. Every control
+// is a 36px icon button below sm and shows its label from sm up (wiki websites.md). Below lg, and whenever
+// the desktop row does not fit (enlarged text), the navigation moves into a full screen panel behind a
+// menu button (aria-expanded, Escape closes, focus is trapped and returned, the page behind is inert).
+// Without JS the panel renders as a plain list under the header. Only pages that exist are linked.
+import Logo from './Logo.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+import { mainNav, studio } from '../../config/site';
+import { existingRoutes } from '../../lib/pages';
+import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
+import { url } from '../../lib/url';
+
+interface Props {
+  locale: Locale;
+  routeKey?: RouteKey;
+}
+
+const { locale, routeKey } = Astro.props;
+const copy = t(locale);
+const navItems = existingRoutes(mainNav, locale).map((key) => ({
+  key,
+  label: copy.nav.items[key],
+  href: url(localizedPath(key, locale)),
+  current: key === routeKey,
+}));
+const hasNav = navItems.length > 0;
+---
+
+<header id="site-header" class="relative z-40 border-b border-ink/15 bg-wall" data-has-nav={hasNav ? '' : undefined}>
+  <Container class="header-row flex min-h-(--header-height) items-center justify-between gap-2 min-[360px]:gap-4">
+    <Logo locale={locale} />
+
+    {
+      hasNav && (
+        <nav aria-label={copy.nav.label} class="desktop-nav hidden lg:block">
+          <ul class="flex items-center gap-x-5 xl:gap-x-6">
+            {navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={item.current ? 'page' : undefined}
+                  data-nav-key={item.key}
+                  class="nav-link relative inline-flex min-h-11 items-center whitespace-nowrap text-[0.9375rem] font-medium text-ink-soft transition-colors hover:text-ink aria-[current=page]:text-ink"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <div class="flex items-center gap-1 sm:gap-2">
+      {routeKey && <LanguageSwitch locale={locale} routeKey={routeKey} />}
+      <ThemeToggle locale={locale} />
+      <a
+        href={url(localizedPath('booking', locale))}
+        aria-current={routeKey === 'booking' ? 'page' : undefined}
+        class="header-call inline-flex size-9 items-center justify-center rounded-xs bg-ink text-wall transition-colors hover:bg-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-4"
+        aria-label={copy.booking.label}
+        title={copy.booking.label}
+      >
+        <Icon name="calendar" class="h-[18px] w-[18px] sm:h-4 sm:w-4" />
+        <span class="hidden text-sm font-semibold whitespace-nowrap sm:inline">{copy.booking.label}</span>
+      </a>
+      {
+        hasNav && (
+          <button
+            type="button"
+            class="menu-toggle hidden size-9 items-center justify-center rounded-xs border border-ink/20 transition-colors hover:border-neon hover:text-neon sm:size-11"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label={copy.nav.menuOpen}
+            title={copy.nav.menu}
+            data-label-open={copy.nav.menuOpen}
+            data-label-close={copy.nav.menuClose}
+          >
+            <Icon name="menu" size={20} class="icon-open" />
+            <Icon name="close" size={20} class="icon-close hidden" />
+          </button>
+        )
+      }
+    </div>
+  </Container>
+
+  {
+    hasNav && (
+      <div id="mobile-nav" class="mobile-nav border-t border-ink/15 bg-wall lg:hidden">
+        <Container class="flex min-h-full flex-col py-8">
+          <nav aria-label={copy.nav.mobileLabel}>
+            <ul class="border-t border-ink">
+              {navItems.map((item, index) => (
+                <li class="mobile-nav-item border-b border-line" style={`--i:${index}`}>
+                  <a
+                    href={item.href}
+                    aria-current={item.current ? 'page' : undefined}
+                    data-nav-key={item.key}
+                    class="flex min-h-14 items-center py-3 font-display text-[1.625rem] leading-tight font-semibold tracking-[-0.02em] transition-colors hover:text-neon aria-[current=page]:text-neon"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div class="mobile-nav-item mt-8 grid gap-4 text-sm text-muted" style={`--i:${navItems.length}`}>
+            <a class="link inline-flex min-h-11 items-center gap-3 text-ink" href={studio.phone.href}>
+              <Icon name="phone" size={18} class="shrink-0 text-neon" />
+              <span><span class="sr-only">{copy.studio.phoneLabel} </span>{studio.phone.display}</span>
+            </a>
+            <p class="flex gap-3">
+              <Icon name="clock" size={18} class="mt-0.5 shrink-0 text-neon" />
+              <span>{copy.studio.hours}<br />{copy.studio.hoursNote}<span class="mt-1 block">{copy.studio.hoursUnconfirmed}</span></span>
+            </p>
+          </div>
+        </Container>
+      </div>
+    )
+  }
+</header>
+
+<style>
+  /* Desktop nav: a neon bar drawn from the left on hover, fixed under the current page. */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.55rem;
+    height: 2px;
+    background: var(--color-neon);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 350ms var(--ease-out-quint);
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  /* Without JS the row wraps when it no longer fits, instead of widening the page. */
+  .header-row {
+    flex-wrap: wrap;
+  }
+
+  /* With JS the header sticks and the panel becomes an overlay toggled by the menu button.
+     Without JS the header scrolls away, so the static panel never covers the page. */
+  :global(.js) #site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  :global(.js) .header-row,
+  :global(.js) .desktop-nav ul {
+    flex-wrap: nowrap;
+  }
+
+  :global(.js) .menu-toggle {
+    display: inline-flex;
+  }
+
+  :global(.js) .mobile-nav {
+    position: fixed;
+    inset: var(--header-height) 0 0 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 250ms ease,
+      visibility 0s linear 250ms;
+  }
+
+  :global(.js) .mobile-nav[data-open] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 250ms ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .mobile-nav-item {
+      opacity: 0;
+      transform: translateY(0.75rem);
+      transition:
+        opacity 450ms var(--ease-out-quint),
+        transform 450ms var(--ease-out-quint);
+    }
+
+    :global(.js) .mobile-nav[data-open] .mobile-nav-item {
+      opacity: 1;
+      transform: none;
+      transition-delay: calc(var(--i) * 40ms + 60ms);
+    }
+  }
+
+  /* From lg the desktop row shows, unless the script found it too wide (data-compact). */
+  @media (min-width: 64rem) {
+    :global(.js) #site-header:not([data-compact]) .menu-toggle,
+    :global(.js) #site-header:not([data-compact]) .mobile-nav {
+      display: none;
+    }
+
+    :global(.js) #site-header[data-compact] .desktop-nav {
+      display: none;
+    }
+
+    :global(.js) #site-header[data-compact] .mobile-nav {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  const panel = document.getElementById('mobile-nav');
+  const desktop = window.matchMedia('(min-width: 64rem)');
+
+  if (header && toggle && panel) {
+    // Every visible control of the header row plus the panel: logo, language, theme, booking, menu button, links.
+    const focusables = () =>
+      Array.from(header.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')).filter(
+        (el) => el.offsetParent !== null || el === toggle,
+      );
+
+    const isOpen = () => panel.hasAttribute('data-open');
+
+    const setOpen = (open: boolean, returnFocus = true) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '');
+      toggle.querySelector('.icon-open')?.classList.toggle('hidden', open);
+      toggle.querySelector('.icon-close')?.classList.toggle('hidden', !open);
+      // The reopening strip may still sit above the header, so the panel starts at the header's real edge.
+      if (open) panel.style.top = `${header.getBoundingClientRect().bottom}px`;
+      panel.toggleAttribute('data-open', open);
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      // Background content leaves the focus order and the accessibility tree while the menu is open.
+      document.querySelectorAll<HTMLElement>('[data-inert-when-menu]').forEach((el) => {
+        el.inert = open;
+      });
+      if (open) panel.querySelector<HTMLElement>('a[href]')?.focus();
+      else if (returnFocus) toggle.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+    // Focus trap over the menu button and the panel while open; Escape closes from anywhere.
+    document.addEventListener('keydown', (event) => {
+      if (!isOpen()) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const items = focusables();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    // Every header link closes the panel first. tel: keeps the page open, so focus returns to the button.
+    header.addEventListener('click', (event) => {
+      if (!isOpen() || event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = (event.target as HTMLElement).closest('a');
+      if (!link) return;
+      setOpen(false, /^tel:/.test(link.getAttribute('href') ?? ''));
+    });
+
+    const isShown = (el: HTMLElement) => el.checkVisibility?.({ visibilityProperty: true }) ?? el.getClientRects().length > 0;
+
+    // Compact mode below lg, and from lg whenever the desktop row overflows its container (enlarged text).
+    // A focused control that the switch hides hands focus to its visible counterpart.
+    const row = header.querySelector<HTMLElement>('.header-row');
+    const updateCompact = () => {
+      if (!row) return;
+      const active = document.activeElement;
+      const focused = active instanceof HTMLElement && header.contains(active) ? active : null;
+      let compact = !desktop.matches;
+      if (!compact) {
+        header.removeAttribute('data-compact');
+        compact = row.scrollWidth > row.clientWidth;
+      }
+      header.toggleAttribute('data-compact', compact);
+      if (!compact && isOpen()) setOpen(false, false);
+      if (focused && !isShown(focused)) {
+        const key = focused.dataset.navKey;
+        const counterpart = !compact && key ? header.querySelector<HTMLElement>(`.desktop-nav [data-nav-key="${key}"]`) : null;
+        const fallback = compact ? toggle : header.querySelector<HTMLElement>('.header-call');
+        (counterpart ?? fallback ?? toggle).focus();
+      }
+    };
+
+    if (row) {
+      new ResizeObserver(updateCompact).observe(row);
+      document.fonts?.ready.then(updateCompact);
+    }
+    desktop.addEventListener('change', updateCompact);
+    updateCompact();
+  }
+
+  document.documentElement.classList.add('nav-ready');
+</script>

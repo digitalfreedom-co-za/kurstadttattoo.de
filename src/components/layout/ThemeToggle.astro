@@ -1,0 +1,67 @@
+---
+// Dark mode switch (wiki websites.md, Theming). A toggle button with a constant label and aria-pressed
+// for the state; the moon fills while dark mode is on. The choice is stored in localStorage["theme"];
+// the bootstrap script in BaseLayout applies it before paint. Icon only below sm, label from sm up.
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const label = t(Astro.props.locale).theme.label;
+---
+
+<button
+  type="button"
+  class="theme-toggle inline-flex size-9 items-center justify-center rounded-xs text-sm font-semibold transition-colors hover:text-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-3"
+  aria-pressed="false"
+  aria-label={label}
+  title={label}
+  data-theme-toggle
+>
+  <svg
+    class="h-[18px] w-[18px] sm:h-4 sm:w-4"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="1.5"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path class="theme-toggle-moon" d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"></path>
+  </svg>
+  <span class="hidden whitespace-nowrap sm:inline">{label}</span>
+</button>
+
+<style>
+  .theme-toggle-moon {
+    fill: transparent;
+    transition: fill 200ms ease;
+  }
+
+  :global(:root[data-theme='dark']) .theme-toggle-moon {
+    fill: currentColor;
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'theme';
+  const root = document.documentElement;
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((button) => {
+    const sync = () => button.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+    sync();
+    button.addEventListener('click', () => {
+      const dark = root.dataset.theme !== 'dark';
+      if (dark) root.dataset.theme = 'dark';
+      else delete root.dataset.theme;
+      try {
+        localStorage.setItem(STORAGE_KEY, dark ? 'dark' : 'light');
+      } catch {
+        // Storage blocked: the theme still switches for this page, only the choice is not remembered.
+      }
+      document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((other) =>
+        other.setAttribute('aria-pressed', String(dark)),
+      );
+    });
+  });
+</script>

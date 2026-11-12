@@ -1,0 +1,38 @@
+---
+// Prose frame of the legal pages (imprint, privacy policy): typography plugin colours mapped to the site
+// tokens, so the text follows the light and dark theme.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<article class:list={['legal prose max-w-none min-w-0', className]}>
+  <slot />
+</article>
+
+<style>
+  .legal {
+    --tw-prose-body: var(--color-ink-soft);
+    --tw-prose-headings: var(--color-ink);
+    --tw-prose-links: var(--color-neon);
+    --tw-prose-bold: var(--color-ink);
+    --tw-prose-bullets: var(--color-muted);
+    --tw-prose-counters: var(--color-muted);
+    --tw-prose-hr: var(--color-line);
+    --tw-prose-code: var(--color-ink);
+    --tw-prose-th-borders: var(--color-ink);
+    --tw-prose-td-borders: var(--color-line);
+  }
+
+  .legal :global(code::before),
+  .legal :global(code::after) {
+    content: none;
+  }
+
+  .legal :global(th),
+  .legal :global(td) {
+    min-width: 9rem;
+  }
+</style>

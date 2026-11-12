@@ -1,0 +1,29 @@
+---
+// Secondary pointer to Patrick Wolf's expert office: one short block, no content of its own (Decision Log #14).
+import Section from './Section.astro';
+import Icon from './Icon.astro';
+import { expertSite } from '../../config/site';
+
+interface Props {
+  title: string;
+  text: string;
+  link: string;
+}
+
+const { title, text, link } = Astro.props;
+---
+
+<Section density="support">
+  <div class="grid gap-6 border-y border-line py-8 md:grid-cols-12 md:items-center md:gap-x-8">
+    <div class="min-w-0 md:col-span-8">
+      <h2 class="text-h3">{title}</h2>
+      <p class="mt-3 max-w-[40rem] text-muted">{text}</p>
+    </div>
+    <div class="min-w-0 md:col-span-4 md:justify-self-end">
+      <a class="link inline-flex min-h-11 items-center gap-2 font-semibold" href={expertSite.href} rel="noopener">
+        {link}
+        <Icon name="external" size={14} class="shrink-0" />
+      </a>
+    </div>
+  </div>
+</Section>

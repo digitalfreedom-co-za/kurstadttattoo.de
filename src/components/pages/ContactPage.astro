@@ -1,0 +1,119 @@
+---
+// Contact for both locales: NAP of the new studio, phone for appointments, email, opening hours (marked
+// as the previous ones), the reopening, the closed old address, route link instead of an embedded map,
+// the studio's channels and the secondary pointer to the expert office. Facts from src/config/site.ts.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import ReopeningNotice from '../ui/ReopeningNotice.astro';
+import ExpertTeaser from '../ui/ExpertTeaser.astro';
+import { reopening, studio } from '../../config/site';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.contact;
+const home = dict.pages.home;
+const { address } = studio;
+const channels = [
+  { label: dict.studio.tiktok, handle: studio.tiktok.handle, href: studio.tiktok.href, icon: 'tiktok' as const },
+  { label: copy.follow.studioTiktok, handle: studio.studioTiktok.handle, href: studio.studioTiktok.href, icon: 'tiktok' as const },
+  { label: copy.follow.youtube, handle: studio.youtube.handle, href: studio.youtube.href, icon: 'play' as const },
+];
+---
+
+<SubpageLayout locale={locale} routeKey="contact" related={['consultation', 'faq', 'gallery']}>
+  <Fragment slot="actions">
+    <Button href={studio.phone.href} icon="phone">
+      <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+    </Button>
+    <Button href={localizedPath('booking', locale)} variant="secondary" icon="calendar">{dict.booking.label}</Button>
+  </Fragment>
+
+  <Section id={copy.details.id} eyebrow={copy.details.eyebrow} title={copy.details.title} intro={copy.details.intro}>
+    <div class="grid gap-8 border-t border-ink pt-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="min-w-0">
+        <p class="label text-muted">{dict.studio.addressLabel}</p>
+        <address class="mt-3 flex gap-3 not-italic">
+          <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon" />
+          <span>
+            {studio.name}<br />{address.street}<br />{`${address.postalCode} ${address.city}`}<br />{dict.studio.country}
+            {reopening.active && <span class="mt-1 block text-sm text-muted">{dict.studio.newAddressNote}</span>}
+          </span>
+        </address>
+        <a class="link mt-3 inline-flex min-h-11 items-center gap-2 font-semibold" href={studio.mapHref} rel="noopener" target="_blank">
+          {home.location.mapLink}
+          <Icon name="external" size={14} class="shrink-0" />
+          <span class="sr-only">({home.location.mapNote})</span>
+        </a>
+      </div>
+      <div class="min-w-0">
+        <p class="label text-muted">{dict.studio.phoneLabel}</p>
+        <a class="link mt-2 inline-flex min-h-11 items-center gap-3 text-lg font-semibold no-underline hover:underline" href={studio.phone.href}>
+          <Icon name="phone" size={18} class="shrink-0 text-neon" />
+          {studio.phone.display}
+        </a>
+        <p class="text-sm text-muted">{copy.details.phoneNote}</p>
+      </div>
+      <div class="min-w-0">
+        <p class="label text-muted">{dict.studio.emailLabel}</p>
+        <a class="link mt-2 inline-flex min-h-11 items-center gap-3 break-all no-underline hover:underline" href={studio.email.href}>
+          <Icon name="mail" size={18} class="shrink-0 text-neon" />
+          {studio.email.display}
+        </a>
+        <p class="text-sm text-muted">{copy.details.emailNote}</p>
+      </div>
+      <div class="min-w-0">
+        <p class="label text-muted">{dict.studio.hoursLabel}</p>
+        <p class="mt-3 flex gap-3">
+          <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
+          <span>
+            {dict.studio.hours}<span class="block text-muted">{dict.studio.hoursNote}</span>
+            <span class="mt-2 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
+          </span>
+        </p>
+      </div>
+    </div>
+    <p class="mt-10 max-w-[40rem] text-muted">{copy.details.region}</p>
+  </Section>
+
+  {
+    reopening.active && (
+      <Section tone="deep" density="support">
+        <ReopeningNotice locale={locale} />
+        <div class="mt-8 flex gap-3 border-t border-line pt-6">
+          <Icon name="pin" size={18} class="mt-1 shrink-0 text-muted" />
+          <div>
+            <h2 class="font-sans text-h4">{copy.oldAddress.title}</h2>
+            <p class="mt-1 text-muted">{copy.oldAddress.text}</p>
+          </div>
+        </div>
+      </Section>
+    )
+  }
+
+  <Section id={copy.follow.id} eyebrow={copy.follow.eyebrow} title={copy.follow.title} density="support">
+    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-3">
+      {
+        channels.map((channel) => (
+          <li class="min-w-0 border-b border-line">
+            <a class="group/ch flex min-h-11 items-start gap-3 py-4" href={channel.href} rel="noopener" target="_blank">
+              <Icon name={channel.icon} size={20} class="mt-0.5 shrink-0 text-neon" />
+              <span>
+                <span class="block font-semibold transition-colors group-hover/ch:text-neon">{channel.label}</span>
+                <span class="block text-sm text-muted">{channel.handle}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <ExpertTeaser {...copy.expert} />
+</SubpageLayout>
