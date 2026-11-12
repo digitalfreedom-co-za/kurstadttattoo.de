@@ -1,31 +1,82 @@
 #!/usr/bin/env node
-// Validates the JSON-LD and the hreflang alternates of the built site. Run after `astro build`:
+// Validates the SEO layer of the built site: JSON-LD, hreflang, meta, OG image, NAP and llms files.
+// Run after `astro build`:
 //   node scripts/validate-jsonld.mjs [distDir]
 // Per HTML page: exactly one ld+json block that parses and uses the schema.org context, the site
-// wide entities are present, every node type has its required fields, every @id reference resolves
-// to a node defined somewhere on the site, @ids and canonical URLs sit under the site root, the
-// WebPage url equals the canonical URL. Every hreflang alternate points to a built page, the page
-// lists itself among its alternates, and x-default is present. The 404 page must carry noindex and
-// neither canonical nor JSON-LD. Exits with 1 if anything fails.
+// wide entities are present, every node type has its required fields, no rating, review, award or
+// price range markup (unproven claims), every @id reference resolves to a node defined somewhere on
+// the site, @ids and canonical URLs sit under the site root, the WebPage url equals the canonical URL.
+// Every hreflang alternate points to a built page, the page lists itself among its alternates, and
+// x-default is present. Title and description are unique across pages and follow the copy rules (no
+// en or em dash, no hyphen between spaces used as a dash, no typographic quotes, no arrows). og:image
+// and twitter:image point to a built file. A text/markdown alternate points to a built Markdown file.
+// Local SEO: the studio's street and phone number in the JSON-LD are the ones the page shows (NAP).
+// llms.txt and llms-full.txt exist per locale and link only built URLs. The 404 page must carry
+// noindex and neither canonical nor JSON-LD. Exits with 1 if anything fails.
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
 const dist = process.argv[2] ?? 'dist';
 
 /** Required properties per @type; dotted paths are checked on nested objects. */
+const PAGE = ['name', 'url', 'description', 'inLanguage', 'isPartOf', 'about', 'publisher'];
 const REQUIRED = {
-  WebSite: ['name', 'url', 'inLanguage'],
-  WebPage: ['name', 'url', 'description', 'inLanguage', 'isPartOf'],
+  WebSite: ['name', 'url', 'inLanguage', 'publisher'],
+  WebPage: PAGE,
+  CollectionPage: PAGE,
+  AboutPage: PAGE,
+  ContactPage: PAGE,
   FAQPage: ['mainEntity'],
   Question: ['name', 'acceptedAnswer.text'],
+  TattooParlor: [
+    'name',
+    'url',
+    'telephone',
+    'address.streetAddress',
+    'address.postalCode',
+    'address.addressLocality',
+    'address.addressCountry',
+    'geo.latitude',
+    'geo.longitude',
+    'openingHoursSpecification',
+    'areaServed',
+  ],
+  Organization: ['name', 'legalName', 'address.streetAddress'],
+  Person: ['name', 'jobTitle', 'url'],
+  ImageObject: ['url'],
+  Service: ['name', 'provider'],
+  BreadcrumbList: ['itemListElement'],
+  ListItem: ['position', 'name', 'item'],
 };
 
 /** Entities every indexable page carries. */
-const SITE_ENTITIES = ['WebSite'];
+const SITE_ENTITIES = ['WebSite', 'TattooParlor', 'Organization', 'Person', 'ImageObject'];
+
+/** No rating, review, award or price markup: none of it is proven for this studio (ticket #9). */
+const FORBIDDEN_TYPES = ['AggregateRating', 'Review', 'Rating'];
+const FORBIDDEN_PROPERTIES = ['aggregateRating', 'review', 'award', 'priceRange'];
+
+/** Copy rules for titles and descriptions: no en or em dash, no typographic quotes, no arrows. */
+const FORBIDDEN_CHARACTERS = /[\u2013\u2014\u201C\u201D\u201E\u2018\u2019\u201A\u00AB\u00BB\u2190-\u21FF]/;
+/** A hyphen between spaces stands in for a dash, which the copy rules forbid as well. */
+const SPACED_HYPHEN = /\s-\s/;
+
+/** Leftovers of a template value that was never filled in. */
+const UNFILLED = /undefined|\[object Object\]|\{(phone|email|count|holder)\}/;
+
+const LLMS_FILES = ['llms.txt', 'llms-full.txt', 'en/llms.txt', 'en/llms-full.txt'];
 
 const CANONICAL = /<link rel="canonical" href="([^"]+)"/;
 const LD_JSON = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
 const HREFLANG = /<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g;
+const TITLE = /<title>([^<]*)<\/title>/;
+const DESCRIPTION = /<meta name="description" content="([^"]*)"/;
+const MARKDOWN_ALTERNATE = /<link rel="alternate" type="text\/markdown" href="([^"]+)"/g;
+const META_IMAGE = /<meta (?:property="og:image"|name="twitter:image") content="([^"]+)"/g;
+
+/** HTML attribute and text values come entity encoded; enough decoding for the comparisons below. */
+const decode = (value) =>
+  value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
 async function htmlFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -73,6 +124,16 @@ if (!siteRoot) {
 /** Absolute URL of a built page, from its path below dist (index.html files only, build.format directory). */
 const pageUrl = (page) => new URL(page.replace(/index\.html$/, ''), siteRoot).href;
 const builtUrls = new Set(files.map((file) => pageUrl(relative(dist, file))));
+/** Built file (not page) behind an absolute URL under the site root, or null for other URLs. */
+const builtFile = (href) => (href.startsWith(siteRoot) ? join(dist, decodeURIComponent(href.slice(siteRoot.length))) : null);
+const exists = (path) =>
+  readFile(path).then(
+    () => true,
+    () => false,
+  );
+const seenTitles = new Map();
+let markdownFiles = 0;
+const seenDescriptions = new Map();
 
 const definedIds = new Set();
 const pages = [];
@@ -90,6 +151,40 @@ for (const file of files) {
     if (blocks.length) fail(page, 'must not carry JSON-LD');
     if (alternates.length) fail(page, 'must not carry hreflang alternates');
     continue;
+  }
+
+  const title = decode(html.match(TITLE)?.[1] ?? '');
+  const description = decode(html.match(DESCRIPTION)?.[1] ?? '');
+  for (const [label, value, seen] of [
+    ['title', title, seenTitles],
+    ['description', description, seenDescriptions],
+  ]) {
+    if (!value) fail(page, `${label} missing`);
+    else if (seen.has(value)) fail(page, `${label} duplicates ${seen.get(value)}`);
+    else seen.set(value, page);
+    if (FORBIDDEN_CHARACTERS.test(value) || SPACED_HYPHEN.test(value)) {
+      fail(page, `${label} breaks the copy rules (dash, typographic quote or arrow)`);
+    }
+  }
+  const images = [...html.matchAll(META_IMAGE)].map((match) => match[1]);
+  if (images.length !== 2) fail(page, `expected og:image and twitter:image, found ${images.length}`);
+  for (const image of images) {
+    const file = builtFile(image);
+    if (!file || !(await exists(file))) fail(page, `social image ${image} is not a built file`);
+  }
+
+  // Markdown version of the page (llmstxt.org): built, under the page URL, an H1 first, every value filled.
+  for (const [, href] of html.matchAll(MARKDOWN_ALTERNATE)) {
+    const file = builtFile(href);
+    if (!canonical || href !== `${canonical}index.md`) fail(page, `Markdown alternate ${href} is not <canonical>index.md`);
+    if (!file || !(await exists(file))) {
+      fail(page, `Markdown alternate ${href} is not a built file`);
+      continue;
+    }
+    const markdown = await readFile(file, 'utf8');
+    if (!markdown.startsWith('# ')) fail(page, `Markdown version ${href} must start with an H1`);
+    if (UNFILLED.test(markdown)) fail(page, `Markdown version ${href} contains an unfilled value`);
+    markdownFiles += 1;
   }
 
   if (!canonical) fail(page, 'canonical URL missing');
@@ -120,12 +215,25 @@ for (const file of files) {
       if (typeof node['@id'] === 'string') definedIds.add(node['@id']);
     });
   }
-  pages.push({ page, canonical, nodes });
+  pages.push({ page, canonical, nodes, html });
 }
 
-for (const { page, canonical, nodes } of pages) {
+for (const { page, canonical, nodes, html } of pages) {
   const present = new Set(nodes.flatMap(({ node }) => typesOf(node)));
   for (const type of SITE_ENTITIES) if (!present.has(type)) fail(page, `site entity ${type} missing`);
+  for (const type of FORBIDDEN_TYPES) if (present.has(type)) fail(page, `${type} markup is not allowed`);
+  for (const { node, path } of nodes) {
+    for (const property of FORBIDDEN_PROPERTIES) if (property in node) fail(page, `${property} at ${path} is not allowed`);
+  }
+
+  // NAP: the page shows the street and links the phone number the TattooParlor node states.
+  const studio = nodes.find(({ node }) => typesOf(node).includes('TattooParlor'))?.node;
+  if (studio) {
+    const visible = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/g, ' ').replace(/<[^>]+>/g, ' ');
+    const text = decode(visible).replace(/\s+/g, ' ');
+    if (!text.includes(studio.address?.streetAddress)) fail(page, `studio street ${studio.address?.streetAddress} not shown on the page`);
+    if (!html.includes(`href="tel:${studio.telephone}"`)) fail(page, `studio phone ${studio.telephone} not linked on the page`);
+  }
 
   const webPage = nodes.find(({ node }) => String(node['@id'] ?? '').endsWith('#webpage'))?.node;
   if (!webPage) fail(page, 'WebPage node (#webpage) missing');
@@ -150,9 +258,29 @@ for (const { page, canonical, nodes } of pages) {
   }
 }
 
+for (const name of LLMS_FILES) {
+  const path = join(dist, name);
+  if (!(await exists(path))) {
+    fail(name, 'missing');
+    continue;
+  }
+  const text = await readFile(path, 'utf8');
+  if (!text.startsWith('# ')) fail(name, 'must start with an H1 (llmstxt.org)');
+  if (UNFILLED.test(text)) fail(name, 'contains an unfilled value');
+  // Markdown links and bare URLs. Every URL on the site's origin must sit under the base path and be built.
+  for (const [match] of text.matchAll(/https?:\/\/[^\s)]+/g)) {
+    const href = match.replace(/[.,;:]+$/, '');
+    if (new URL(href).origin !== new URL(siteRoot).origin) continue;
+    if (!href.startsWith(siteRoot)) fail(name, `links ${href}, outside the base path ${siteRoot}`);
+    else if (!builtUrls.has(href) && !(await exists(builtFile(href)))) fail(name, `links ${href}, which is not built`);
+  }
+}
+
 if (errors.length) {
-  console.error(`JSON-LD validation failed with ${errors.length} error(s):`);
+  console.error(`SEO validation failed with ${errors.length} error(s):`);
   for (const error of errors) console.error(`  ${error}`);
   process.exit(1);
 }
-console.log(`JSON-LD and hreflang valid: ${pages.length} pages, ${definedIds.size} entities, site root ${siteRoot}`);
+console.log(
+  `SEO layer valid: ${pages.length} pages, ${definedIds.size} entities, ${markdownFiles} Markdown versions, ${LLMS_FILES.length} llms files, site root ${siteRoot}`,
+);

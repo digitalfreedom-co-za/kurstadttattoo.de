@@ -1235,5 +1235,27 @@
     "retentionDemo": "We do not receive booking data from the demo calendar. It is held in the cal.com account of {holder} and stored and deleted under the rules of cal.com.",
     "retentionLive": "We delete booking data once it is no longer needed to hold and follow up on the appointment, unless statutory retention duties apply.",
     "alternative": "If you do not consent or do not want to use cal.com, simply arrange your appointment by phone or email."
+  },
+  "seo": {
+    "ogImageAlt": "KurstadtTattoo, tattoo studio in Bad Nauheim: realistic fox tattoo in colour on a forearm, next to the name and address of the studio",
+    "websiteDescription": "Website of KurstadtTattoo, the tattoo studio of Patrick Wolf in Bad Nauheim in the Wetterau region: realistic portraits, fine line, consultation, hygiene and aftercare.",
+    "studioDescription": "KurstadtTattoo is the tattoo studio of Patrick Wolf in Bad Nauheim in the Wetterau region, near Friedberg and Frankfurt, Germany. Its focus is realistic portraits and fine line, plus colour, black and grey, blackwork and lettering. From 1 December 2026 at Friedrich-Ebert-Platz 1A.",
+    "catalogName": "Services of KurstadtTattoo",
+    "services": {
+      "tattoo": {
+        "name": "Tattoos",
+        "description": "Tattoos from your own design or one planned together: realistic portraits, fine line, colour, black and grey, blackwork and lettering. Finishing tattoos started elsewhere, too."
+      },
+      "consultation": {
+        "name": "Tattoo consultation",
+        "description": "Personal consultation on motif, style, size and placement before the tattoo."
+      },
+      "engraving": {
+        "name": "Laser engraving",
+        "description": "Laser engraving on plastic, aluminium, brass, stainless steel, wood, glass and leather, including logos and graphics."
+      }
+    },
+    "register": "Commercial register (Handelsregister)",
+    "region": "Wetterau region"
   }
 }
