@@ -107,10 +107,104 @@
   "pages": {
     "home": {
       "title": "Tattoo Studio Bad Nauheim | KurstadtTattoo",
-      "description": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in Bad Nauheim. Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
-      "heading": "KurstadtTattoo Bad Nauheim",
-      "intro": "Tattoos und Piercings in Bad Nauheim. Ab dem 1. Dezember 2026 finden Sie uns im neuen Studio am Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
-      "status": "Die neue Website entsteht gerade."
+      "description": "KurstadtTattoo, Ihr Tattoo Studio in Bad Nauheim nahe Frankfurt: realistische Porträts und Fine Line von Patrick Wolf. Neueröffnung am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A.",
+      "hero": {
+        "eyebrow": "Tattoo Studio Bad Nauheim, Wetterau",
+        "heading": "Tattoo Studio in Bad Nauheim für realistische Porträts und feine Linien",
+        "intro": "KurstadtTattoo ist das Tattoo Studio von Patrick Wolf in der Wetterau, direkt neben Friedberg und kurz vor den Toren von Frankfurt. Sie bringen Ihre Idee oder Ihre eigene Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
+        "worksLink": "Arbeiten ansehen",
+        "imageCaption": "Arbeit aus dem Studio",
+        "addressLabel": "Neues Studio ab 1. Dezember 2026"
+      },
+      "art": {
+        "id": "arbeiten",
+        "eyebrow": "Kunst",
+        "title": "Welche Tattoos entstehen bei KurstadtTattoo?",
+        "intro": "Unser Schwerpunkt sind realistische Porträts und feine Linien. Dazu kommen farbige Motive, Black and Grey, Blackwork, Schriftzüge und ornamentale Arbeiten.",
+        "stylesLabel": "Stile und Schwerpunkte",
+        "styles": [
+          {
+            "title": "Realistik und Porträts",
+            "text": "Tiere, Menschen und Erinnerungen, detailgenau auf die Haut gebracht."
+          },
+          {
+            "title": "Fine Line",
+            "text": "Filigrane Motive mit feinen Linien, von der Libelle bis zum Schriftzug."
+          },
+          {
+            "title": "Farbe, Black and Grey, Blackwork",
+            "text": "Von farbenfrohen Designs bis zu ornamental gestalteten Arbeiten in Schwarz."
+          },
+          {
+            "title": "Ihre eigene Vorlage",
+            "text": "Sie bringen ein eigenes Design mit, wir setzen es als Ihr individuelles Tattoo um."
+          },
+          {
+            "title": "Fertigstellen",
+            "text": "Tattoos, die in einem anderen Studio begonnen wurden, stellen wir fertig."
+          }
+        ],
+        "galleryLabel": "Auswahl an Tattoos aus dem Studio",
+        "galleryNote": "Echte Arbeiten aus dem Studio KurstadtTattoo. Tippen Sie auf ein Bild, um es groß zu sehen.",
+        "galleryLink": "Zur ganzen Galerie"
+      },
+      "hygiene": {
+        "id": "hygiene",
+        "eyebrow": "Hygiene",
+        "title": "Welche Rolle spielt Hygiene bei KurstadtTattoo?",
+        "intro": "Hygiene gehört seit der Gründung zu den Werten, auf die wir am meisten achten, gemeinsam mit Qualität und Ihrer Zufriedenheit.",
+        "text": "Jeder bei uns arbeitet nach diesen Maßstäben: Hygiene, Professionalität und Kundenzufriedenheit. Zur Sauberkeit gehört auch die Zeit danach. Wir erklären Ihnen die Pflege in der Heilung und bieten Ihnen eine Nachsorge an.",
+        "imageAlt": "Patrick Wolf tätowiert mit schwarzen Handschuhen und abgedeckter Tattoomaschine einen Unterarm",
+        "careTitle": "Was Sie in der Heilung beachten",
+        "care": [
+          "Waschen Sie gründlich die Hände, bevor Sie das Tattoo berühren.",
+          "Nehmen Sie die Folie nach den ersten Stunden ab, reinigen Sie die Stelle mit lauwarmem Wasser und milder Seife und tupfen Sie sie trocken.",
+          "Tragen Sie eine dünne Schicht Heilsalbe auf.",
+          "Meiden Sie direkte Sonne, Solarium und Schwimmen in Pool oder See, bis die Haut verheilt ist.",
+          "Bei starker Rötung, Schwellung oder eitrigen Absonderungen gehen Sie bitte umgehend zum Arzt."
+        ],
+        "aftercareLink": "Alle Pflegetipps"
+      },
+      "process": {
+        "id": "ablauf",
+        "eyebrow": "Beratung und Ablauf",
+        "title": "Wie läuft ein Tattoo bei KurstadtTattoo ab?",
+        "intro": "In vier Schritten: Anruf, Beratung zu Motiv und Stelle, Termin im Studio und Nachsorge. Bevor die erste Linie gestochen wird, planen wir das Motiv gemeinsam mit Ihnen.",
+        "consultationLink": "Mehr zu Beratung und Ablauf"
+      },
+      "artists": {
+        "id": "kuenstler",
+        "eyebrow": "Künstler",
+        "title": "Wer tätowiert bei KurstadtTattoo?",
+        "lead": "Patrick Wolf führt KurstadtTattoo und ist unser Spezialist für realistische Porträts und feine Linien.",
+        "text": "Mit seinem Auge für Details und einer ruhigen Hand verwandelt er Erinnerungen und Ideen in Kunstwerke auf der Haut: das Porträt eines Hundes, einen Schriftzug für die Familie oder eine filigrane Libelle.",
+        "imageAlt": "Patrick Wolf mit Sonnenbrille und verschränkten, tätowierten Armen vor der Neon Wand mit dem KurstadtTattoo Logo",
+        "artistsLink": "Mehr über unsere Künstler"
+      },
+      "location": {
+        "id": "studio",
+        "eyebrow": "Standort",
+        "title": "Wo finden Sie KurstadtTattoo?",
+        "intro": "Ab dem 1. Dezember 2026 im neuen Studio am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bad Nauheim liegt in der Wetterau, direkt neben Friedberg und kurz vor den Toren von Frankfurt.",
+        "mapLink": "Route in Google Maps öffnen",
+        "mapNote": "öffnet Google Maps in einem neuen Tab"
+      },
+      "faq": {
+        "id": "fragen",
+        "eyebrow": "FAQ",
+        "title": "Häufige Fragen vor dem ersten Tattoo",
+        "faqLink": "Alle Fragen und Antworten"
+      },
+      "expert": {
+        "eyebrow": "Gutachten",
+        "title": "Sie brauchen ein Gutachten zu einem Tattoo?",
+        "text": "Gutachten zu Tattoos und Piercings erstellt Patrick Wolf als geprüfter und zertifizierter Gutachter des DGuSV. Alles dazu finden Sie auf seiner eigenen Website.",
+        "link": "Zu tattoogutachten.de"
+      },
+      "cta": {
+        "title": "Ihr nächstes Tattoo beginnt mit einem Gespräch.",
+        "text": "Erzählen Sie uns Ihre Idee. Ab dem 1. Dezember 2026 empfangen wir Sie im neuen Studio am Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
     },
     "notFound": {
       "title": "Seite nicht gefunden | KurstadtTattoo",
@@ -119,5 +213,101 @@
       "text": "Die Adresse ist nicht oder nicht mehr vorhanden.",
       "homeLink": "Zur Startseite"
     }
+  },
+  "works": {
+    "fox": {
+      "title": "Fuchs mit Blättern",
+      "meta": "Realistik in Farbe, Unterarm",
+      "alt": "Realistisches Tattoo eines Fuchskopfes in Orange und Schwarz mit einem Palmblatt in Blackwork auf dem Unterarm"
+    },
+    "dogPortrait": {
+      "title": "Hundeporträt in einer Pfote",
+      "meta": "Porträt, Unterarm",
+      "alt": "Realistisches Porträt eines Hundes, eingefasst in die Form einer Pfote, mit Name und Datum auf dem Unterarm"
+    },
+    "chessKing": {
+      "title": "Schachkönig",
+      "meta": "Black and Grey, Unterarm",
+      "alt": "Schachfigur König als schattiertes Black and Grey Tattoo auf dem Unterarm"
+    },
+    "shark": {
+      "title": "Hai mit Koordinaten",
+      "meta": "Black and Grey, Oberarm",
+      "alt": "Hai in Black and Grey mit Koordinaten als Schriftzug auf dem Oberarm"
+    },
+    "dragonfly": {
+      "title": "Libelle",
+      "meta": "Fine Line, Unterarm",
+      "alt": "Filigrane Libelle in Fine Line mit einer geometrischen Linie auf dem Unterarm"
+    },
+    "flower": {
+      "title": "Blüte",
+      "meta": "Black and Grey, Handrücken",
+      "alt": "Große schattierte Blüte in Schwarz und Grau auf dem Handrücken"
+    },
+    "rabbit": {
+      "title": "Hase mit Mond",
+      "meta": "Farbe, Wade",
+      "alt": "Farbiges Tattoo eines Hasen vor einem Mond auf der Wade"
+    },
+    "compass": {
+      "title": "Kompass mit Family",
+      "meta": "Schrift und Linien, Rippen",
+      "alt": "Kompass mit dem Schriftzug Family, einer Herzschlaglinie und vier Jahreszahlen auf den Rippen"
+    },
+    "blackwork": {
+      "title": "Geometrisches Blackwork",
+      "meta": "Blackwork, Arm",
+      "alt": "Geometrisches Blackwork Tattoo mit Mustern auf der Innenseite des Arms"
+    }
+  },
+  "faq": {
+    "label": "Häufige Fragen",
+    "items": {
+      "booking": {
+        "question": "Wie bekomme ich einen Termin bei KurstadtTattoo?",
+        "answer": "Terminanfragen nehmen wir telefonisch an, unter {phone}. Für weitere Fragen erreichen Sie uns per E-Mail an {email}."
+      },
+      "ownDesign": {
+        "question": "Kann ich meine eigene Vorlage mitbringen?",
+        "answer": "Ja. Sie können eigene Designs einbringen, und wir setzen daraus ein Tattoo um, das Ihren Wünschen entspricht. Auch Fotos und Erinnerungen, zum Beispiel für ein Porträt, sind ein guter Ausgangspunkt."
+      },
+      "finishing": {
+        "question": "Stellen Sie auch Tattoos fertig, die woanders begonnen wurden?",
+        "answer": "Ja, das machen wir. Bringen Sie das begonnene Tattoo zur Beratung mit, dann besprechen wir, wie es weitergeht."
+      },
+      "care": {
+        "question": "Wie pflege ich mein neues Tattoo?",
+        "answer": "Reinigen Sie das Tattoo regelmäßig und tragen Sie eine dünne Schicht Heilsalbe auf. Waschen Sie vorher gründlich die Hände, meiden Sie direkte Sonne und kratzen Sie nicht."
+      },
+      "removal": {
+        "question": "Kann ich ein Tattoo entfernen lassen?",
+        "answer": "Tattoos werden mit dem Laser entfernt und verblassen dabei nach und nach, meist über mehrere Sitzungen. Diese Behandlung bieten Hautärzte an. Informationen dazu bekommen Sie bei uns."
+      },
+      "reopening": {
+        "question": "Wann öffnet das neue Studio?",
+        "answer": "Am 1. Dezember 2026 am Friedrich-Ebert-Platz 1A in 61231 Bad Nauheim. Bis dahin bleibt das Studio geschlossen."
+      }
+    }
+  },
+  "process": {
+    "steps": [
+      {
+        "title": "Anrufen und Termin anfragen",
+        "text": "Terminanfragen nehmen wir telefonisch an. Erzählen Sie uns kurz, welches Motiv Sie sich vorstellen und an welcher Stelle es sitzen soll."
+      },
+      {
+        "title": "Beratung zu Motiv und Stelle",
+        "text": "Wir planen Ihr Tattoo eng mit Ihnen zusammen, bis es Ihren Vorstellungen entspricht. Bringen Sie gern eine eigene Vorlage, Fotos oder Ideen mit."
+      },
+      {
+        "title": "Ihr Termin im Studio",
+        "text": "Das abgestimmte Motiv wird mit Sorgfalt und einem Auge für Details gestochen, in einer angenehmen und sicheren Atmosphäre."
+      },
+      {
+        "title": "Pflege und Nachsorge",
+        "text": "Sie erhalten Hinweise zur Pflege für die Heilung. Bei Fragen sind wir für Sie da und bieten Ihnen eine Nachsorge an."
+      }
+    ]
   }
 }

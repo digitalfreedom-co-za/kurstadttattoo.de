@@ -10,10 +10,12 @@ import { t, type Locale } from '../../i18n';
 interface Props {
   locale: Locale;
   variant?: 'strip' | 'panel';
+  /** Heading level of the panel title; h3 when the panel sits inside a titled section. */
+  headingLevel?: 'h2' | 'h3';
   class?: string;
 }
 
-const { locale, variant = 'panel', class: className } = Astro.props;
+const { locale, variant = 'panel', headingLevel: Heading = 'h2', class: className } = Astro.props;
 const copy = t(locale).reopening;
 const { address } = studio;
 ---
@@ -39,9 +41,9 @@ const { address } = studio;
               <span class="h-[3px] w-5 shrink-0 bg-neon-glow" aria-hidden="true" />
               {copy.label}
             </p>
-            <h2 id="neueroeffnung-titel" class="mt-4 text-h3">
+            <Heading id="neueroeffnung-titel" class="mt-4 text-h3">
               {copy.title}
-            </h2>
+            </Heading>
             <p class="mt-4 max-w-[34rem] text-chalk-muted">{copy.text}</p>
           </div>
           <div class="flex min-w-0 flex-col justify-end gap-4 md:col-span-5">

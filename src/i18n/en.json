@@ -107,10 +107,104 @@
   "pages": {
     "home": {
       "title": "Tattoo Studio in Bad Nauheim | KurstadtTattoo",
-      "description": "KurstadtTattoo is the tattoo studio of Patrick Wolf in Bad Nauheim, Germany. Reopening on 1 December 2026 at Friedrich-Ebert-Platz 1A.",
-      "heading": "KurstadtTattoo Bad Nauheim",
-      "intro": "Tattoos and piercings in Bad Nauheim. From 1 December 2026 you will find us in our new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
-      "status": "The new website is being built."
+      "description": "KurstadtTattoo, your tattoo studio in Bad Nauheim near Frankfurt: realistic portraits and fine line work by Patrick Wolf. Reopening on 1 December 2026 at Friedrich-Ebert-Platz 1A.",
+      "hero": {
+        "eyebrow": "Tattoo studio Bad Nauheim, Wetterau",
+        "heading": "Tattoo studio in Bad Nauheim for realistic portraits and fine lines",
+        "intro": "KurstadtTattoo is the tattoo studio of Patrick Wolf in the Wetterau region, right next to Friedberg and just outside Frankfurt. You bring your idea or your own design, and we plan the piece together with you.",
+        "worksLink": "See our work",
+        "imageCaption": "Work from the studio",
+        "addressLabel": "New studio from 1 December 2026"
+      },
+      "art": {
+        "id": "work",
+        "eyebrow": "Art",
+        "title": "What kind of tattoos does KurstadtTattoo create?",
+        "intro": "Our focus is realistic portraits and fine lines. We also tattoo colour pieces, black and grey, blackwork, lettering and ornamental work.",
+        "stylesLabel": "Styles and specialities",
+        "styles": [
+          {
+            "title": "Realism and portraits",
+            "text": "Animals, people and memories, put on skin with an eye for detail."
+          },
+          {
+            "title": "Fine line",
+            "text": "Delicate designs with fine lines, from a dragonfly to lettering."
+          },
+          {
+            "title": "Colour, black and grey, blackwork",
+            "text": "From colourful designs to ornamental work in black."
+          },
+          {
+            "title": "Your own design",
+            "text": "You bring your own artwork, we turn it into your individual tattoo."
+          },
+          {
+            "title": "Finishing",
+            "text": "We finish tattoos that were started in another studio."
+          }
+        ],
+        "galleryLabel": "A selection of tattoos from the studio",
+        "galleryNote": "Real work from the KurstadtTattoo studio. Tap a picture to see it large.",
+        "galleryLink": "See the full gallery"
+      },
+      "hygiene": {
+        "id": "hygiene",
+        "eyebrow": "Hygiene",
+        "title": "How important is hygiene at KurstadtTattoo?",
+        "intro": "Since the studio was founded, hygiene has been one of the values we care about most, together with quality and your satisfaction.",
+        "text": "Everyone here works to the same standards: hygiene, professionalism and customer satisfaction. Clean work includes the time after your session. We explain how to care for your tattoo while it heals and offer aftercare.",
+        "imageAlt": "Patrick Wolf tattooing a forearm, wearing black gloves, with a covered tattoo machine",
+        "careTitle": "What to keep in mind while it heals",
+        "care": [
+          "Wash your hands thoroughly before you touch the tattoo.",
+          "Remove the film after the first few hours, clean the area with lukewarm water and mild soap and pat it dry.",
+          "Apply a thin layer of healing ointment.",
+          "Avoid direct sunlight, sunbeds and swimming in pools or lakes until the skin has healed.",
+          "If you notice strong redness, swelling or pus, please see a doctor straight away."
+        ],
+        "aftercareLink": "All aftercare tips"
+      },
+      "process": {
+        "id": "process",
+        "eyebrow": "Consultation and process",
+        "title": "How does getting a tattoo at KurstadtTattoo work?",
+        "intro": "In four steps: a call, a consultation on design and placement, your session in the studio and aftercare. Before the first line is tattooed, we plan the design together with you.",
+        "consultationLink": "More about consultation and process"
+      },
+      "artists": {
+        "id": "artists",
+        "eyebrow": "Artists",
+        "title": "Who tattoos at KurstadtTattoo?",
+        "lead": "Patrick Wolf runs KurstadtTattoo and is our specialist for realistic portraits and fine lines.",
+        "text": "With his eye for detail and a steady hand he turns memories and ideas into art on skin: the portrait of a dog, lettering for the family or a delicate dragonfly.",
+        "imageAlt": "Patrick Wolf in sunglasses with crossed, tattooed arms in front of the neon wall with the KurstadtTattoo logo",
+        "artistsLink": "More about our artists"
+      },
+      "location": {
+        "id": "studio",
+        "eyebrow": "Location",
+        "title": "Where is KurstadtTattoo?",
+        "intro": "From 1 December 2026 in our new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Bad Nauheim lies in the Wetterau region, right next to Friedberg and just outside Frankfurt.",
+        "mapLink": "Open the route in Google Maps",
+        "mapNote": "opens Google Maps in a new tab"
+      },
+      "faq": {
+        "id": "faq",
+        "eyebrow": "FAQ",
+        "title": "Common questions before your first tattoo",
+        "faqLink": "All questions and answers"
+      },
+      "expert": {
+        "eyebrow": "Expert reports",
+        "title": "Do you need an expert report on a tattoo?",
+        "text": "Patrick Wolf writes expert reports on tattoos and piercings as a DGuSV certified assessor. You will find everything about it on his own website.",
+        "link": "Go to tattoogutachten.de"
+      },
+      "cta": {
+        "title": "Your next tattoo starts with a conversation.",
+        "text": "Tell us your idea. From 1 December 2026 we welcome you in our new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
     },
     "notFound": {
       "title": "Page not found | KurstadtTattoo",
@@ -119,5 +213,101 @@
       "text": "This address does not exist or no longer exists.",
       "homeLink": "Go to the home page"
     }
+  },
+  "works": {
+    "fox": {
+      "title": "Fox with leaves",
+      "meta": "Colour realism, forearm",
+      "alt": "Realistic tattoo of a fox head in orange and black with a blackwork palm leaf on the forearm"
+    },
+    "dogPortrait": {
+      "title": "Dog portrait in a paw",
+      "meta": "Portrait, forearm",
+      "alt": "Realistic portrait of a dog framed in the shape of a paw, with a name and date on the forearm"
+    },
+    "chessKing": {
+      "title": "Chess king",
+      "meta": "Black and grey, forearm",
+      "alt": "Chess king piece as a shaded black and grey tattoo on the forearm"
+    },
+    "shark": {
+      "title": "Shark with coordinates",
+      "meta": "Black and grey, upper arm",
+      "alt": "Black and grey shark with coordinates lettering on the upper arm"
+    },
+    "dragonfly": {
+      "title": "Dragonfly",
+      "meta": "Fine line, forearm",
+      "alt": "Delicate fine line dragonfly with a geometric line on the forearm"
+    },
+    "flower": {
+      "title": "Flower",
+      "meta": "Black and grey, back of the hand",
+      "alt": "Large shaded flower in black and grey on the back of the hand"
+    },
+    "rabbit": {
+      "title": "Rabbit with moon",
+      "meta": "Colour, calf",
+      "alt": "Colour tattoo of a rabbit in front of a moon on the calf"
+    },
+    "compass": {
+      "title": "Compass with Family",
+      "meta": "Lettering and lines, ribs",
+      "alt": "Compass with the word Family, a heartbeat line and four years on the ribs"
+    },
+    "blackwork": {
+      "title": "Geometric blackwork",
+      "meta": "Blackwork, arm",
+      "alt": "Geometric blackwork tattoo with patterns on the inner side of the arm"
+    }
+  },
+  "faq": {
+    "label": "Frequently asked questions",
+    "items": {
+      "booking": {
+        "question": "How do I book an appointment at KurstadtTattoo?",
+        "answer": "We take appointment requests by phone at {phone}. For other questions you can email us at {email}."
+      },
+      "ownDesign": {
+        "question": "Can I bring my own design?",
+        "answer": "Yes. You can bring your own design, and we turn it into a tattoo that matches your wishes. Photos and memories, for a portrait for example, are a good starting point too."
+      },
+      "finishing": {
+        "question": "Do you finish tattoos that were started somewhere else?",
+        "answer": "Yes, we do. Bring the unfinished tattoo to your consultation and we will talk about how to complete it."
+      },
+      "care": {
+        "question": "How do I look after my new tattoo?",
+        "answer": "Clean the tattoo regularly and apply a thin layer of healing ointment. Wash your hands thoroughly first, avoid direct sunlight and do not scratch."
+      },
+      "removal": {
+        "question": "Can I have a tattoo removed?",
+        "answer": "Tattoos are removed by laser and fade gradually, usually over several sessions. Dermatologists offer this treatment. We are happy to give you information about it."
+      },
+      "reopening": {
+        "question": "When does the new studio open?",
+        "answer": "On 1 December 2026 at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Until then the studio is closed."
+      }
+    }
+  },
+  "process": {
+    "steps": [
+      {
+        "title": "Call and request an appointment",
+        "text": "We take appointment requests by phone. Tell us briefly which design you have in mind and where it should go."
+      },
+      {
+        "title": "Consultation on design and placement",
+        "text": "We plan your tattoo closely with you until it matches what you have in mind. Feel free to bring your own design, photos or ideas."
+      },
+      {
+        "title": "Your session in the studio",
+        "text": "The agreed design is tattooed with care and an eye for detail, in a pleasant and safe atmosphere."
+      },
+      {
+        "title": "Care and aftercare",
+        "text": "You get instructions on how to care for the tattoo while it heals. If you have questions, we are there for you and offer aftercare."
+      }
+    ]
   }
 }
