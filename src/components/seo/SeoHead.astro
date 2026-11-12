@@ -1,12 +1,14 @@
 ---
 // SEO tags of a page: title, description, author, robots, canonical, hreflang alternates for both locales
-// plus x-default, Open Graph and Twitter with the OG card of the page locale, the llms.txt hint and one
-// JSON-LD @graph (site wide entities, the WebPage, its breadcrumb trail and the page's own nodes).
+// plus x-default, Open Graph and Twitter with the OG card of the page locale, the llms.txt hint, the
+// Markdown version of content pages (text/markdown alternate) and one JSON-LD @graph (site wide
+// entities, the WebPage, its breadcrumb trail and the page's own nodes).
 // Absolute URLs come from Astro.site plus the base path, indexing from the switch in config/site.ts.
 import { getImage } from 'astro:assets';
 import JsonLd from './JsonLd.astro';
 import { site, studio, indexable, ogImage } from '../../config/site';
 import { absoluteUrl, withoutBase } from '../../lib/url';
+import { hasMarkdown, markdownPath } from '../../lib/page-markdown';
 import { breadcrumbId, breadcrumbNode, siteGraph, webPageNode, type Crumb, type JsonLdNode } from '../../lib/schema';
 import { defaultLocale, locales, localeMeta, localizedPath, t, type Locale, type RouteKey } from '../../i18n';
 import portrait from '../../assets/images/patrick-wolf-arme-verschraenkt-neonlogo.jpg';
@@ -38,6 +40,7 @@ const alternates = routeKey
 const image = absoluteUrl(ogImage.path[locale], Astro.site);
 const imageAlt = t(locale).seo.ogImageAlt;
 const llmsTxt = absoluteUrl(`${localizedPath('home', locale)}llms.txt`, Astro.site);
+const markdown = !noindex && hasMarkdown(routeKey) ? absoluteUrl(markdownPath(routeKey, locale), Astro.site) : undefined;
 
 let graph: Record<string, unknown> | null = null;
 if (!noindex) {
@@ -90,4 +93,5 @@ if (!noindex) {
 <meta name="twitter:image:alt" content={imageAlt} />
 
 <link rel="alternate" type="text/plain" title="llms.txt" href={llmsTxt} />
+{markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
 {graph && <JsonLd data={graph} />}

@@ -7,6 +7,7 @@ import { CAL_IS_DEMO } from '../config/booking';
 import { faqEntries, faqGroups } from '../data/faq';
 import { absoluteUrl } from './url';
 import { fillStudio } from './placeholders';
+import { hasMarkdown, markdownPath } from './page-markdown';
 import { localizedPath, t, type Locale, type RouteKey } from '../i18n';
 
 /** Date the facts in these files were last checked against the source content. */
@@ -82,7 +83,7 @@ const copy = {
 } satisfies Record<Locale, unknown>;
 
 /** Content pages listed in llms.txt, in this order. Descriptions come from the page meta. */
-const contentPages: RouteKey[] = ['gallery', 'artists', 'hygiene', 'consultation', 'aftercare', 'faq'];
+const contentPages: RouteKey[] = ['home', 'gallery', 'artists', 'hygiene', 'consultation', 'aftercare', 'faq'];
 // The booking page is listed only once it books real studio appointments (not the cal.com demo of the preview).
 const studioPages: RouteKey[] = CAL_IS_DEMO ? ['contact', 'engraving'] : ['contact', 'booking', 'engraving'];
 
@@ -91,7 +92,9 @@ function pageLink(key: RouteKey, locale: Locale, base: URL | undefined): string 
   const page = dict.pages[key as keyof typeof dict.pages];
   const label = dict.nav.items[key as keyof typeof dict.nav.items];
   const note = 'description' in page ? fillStudio(page.description) : '';
-  return `- [${label}](${absoluteUrl(localizedPath(key, locale), base)})${note ? `: ${note}` : ''}`;
+  // Content pages link their Markdown version (llmstxt.org), the rest their HTML page.
+  const path = hasMarkdown(key) ? markdownPath(key, locale) : localizedPath(key, locale);
+  return `- [${label}](${absoluteUrl(path, base)})${note ? `: ${note}` : ''}`;
 }
 
 const otherLocale = (locale: Locale): Locale => (locale === 'de' ? 'en' : 'de');
