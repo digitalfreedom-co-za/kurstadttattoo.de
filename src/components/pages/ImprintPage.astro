@@ -8,7 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../ui/PageHeader.astro';
 import Container from '../ui/Container.astro';
 import LegalProse from '../legal/LegalProse.astro';
-import { operator, reopening, studio } from '../../config/site';
+import { operator, reopening, studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
 import { url } from '../../lib/url';
 
@@ -54,7 +54,7 @@ const { address } = studio;
 
         <h2>{copy.contact.title}</h2>
         <p>
-          {dict.studio.phoneLabel}: <a href={studio.phone.href}>{studio.phone.display}</a><br />
+          {dict.studio.phoneLabel}: <a href={studio.phone.href}>{phoneDisplay(locale)}</a><br />
           {dict.studio.emailLabel}: <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
         </p>
 

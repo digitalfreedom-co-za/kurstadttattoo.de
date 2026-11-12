@@ -189,6 +189,14 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Artwork metadata and photo captions: sentence case at reading size, unlike the short uppercase label. */
+  .caption {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-muted);
+  }
+
   /* The basin of the fountain in the logo: a thin rim over a heavy base. Section openers and the footer. */
   .basin-rule {
     display: block;
@@ -238,7 +246,7 @@
     opacity: 1;
     transform: scaleX(0);
     transform-origin: left center;
-    transition: transform 1100ms var(--ease-ink);
+    transition: transform 320ms var(--ease-ink);
   }
 
   /* Images uncover from the top like a print being lifted. The clip sits on the inner picture:
@@ -252,13 +260,31 @@
     display: block;
     height: 100%;
     clip-path: inset(0 0 100% 0);
-    transition: clip-path 1100ms var(--ease-ink);
+    transition: clip-path 450ms var(--ease-ink);
   }
 
   /* The individual translate property composes with the parallax transform. */
   .js [data-reveal='image'] img {
     translate: 0 3%;
-    transition: translate 1500ms var(--ease-out-quint);
+    transition: translate 500ms var(--ease-out-quint);
+  }
+
+  /* On touch screens a picture simply fades in: no clip and no drift while the visitor scrolls past it. */
+  @media (pointer: coarse) {
+    .js [data-reveal='image'] {
+      opacity: 0;
+      transition: opacity 350ms ease-out;
+    }
+
+    .js [data-reveal='image'] > picture {
+      clip-path: none;
+      transition: none;
+    }
+
+    .js [data-reveal='image'] img {
+      translate: none;
+      transition: none;
+    }
   }
 
   .js [data-reveal].is-visible {

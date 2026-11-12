@@ -1,6 +1,6 @@
 // Single source for site wide facts. Every component reads from here; never hard-code these values in markup.
 // Facts come from docs/source-content (old site) and the ticket for the new address; see the fact sheet there.
-import type { RouteKey } from '../i18n/routes';
+import type { Locale, RouteKey } from '../i18n/routes';
 
 export const site = {
   name: 'KurstadtTattoo',
@@ -24,7 +24,8 @@ export const studio = {
     city: 'Bad Nauheim',
     countryCode: 'DE',
   },
-  phone: { display: '0173 160 51 62', href: 'tel:+491731605162' },
+  /** display: German domestic form; displayIntl: the same number for international visitors (EN pages). */
+  phone: { display: '0173 160 51 62', displayIntl: '+49 173 160 51 62', href: 'tel:+491731605162' },
   email: { display: 'Kurstadttattoo@web.de', href: 'mailto:Kurstadttattoo@web.de' },
   tiktok: { handle: '@patrickkurstadttattoo', href: 'https://www.tiktok.com/@patrickkurstadttattoo' },
   /** The studio's own channels, both checked to exist (docs/source-content, Social media). */
@@ -48,6 +49,11 @@ export const studio = {
   areaServed: ['Bad Nauheim', 'Friedberg (Hessen)', 'Butzbach', 'Rosbach vor der Höhe', 'Ober-Mörlen', 'Bad Vilbel', 'Frankfurt am Main'],
   areaServedRegion: 'Wetteraukreis',
 } as const;
+
+/** Phone number as shown on a page: domestic on German pages, with the country code on English ones. */
+export function phoneDisplay(locale: Locale): string {
+  return locale === 'en' ? studio.phone.displayIntl : studio.phone.display;
+}
 
 /** Social preview card per locale, rendered by scripts/og-image/render.sh (1200 x 630, committed PNGs). */
 export const ogImage = {

@@ -10,6 +10,14 @@ export const CAL_LINK: string = import.meta.env.PUBLIC_CAL_LINK || DEMO_CAL_LINK
 /** True while the calendar is the demo event of the preview, not the studio's own one. */
 export const CAL_IS_DEMO = CAL_LINK === DEMO_CAL_LINK;
 
+/**
+ * Label of every booking call to action. While the demo calendar is configured nothing can be booked
+ * online, so the actions ask for a request (by phone) instead of promising a booking.
+ */
+export function bookingLabel(copy: { label: string; requestLabel: string }): string {
+  return CAL_IS_DEMO ? copy.requestLabel : copy.label;
+}
+
 /** Holder of the demo cal.com account, named in the privacy policy while CAL_IS_DEMO. */
 export const CAL_DEMO_ACCOUNT_HOLDER = 'Marcel R. G. Berger';
 

@@ -1,12 +1,18 @@
 ---
-// Gallery wall: uniform 4:5 crops in a grid, each with a wall label (motif, then style and placement).
-// Every picture is a link to the full image, so it works without JS. With JS the link opens a lightbox
-// (native modal dialog: focus moves in and is trapped, Escape closes, focus returns to the picture last
-// shown). Arrow keys and a horizontal swipe step through the pictures; the counter is announced politely.
+// Gallery wall: 4:5 tiles in a grid, each with a wall label (motif, then style and placement). Each work
+// sets its own framing: a focal position for the 4:5 crop, or contain, which shows the whole photo on a
+// neutral surface where a crop would cut the composition (wide pieces, long placements). Lead works span
+// two columns. Every picture is a link to the full image, so it works without JS. With JS the link opens a
+// lightbox (native modal dialog: focus moves in and is trapped, Escape closes, focus returns to the picture
+// last shown). Arrow keys and a horizontal swipe on the picture step through the works; one polite status
+// names position, motif and style. A picture shows only once it has loaded, with a loading note meanwhile
+// and a retry plus a direct link if it fails. The lightbox offers a request about a design like the one shown.
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import Icon from './Icon.astro';
-import { t, type Locale } from '../../i18n';
+import { bookingLabel } from '../../config/booking';
+import { url } from '../../lib/url';
+import { localizedPath, t, type Locale } from '../../i18n';
 
 export interface GalleryItem {
   src: ImageMetadata;
@@ -14,6 +20,12 @@ export interface GalleryItem {
   alt: string;
   title: string;
   meta?: string;
+  /** cover (default): 4:5 crop at the focal position. contain: the whole photo inside the tile. */
+  fit?: 'cover' | 'contain';
+  /** Focal position of the cover crop (sharp position), default center. */
+  position?: string;
+  /** Lead work: spans two columns. */
+  featured?: boolean;
 }
 
 interface Props {
@@ -21,33 +33,52 @@ interface Props {
   locale: Locale;
   /** Accessible name of the gallery, e.g. the style group. */
   label: string;
-  /** wall: the full gallery grid. preview: two rows of four on wide screens, for a teaser of eight. */
+  /** wall: the full gallery grid. preview: the teaser on the landing page (lead works first). */
   layout?: 'wall' | 'preview';
+  /** Shows the request action in the lightbox (works by the studio, not the engraving examples). */
+  enquire?: boolean;
   class?: string;
 }
 
-const { items, locale, label, layout = 'wall', class: className } = Astro.props;
+const { items, locale, label, layout = 'wall', enquire = true, class: className } = Astro.props;
+// Three works fill one row of three instead of three quarters of a row of four; the first spans both
+// columns on a two column phone, so no row is left half empty.
+const three = layout === 'wall' && items.length === 3;
 const gridClass =
   layout === 'preview'
-    ? 'grid-cols-2 md:grid-cols-4'
-    : 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4';
-const thumbSizes =
+    ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-4'
+    : three
+      ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3'
+      : 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4';
+const thumbSizes = (featured: boolean) =>
   layout === 'preview'
-    ? '(min-width: 84rem) 20rem, (min-width: 48rem) 23vw, 46vw'
+    ? featured
+      ? '(min-width: 84rem) 40rem, (min-width: 48rem) 47vw, 92vw'
+      : '(min-width: 84rem) 20rem, (min-width: 48rem) 23vw, (min-width: 22.5rem) 46vw, 92vw'
     : '(min-width: 80rem) 20rem, (min-width: 48rem) 30vw, (min-width: 22.5rem) 46vw, 100vw';
-const copy = t(locale).gallery;
+const dict = t(locale);
+const copy = dict.gallery;
+const enquireHref = enquire ? url(localizedPath('booking', locale)) : undefined;
 
 const THUMB_RATIO = 4 / 5;
 const THUMB_WIDTHS = [320, 480, 640];
+const FEATURED_WIDTHS = [480, 720, 960];
 const FULL_MAX_WIDTH = 1600;
 
 const prepared = await Promise.all(
   items.map(async (item) => {
-    const maxThumb = Math.min(item.src.width, Math.floor(item.src.height * THUMB_RATIO));
-    const widths = [...new Set([...THUMB_WIDTHS.filter((w) => w < maxThumb), Math.min(maxThumb, THUMB_WIDTHS.at(-1) ?? maxThumb)])];
+    const contain = item.fit === 'contain';
+    const featured = layout === 'preview' && item.featured === true;
+    const candidates = featured ? FEATURED_WIDTHS : THUMB_WIDTHS;
+    // contain keeps the photo's own proportions; cover crops it to the tile.
+    const ratio = contain ? item.src.width / item.src.height : THUMB_RATIO;
+    const maxThumb = Math.min(item.src.width, Math.floor(item.src.height * ratio));
+    const widths = [...new Set([...candidates.filter((w) => w < maxThumb), Math.min(maxThumb, candidates.at(-1) ?? maxThumb)])];
     const thumbs = await Promise.all(
       widths.map((w) =>
-        getImage({ src: item.src, width: w, height: Math.round(w / THUMB_RATIO), fit: 'cover', position: 'center', format: 'webp' }),
+        contain
+          ? getImage({ src: item.src, width: w, format: 'webp' })
+          : getImage({ src: item.src, width: w, height: Math.round(w / ratio), fit: 'cover', position: item.position ?? 'center', format: 'webp' }),
       ),
     );
     const fullWidth = Math.min(item.src.width, FULL_MAX_WIDTH);
@@ -55,11 +86,13 @@ const prepared = await Promise.all(
     const thumbWidth = widths.at(-1) ?? maxThumb;
     return {
       ...item,
+      contain,
+      featured,
       thumb: {
         src: thumbs.at(-1)?.src ?? full.src,
         srcset: thumbs.map((img, i) => `${img.src} ${widths[i]}w`).join(', '),
         width: thumbWidth,
-        height: Math.round(thumbWidth / THUMB_RATIO),
+        height: Math.round(thumbWidth / ratio),
       },
       full: { src: full.src, width: fullWidth, height: Math.round((fullWidth * item.src.height) / item.src.width) },
     };
@@ -70,14 +103,22 @@ const prepared = await Promise.all(
 <div class:list={['gallery', className]} data-gallery>
   <ul class:list={['grid gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10', gridClass]} aria-label={label} data-reveal-group>
     {
-      prepared.map((item) => (
-        <li class="min-w-0" data-reveal>
+      prepared.map((item, index) => (
+        <li
+          class:list={[
+            'min-w-0',
+            item.featured && 'min-[360px]:col-span-2',
+            three && index === 0 && 'min-[360px]:col-span-2 md:col-span-1',
+          ]}
+          data-reveal
+        >
           <figure class="group/item">
             <a
               href={item.full.src}
               class="relative block overflow-hidden bg-wall-deep"
               data-gallery-item
               data-alt={item.alt}
+              data-title={item.title}
               data-caption={item.meta ? `${item.title}. ${item.meta}` : item.title}
               data-width={item.full.width}
               data-height={item.full.height}
@@ -85,22 +126,29 @@ const prepared = await Promise.all(
               <img
                 src={item.thumb.src}
                 srcset={item.thumb.srcset}
-                sizes={thumbSizes}
+                sizes={thumbSizes(item.featured)}
                 width={item.thumb.width}
                 height={item.thumb.height}
                 alt={item.alt}
                 loading="lazy"
                 decoding="async"
-                class="aspect-[4/5] size-full object-cover transition-transform duration-700 ease-out-quint group-hover/item:scale-[1.03]"
+                class:list={[
+                  'aspect-[4/5] size-full transition-transform duration-700 ease-out-quint group-hover/item:scale-[1.03]',
+                  item.contain ? 'object-contain' : 'object-cover',
+                ]}
               />
-              <span class="absolute right-2 bottom-2 flex size-9 items-center justify-center bg-wall/90 text-ink opacity-0 transition-opacity duration-200 group-hover/item:opacity-100 group-focus-within/item:opacity-100" aria-hidden="true">
+              {/* Always visible on touch screens, where there is no hover to reveal it. */}
+              <span
+                class="absolute right-2 bottom-2 flex size-9 items-center justify-center bg-wall/90 text-ink opacity-0 transition-opacity duration-200 group-hover/item:opacity-100 group-focus-within/item:opacity-100 [@media(hover:none)]:opacity-100"
+                aria-hidden="true"
+              >
                 <Icon name="expand" size={16} />
               </span>
               <span class="sr-only">, {copy.open}</span>
             </a>
             <figcaption class="mt-3 border-t border-line pt-2">
               <span class="block text-[0.9375rem] font-semibold leading-snug">{item.title}</span>
-              {item.meta && <span class="label mt-1 block text-muted">{item.meta}</span>}
+              {item.meta && <span class="caption mt-0.5 block">{item.meta}</span>}
             </figcaption>
           </figure>
         </li>
@@ -110,8 +158,8 @@ const prepared = await Promise.all(
 
   <dialog class="lightbox m-0 h-dvh max-h-none w-screen max-w-none bg-night p-0 text-chalk" aria-label={copy.dialogLabel} data-lightbox>
     <div class="relative flex h-full flex-col">
-      <div class="flex items-center justify-between gap-4 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] md:px-6">
-        <p class="label text-chalk-muted" aria-live="polite" data-lightbox-counter data-template={copy.counter}></p>
+      <div class="lightbox-x flex items-center justify-between gap-4 pt-[max(0.75rem,env(safe-area-inset-top))]">
+        <p class="label text-chalk-muted" aria-hidden="true" data-lightbox-counter data-template={copy.counter}></p>
         <button
           type="button"
           class="flex size-11 items-center justify-center text-chalk transition-colors hover:text-neon-glow"
@@ -122,11 +170,28 @@ const prepared = await Promise.all(
           <Icon name="close" size={22} />
         </button>
       </div>
-      <figure class="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 px-4 py-2 md:px-20">
+      <figure class="lightbox-stage lightbox-x relative flex min-h-0 flex-1 flex-col items-center justify-center gap-3 py-2 md:px-20" data-lightbox-stage>
         <img class="min-h-0 max-w-full flex-1 object-contain" alt="" data-lightbox-img />
+        <p class="label absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-chalk-muted" data-lightbox-loading hidden>{copy.loading}</p>
+        <div class="absolute inset-x-0 top-1/2 grid -translate-y-1/2 justify-items-center gap-3 px-4 text-center" data-lightbox-error hidden>
+          <p data-lightbox-failed>{copy.failed}</p>
+          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <button type="button" class="link inline-flex min-h-11 items-center font-semibold" data-lightbox-retry>{copy.retry}</button>
+            <a class="link inline-flex min-h-11 items-center font-semibold" href="" data-lightbox-original>{copy.original}</a>
+          </div>
+        </div>
         <figcaption class="max-w-[40rem] text-center text-sm text-chalk-muted" data-lightbox-caption></figcaption>
+        {
+          enquireHref && (
+            <a class="link inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-chalk" href={enquireHref}>
+              <Icon name="dialog" size={18} class="shrink-0 text-neon-glow" />
+              {copy.enquire}
+              <span class="sr-only">({bookingLabel(dict.booking)})</span>
+            </a>
+          )
+        }
       </figure>
-      <div class="flex justify-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:pointer-events-none md:absolute md:inset-x-4 md:top-1/2 md:-translate-y-1/2 md:justify-between md:pb-0">
+      <div class="lightbox-x lightbox-nav flex justify-center gap-3 pb-[max(1rem,env(safe-area-inset-bottom))] md:pointer-events-none md:absolute md:inset-x-0 md:top-1/2 md:-translate-y-1/2 md:justify-between md:pb-0">
         <button
           type="button"
           class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-neon-glow hover:text-neon-glow"
@@ -146,6 +211,7 @@ const prepared = await Promise.all(
           <Icon name="chevron-right" size={22} />
         </button>
       </div>
+      <p class="sr-only" role="status" aria-atomic="true" data-lightbox-status></p>
     </div>
   </dialog>
 </div>
@@ -153,6 +219,29 @@ const prepared = await Promise.all(
 <style>
   .lightbox::backdrop {
     background: var(--color-night);
+  }
+
+  /* Side padding clears a display cutout in landscape (viewport-fit=cover), as the page Container does. */
+  .lightbox-x {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  @media (min-width: 48rem) {
+    .lightbox-x {
+      padding-left: max(1.5rem, env(safe-area-inset-left));
+      padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+
+    .lightbox-stage {
+      padding-left: max(5rem, calc(env(safe-area-inset-left) + 4rem));
+      padding-right: max(5rem, calc(env(safe-area-inset-right) + 4rem));
+    }
+  }
+
+  /* Vertical panning and pinch zoom stay with the browser; horizontal swipes step through the works. */
+  .lightbox-stage {
+    touch-action: pan-y pinch-zoom;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -170,34 +259,71 @@ const prepared = await Promise.all(
 
 <script>
   const SWIPE_MIN_PX = 50;
+  /** A swipe counts only when it is clearly horizontal: at least this many times wider than tall. */
+  const SWIPE_DIRECTION_RATIO = 1.5;
 
   document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((root) => {
     const dialog = root.querySelector<HTMLDialogElement>('[data-lightbox]');
-    const image = dialog?.querySelector<HTMLImageElement>('[data-lightbox-img]');
-    const caption = dialog?.querySelector<HTMLElement>('[data-lightbox-caption]');
-    const counter = dialog?.querySelector<HTMLElement>('[data-lightbox-counter]');
+    const q = <T extends HTMLElement>(selector: string) => dialog?.querySelector<T>(selector) ?? null;
+    const image = q<HTMLImageElement>('[data-lightbox-img]');
+    const stage = q<HTMLElement>('[data-lightbox-stage]');
+    const caption = q<HTMLElement>('[data-lightbox-caption]');
+    const counter = q<HTMLElement>('[data-lightbox-counter]');
+    const status = q<HTMLElement>('[data-lightbox-status]');
+    const loading = q<HTMLElement>('[data-lightbox-loading]');
+    const failure = q<HTMLElement>('[data-lightbox-error]');
+    const original = q<HTMLAnchorElement>('[data-lightbox-original]');
     const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-gallery-item]'));
-    if (!dialog || !image || !caption || !counter || links.length === 0) return;
+    if (!dialog || !image || !stage || !caption || !counter || !status || !loading || !failure || !original || links.length === 0) return;
 
     let index = 0;
     const template = counter.dataset.template ?? '{current} / {total}';
 
+    /** Shows the requested picture only once it has loaded; a slow request shows a loading note. */
+    const load = (link: HTMLAnchorElement) => {
+      failure.hidden = true;
+      if (image.src === link.href && image.complete && image.naturalWidth > 0) {
+        image.style.removeProperty('visibility');
+        loading.hidden = true;
+        return;
+      }
+      image.style.visibility = 'hidden';
+      loading.hidden = false;
+      image.src = link.href;
+    };
+
     const show = (next: number) => {
       index = (next + links.length) % links.length;
       const link = links[index];
-      // Hidden until the new picture has loaded, so the caption never describes the previous one.
-      if (image.src !== link.href) image.style.opacity = '0';
-      image.src = link.href;
       image.alt = link.dataset.alt ?? '';
       image.width = Number(link.dataset.width) || 0;
       image.height = Number(link.dataset.height) || 0;
+      original.href = link.href;
+      load(link);
+      const position = template.replace('{current}', String(index + 1)).replace('{total}', String(links.length));
+      counter.textContent = position;
       caption.textContent = link.dataset.caption ?? '';
-      counter.textContent = template.replace('{current}', String(index + 1)).replace('{total}', String(links.length));
+      // One status per change: position, motif, style and placement. The detailed alt stays on the image.
+      status.textContent = `${position}: ${link.dataset.caption ?? ''}`;
     };
 
-    // A failed picture shows again too, so its alt text stays visible instead of a blank dialog.
-    image.addEventListener('load', () => image.style.removeProperty('opacity'));
-    image.addEventListener('error', () => image.style.removeProperty('opacity'));
+    image.addEventListener('load', () => {
+      // A late load of a picture the visitor has already moved past does not count.
+      if (image.src !== links[index].href) return;
+      loading.hidden = true;
+      image.style.removeProperty('visibility');
+    });
+    image.addEventListener('error', () => {
+      if (image.src !== links[index].href) return;
+      loading.hidden = true;
+      failure.hidden = false;
+      // The failure is announced too, not only shown.
+      status.textContent = failure.querySelector('[data-lightbox-failed]')?.textContent ?? '';
+    });
+    q('[data-lightbox-retry]')?.addEventListener('click', () => {
+      image.removeAttribute('src');
+      load(links[index]);
+    });
 
     links.forEach((link, i) => {
       link.addEventListener('click', (event) => {
@@ -209,29 +335,40 @@ const prepared = await Promise.all(
       });
     });
 
-    dialog.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => show(index - 1));
-    dialog.querySelector('[data-lightbox-next]')?.addEventListener('click', () => show(index + 1));
-    dialog.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+    q('[data-lightbox-prev]')?.addEventListener('click', () => show(index - 1));
+    q('[data-lightbox-next]')?.addEventListener('click', () => show(index + 1));
+    q('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
 
     dialog.addEventListener('keydown', (event) => {
       if (event.key === 'ArrowLeft') show(index - 1);
       if (event.key === 'ArrowRight') show(index + 1);
     });
 
-    let startX: number | null = null;
-    dialog.addEventListener('pointerdown', (event) => {
-      if (event.pointerType !== 'mouse') startX = event.clientX;
+    // Swipe: one primary touch or pen pointer on the picture stage, not on its controls. A second finger
+    // (pinch) or a cancelled gesture ends it; only a clearly horizontal movement changes the work.
+    let swipe: { id: number; x: number; y: number } | null = null;
+    stage.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' || !event.isPrimary || (event.target as HTMLElement).closest('a, button')) {
+        swipe = null;
+        return;
+      }
+      swipe = { id: event.pointerId, x: event.clientX, y: event.clientY };
     });
-    dialog.addEventListener('pointerup', (event) => {
-      if (startX === null) return;
-      const dx = event.clientX - startX;
-      startX = null;
-      if (Math.abs(dx) >= SWIPE_MIN_PX) show(dx > 0 ? index - 1 : index + 1);
+    stage.addEventListener('pointercancel', () => {
+      swipe = null;
+    });
+    stage.addEventListener('pointerup', (event) => {
+      if (!swipe || event.pointerId !== swipe.id) return;
+      const dx = event.clientX - swipe.x;
+      const dy = event.clientY - swipe.y;
+      swipe = null;
+      if (Math.abs(dx) >= SWIPE_MIN_PX && Math.abs(dx) >= Math.abs(dy) * SWIPE_DIRECTION_RATIO) show(dx > 0 ? index - 1 : index + 1);
     });
 
     // Focus goes back to the picture last shown, which may differ from the one that opened the dialog.
     dialog.addEventListener('close', () => {
       document.documentElement.style.overflow = '';
+      status.textContent = '';
       links[index].focus();
     });
   });
