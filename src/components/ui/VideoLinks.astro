@@ -1,0 +1,48 @@
+---
+// Patrick's answers on YouTube as plain links, never embedded: no request to YouTube without consent.
+// Each row names the question and what the video is about; the link opens a new tab, which is announced.
+import Icon from './Icon.astro';
+import type { VideoLink } from '../../data/videos';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  items: VideoLink[];
+  locale: Locale;
+  /** night: on the always dark surface. */
+  tone?: 'wall' | 'night';
+  class?: string;
+}
+
+const { items, locale, tone = 'wall', class: className } = Astro.props;
+const copy = t(locale).videos;
+const night = tone === 'night';
+---
+
+<ul class:list={['border-t', night ? 'border-chalk/40' : 'border-ink', className]} data-reveal-group>
+  {
+    items.map((item) => (
+      <li class:list={['group/video relative border-b', night ? 'border-chalk/15' : 'border-line']} data-reveal>
+        <a
+          href={item.href}
+          rel="noopener"
+          target="_blank"
+          class="flex min-h-11 items-start gap-4 py-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon"
+        >
+          <Icon name="play" size={22} class:list={['mt-0.5 shrink-0', night ? 'text-neon-glow' : 'text-neon']} />
+          <span class="min-w-0 flex-1">
+            <span class="block font-semibold transition-colors group-hover/video:text-neon">{item.title}</span>
+            <span class:list={['mt-0.5 block text-sm', night ? 'text-chalk-muted' : 'text-muted']}>
+              {item.text}
+              {copy.language && <span> ({copy.language})</span>}
+            </span>
+          </span>
+          <span class:list={['label hidden shrink-0 items-center gap-1.5 pt-1 sm:inline-flex', night ? 'text-chalk-muted' : 'text-muted']}>
+            {copy.label}
+            <Icon name="external" size={14} />
+          </span>
+          <span class="sr-only">({copy.newTab})</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

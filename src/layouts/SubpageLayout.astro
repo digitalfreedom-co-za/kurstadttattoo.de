@@ -1,0 +1,48 @@
+---
+// Frame of every content subpage in both locales: the page header with breadcrumbs, the page sections
+// (default slot), related pages and the closing call. Title, description, eyebrow, heading, lead and the
+// closing call come from the page entry in the dictionary (pages.<routeKey>). The breadcrumb trail is
+// built here once and feeds both the visible trail and the BreadcrumbList.
+import BaseLayout from './BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import RelatedPages from '../components/ui/RelatedPages.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import type { JsonLdNode } from '../lib/schema';
+import { fillStudio } from '../lib/placeholders';
+import { localizedPath, t, type Locale } from '../i18n';
+
+export type SubpageKey = 'gallery' | 'artists' | 'hygiene' | 'consultation' | 'aftercare' | 'faq' | 'engraving' | 'contact';
+
+interface Props {
+  locale: Locale;
+  routeKey: SubpageKey;
+  related: Parameters<typeof RelatedPages>[0]['keys'];
+  schema?: JsonLdNode[];
+}
+
+const { locale, routeKey, related, schema = [] } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages[routeKey];
+const breadcrumbs = [
+  { name: dict.nav.items.home, path: localizedPath('home', locale) },
+  { name: dict.nav.items[routeKey], path: localizedPath(routeKey, locale) },
+];
+---
+
+<BaseLayout title={copy.title} description={fillStudio(copy.description)} locale={locale} routeKey={routeKey} schema={schema} breadcrumbs={breadcrumbs}>
+  <PageHeader
+    locale={locale}
+    breadcrumbs={breadcrumbs}
+    eyebrow={copy.eyebrow}
+    heading={copy.heading}
+    lead={fillStudio(copy.lead)}
+    hasActions={Astro.slots.has('actions')}
+    hasMedia={Astro.slots.has('media')}
+  >
+    <slot name="actions" />
+    <slot name="media" slot="media" />
+  </PageHeader>
+  <slot />
+  <RelatedPages locale={locale} keys={related} />
+  <CtaBand locale={locale} title={copy.cta.title} text={copy.cta.text} />
+</BaseLayout>

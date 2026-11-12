@@ -212,6 +212,455 @@
       "heading": "Page not found",
       "text": "This address does not exist or no longer exists.",
       "homeLink": "Go to the home page"
+    },
+    "gallery": {
+      "title": "Tattoo Gallery Bad Nauheim by Style | KurstadtTattoo",
+      "description": "Real tattoos from the KurstadtTattoo studio in Bad Nauheim: realistic portraits, colour, fine line, lettering, blackwork and tribal, sorted by style.",
+      "eyebrow": "Gallery",
+      "heading": "Tattoo gallery: work from the studio in Bad Nauheim",
+      "lead": "These are real tattoos from the KurstadtTattoo studio, sorted by style: realism and portraits, colour, fine line, lettering, and blackwork and tribal. Tap a picture to see it large.",
+      "stylesLabel": "Styles in the gallery",
+      "countLabel": "{count} pieces",
+      "groups": {
+        "realism": {
+          "id": "realism",
+          "title": "Realism and portraits",
+          "intro": "Realistic portraits are Patrick's speciality: animals, symbols and figures in black and grey, tattooed with an eye for detail."
+        },
+        "colour": {
+          "id": "colour",
+          "title": "Colour",
+          "intro": "Colour pieces from realistic to playful: the fox in orange, the rabbit in front of the moon, the Smurf as a cyborg."
+        },
+        "fineLine": {
+          "id": "fine-line",
+          "title": "Fine line and blossoms",
+          "intro": "Fine lines are the studio's second speciality, for delicate motifs such as the dragonfly and soft blossom branches."
+        },
+        "lettering": {
+          "id": "lettering",
+          "title": "Lettering",
+          "intro": "Names, dates, signatures and words that should stay, in script, blackletter and print."
+        },
+        "blackwork": {
+          "id": "blackwork",
+          "title": "Blackwork and tribal",
+          "intro": "Solid black, geometric patterns, tribal and ornamental work, from an armband to a full arm."
+        }
+      },
+      "ownDesign": {
+        "title": "Your motif is not here?",
+        "text": "The gallery shows a selection. You can bring your own design, and we plan your tattoo from it together.",
+        "link": "How the consultation works"
+      },
+      "video": {
+        "title": "A large back piece on video",
+        "text": "Patrick shows an eagle across the whole back in a video on YouTube."
+      },
+      "cta": {
+        "title": "Which motif will it be?",
+        "text": "Tell us your idea on the phone. From 1 December 2026 we tattoo in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "artists": {
+      "title": "Tattoo Artist in Bad Nauheim: Patrick Wolf | KurstadtTattoo",
+      "description": "Patrick Wolf runs KurstadtTattoo in Bad Nauheim and specialises in realistic portraits and fine line. Get to know the artist, his focus and the way he works.",
+      "eyebrow": "Artists",
+      "heading": "Patrick Wolf, tattoo artist in Bad Nauheim",
+      "lead": "Patrick Wolf runs KurstadtTattoo and is our specialist in realistic portraits and fine lines. With his eye for detail and his steady hand he turns your memories and ideas into art on your skin.",
+      "imageAlt": "Patrick Wolf smiling in a black KurstadtTattoo shirt with tattooed arms in a bright studio",
+      "focus": {
+        "id": "focus",
+        "eyebrow": "Focus",
+        "title": "What does Patrick Wolf specialise in?",
+        "intro": "Realistic portraits and fine lines. You do not need a finished drawing for either: photos, memories or an idea are a good starting point.",
+        "items": [
+          {
+            "title": "Realistic portraits",
+            "text": "People, animals and memories, rendered in detail, for example the portrait of a dog inside a paw.",
+            "link": "Realism in the gallery"
+          },
+          {
+            "title": "Fine line",
+            "text": "Delicate motifs with fine lines, from a dragonfly to blossom branches.",
+            "link": "Fine line in the gallery"
+          },
+          {
+            "title": "Your own design",
+            "text": "Patrick turns your own design into an individual tattoo, exactly as you want it.",
+            "link": "More about the consultation"
+          }
+        ]
+      },
+      "values": {
+        "id": "approach",
+        "eyebrow": "Approach",
+        "title": "How does Patrick Wolf work?",
+        "lead": "Closely with you, until the motif is exactly what you have in mind.",
+        "text": "Everyone at KurstadtTattoo works to three standards: hygiene, professionalism and customer satisfaction.",
+        "items": [
+          {
+            "title": "Hygiene",
+            "text": "A pleasant and safe atmosphere in the studio and clean healing afterwards."
+          },
+          {
+            "title": "Professionalism",
+            "text": "Care and a steady hand, from the design to the last line."
+          },
+          {
+            "title": "Customer satisfaction",
+            "text": "Your tattoo should match your wishes. That is why we plan it together."
+          }
+        ],
+        "imageAlt": "Patrick Wolf with sunglasses and crossed, tattooed arms in front of the neon wall with the KurstadtTattoo logo"
+      },
+      "story": {
+        "id": "story",
+        "eyebrow": "Story",
+        "title": "How did Patrick get into tattooing?",
+        "text": "He tells it best himself, in a video on the KurstadtTattoo YouTube channel. On TikTok you will find Patrick as @patrickkurstadttattoo."
+      },
+      "expert": {
+        "title": "Expert reports on tattoos",
+        "text": "Besides tattooing, Patrick Wolf writes expert reports on tattoos and piercings as a DGuSV certified assessor, on his own website.",
+        "link": "Go to tattoogutachten.de"
+      },
+      "person": {
+        "jobTitle": "Tattoo artist",
+        "description": "Tattoo artist at KurstadtTattoo in Bad Nauheim, specialising in realistic portraits and fine line.",
+        "knowsAbout": [
+          "Realistic tattoos",
+          "Portrait tattoos",
+          "Fine line tattoos"
+        ]
+      },
+      "cta": {
+        "title": "Talk to Patrick about your motif.",
+        "text": "We take appointment requests by phone. From 1 December 2026 in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "hygiene": {
+      "title": "Hygiene at the Tattoo Studio in Bad Nauheim | KurstadtTattoo",
+      "description": "What hygiene means at KurstadtTattoo in Bad Nauheim: a core value since the studio was founded, in the studio and while your tattoo heals, with warning signs and aftercare.",
+      "eyebrow": "Hygiene",
+      "heading": "Hygiene at KurstadtTattoo, in the studio and while you heal",
+      "lead": "Since KurstadtTattoo was founded, hygiene has been one of the values we care about most, together with quality and your satisfaction. It starts in the studio and continues at home while your tattoo heals.",
+      "imageAlt": "Patrick Wolf tattooing a forearm with black gloves and a covered tattoo machine",
+      "value": {
+        "id": "core-value",
+        "eyebrow": "Core value",
+        "title": "How important is hygiene at KurstadtTattoo?",
+        "intro": "It comes first. Everyone who works with us follows three standards: hygiene, professionalism and customer satisfaction.",
+        "items": [
+          {
+            "title": "Hygiene",
+            "text": "Has come first for us since the studio was founded."
+          },
+          {
+            "title": "Professionalism",
+            "text": "Care from the first conversation to aftercare."
+          },
+          {
+            "title": "Customer satisfaction",
+            "text": "You should feel safe and at ease in the studio."
+          }
+        ]
+      },
+      "studio": {
+        "id": "in-the-studio",
+        "eyebrow": "In the studio",
+        "title": "What does hygiene look like in the studio?",
+        "intro": "Our rooms are modern and well equipped and give you a pleasant and safe atmosphere. The pictures from the studio show how Patrick works: with gloves and a covered tattoo machine.",
+        "figures": [
+          {
+            "caption": "While tattooing: black gloves, the machine is covered."
+          },
+          {
+            "caption": "Patrick at his workstation, wearing gloves.",
+            "alt": "Patrick Wolf laughing at his workstation in the studio, wearing black gloves"
+          }
+        ],
+        "questions": "Would you like to know more about how we work? Ask us, on the phone or at your consultation in the studio."
+      },
+      "healing": {
+        "id": "healing",
+        "eyebrow": "While you heal",
+        "title": "What does hygiene mean after the appointment?",
+        "intro": "Clean hands and a clean wound. A fresh tattoo is a wound that you look after yourself at home.",
+        "items": [
+          "Wash your hands thoroughly before you touch the tattoo.",
+          "Clean the area gently with lukewarm water and a mild soap and pat it dry.",
+          "Apply a thin layer of healing ointment.",
+          "Wear loose clothing that does not rub on the tattoo, and do not sleep on the fresh area.",
+          "Avoid direct sunlight, sunbeds and swimming in pools or lakes until the skin has healed."
+        ],
+        "warningTitle": "When to see a doctor",
+        "warning": "If you notice signs of infection such as strong redness, swelling or discharge of pus, please see a doctor straight away.",
+        "link": "All aftercare tips by phase"
+      },
+      "cta": {
+        "title": "Questions about hygiene or the process? Give us a call.",
+        "text": "From 1 December 2026 we welcome you in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "consultation": {
+      "title": "Tattoo Consultation and Process in Bad Nauheim | KurstadtTattoo",
+      "description": "How your tattoo comes about at KurstadtTattoo in Bad Nauheim: a call, planning the motif together, the session in the studio and aftercare. What you can bring to the consultation.",
+      "eyebrow": "Consultation and process",
+      "heading": "Tattoo consultation: from the first call to aftercare",
+      "lead": "A tattoo at KurstadtTattoo comes about in four steps: a call, planning the motif together, the session in the studio and aftercare. Before the first line is tattooed, we plan the motif closely with you.",
+      "process": {
+        "id": "process",
+        "eyebrow": "Process",
+        "title": "How does a tattoo at KurstadtTattoo work?",
+        "intro": "Step by step, in this order. You take the first step with a phone call."
+      },
+      "bring": {
+        "id": "what-to-bring",
+        "eyebrow": "Preparation",
+        "title": "What can you bring to the consultation?",
+        "intro": "Anything that shows how your tattoo should look. You do not need a finished drawing.",
+        "items": [
+          {
+            "title": "Your idea and the placement",
+            "text": "Tell us which motif you have in mind and where on your body it should go."
+          },
+          {
+            "title": "Your own design",
+            "text": "We turn your own design into an individual tattoo, exactly as you want it."
+          },
+          {
+            "title": "Photos and memories",
+            "text": "For a realistic portrait, photos of the person or animal are a good starting point."
+          },
+          {
+            "title": "An unfinished tattoo",
+            "text": "We finish tattoos that were started in another studio. Show us how far it has got."
+          }
+        ]
+      },
+      "plan": {
+        "id": "planning",
+        "eyebrow": "Planning",
+        "title": "How do we plan your motif?",
+        "lead": "Together with you, until it matches what you have in mind.",
+        "text": "You bring your idea, design or photos, and we turn them into your individual tattoo. The gallery shows the styles that come out of the studio, from realistic portraits to blackwork.",
+        "link": "See the gallery by style"
+      },
+      "cost": {
+        "id": "cost",
+        "eyebrow": "Cost",
+        "title": "What does a tattoo cost?",
+        "text": "Patrick explains what goes into the price of a tattoo in a short video. For your motif, please call us."
+      },
+      "cta": {
+        "title": "Ready for your consultation?",
+        "text": "Call us and tell us your idea. From 1 December 2026 in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "aftercare": {
+      "title": "Tattoo Aftercare and Healing: Care Tips | KurstadtTattoo",
+      "description": "Tattoo aftercare in three phases: the first hours, healing and the time after. Care tips from KurstadtTattoo in Bad Nauheim, with warning signs and aftercare support.",
+      "eyebrow": "Aftercare",
+      "heading": "Tattoo aftercare in three phases",
+      "lead": "The right care is key to healing and to how your tattoo looks in the long run. Here is what to do in the first hours, while it heals and afterwards.",
+      "imageAlt": "Patrick Wolf laughing at his workstation in the studio, wearing black gloves",
+      "phases": {
+        "id": "phases",
+        "eyebrow": "Phases",
+        "title": "How do you care for your tattoo, step by step?",
+        "intro": "In three phases, one after the other. In every phase: wash your hands thoroughly before you touch the tattoo.",
+        "prefix": "Phase",
+        "items": [
+          {
+            "title": "The first hours",
+            "points": [
+              "Take the film off after the first few hours.",
+              "Clean the area gently with lukewarm water and a mild soap.",
+              "Pat it dry and apply a thin layer of a recommended healing ointment."
+            ]
+          },
+          {
+            "title": "While it heals",
+            "points": [
+              "Clean the tattoo regularly and care for it with a tattoo aftercare cream.",
+              "Do not scratch.",
+              "Avoid direct sunlight, sunbeds and swimming in pools or lakes. All of these can affect how the wound heals.",
+              "Wear loose clothing that does not rub on the tattoo.",
+              "Do not sleep on the freshly tattooed area."
+            ]
+          },
+          {
+            "title": "After healing",
+            "points": [
+              "Keep caring for your tattoo regularly with a fragrance free moisturiser.",
+              "Protect it from strong sun with a high sun protection factor. This keeps the colours and the look intact."
+            ]
+          }
+        ]
+      },
+      "warning": {
+        "id": "warning-signs",
+        "eyebrow": "Warning signs",
+        "title": "When should you see a doctor?",
+        "text": "Straight away if you notice signs of infection: strong redness, swelling or discharge of pus."
+      },
+      "support": {
+        "id": "support",
+        "eyebrow": "Aftercare support",
+        "title": "Questions while your tattoo heals?",
+        "text": "Give us a call. If you have questions or problems, we are always there for you and are happy to offer aftercare."
+      },
+      "cta": {
+        "title": "Questions about caring for your tattoo?",
+        "text": "Give us a call. From 1 December 2026 you will find us in the new studio at Friedrich-Ebert-Platz 1A in Bad Nauheim."
+      }
+    },
+    "faq": {
+      "title": "Tattoo FAQ: Booking, Designs, Aftercare and Studio | KurstadtTattoo",
+      "description": "Answers from KurstadtTattoo in Bad Nauheim on booking, your own design, finishing tattoos, styles, aftercare, opening hours and the new studio. More answers from Patrick on video.",
+      "eyebrow": "FAQ",
+      "heading": "Frequently asked questions about getting tattooed at KurstadtTattoo",
+      "lead": "Here are written answers to the questions we hear most often. On colour, cost, eczema and vegan inks, Patrick answers in short videos.",
+      "groups": {
+        "booking": {
+          "id": "booking",
+          "title": "Booking and consultation"
+        },
+        "session": {
+          "id": "healing",
+          "title": "Tattooing and healing"
+        },
+        "studio": {
+          "id": "studio",
+          "title": "Studio and opening hours"
+        }
+      },
+      "videos": {
+        "id": "videos",
+        "eyebrow": "Video",
+        "title": "Which questions does Patrick answer on video?",
+        "intro": "Patrick answers these questions himself, in short videos on YouTube."
+      },
+      "cta": {
+        "title": "Your question is not here?",
+        "text": "Call us or send us an email. We are happy to answer your question in person."
+      }
+    },
+    "engraving": {
+      "title": "Laser Engraving Bad Nauheim | Engraving Service by KurstadtTattoo",
+      "description": "Engraving service by KurstadtTattoo in Bad Nauheim: laser engraving on plastic, aluminium, brass, stainless steel, wood and glass, including logos and graphics.",
+      "eyebrow": "Engraving service",
+      "heading": "Laser engraving on plastic, metal, wood and glass",
+      "lead": "Besides tattoos, KurstadtTattoo offers individual laser engraving: on plastic, aluminium, brass, stainless steel, wood, glass and leather. We engrave logos and graphics too.",
+      "materials": {
+        "id": "materials",
+        "eyebrow": "Materials",
+        "title": "Which materials does KurstadtTattoo engrave?",
+        "intro": "For each material you can see what the engraving is suited for.",
+        "items": [
+          {
+            "title": "Plastic",
+            "points": [
+              "Suitable for indoors and outdoors",
+              "Name plates, door and bell plates, pens, signs and trophy plates",
+              "Any size up to a maximum of 400 x 115 mm"
+            ]
+          },
+          {
+            "title": "Aluminium",
+            "points": [
+              "Particularly high quality, very durable and weatherproof",
+              "For example business cards",
+              "Individual type plates to your specification"
+            ]
+          },
+          {
+            "title": "Brass and stainless steel",
+            "points": [
+              "Suitable for indoors and outdoors",
+              "Elegant design",
+              "Logos and graphics too"
+            ]
+          },
+          {
+            "title": "Wood",
+            "points": [
+              "Bread board, wooden spoon or your own personal gift"
+            ]
+          },
+          {
+            "title": "Glass",
+            "points": [
+              "Wheat beer glass, beer mug or champagne glass, for your wedding reception for example"
+            ]
+          }
+        ]
+      },
+      "examples": {
+        "id": "examples",
+        "eyebrow": "Examples",
+        "title": "What does a laser engraving look like?",
+        "intro": "The KurstadtTattoo logo as a laser engraving on three materials.",
+        "label": "Examples of laser engraving",
+        "items": {
+          "glass": {
+            "title": "Glass",
+            "meta": "Logo, laser engraved",
+            "alt": "Drinking glass with the KurstadtTattoo logo laser engraved"
+          },
+          "mug": {
+            "title": "Mug",
+            "meta": "Logo, laser engraved",
+            "alt": "Black mug with the KurstadtTattoo logo engraved"
+          },
+          "wood": {
+            "title": "Wood",
+            "meta": "Logo, laser engraved",
+            "alt": "Wooden slice with the KurstadtTattoo Bad Nauheim logo engraved"
+          }
+        }
+      },
+      "cta": {
+        "title": "Would you like something engraved?",
+        "text": "Ask for your engraving by phone. Tell us what you want engraved and on which material."
+      }
+    },
+    "contact": {
+      "title": "Contact and Directions | KurstadtTattoo Bad Nauheim",
+      "description": "KurstadtTattoo in Bad Nauheim: from 1 December 2026 at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim, Germany. Appointment requests by phone at {phone}, plus opening hours and directions.",
+      "eyebrow": "Contact",
+      "heading": "Contact and directions to KurstadtTattoo in Bad Nauheim",
+      "lead": "We take appointment requests by phone at {phone}. From 1 December 2026 you will find us in the new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
+      "details": {
+        "id": "reach-us",
+        "eyebrow": "Studio",
+        "title": "How can you reach KurstadtTattoo?",
+        "intro": "Fastest by phone. For all other questions, send us an email.",
+        "phoneNote": "For appointment requests",
+        "emailNote": "For other questions",
+        "region": "Bad Nauheim lies in the Wetterau region, near Friedberg and just outside Frankfurt."
+      },
+      "oldAddress": {
+        "title": "Previous location",
+        "text": "The studio at Parkstr. 22 is closed. From 1 December 2026 you will find us at Friedrich-Ebert-Platz 1A."
+      },
+      "follow": {
+        "id": "online",
+        "eyebrow": "Online",
+        "title": "Where can you find KurstadtTattoo online?",
+        "studioTiktok": "KurstadtTattoo on TikTok",
+        "youtube": "KurstadtTattoo on YouTube"
+      },
+      "expert": {
+        "title": "Looking for an expert assessor for tattoos?",
+        "text": "Patrick Wolf writes expert reports on tattoos and piercings as a DGuSV certified assessor, on his own website.",
+        "link": "Go to tattoogutachten.de"
+      },
+      "cta": {
+        "title": "We look forward to your call.",
+        "text": "Tell us your idea and we will plan your tattoo together with you."
+      }
     }
   },
   "works": {
@@ -259,6 +708,81 @@
       "title": "Geometric blackwork",
       "meta": "Blackwork, arm",
       "alt": "Geometric blackwork tattoo with patterns on the inner side of the arm"
+    },
+    "blackworkOuter": {
+      "title": "Geometric blackwork, outer side",
+      "meta": "Blackwork, arm",
+      "alt": "The same geometric blackwork with broad black bands, seen from the outside of the whole arm"
+    },
+    "biomech": {
+      "title": "Biomechanical hand",
+      "meta": "Realism, back of the hand",
+      "alt": "Biomechanical tattoo of a robotic hand with pink accents across the back of the hand and the fingers"
+    },
+    "lettering": {
+      "title": "Ewigkeit and Its in my DNA",
+      "meta": "Lettering, leg",
+      "alt": "Several lettering pieces reading Ewigkeit, Its in my DNA and Der Osten among black and grey motifs on the leg"
+    },
+    "signature": {
+      "title": "Elvis Presley signature",
+      "meta": "Lettering, foot",
+      "alt": "Fine signature of Elvis Presley as lettering on the foot"
+    },
+    "maori": {
+      "title": "Maori style blackwork",
+      "meta": "Blackwork, forearm",
+      "alt": "Solid blackwork in Maori style with triangles and a diamond pattern on the forearm"
+    },
+    "blossoms": {
+      "title": "Blossom branches",
+      "meta": "Fine line, foot",
+      "alt": "Delicate blossom branches with shaded flowers running from the ankle over the foot"
+    },
+    "smurf": {
+      "title": "Smurf as a cyborg",
+      "meta": "Colour, calf",
+      "alt": "Colour Smurf, half of it a cyborg with a metal skull and a red eye, on the calf"
+    },
+    "ankh": {
+      "title": "Ankh with rays",
+      "meta": "Black and grey, upper arm",
+      "alt": "Ankh with knotwork and an Eye of Horus in front of rays, black and grey, on the upper arm"
+    },
+    "tribalNeck": {
+      "title": "Tribal on neck and shoulder",
+      "meta": "Tribal, neck",
+      "alt": "Black tribal with sharp pointed lines across a man's neck and shoulder"
+    },
+    "tribalWeb": {
+      "title": "Tribal with spider web",
+      "meta": "Tribal, neck",
+      "alt": "Black tribal with a spider web on a woman's neck and shoulder"
+    },
+    "crossDove": {
+      "title": "Cross with doves",
+      "meta": "Realism, forearm",
+      "alt": "Wooden cross with a cloth and two doves in front of clouds in black and grey, with a colour crown below, on the forearm"
+    },
+    "valknut": {
+      "title": "Armband with valknut",
+      "meta": "Blackwork, forearm",
+      "alt": "Armband of black lines and an arrow pattern with a valknut in the middle around the forearm"
+    },
+    "memories": {
+      "title": "Memories lettering",
+      "meta": "Lettering, forearm",
+      "alt": "The word Memories in flowing letters on the forearm"
+    },
+    "fist": {
+      "title": "Fist with lettering",
+      "meta": "Realism, forearm",
+      "alt": "Clenched fist in black and grey with a saying in script on the forearm"
+    },
+    "eye": {
+      "title": "Eye in a triangle",
+      "meta": "Ornamental, knee",
+      "alt": "Eye in a triangle with wings and ornaments, dotwork shading, on the knee"
     }
   },
   "faq": {
@@ -287,6 +811,30 @@
       "reopening": {
         "question": "When does the new studio open?",
         "answer": "On 1 December 2026 at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim. Until then the studio is closed."
+      },
+      "styles": {
+        "question": "Which styles does KurstadtTattoo tattoo?",
+        "answer": "The focus is on realistic portraits and fine lines. We also tattoo colour pieces, black and grey, blackwork, tribal, lettering and ornamental work. The gallery shows examples of each style."
+      },
+      "artist": {
+        "question": "Who tattoos at KurstadtTattoo?",
+        "answer": "Patrick Wolf runs the studio and is the specialist in realistic portraits and fine lines."
+      },
+      "fainting": {
+        "question": "Has anyone ever fainted while getting tattooed?",
+        "answer": "Yes, it has happened. Patrick talks about it in a short video on YouTube."
+      },
+      "aftercare": {
+        "question": "Is there aftercare after the appointment?",
+        "answer": "Yes. We offer aftercare and are there for you if you have questions or problems while your tattoo heals."
+      },
+      "hours": {
+        "question": "When is KurstadtTattoo open?",
+        "answer": "Until now Monday to Friday from 12 noon to 6 pm or by appointment. Please call {phone} to ask about the hours at the new location."
+      },
+      "expert": {
+        "question": "Does Patrick Wolf also write expert reports on tattoos?",
+        "answer": "Yes, as a DGuSV certified assessor. Expert reports are not part of this website, you will find everything about them on tattoogutachten.de."
       }
     }
   },
@@ -309,5 +857,89 @@
         "text": "You get instructions on how to care for the tattoo while it heals. If you have questions, we are there for you and offer aftercare."
       }
     ]
+  },
+  "breadcrumb": {
+    "label": "Breadcrumb"
+  },
+  "related": {
+    "eyebrow": "Read on",
+    "title": "More about your tattoo",
+    "items": {
+      "gallery": {
+        "title": "Gallery by style",
+        "text": "Realism, colour, fine line, lettering and blackwork from the studio."
+      },
+      "artists": {
+        "title": "Patrick Wolf, the artist",
+        "text": "Specialist in realistic portraits and fine lines."
+      },
+      "hygiene": {
+        "title": "Hygiene in the studio",
+        "text": "What hygiene means at KurstadtTattoo, in the studio and while you heal."
+      },
+      "consultation": {
+        "title": "Consultation and process",
+        "text": "From the first call to aftercare in four steps."
+      },
+      "aftercare": {
+        "title": "Aftercare",
+        "text": "How to look after your tattoo in the first hours, while it heals and afterwards."
+      },
+      "faq": {
+        "title": "FAQ",
+        "text": "Answers on booking, designs, healing and the new studio."
+      },
+      "engraving": {
+        "title": "Engraving service",
+        "text": "Laser engraving on plastic, metal, wood and glass."
+      },
+      "contact": {
+        "title": "Contact and directions",
+        "text": "Address at Friedrich-Ebert-Platz 1A, phone and opening hours."
+      }
+    }
+  },
+  "videos": {
+    "label": "Video on YouTube",
+    "newTab": "opens YouTube in a new tab",
+    "language": "in German",
+    "items": {
+      "howStarted": {
+        "title": "How did you get into tattooing?",
+        "text": "Patrick tells how he came to tattooing."
+      },
+      "care": {
+        "title": "How do you look after a tattoo?",
+        "text": "Caring for a fresh tattoo, on video."
+      },
+      "colour": {
+        "title": "Is colour tattooing allowed again?",
+        "text": "Patrick on colour tattoos."
+      },
+      "cost": {
+        "title": "What does a tattoo cost?",
+        "text": "Patrick on the cost of a tattoo."
+      },
+      "finishing": {
+        "title": "Do you finish tattoos started by others?",
+        "text": "Yes, we do."
+      },
+      "eczema": {
+        "title": "Eczema and tattoos",
+        "text": "Patrick on getting tattooed with atopic eczema."
+      },
+      "vegan": {
+        "title": "Are the inks vegan?",
+        "text": "Patrick on tattoo inks."
+      },
+      "fainting": {
+        "title": "Has anyone ever fainted?",
+        "text": "Yes, and Patrick talks about it."
+      },
+      "eagleBack": {
+        "title": "XXL back tattoo with an eagle",
+        "text": "A large eagle piece on the back, on video."
+      }
+    }
   }
 }

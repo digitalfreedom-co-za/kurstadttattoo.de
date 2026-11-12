@@ -1,7 +1,7 @@
 ---
 // Line icons on a 24 grid with a 1.5 stroke, matching the hairlines of the layout. Decorative only:
 // the control or text next to an icon carries the accessible name.
-export type IconName = 'menu' | 'close' | 'phone' | 'mail' | 'pin' | 'clock' | 'calendar' | 'moon' | 'chevron-left' | 'chevron-right' | 'expand' | 'external' | 'drop' | 'dialog' | 'leaf' | 'tiktok';
+export type IconName = 'menu' | 'close' | 'phone' | 'mail' | 'pin' | 'clock' | 'calendar' | 'moon' | 'chevron-left' | 'chevron-right' | 'expand' | 'external' | 'drop' | 'dialog' | 'leaf' | 'tiktok' | 'play' | 'alert';
 
 interface Props {
   name: IconName;
@@ -30,6 +30,8 @@ const paths: Record<IconName, string> = {
   leaf: 'M5 19C5 10 10.5 5 19.5 4.5 19 13.5 14 19 5 19zM5 19l8-8',
   tiktok:
     'M14 3.5v11.2a3.8 3.8 0 1 1-3.8-3.8M14 3.5c.4 2.7 2.3 4.6 5 5',
+  play: 'M3.5 5.5h17v13h-17zM10 9v6l5-3z',
+  alert: 'M12 3.5l9 16H3zM12 10v4.5M12 16.5v1',
 };
 ---
 

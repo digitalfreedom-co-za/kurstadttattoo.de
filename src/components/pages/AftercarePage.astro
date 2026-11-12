@@ -1,0 +1,88 @@
+---
+// Aftercare for both locales in three phases that follow each other (first hours, healing, after
+// healing), so they carry numbers. Then the warning signs and the aftercare offer. All points come from
+// the old aftercare page and its FAQ; no healing durations, because the source names none.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import ArtImage from '../ui/ArtImage.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import VideoLinks from '../ui/VideoLinks.astro';
+import { studio } from '../../config/site';
+import { videos } from '../../data/videos';
+import { t, type Locale } from '../../i18n';
+
+import patrickWorkstation from '../../assets/images/patrick-wolf-sitzend-lachend-breit.jpg';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.aftercare;
+const phases = copy.phases;
+---
+
+<SubpageLayout locale={locale} routeKey="aftercare" related={['hygiene', 'faq', 'consultation', 'contact']}>
+  <ArtImage
+    slot="media"
+    src={patrickWorkstation}
+    alt={copy.imageAlt}
+    ratio={4 / 3}
+    position="center"
+    widths={[420, 640, 920]}
+    sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
+    loading="eager"
+    reveal={false}
+  />
+
+  <Section id={phases.id} eyebrow={phases.eyebrow} title={phases.title} intro={phases.intro}>
+    <ol class="grid gap-x-8 border-t border-ink lg:grid-cols-3" data-reveal-group>
+      {
+        phases.items.map((phase, index) => (
+          <li class="min-w-0 border-b border-line py-8 lg:border-b-0 lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0" data-reveal>
+            <p class="flex items-baseline gap-3">
+              <span class="font-display text-h2 leading-none text-neon" aria-hidden="true">{index + 1}</span>
+              <span class="label text-muted" aria-hidden="true">{phases.prefix}</span>
+            </p>
+            <h3 class="mt-4 text-h3">
+              <span class="sr-only">{phases.prefix} {index + 1}: </span>
+              {phase.title}
+            </h3>
+            <ul class="mt-5 grid gap-3">
+              {phase.points.map((point) => (
+                <li class="flex gap-3">
+                  <span class="mt-[0.6em] h-[3px] w-3 shrink-0 bg-neon" aria-hidden="true" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section tone="deep" density="support">
+    <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
+      <section id={copy.warning.id} aria-labelledby={`${copy.warning.id}-titel`} class="min-w-0 self-start border border-ink bg-wall p-6 md:col-span-6 md:p-8" data-reveal>
+        <p class="label flex items-center gap-3 text-muted">
+          <Icon name="alert" size={20} class="shrink-0 text-neon" />
+          {copy.warning.eyebrow}
+        </p>
+        <h2 id={`${copy.warning.id}-titel`} class="mt-4 text-h3">{copy.warning.title}</h2>
+        <p class="mt-3">{copy.warning.text}</p>
+      </section>
+      <section id={copy.support.id} aria-labelledby={`${copy.support.id}-titel`} class="min-w-0 md:col-span-6">
+        <p class="label text-muted">{copy.support.eyebrow}</p>
+        <h2 id={`${copy.support.id}-titel`} class="mt-4 text-h3">{copy.support.title}</h2>
+        <p class="mt-3 text-muted">{copy.support.text}</p>
+        <Button href={studio.phone.href} icon="phone" class="mt-6">
+          <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+        </Button>
+        <VideoLinks items={videos(['care'], locale)} locale={locale} class="mt-8" />
+      </section>
+    </div>
+  </Section>
+</SubpageLayout>

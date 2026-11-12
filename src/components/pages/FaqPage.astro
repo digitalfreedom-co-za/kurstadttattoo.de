@@ -1,0 +1,45 @@
+---
+// FAQ page for both locales: every written answer visible under its question (list variant, no collapsed
+// text), in topic groups. Questions from the old video FAQ without known facts are linked to Patrick's
+// videos instead of being answered here. The FAQPage JSON-LD reads the same entries.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Faq from '../ui/Faq.astro';
+import VideoLinks from '../ui/VideoLinks.astro';
+import { faqEntries, faqGroups } from '../../data/faq';
+import { videos } from '../../data/videos';
+import { faqPageNode } from '../../lib/schema';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = t(locale).pages.faq;
+const groups = faqGroups.map((group) => ({ ...copy.groups[group.id], entries: faqEntries(group.ids, locale) }));
+const schema = faqPageNode(
+  { path: localizedPath('faq', locale), locale },
+  groups.flatMap((group) => group.entries),
+  Astro.site,
+);
+---
+
+<SubpageLayout locale={locale} routeKey="faq" related={['consultation', 'aftercare', 'hygiene', 'contact']} schema={[schema]}>
+  <Section>
+    <div class="grid gap-16 md:gap-20">
+      {
+        groups.map((group) => (
+          <section id={group.id} aria-labelledby={`${group.id}-titel`} class="scroll-mt-24">
+            <h2 id={`${group.id}-titel`} class="mb-6 text-h2">{group.title}</h2>
+            <Faq items={group.entries} variant="list" />
+          </section>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section id={copy.videos.id} eyebrow={copy.videos.eyebrow} title={copy.videos.title} intro={copy.videos.intro} tone="night">
+    <VideoLinks items={videos(['cost', 'colour', 'eczema', 'vegan', 'fainting', 'care', 'finishing'], locale)} locale={locale} tone="night" />
+  </Section>
+</SubpageLayout>

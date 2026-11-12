@@ -1,0 +1,63 @@
+---
+// Consultation and process for both locales: the four real steps (shared with the landing page), what
+// to bring, how the motif is planned and where the cost question is answered. Whether the consultation
+// is free and what a tattoo costs are open questions to Patrick, so the page states neither.
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import Section from '../ui/Section.astro';
+import Steps from '../ui/Steps.astro';
+import Button from '../ui/Button.astro';
+import VideoLinks from '../ui/VideoLinks.astro';
+import { studio } from '../../config/site';
+import { processSteps } from '../../data/process';
+import { videos } from '../../data/videos';
+import { pageExists } from '../../lib/pages';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.consultation;
+const galleryHref = pageExists('gallery', locale) ? localizedPath('gallery', locale) : undefined;
+---
+
+<SubpageLayout locale={locale} routeKey="consultation" related={['gallery', 'hygiene', 'aftercare', 'faq']}>
+  <Button slot="actions" href={studio.phone.href} icon="phone">
+    <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+  </Button>
+
+  <Section id={copy.process.id} eyebrow={copy.process.eyebrow} title={copy.process.title} intro={copy.process.intro}>
+    <Steps steps={processSteps(locale)} locale={locale} />
+  </Section>
+
+  <Section id={copy.bring.id} eyebrow={copy.bring.eyebrow} title={copy.bring.title} intro={copy.bring.intro} tone="deep">
+    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2" data-reveal-group>
+      {
+        copy.bring.items.map((item) => (
+          <li class="min-w-0 border-b border-line py-6" data-reveal>
+            <h3 class="font-sans text-h4">{item.title}</h3>
+            <p class="mt-2 max-w-[32rem] text-muted">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id={copy.plan.id} eyebrow={copy.plan.eyebrow} title={copy.plan.title}>
+    <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
+      <div class="min-w-0 md:col-span-6">
+        <p class="font-display text-h3" data-reveal>{copy.plan.lead}</p>
+        <p class="mt-5 max-w-[34rem] text-muted" data-reveal>{copy.plan.text}</p>
+        {galleryHref && <Button href={galleryHref} variant="secondary" class="mt-6">{copy.plan.link}</Button>}
+      </div>
+      <div id={copy.cost.id} class="min-w-0 border-t border-ink pt-6 md:col-span-5 md:col-start-8 md:border-t-0 md:border-l md:pt-0 md:pl-8">
+        <p class="label text-muted">{copy.cost.eyebrow}</p>
+        <h2 class="mt-3 text-h3">{copy.cost.title}</h2>
+        <p class="mt-3 text-muted">{copy.cost.text}</p>
+        <VideoLinks items={videos(['cost'], locale)} locale={locale} class="mt-5" />
+      </div>
+    </div>
+  </Section>
+</SubpageLayout>

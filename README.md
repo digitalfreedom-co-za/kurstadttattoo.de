@@ -37,13 +37,14 @@ src/
   components/
     layout/            Kopf, Fuß, Sprachwechsel
     seo/               SeoHead (Meta, canonical, hreflang, Open Graph), JsonLd
+    pages/             Inhalt der Unterseiten, je eine Komponente für beide Sprachen
     ui/                Wiederverwendbare Bausteine
     booking/           Terminbuchung
   config/site.ts       Zentrale Fakten der Seite und Schalter PUBLIC_INDEXABLE
   content/             Inhalte als Markdown
   data/                Strukturierte Daten
   i18n/                de.json, en.json, Routentabelle routes.ts
-  layouts/             BaseLayout
+  layouts/             BaseLayout, SubpageLayout (Kopf mit Brotkrumen, Weiterlesen, Abschluss)
   lib/                 url() Helfer, Basispfad, JSON-LD
   pages/               Deutsch im Wurzelverzeichnis, Englisch unter en/
   scripts/             Clientseitige Skripte
@@ -61,6 +62,8 @@ Neue Seite anlegen:
 1. Eintrag in `routes` ergänzen, z. B. `gallery: { de: '/galerie/', en: '/en/gallery/' }`
 2. Texte in beiden JSON Dateien ergänzen
 3. `src/pages/galerie.astro` und `src/pages/en/gallery.astro` anlegen und `BaseLayout` mit `locale` und `routeKey` aufrufen
+
+Inhaltsseiten (Galerie, Künstler, Hygiene, Beratung, Pflegetipps, FAQ, Gravur, Kontakt) bestehen aus einer Komponente in `src/components/pages/` mit `SubpageLayout`; die Dateien unter `src/pages/` rufen sie nur mit `locale` auf. Titel, Beschreibung, Kopf und Abschluss stehen unter `pages.<routeKey>` in den Wörterbüchern, die Brotkrumen und die BreadcrumbList baut das Layout. Videos von Patrick werden nur verlinkt (`src/data/videos.ts`), nie eingebettet, damit ohne Einwilligung keine Anfrage an YouTube geht.
 
 ## Basispfad und Links
 

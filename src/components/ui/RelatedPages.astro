@@ -1,0 +1,43 @@
+---
+// Further reading at the end of a subpage: related pages with a descriptive line each, so every page
+// links at least three others (wiki websites.md, cross linking). Pages that are not built yet are left out.
+import Section from './Section.astro';
+import { existingRoutes } from '../../lib/pages';
+import { url } from '../../lib/url';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+type RelatedKey = keyof ReturnType<typeof t>['related']['items'];
+
+interface Props {
+  locale: Locale;
+  keys: RelatedKey[];
+}
+
+const { locale, keys } = Astro.props;
+const copy = t(locale).related;
+const links = existingRoutes(keys, locale).map((key) => ({
+  key,
+  href: url(localizedPath(key, locale)),
+  ...copy.items[key],
+}));
+---
+
+{
+  links.length > 0 && (
+    <Section id="weiterlesen" eyebrow={copy.eyebrow} title={copy.title} density="support" tone="deep">
+      <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+        {links.map((link) => (
+          <li class="group/rel relative min-w-0 border-b border-line py-5" data-reveal>
+            <a
+              href={link.href}
+              class="font-display text-h4 font-semibold transition-colors group-hover/rel:text-neon after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-neon"
+            >
+              {link.title}
+            </a>
+            <p class="mt-1 text-sm text-muted">{link.text}</p>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )
+}
