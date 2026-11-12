@@ -154,8 +154,9 @@ function mount(root: HTMLElement): void {
     action: 'linkReady',
     callback: () => {
       // cal.com titles its iframe in English ("Book a call"); name it in the page language. Its content
-      // follows the visitor's browser language: cal.com takes no locale from the embed (tested November
-      // 2026 with lang, locale and lng query parameters).
+      // follows the visitor's browser language: cal.com resolves the locale from a login or the
+      // Accept-Language header only, not from the embed (source and test, November 2026). BookingEmbed
+      // states this above the frame.
       const frame = root.querySelector<HTMLIFrameElement>('.booking-target iframe');
       if (frame && root.dataset.iframeTitle) frame.title = root.dataset.iframeTitle;
       settle(root, 'ready');

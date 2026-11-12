@@ -12,7 +12,15 @@ Checks of this round: `npm run check` (0 errors, 0 warnings), `npm run build` (2
 
 Re-review: an independent Codex review of the full diff reported two points (failure not announced in the lightbox; the selected work not carried into the request). The first is fixed, the second is recorded as open under UX 12.
 
-Not tested: physical iOS and Android devices, VoiceOver and NVDA speech, Safari and Firefox, a booking submission (none was made). The deploy follows the merge to `main`.
+Not tested: physical iOS and Android devices, VoiceOver and NVDA speech, Safari and Firefox, a booking submission (none was made).
+
+## Closing conditions of #11
+
+#11 is not done with this branch. Still open on 12 November 2026:
+
+- Acceptance of the technical fixes by the team lead; the fix tickets #43, #44, #45 and #46 are open until then.
+- Merge of PR #47 to `main` and a successful run of `.github/workflows/deploy.yml` for that merge, linked in #11.
+- Only then #11 is closed. The open studio facts below are not part of this condition.
 
 ## Wiki conflicts
 
@@ -92,7 +100,7 @@ Not tested: physical iOS and Android devices, VoiceOver and NVDA speech, Safari 
 | 1 | Fixed | Below 640 px labelled blocks; from 640 px a focusable named region with caption and a visible scroll hint |
 | 2 | Fixed | Hover and focus colours follow the surface tone (`neon-glow` on night) |
 | 3 | Fixed | Reservation re-measured on this site's embed: 106 px + 0.831 × frame width below 770 px, 572 px above |
-| 4 | Partly, rest open | Iframe title localized. cal.com took no locale from `lang`, `locale` or `lng` query parameters or an `/en/` path in the test; the calendar follows the browser language |
+| 4 | Fixed within cal.com | Iframe title localized. cal.com sets the calendar language from a cal.com login or the browser `Accept-Language` header only (source `packages/features/auth/lib/getLocale.ts`; no effect of `lang`, `locale`, `lng` or an `/en/` path in the test), so the page cannot set it. Both pages now state the calendar language above the frame, visible before anything loads |
 | 5 | Fixed | Hero candidates 360, 512, 720, 960 with `sizes` from the real column width |
 | 6 | Fixed | One atomic status with position, motif and style; counter hidden from assistive tech |
 | 7 | Fixed | Warning title is an h3 |

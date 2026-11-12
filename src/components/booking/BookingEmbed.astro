@@ -74,6 +74,12 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
         <span id={`${timezoneId}-hint`} class="sr-only">{copy.timezoneHint}</span>
       </dd>
     </div>
+    <!-- cal.com picks the calendar language from the browser (Accept-Language) or a cal.com login, never
+         from the embed, so the page says so before anything loads. -->
+    <div class="min-w-0 sm:col-span-2">
+      <dt class="label text-muted">{copy.languageTerm}</dt>
+      <dd class="mt-1">{copy.languageValue}</dd>
+    </div>
   </dl>
 
   {

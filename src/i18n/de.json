@@ -1195,6 +1195,8 @@
     "regionLabel": "Buchungskalender",
     "confirmationTerm": "Bestätigung",
     "confirmationValue": "Per E-Mail von cal.com, mit Links zum Verschieben und Absagen",
+    "languageTerm": "Sprache des Kalenders",
+    "languageValue": "Die Ihres Browsers. cal.com übernimmt sie von dort, diese Seite kann sie nicht festlegen.",
     "timezoneTerm": "Zeitzone",
     "timezoneStatic": "Die Ihres Geräts",
     "timezoneHint": "Der Kalender zeigt freie Uhrzeiten in dieser Zeitzone.",

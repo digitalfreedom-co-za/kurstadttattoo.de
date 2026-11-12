@@ -1195,6 +1195,8 @@
     "regionLabel": "Booking calendar",
     "confirmationTerm": "Confirmation",
     "confirmationValue": "By email from cal.com, with links to reschedule or cancel",
+    "languageTerm": "Calendar language",
+    "languageValue": "The one of your browser. cal.com takes it from there and this page cannot set it, so the calendar may appear in German.",
     "timezoneTerm": "Time zone",
     "timezoneStatic": "The one of your device",
     "timezoneHint": "The calendar shows free times in this time zone.",
