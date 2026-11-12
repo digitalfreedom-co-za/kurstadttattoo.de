@@ -1,0 +1,234 @@
+---
+// Privacy policy for both locales. Describes only what the site really does: GitHub Pages hosting, self
+// hosted fonts, no cookies of its own, the three localStorage entries (consent record, theme, explicit
+// language), the cal.com calendar only after consent (BookingPrivacy, wording per CAL_IS_DEMO), GA4 only
+// while a measurement ID is configured (src/config/analytics.ts), contact by phone and the WEB.DE mailbox,
+// plain external links. Controller from the imprint of the old site (operator in src/config/site.ts).
+// Update this page whenever a third party service or a storage key is added or removed, and raise the
+// consent version (src/config/consent.ts) when the consent text changes in substance.
+// The consent dialog does not open by itself here (ConsentDialog, routeKey privacy), so the page stays
+// readable before a decision.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../ui/PageHeader.astro';
+import Container from '../ui/Container.astro';
+import BookingPrivacy from '../legal/BookingPrivacy.astro';
+import { BOOKING_PRIVACY_ANCHOR } from '../../config/booking';
+import { ANALYTICS_ENABLED } from '../../config/analytics';
+import { CONSENT_ANCHOR, CONSENT_STORAGE_KEY } from '../../config/consent';
+import { operator, studio } from '../../config/site';
+import { localizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const copy = dict.pages.privacy;
+const breadcrumbs = [
+  { name: dict.nav.items.home, path: localizedPath('home', locale) },
+  { name: dict.nav.items.privacy, path: localizedPath('privacy', locale) },
+];
+const withOperator = (text: string) => text.replaceAll('{operator}', operator.name);
+const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
+const storageRows = [
+  { key: CONSENT_STORAGE_KEY, ...copy.storage.rows.consent },
+  { key: 'theme', ...copy.storage.rows.theme },
+  { key: 'locale-explicit', ...copy.storage.rows.locale },
+];
+
+const toc = [
+  { id: 'verantwortlicher', label: copy.controller.title },
+  { id: 'hosting', label: copy.hosting.title },
+  { id: 'speicher', label: copy.storage.title },
+  { id: CONSENT_ANCHOR, label: copy.consent.title },
+  { id: BOOKING_PRIVACY_ANCHOR, label: dict.privacyBooking.title },
+  ...(ANALYTICS_ENABLED ? [{ id: 'statistik', label: copy.analytics.title }] : []),
+  { id: 'kontakt', label: copy.contact.title },
+  { id: 'links', label: copy.links.title },
+  { id: 'rechte', label: copy.rights.title },
+  { id: 'beschwerde', label: copy.complaint.title },
+  { id: 'pflicht', label: copy.duty.title },
+];
+---
+
+<BaseLayout title={copy.title} description={copy.description} locale={locale} routeKey="privacy" breadcrumbs={breadcrumbs}>
+  <PageHeader
+    locale={locale}
+    breadcrumbs={breadcrumbs}
+    eyebrow={copy.eyebrow}
+    heading={copy.heading}
+    lead={ANALYTICS_ENABLED ? copy.leadAnalytics : copy.lead}
+  />
+
+  <Container class="py-14 md:py-20">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-x-8">
+      <nav class="min-w-0 lg:col-span-3" aria-label={copy.tocNavLabel}>
+        <div class="lg:sticky lg:top-[calc(var(--header-height)+2rem)]">
+          <p class="label text-muted">{copy.tocLabel}</p>
+          <ul class="mt-2 grid border-t border-ink">
+            {
+              toc.map((item) => (
+                <li class="border-b border-line">
+                  <a class="link inline-flex min-h-11 items-center py-1 text-sm no-underline hover:underline" href={`#${item.id}`}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-4 text-sm text-muted">{copy.updated}</p>
+        </div>
+      </nav>
+
+      <article class="legal prose max-w-none min-w-0 lg:col-span-8 lg:col-start-5">
+        <h2 id="verantwortlicher">{copy.controller.title}</h2>
+        <p>{copy.controller.intro}</p>
+        <p>
+          {operator.name}<br />
+          {operator.street}<br />
+          {operator.postalCode} {operator.city}<br />
+          {dict.studio.country}<br />
+          {copy.controller.represented.replaceAll('{name}', operator.managingDirector)}
+        </p>
+        <p>
+          {dict.studio.phoneLabel}: <a href={studio.phone.href}>{studio.phone.display}</a><br />
+          {dict.studio.emailLabel}: <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
+        </p>
+        <p>{copy.controller.questions}</p>
+
+        <h2 id="hosting">{copy.hosting.title}</h2>
+        <p>{copy.hosting.provider}</p>
+        <p>{copy.hosting.logs}</p>
+        <p>{copy.hosting.basis}</p>
+        <p>
+          {copy.hosting.transfer}
+          <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" {...external}>
+            {copy.hosting.privacyLink}<span class="sr-only"> {copy.newWindow}</span></a
+          >.
+        </p>
+        <p>{copy.hosting.https}</p>
+
+        <h2 id="speicher">{copy.storage.title}</h2>
+        <p>{copy.storage.fonts}</p>
+        <p>{copy.storage.entries}</p>
+        <div class="overflow-x-auto">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">{copy.storage.columns.entry}</th>
+                <th scope="col">{copy.storage.columns.written}</th>
+                <th scope="col">{copy.storage.columns.purpose}</th>
+                <th scope="col">{copy.storage.columns.duration}</th>
+                <th scope="col">{copy.storage.columns.consent}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                storageRows.map((row) => (
+                  <tr>
+                    <th scope="row">
+                      <code>{row.key}</code>
+                    </th>
+                    <td>{row.written}</td>
+                    <td>{row.purpose}</td>
+                    <td>{row.duration}</td>
+                    <td>{copy.storage.necessary}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p>{copy.storage.basis}</p>
+        <p>{ANALYTICS_ENABLED ? copy.storage.noTrackingAnalytics : copy.storage.noTracking}</p>
+
+        <h2 id={CONSENT_ANCHOR}>{copy.consent.title}</h2>
+        <p>{ANALYTICS_ENABLED ? copy.consent.introAnalytics : copy.consent.intro}</p>
+        <p>{copy.consent.record.replaceAll('{key}', CONSENT_STORAGE_KEY)}</p>
+        <p>
+          {copy.consent.withdraw}
+          <a href={`#${CONSENT_ANCHOR}`} data-consent-open aria-haspopup="dialog">{copy.consent.withdrawLink}</a>. {
+            copy.consent.withdrawRest
+          }
+        </p>
+
+        <BookingPrivacy locale={locale} />
+
+        {
+          ANALYTICS_ENABLED && (
+            <>
+              <h2 id="statistik">{copy.analytics.title}</h2>
+              <p>{copy.analytics.provider}</p>
+              <p>{copy.analytics.data}</p>
+              <p>{copy.analytics.consentMode}</p>
+              <p>{copy.analytics.basis}</p>
+              <p>
+                {copy.analytics.transfer}
+                <a href="https://policies.google.com/privacy" {...external}>
+                  {copy.analytics.privacyLink}<span class="sr-only"> {copy.newWindow}</span></a
+                >.
+              </p>
+            </>
+          )
+        }
+
+        <h2 id="kontakt">{copy.contact.title}</h2>
+        <p>{copy.contact.data}</p>
+        <p>{copy.contact.mailbox}</p>
+        <p>{copy.contact.retention}</p>
+
+        <h2 id="links">{copy.links.title}</h2>
+        <p>{copy.links.text}</p>
+
+        <h2 id="rechte">{copy.rights.title}</h2>
+        <p>{withOperator(copy.rights.intro)}</p>
+        <ul>
+          {copy.rights.items.map((item) => <li>{item}</li>)}
+        </ul>
+        <p>
+          {copy.rights.request} <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
+        </p>
+        <h3>{copy.rights.objectionTitle}</h3>
+        <p>{copy.rights.objection}</p>
+
+        <h2 id="beschwerde">{copy.complaint.title}</h2>
+        <p>{withOperator(copy.complaint.text)}</p>
+        <p>
+          <a href="https://datenschutz.hessen.de" {...external}>
+            datenschutz.hessen.de<span class="sr-only"> {copy.newWindow}</span></a
+          >
+        </p>
+
+        <h2 id="pflicht">{copy.duty.title}</h2>
+        <p>{copy.duty.text}</p>
+      </article>
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  /* Typography plugin colours mapped to the site tokens, so the text follows the light and dark theme. */
+  .legal {
+    --tw-prose-body: var(--color-ink-soft);
+    --tw-prose-headings: var(--color-ink);
+    --tw-prose-links: var(--color-neon);
+    --tw-prose-bold: var(--color-ink);
+    --tw-prose-bullets: var(--color-muted);
+    --tw-prose-counters: var(--color-muted);
+    --tw-prose-hr: var(--color-line);
+    --tw-prose-code: var(--color-ink);
+    --tw-prose-th-borders: var(--color-ink);
+    --tw-prose-td-borders: var(--color-line);
+  }
+
+  .legal :global(code::before),
+  .legal :global(code::after) {
+    content: none;
+  }
+
+  .legal :global(th),
+  .legal :global(td) {
+    min-width: 9rem;
+  }
+</style>

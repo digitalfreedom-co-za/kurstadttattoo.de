@@ -1,0 +1,346 @@
+---
+// Consent dialog for the optional third party services: the cal.com booking calendar and, only while a GA4
+// measurement ID is configured, statistics (src/config/analytics.ts). Self hosted, no CMP. A modal
+// <dialog> shown as a bottom sheet in the top layer, so it never moves the page (no layout shift). Two
+// views in one dialog:
+// - notice: first visit. Ablehnen and Akzeptieren are the same button, same size and weight; Einstellungen
+//   opens the settings view.
+// - settings: Notwendig (always on) and one switch per optional category (off unless consented), save,
+//   reject, accept. Opened from the footer link Cookie-Einstellungen on every page, via CONSENT_OPEN_EVENT.
+// Shown automatically while there is no stored choice of the current CONSENT_VERSION, except on the
+// privacy policy and the imprint, which must stay readable before a decision (they load no third party
+// content). Focus moves to the title, Tab is held inside the dialog, Escape closes it without a decision:
+// nothing is stored or loaded, and the notice returns on the next page. Closing returns focus to the
+// control that opened it. Without JS the dialog never opens and nothing loads.
+import Button from '../ui/Button.astro';
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+import { ANALYTICS_ENABLED } from '../../config/analytics';
+import { CONSENT_ANCHOR } from '../../config/consent';
+import { pageExists } from '../../lib/pages';
+import { url } from '../../lib/url';
+import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  routeKey?: RouteKey;
+}
+
+const { locale, routeKey } = Astro.props;
+const copy = t(locale).consent;
+const legalPage = routeKey === 'privacy' || routeKey === 'imprint';
+const privacyHref = pageExists('privacy', locale) ? url(`${localizedPath('privacy', locale)}#${CONSENT_ANCHOR}`) : undefined;
+const categories = [
+  { key: 'booking', title: copy.bookingTitle, text: copy.bookingText },
+  ...(ANALYTICS_ENABLED ? [{ key: 'analytics', title: copy.analyticsTitle, text: copy.analyticsText }] : []),
+];
+---
+
+<dialog
+  id="consent-dialog"
+  class="consent"
+  aria-labelledby="consent-notice-title"
+  aria-describedby="consent-notice-text"
+  data-consent-dialog
+  data-auto-open={legalPage ? undefined : ''}
+>
+  <Container class="py-6 md:py-8">
+    <section data-consent-view="notice" class="grid gap-5 lg:grid-cols-12 lg:gap-x-8">
+      <div class="min-w-0 lg:col-span-8">
+        <p class="label flex items-center gap-3 text-muted">
+          <span class="h-px w-6 bg-neon" aria-hidden="true"></span>{copy.eyebrow}
+        </p>
+        <h2 id="consent-notice-title" class="mt-3 font-display text-h4 font-semibold focus:outline-none" tabindex="-1">
+          {ANALYTICS_ENABLED ? copy.noticeTitleAnalytics : copy.noticeTitle}
+        </h2>
+        <div id="consent-notice-text" class="mt-3 grid gap-2 text-sm text-muted">
+          <p>{ANALYTICS_ENABLED ? copy.noticeBookingAnalytics : copy.noticeBooking}</p>
+          <p>
+            {copy.noticeRest}
+            {
+              privacyHref && (
+                <>
+                  {' '}
+                  <a class="link" href={privacyHref}>
+                    {copy.privacyMore}
+                  </a>
+                </>
+              )
+            }
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4 lg:flex-col lg:items-stretch lg:justify-end">
+        <div class="grid w-full grid-cols-2 gap-3 sm:max-w-md lg:max-w-none">
+          <Button class="justify-center" icon="close" data-consent-action="reject">{copy.reject}</Button>
+          <Button class="justify-center" icon="check" data-consent-action="accept">{copy.accept}</Button>
+        </div>
+        <Button variant="text" class="self-start" data-consent-action="settings">{copy.settings}</Button>
+      </div>
+    </section>
+
+    <section data-consent-view="settings" hidden>
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="label flex items-center gap-3 text-muted">
+            <span class="h-px w-6 bg-neon" aria-hidden="true"></span>{copy.eyebrow}
+          </p>
+          <h2 id="consent-settings-title" class="mt-3 font-display text-h4 font-semibold focus:outline-none" tabindex="-1">
+            {copy.settingsTitle}
+          </h2>
+        </div>
+        <button
+          type="button"
+          class="inline-flex size-11 shrink-0 items-center justify-center transition-colors hover:text-neon"
+          aria-label={copy.close}
+          title={copy.close}
+          data-consent-action="close"
+        >
+          <Icon name="close" size={20} />
+        </button>
+      </div>
+
+      <div id="consent-settings-text" class="mt-4 grid border-t border-ink text-sm">
+        <div class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-b border-line py-4 sm:gap-x-8">
+          <h3 class="font-semibold">{copy.necessaryTitle}</h3>
+          <p class="label pt-0.5 text-muted sm:row-span-2">{copy.alwaysOn}</p>
+          <p class="col-span-2 text-muted sm:col-span-1">{copy.necessaryText}</p>
+        </div>
+        {
+          categories.map((category) => (
+            <div class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-b border-line py-4 sm:gap-x-8">
+              <h3 class="font-semibold">
+                <label for={`consent-${category.key}`}>{category.title}</label>
+              </h3>
+              <span class="consent-switch -my-2 sm:row-span-2">
+                <input
+                  id={`consent-${category.key}`}
+                  type="checkbox"
+                  role="switch"
+                  aria-describedby={`consent-${category.key}-text`}
+                  data-consent-category={category.key}
+                />
+                <span aria-hidden="true" />
+              </span>
+              <p id={`consent-${category.key}-text`} class="col-span-2 text-muted sm:col-span-1">
+                {category.text}
+              </p>
+            </div>
+          ))
+        }
+        {
+          privacyHref && (
+            <p class="pt-4 text-muted">
+              <a class="link" href={privacyHref}>
+                {copy.details}
+              </a>
+            </p>
+          )
+        }
+      </div>
+
+      <div class="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
+        <div class="grid grid-cols-2 gap-3 sm:contents">
+          <Button class="justify-center" icon="close" data-consent-action="reject">{copy.reject}</Button>
+          <Button class="justify-center" icon="check" data-consent-action="accept">{copy.accept}</Button>
+        </div>
+        <Button variant="secondary" class="justify-center" data-consent-action="save">{copy.save}</Button>
+      </div>
+    </section>
+  </Container>
+</dialog>
+
+<style>
+  /* Bottom sheet in the top layer: out of the document flow, so the page never moves. */
+  .consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: min(100dvh, 100%);
+    margin: 0;
+    padding: 0 0 env(safe-area-inset-bottom);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-top: 2px solid var(--color-ink);
+    background: var(--color-wall);
+    color: var(--color-ink);
+    box-shadow: 0 -18px 40px -24px rgb(15 14 16 / 0.55);
+  }
+
+  .consent::backdrop {
+    background: rgb(15 14 16 / 0.4);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .consent[open] {
+      animation: consent-in 320ms var(--ease-out-quint);
+    }
+
+    .consent[open]::backdrop {
+      animation: consent-fade 320ms ease-out;
+    }
+  }
+
+  @keyframes consent-in {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes consent-fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  /* Accessible switch on a native checkbox: the input stays the control (focus, state, name), the span
+     draws the track. */
+  .consent-switch {
+    position: relative;
+    display: inline-flex;
+    width: 3.25rem;
+    height: 2.75rem;
+    align-items: center;
+  }
+
+  .consent-switch input {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .consent-switch span {
+    position: relative;
+    width: 3.25rem;
+    height: 1.75rem;
+    border: 1px solid var(--color-ink);
+    border-radius: 999px;
+    background: var(--color-wall);
+    transition: background-color 200ms ease;
+  }
+
+  .consent-switch span::after {
+    content: '';
+    position: absolute;
+    top: 0.1875rem;
+    left: 0.1875rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    background: var(--color-ink);
+    transition: transform 200ms ease;
+  }
+
+  .consent-switch input:checked + span {
+    background: var(--color-neon);
+    border-color: var(--color-neon);
+  }
+
+  .consent-switch input:checked + span::after {
+    transform: translateX(1.5rem);
+    background: var(--color-wall);
+  }
+
+  .consent-switch input:focus-visible + span {
+    outline: 2px solid var(--color-neon);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .consent-switch span,
+    .consent-switch span::after {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  import type { ConsentCategory } from '../../config/consent';
+  import { CONSENT_OPEN_EVENT, allCategories, currentConsent, readConsent, saveConsent } from '../../scripts/consent';
+
+  const dialog = document.querySelector<HTMLDialogElement>('[data-consent-dialog]');
+
+  if (dialog && typeof dialog.showModal === 'function') {
+    const views = {
+      notice: dialog.querySelector<HTMLElement>('[data-consent-view="notice"]')!,
+      settings: dialog.querySelector<HTMLElement>('[data-consent-view="settings"]')!,
+    };
+    const switches = Array.from(dialog.querySelectorAll<HTMLInputElement>('[data-consent-category]'));
+    let opener: HTMLElement | null = null;
+
+    const show = (view: keyof typeof views) => {
+      views.notice.hidden = view !== 'notice';
+      views.settings.hidden = view !== 'settings';
+      dialog.setAttribute('aria-labelledby', `consent-${view}-title`);
+      dialog.setAttribute('aria-describedby', `consent-${view}-text`);
+      const categories = currentConsent()?.categories;
+      switches.forEach((input) => {
+        input.checked = categories?.[input.dataset.consentCategory as ConsentCategory] === true;
+      });
+      if (!dialog.open) dialog.showModal();
+      dialog.querySelector<HTMLElement>(`#consent-${view}-title`)?.focus();
+    };
+
+    dialog.addEventListener('close', () => {
+      const target = opener;
+      opener = null;
+      if (target?.isConnected) target.focus();
+    });
+
+    dialog.addEventListener('click', (event) => {
+      const action = (event.target as HTMLElement).closest<HTMLElement>('[data-consent-action]')?.dataset.consentAction;
+      if (!action) return;
+      if (action === 'settings') show('settings');
+      else if (action === 'close') dialog.close();
+      else {
+        const choice =
+          action === 'save'
+            ? Object.fromEntries(switches.map((input) => [input.dataset.consentCategory, input.checked]))
+            : allCategories(action === 'accept');
+        dialog.close();
+        saveConsent(choice);
+      }
+    });
+
+    // Tab stays inside the dialog (the browser already makes the page behind it inert).
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(
+        dialog.querySelectorAll<HTMLElement>('a[href], button, input, [tabindex]:not([tabindex="-1"])'),
+      ).filter((el) => !el.closest('[hidden]') && !(el as HTMLButtonElement).disabled);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && (active === first || !dialog.contains(active) || active?.tagName === 'H2')) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    window.addEventListener(CONSENT_OPEN_EVENT, () => {
+      opener =
+        document.activeElement instanceof HTMLElement && !dialog.contains(document.activeElement) ? document.activeElement : null;
+      show('settings');
+    });
+
+    // Footer link and other [data-consent-open] controls: open the settings instead of navigating.
+    document.querySelectorAll<HTMLElement>('[data-consent-open]').forEach((control) => {
+      control.addEventListener('click', (event) => {
+        event.preventDefault();
+        opener = control;
+        show('settings');
+      });
+    });
+
+    if (dialog.hasAttribute('data-auto-open') && !readConsent()) show('notice');
+  }
+</script>

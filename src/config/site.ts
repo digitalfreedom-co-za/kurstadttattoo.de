@@ -35,6 +35,18 @@ export const studio = {
 } as const;
 
 /**
+ * Operator of the website and controller under the GDPR, as stated in the imprint of the old site
+ * (docs/source-content/pages/kontakt-und-impressum.md). Read by the privacy policy and the imprint.
+ */
+export const operator = {
+  name: 'RuW Lifestyle GmbH',
+  street: 'Beneke Str. 9',
+  postalCode: '61231',
+  city: 'Bad Nauheim',
+  managingDirector: 'Patrick Wolf',
+} as const;
+
+/**
  * Reopening at the new location. While active, the layout shows the reopening strip and the footer marks
  * the address as new. Switch off after the opening day; the build stays free of date logic so the HTML
  * is deterministic (wiki websites.md, IndexNow).
@@ -52,5 +64,5 @@ export const expertSite = {
 
 /** Header and footer navigation, in this order. Pages that do not exist yet are left out (see lib/pages). */
 export const mainNav: RouteKey[] = ['gallery', 'artists', 'hygiene', 'consultation', 'aftercare', 'faq', 'contact'];
-export const footerNav: RouteKey[] = [...mainNav, 'engraving'];
+export const footerNav: RouteKey[] = [...mainNav, 'booking', 'engraving'];
 export const legalNav: RouteKey[] = ['imprint', 'privacy'];

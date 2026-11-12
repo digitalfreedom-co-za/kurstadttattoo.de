@@ -1,11 +1,13 @@
 ---
 // HTML frame for every page: html lang per locale, theme and JS bootstrap, fonts, SEO head, skip link,
-// reopening strip, header, main, footer, motion script. Extra head tags go into the "head" slot.
+// reopening strip, header, main, footer, consent dialog, analytics (only with a GA4 ID), motion script. Extra head tags go into the "head" slot.
 import '../styles/global.css';
 import { Font } from 'astro:assets';
 import SeoHead, { type SeoProps } from '../components/seo/SeoHead.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import ConsentDialog from '../components/layout/ConsentDialog.astro';
+import Analytics from '../components/seo/Analytics.astro';
 import ReopeningNotice from '../components/ui/ReopeningNotice.astro';
 import { t, localeMeta } from '../i18n';
 import { url } from '../lib/url';
@@ -34,6 +36,7 @@ const { locale, routeKey } = Astro.props;
         }, 3000);
       })(document.documentElement);
     </script>
+    <Analytics />
     <SeoHead {...Astro.props} />
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
     <meta name="theme-color" content="#f5f4f1" media="(prefers-color-scheme: light)" />
@@ -57,6 +60,7 @@ const { locale, routeKey } = Astro.props;
       <slot />
     </main>
     <Footer locale={locale} />
+    <ConsentDialog locale={locale} routeKey={routeKey} />
     <script>
       import '../scripts/motion';
     </script>

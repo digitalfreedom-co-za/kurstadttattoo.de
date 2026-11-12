@@ -6,7 +6,8 @@ import Logo from '../../assets/brand/logo.svg';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import { expertSite, footerNav, legalNav, reopening, studio } from '../../config/site';
-import { existingRoutes } from '../../lib/pages';
+import { CONSENT_ANCHOR } from '../../config/consent';
+import { existingRoutes, pageExists } from '../../lib/pages';
 import { localizedPath, t, type Locale } from '../../i18n';
 import { url } from '../../lib/url';
 
@@ -20,6 +21,9 @@ const pages = existingRoutes(footerNav, locale);
 const legal = existingRoutes(legalNav, locale);
 const { address } = studio;
 const linkClass = 'link inline-flex min-h-11 items-center no-underline hover:underline';
+// Cookie settings open the consent dialog. Without JS the link leads to the consent section of the
+// privacy policy; while that page is not built yet, the control is a button shown only with JS.
+const consentHref = pageExists('privacy', locale) ? url(`${localizedPath('privacy', locale)}#${CONSENT_ANCHOR}`) : undefined;
 ---
 
 <footer class="bg-night text-chalk" data-inert-when-menu>
@@ -108,21 +112,37 @@ const linkClass = 'link inline-flex min-h-11 items-center no-underline hover:und
   <Container>
     <div class="mt-12 flex flex-col gap-2 border-t border-chalk/15 py-4 text-sm text-chalk-muted sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {copy.footer.copyright}</p>
-      {
-        legal.length > 0 && (
-          <nav aria-label={copy.nav.legalLabel}>
-            <ul class="flex gap-6">
-              {legal.map((key) => (
-                <li>
-                  <a class={linkClass} href={url(localizedPath(key, locale))}>
-                    {copy.nav.items[key]}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )
-      }
+      <nav aria-label={copy.nav.legalLabel}>
+        <ul class="flex flex-wrap gap-x-6">
+          {legal.map((key) => (
+            <li>
+              <a class={linkClass} href={url(localizedPath(key, locale))}>
+                {copy.nav.items[key]}
+              </a>
+            </li>
+          ))}
+          <li class:list={[!consentHref && 'consent-open-js']}>
+            {
+              consentHref ? (
+                <a class={linkClass} href={consentHref} data-consent-open aria-haspopup="dialog">
+                  {copy.footer.cookieSettings}
+                </a>
+              ) : (
+                <button type="button" class={`${linkClass} cursor-pointer`} data-consent-open aria-haspopup="dialog">
+                  {copy.footer.cookieSettings}
+                </button>
+              )
+            }
+          </li>
+        </ul>
+      </nav>
     </div>
   </Container>
 </footer>
+
+<style>
+  /* The button form of the cookie settings does nothing without JS, so it only shows with JS. */
+  :global(html:not(.js)) .consent-open-js {
+    display: none;
+  }
+</style>

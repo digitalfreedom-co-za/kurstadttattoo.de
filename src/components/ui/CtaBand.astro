@@ -1,22 +1,23 @@
 ---
 // Closing call to action on the always dark surface (the counter): statement left, the action right.
-// Default action is the telephone, as on the old site (appointments by phone); the booking ticket can
-// pass its own label and href. The email stays as one quiet alternative line.
+// Default action is the booking page; the phone number and the email stay as quiet alternative lines.
+// The booking page itself passes primary="phone", so its closing call offers the direct way instead.
 import Container from './Container.astro';
 import Button from './Button.astro';
 import { studio } from '../../config/site';
-import { t, type Locale } from '../../i18n';
+import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
   locale: Locale;
   title: string;
   text?: string;
-  /** Primary action; default is the phone call. */
-  action?: { label: string; href: string };
+  primary?: 'booking' | 'phone';
 }
 
-const { locale, title, text, action } = Astro.props;
-const copy = t(locale).cta;
+const { locale, title, text, primary = 'booking' } = Astro.props;
+const dict = t(locale);
+const copy = dict.cta;
+const altLinkClass = 'link inline-flex min-h-11 items-center font-semibold break-all';
 ---
 
 <section class="bg-night pt-section pb-16 text-chalk md:pb-20" aria-label={copy.label}>
@@ -29,9 +30,9 @@ const copy = t(locale).cta;
       </div>
       <div class="flex min-w-0 flex-col gap-4 md:col-span-4 md:col-start-9 md:justify-end">
         {
-          action ? (
-            <Button href={action.href} variant="inverse" icon="calendar" class="self-start">
-              {action.label}
+          primary === 'booking' ? (
+            <Button href={localizedPath('booking', locale)} variant="inverse" icon="calendar" class="self-start">
+              {dict.booking.label}
             </Button>
           ) : (
             <Button href={studio.phone.href} variant="inverse" icon="phone" class="self-start">
@@ -40,11 +41,22 @@ const copy = t(locale).cta;
             </Button>
           )
         }
-        <p class="text-sm">
-          <a class="link inline-flex min-h-11 items-center font-semibold break-all" href={studio.email.href}>
-            {copy.emailLink}
-          </a>
-        </p>
+        <ul class="text-sm">
+          {
+            primary === 'booking' && (
+              <li>
+                <a class={altLinkClass} href={studio.phone.href}>
+                  {copy.callPrefix}: {studio.phone.display}
+                </a>
+              </li>
+            )
+          }
+          <li>
+            <a class={altLinkClass} href={studio.email.href}>
+              {copy.emailLink}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </Container>
