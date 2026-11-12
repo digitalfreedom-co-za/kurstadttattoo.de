@@ -46,6 +46,7 @@
     "hoursLabel": "Opening hours",
     "hours": "Monday to Friday, 12 noon to 6 pm",
     "hoursNote": "or by appointment",
+    "hoursUnconfirmed": "Previous hours. Please call to ask about the hours at the new location.",
     "followLabel": "Follow",
     "tiktok": "Patrick on TikTok"
   },
