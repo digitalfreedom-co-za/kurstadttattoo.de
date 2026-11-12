@@ -10,7 +10,7 @@ Vorschau: https://digitalfreedom-co-za.github.io/kurstadttattoo.de/ (noindex)
 |---|---|
 | Framework | Astro 6, statische Ausgabe, `build.format: 'directory'`, `trailingSlash: 'always'` |
 | Styling | Tailwind CSS 4 über `@tailwindcss/vite`, Konfiguration im CSS per `@theme` |
-| SEO | `@astrojs/sitemap` mit hreflang Alternativen, JSON-LD, `robots.txt` als Endpoint |
+| SEO | `@astrojs/sitemap` mit hreflang Alternativen, JSON-LD, Open Graph Karte, `robots.txt`, `llms.txt` und `llms-full.txt` als Endpoints |
 | Bilder | `sharp` (Astro Bildpipeline) |
 | Sprache | TypeScript strict, geprüft mit `@astrojs/check` |
 | Node | ab 22.12 (`engines` in `package.json`) |
@@ -26,7 +26,7 @@ Vite ist per `overrides` auf 7.3.8 festgelegt, damit `@tailwindcss/vite` dieselb
 | `npm run dev` | Entwicklungsserver unter http://localhost:4321/kurstadttattoo.de/ |
 | `npm run check` | Typprüfung aller `.astro` und `.ts` Dateien |
 | `npm run build` | Produktionsbuild nach `dist/` |
-| `npm run validate:jsonld` | Prüft JSON-LD, canonical und hreflang aller Seiten in `dist/` |
+| `npm run validate:jsonld` | Prüft die SEO Schicht in `dist/`: JSON-LD, canonical, hreflang, eindeutige Titel und Beschreibungen, Vorschaubild, NAP, `llms` Dateien |
 | `npm run preview` | Build lokal ansehen |
 
 ## Struktur
@@ -36,7 +36,7 @@ src/
   assets/images/       Bilder für die Astro Bildpipeline
   components/
     layout/            Kopf, Fuß, Sprachwechsel
-    seo/               SeoHead (Meta, canonical, hreflang, Open Graph), JsonLd
+    seo/               SeoHead (Meta, canonical, hreflang, Open Graph, Twitter), JsonLd
     pages/             Inhalt der Unterseiten, je eine Komponente für beide Sprachen
     ui/                Wiederverwendbare Bausteine
     booking/           Terminbuchung
@@ -45,11 +45,12 @@ src/
   data/                Strukturierte Daten
   i18n/                de.json, en.json, Routentabelle routes.ts
   layouts/             BaseLayout, SubpageLayout (Kopf mit Brotkrumen, Weiterlesen, Abschluss)
-  lib/                 url() Helfer, Basispfad, JSON-LD
+  lib/                 url() Helfer, Basispfad, JSON-LD (schema.ts), llms Dateien (llms.ts)
   pages/               Deutsch im Wurzelverzeichnis, Englisch unter en/
   scripts/             Clientseitige Skripte
   styles/global.css    Tailwind Einstieg
-scripts/validate-jsonld.mjs   JSON-LD und hreflang Prüfung im CI
+scripts/validate-jsonld.mjs   Prüfung der SEO Schicht im CI
+scripts/og-image/             Quelle und Render Skript der Vorschaubilder public/og/
 docs/                          Quellinhalte der alten Seite, Wettbewerbsanalyse
 ```
 
@@ -74,6 +75,12 @@ Die Vorschau läuft unter dem Basispfad `/kurstadttattoo.de`. Interne Links und 
 ```
 
 Seiten bekommen automatisch einen abschließenden Schrägstrich, Dateien nicht. Absolute URLs für canonical, hreflang und JSON-LD liefert `absoluteUrl()`.
+
+## SEO und GEO
+
+Jede Seite trägt einen eigenen Titel, eine eigene Beschreibung, canonical, hreflang, Open Graph und Twitter Karte mit dem Vorschaubild ihrer Sprache sowie einen JSON-LD Graphen. Die seitenweiten Knoten stehen in `src/lib/schema.ts`: `WebSite`, das Studio als `TattooParlor` (Adresse, Geokoordinaten, Öffnungszeiten, Einzugsgebiet, Leistungen), die Betreibergesellschaft als `Organization`, Patrick Wolf als `Person` und das Vorschaubild als `ImageObject`, verbunden über `@id`. Dazu kommen je Seite `WebPage` (bzw. `CollectionPage`, `AboutPage`, `ContactPage`), `BreadcrumbList` und `FAQPage`. Keine Bewertungen, Auszeichnungen oder Preisspannen: die Prüfung schlägt bei solchem Markup fehl.
+
+`llms.txt` und `llms-full.txt` (Deutsch im Wurzelverzeichnis, Englisch unter `/en/`) entstehen in `src/lib/llms.ts` aus denselben Daten wie die Seiten. Die Vorschaubilder `public/og/kurstadttattoo-og-de.png` und `-en.png` erzeugt `scripts/og-image/render.sh` mit Chrome headless aus `og-image.html`; nach Änderungen an Karte oder Fakten neu rendern und die PNGs committen.
 
 ## Indexierung
 
