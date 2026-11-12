@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeIntro from '../components/ui/HomeIntro.astro';
+import { t } from '../i18n';
+
+const copy = t('de').pages.home;
+---
+
+<BaseLayout title={copy.title} description={copy.description} locale="de" routeKey="home">
+  <HomeIntro locale="de" />
+</BaseLayout>

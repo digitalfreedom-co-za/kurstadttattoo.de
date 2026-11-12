@@ -1,0 +1,38 @@
+---
+// Link to the same page in the other locale. An explicit choice is remembered in
+// localStorage["locale-explicit"] (wiki websites.md), so a later language hint stays away.
+import { t, locales, localeMeta, localizedPath, type Locale, type RouteKey } from '../../i18n';
+import { url } from '../../lib/url';
+
+interface Props {
+  locale: Locale;
+  routeKey: RouteKey;
+}
+
+const { locale, routeKey } = Astro.props;
+const target = locales.find((alt) => alt !== locale) ?? locale;
+const copy = t(locale).languageSwitch;
+---
+
+<a
+  href={url(localizedPath(routeKey, target))}
+  hreflang={localeMeta[target].lang}
+  lang={localeMeta[target].lang}
+  title={copy.title}
+  data-locale-switch
+  class="inline-flex min-h-11 items-center px-3 underline underline-offset-4"
+>
+  {copy.label}
+</a>
+
+<script>
+  document.querySelectorAll('[data-locale-switch]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try {
+        localStorage.setItem('locale-explicit', '1');
+      } catch {
+        // Storage blocked: the switch still works, only the choice is not remembered.
+      }
+    });
+  });
+</script>

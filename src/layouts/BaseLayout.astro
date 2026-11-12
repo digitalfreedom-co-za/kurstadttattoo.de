@@ -1,0 +1,40 @@
+---
+// HTML frame for every page: html lang per locale, SEO head, skip link, language switch, main.
+// Header, footer and design system follow in the design system ticket (#4).
+import '../styles/global.css';
+import SeoHead, { type SeoProps } from '../components/seo/SeoHead.astro';
+import LanguageSwitch from '../components/layout/LanguageSwitch.astro';
+import { t, localeMeta } from '../i18n';
+
+type Props = SeoProps;
+
+const { locale, routeKey } = Astro.props;
+---
+
+<!doctype html>
+<html lang={localeMeta[locale].lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <SeoHead {...Astro.props} />
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#inhalt"
+      class="fixed top-3 left-3 z-50 -translate-y-24 bg-black px-4 py-3 text-white focus:translate-y-0"
+    >
+      {t(locale).a11y.skipToContent}
+    </a>
+    {
+      routeKey && (
+        <header class="flex justify-end p-4">
+          <LanguageSwitch locale={locale} routeKey={routeKey} />
+        </header>
+      )
+    }
+    <main id="inhalt" tabindex="-1" class="flex-1 focus:outline-none">
+      <slot />
+    </main>
+  </body>
+</html>

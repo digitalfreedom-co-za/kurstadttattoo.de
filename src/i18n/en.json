@@ -1,0 +1,25 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
+  "languageSwitch": {
+    "label": "Deutsch",
+    "title": "Read this page in German"
+  },
+  "pages": {
+    "home": {
+      "title": "Tattoo Studio in Bad Nauheim | KurstadtTattoo",
+      "description": "KurstadtTattoo is the tattoo studio of Patrick Wolf in Bad Nauheim, Germany. Reopening on 1 December 2026 at Friedrich-Ebert-Platz 1A.",
+      "heading": "KurstadtTattoo Bad Nauheim",
+      "intro": "Tattoos and piercings in Bad Nauheim. From 1 December 2026 you will find us in our new studio at Friedrich-Ebert-Platz 1A, 61231 Bad Nauheim.",
+      "status": "The new website is being built."
+    },
+    "notFound": {
+      "title": "Page not found | KurstadtTattoo",
+      "description": "This page does not exist.",
+      "heading": "Page not found",
+      "text": "This address does not exist or no longer exists.",
+      "homeLink": "Go to the home page"
+    }
+  }
+}
