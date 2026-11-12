@@ -53,28 +53,30 @@ const faqHref = subpage('faq');
     <div class="min-w-0 md:col-span-7">
       <Eyebrow>{copy.hero.eyebrow}</Eyebrow>
       <h1 id="start-titel" class="mt-5 max-w-[18ch] text-h1">{copy.hero.heading}</h1>
-      <p class="mt-6 max-w-[36rem] text-lead text-muted" data-reveal>{copy.hero.intro}</p>
+      {/* No reveal on the lead: as the largest text above the fold it is the LCP element on phones. */}
+      <p class="mt-6 max-w-[36rem] text-lead text-muted">{copy.hero.intro}</p>
       <div class="mt-8 flex flex-wrap gap-3" data-reveal>
         <Button href={localizedPath('booking', locale)} icon="calendar">{dict.booking.label}</Button>
         <Button href={`#${copy.art.id}`} variant="secondary">{copy.hero.worksLink}</Button>
       </div>
       <dl class="mt-10 grid max-w-[36rem] gap-6 border-t border-ink pt-5 text-[0.9375rem] sm:grid-cols-2" data-reveal>
-        <div class="flex gap-3">
-          <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon" />
-          <div>
-            <dt class="label text-muted">{reopening.active ? copy.hero.addressLabel : dict.studio.addressLabel}</dt>
-            <dd class="mt-1">{address.street}, {`${address.postalCode} ${address.city}`}</dd>
-          </div>
+        {/* dl > div > dt, dd only (HTML content model), so the icon sits inside the dt and hangs in the indent. */}
+        <div class="relative pl-[1.875rem]">
+          <dt class="label text-muted">
+            <Icon name="pin" size={18} class="absolute top-1 left-0 text-neon" />
+            {reopening.active ? copy.hero.addressLabel : dict.studio.addressLabel}
+          </dt>
+          <dd class="mt-1">{address.street}, {`${address.postalCode} ${address.city}`}</dd>
         </div>
-        <div class="flex gap-3">
-          <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
-          <div>
-            <dt class="label text-muted">{dict.studio.hoursLabel}</dt>
-            <dd class="mt-1">
-              {dict.studio.hours}, {dict.studio.hoursNote}
-              <span class="mt-1 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
-            </dd>
-          </div>
+        <div class="relative pl-[1.875rem]">
+          <dt class="label text-muted">
+            <Icon name="clock" size={18} class="absolute top-1 left-0 text-neon" />
+            {dict.studio.hoursLabel}
+          </dt>
+          <dd class="mt-1">
+            {dict.studio.hours}, {dict.studio.hoursNote}
+            <span class="mt-1 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
+          </dd>
         </div>
       </dl>
     </div>

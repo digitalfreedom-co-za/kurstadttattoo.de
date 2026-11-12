@@ -31,7 +31,8 @@ const { locale, breadcrumbs, eyebrow, heading, lead, hasMedia = false, hasAction
       <div class:list={['min-w-0', hasMedia ? 'md:col-span-7' : 'md:col-span-11 lg:col-span-10']}>
         <Eyebrow>{eyebrow}</Eyebrow>
         <h1 id="seite-titel" class:list={['mt-5 text-h1', hasMedia ? 'max-w-[16ch]' : 'max-w-[20ch]']}>{heading}</h1>
-        <p class="mt-6 max-w-[38rem] text-lead text-muted" data-reveal>{lead}</p>
+        {/* No reveal on the lead: as the largest text above the fold it is the LCP element on phones. */}
+        <p class="mt-6 max-w-[38rem] text-lead text-muted">{lead}</p>
         {hasActions && <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4" data-reveal><slot /></div>}
       </div>
       {
