@@ -1,7 +1,8 @@
 ---
 // Privacy policy for both locales. Describes only what the site really does: GitHub Pages hosting, self
 // hosted fonts, no cookies of its own, the three localStorage entries (consent record, theme, explicit
-// language), the cal.com calendar only after consent (BookingPrivacy, wording per CAL_IS_DEMO), GA4 only
+// language), the cal.com calendar only after consent and only while the build embeds one (BookingPrivacy,
+// wording per CAL_ENABLED and CAL_IS_DEMO), GA4 only
 // while a measurement ID is configured (src/config/analytics.ts), contact by phone and the WEB.DE mailbox,
 // plain external links. Controller from the imprint of the old site (operator in src/config/site.ts).
 // Update this page whenever a third party service or a storage key is added or removed, and raise the
@@ -13,9 +14,9 @@ import PageHeader from '../ui/PageHeader.astro';
 import Container from '../ui/Container.astro';
 import BookingPrivacy from '../legal/BookingPrivacy.astro';
 import LegalProse from '../legal/LegalProse.astro';
-import { BOOKING_PRIVACY_ANCHOR } from '../../config/booking';
+import { BOOKING_PRIVACY_ANCHOR, CAL_ENABLED } from '../../config/booking';
 import { ANALYTICS_ENABLED } from '../../config/analytics';
-import { CONSENT_ANCHOR, CONSENT_STORAGE_KEY } from '../../config/consent';
+import { CONSENT_ANCHOR, CONSENT_CATEGORIES, CONSENT_STORAGE_KEY } from '../../config/consent';
 import { operator, studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
 
@@ -32,8 +33,24 @@ const breadcrumbs = [
 ];
 const withOperator = (text: string) => text.replaceAll('{operator}', operator.name);
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
+// Text variants for the services this build embeds: with calendar and statistics, with only one of them,
+// or with none, in which case nothing asks for consent and the consent record is never written.
+const consentNeeded = CONSENT_CATEGORIES.length > 0;
+const description = CAL_ENABLED ? copy.description : copy.descriptionNoCalendar;
+const lead = CAL_ENABLED
+  ? ANALYTICS_ENABLED ? copy.leadAnalytics : copy.lead
+  : ANALYTICS_ENABLED ? copy.leadAnalyticsNoCalendar : copy.leadNoCalendar;
+const noTracking = CAL_ENABLED
+  ? ANALYTICS_ENABLED ? copy.storage.noTrackingAnalytics : copy.storage.noTracking
+  : ANALYTICS_ENABLED ? copy.storage.noTrackingAnalyticsNoCalendar : copy.storage.noTrackingNoCalendar;
+const consentIntro = CAL_ENABLED
+  ? ANALYTICS_ENABLED ? copy.consent.introAnalytics : copy.consent.intro
+  : ANALYTICS_ENABLED ? copy.consent.introAnalyticsNoCalendar : copy.consent.introNoCalendar;
+const { writtenNoCalendar, ...consentRow } = copy.storage.rows.consent;
 const storageRows = [
-  { key: CONSENT_STORAGE_KEY, ...copy.storage.rows.consent },
+  ...(consentNeeded
+    ? [{ key: CONSENT_STORAGE_KEY, ...consentRow, written: CAL_ENABLED ? consentRow.written : writtenNoCalendar }]
+    : []),
   { key: 'theme', ...copy.storage.rows.theme },
   { key: 'locale-explicit', ...copy.storage.rows.locale },
 ];
@@ -53,13 +70,13 @@ const toc = [
 ];
 ---
 
-<BaseLayout title={copy.title} description={copy.description} locale={locale} routeKey="privacy" breadcrumbs={breadcrumbs}>
+<BaseLayout title={copy.title} description={description} locale={locale} routeKey="privacy" breadcrumbs={breadcrumbs}>
   <PageHeader
     locale={locale}
     breadcrumbs={breadcrumbs}
     eyebrow={copy.eyebrow}
     heading={copy.heading}
-    lead={ANALYTICS_ENABLED ? copy.leadAnalytics : copy.lead}
+    lead={lead}
   />
 
   <Container class="py-14 md:py-20">
@@ -180,17 +197,23 @@ const toc = [
           </div>
         </div>
         <p>{copy.storage.basis}</p>
-        <p>{ANALYTICS_ENABLED ? copy.storage.noTrackingAnalytics : copy.storage.noTracking}</p>
+        <p>{noTracking}</p>
 
         <h2 id={CONSENT_ANCHOR}>{copy.consent.title}</h2>
-        <p>{ANALYTICS_ENABLED ? copy.consent.introAnalytics : copy.consent.intro}</p>
-        <p>{copy.consent.record.replaceAll('{key}', CONSENT_STORAGE_KEY)}</p>
-        <p>
-          {copy.consent.withdraw}
-          <a href={`#${CONSENT_ANCHOR}`} data-consent-open aria-haspopup="dialog">{copy.consent.withdrawLink}</a>. {
-            copy.consent.withdrawRest
-          }
-        </p>
+        <p>{consentIntro}</p>
+        {
+          consentNeeded && (
+            <>
+              <p>{copy.consent.record.replaceAll('{key}', CONSENT_STORAGE_KEY)}</p>
+              <p>
+                {copy.consent.withdraw}
+                <a href={`#${CONSENT_ANCHOR}`} data-consent-open aria-haspopup="dialog">{copy.consent.withdrawLink}</a>. {
+                  CAL_ENABLED ? copy.consent.withdrawRest : copy.consent.withdrawRestNoCalendar
+                }
+              </p>
+            </>
+          )
+        }
 
         <BookingPrivacy locale={locale} />
 

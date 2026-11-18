@@ -29,7 +29,7 @@ The same lists are posted as comments on the fix tickets.
 | Ticket | Remaining after PR #47 |
 | --- | --- |
 | #43 UI | 7: replacement photos from owner originals (capture brief). 2: only if Marcello grants an exception to wiki content rule 2, shorter h2 headings. Definition of done check: screenshots at 375 and 1280, light and dark, for the listed pages after the merge |
-| #44 UX | 1: the labelled demo calendar is still on the booking page and loads after consent; remove it from the public page or put it behind the config switch. Owner facts: 3 (email channel), 4 (hygiene procedures), 5 (price wording), 6 (consultation format, duration, fee), 10 (consultation languages), 11 (style classification), 12 (selected work carried into the request, after 3), 13 (artist story), 14 (arrival details), 15 (review profile), 16 (engraving decision by Marcello). Verify 8 and 18 after the merge |
+| #44 UX | 1 done in #44. Owner facts: 3 (email channel), 4 (hygiene procedures), 5 (price wording), 6 (consultation format, duration, fee), 10 (consultation languages), 11 (style classification), 12 (selected work carried into the request, after 3), 13 (artist story), 14 (arrival details), 15 (review profile), 16 (engraving decision by Marcello). Verify 8 and 18 after the merge |
 | #45 mobile | 2, 3, 4: not implemented, the wiki header rule (36 px icon-only below 640 px) applies unless Marcello grants an exception. Verification: physical iOS and Android swipe check, menu open during rotation, Safari and Firefox |
 | #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. Verification: VoiceOver or NVDA for 1, 6, 7, 8; Firefox and Safari keyboard scrolling for 1; axe and Lighthouse after the merge |
 
@@ -68,7 +68,7 @@ The same lists are posted as comments on the fix tickets.
 
 | # | Status | What changed |
 | --- | --- | --- |
-| 1 | Partly, rest in #44 | While the demo calendar is configured every booking action reads `Termin anfragen` / `Request appointment`; the booking page leads with phone and email; the demo calendar sits last, closed, labelled as a test; the external cal.com link is gone in demo mode |
+| 1 | Fixed (#44) | While the demo calendar is configured every booking action reads `Termin anfragen` / `Request appointment` and the booking page leads with phone and email. No public page embeds the demo calendar: it appears only in a test build with `PUBLIC_CAL_DEMO=true`. Without a calendar the privacy policy and the cookie settings state that no service needs consent |
 | 2 | Fixed | The consent dialog opens by itself only once statistics are configured; until then consent is asked at the calendar placeholder; privacy policy text updated |
 | 3 | Fixed, confirmation open | One channel everywhere: appointment requests by phone, other questions by email (old contact page). Open: Patrick confirms whether email requests are welcome |
 | 4 | Partly, rest open | Home hygiene section links to the hygiene page. Open: Patrick's actual procedures |

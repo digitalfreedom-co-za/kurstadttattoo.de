@@ -741,7 +741,7 @@
       "eyebrow": "Rechtliches",
       "heading": "Impressum",
       "lead": "Anbieter dieser Website ist die {operator} mit Sitz in {city}, vertreten durch den Geschäftsführer {name}.",
-      "updated": "Stand: 12. November 2026",
+      "updated": "Stand: 18. November 2026",
       "provider": {
         "title": "Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)",
         "represented": "Vertreten durch den Geschäftsführer {name}"
@@ -780,7 +780,7 @@
       "links": {
         "title": "Haftung für Links",
         "paragraphs": [
-          "Diese Website verweist auf Seiten anderer Anbieter, etwa auf TikTok, YouTube, Google Maps oder cal.com. Für deren Inhalte ist der jeweilige Anbieter verantwortlich; wir machen sie uns nicht zu eigen.",
+          "Diese Website verweist auf Seiten anderer Anbieter, etwa auf TikTok, YouTube oder Google Maps. Für deren Inhalte ist der jeweilige Anbieter verantwortlich; wir machen sie uns nicht zu eigen.",
           "Beim Setzen der Links waren keine Rechtsverstöße erkennbar. Eine ständige Kontrolle der verlinkten Seiten ist ohne konkreten Anlass nicht zumutbar. Erfahren wir von einer Rechtsverletzung, entfernen wir den Link umgehend."
         ]
       },
@@ -804,7 +804,7 @@
       "heading": "Datenschutzerklärung",
       "lead": "Diese Website kommt ohne eigene Cookies, ohne Analyse und ohne Werbedienste aus. Neben dem Hosting bei GitHub Pages kommt ein weiterer Dienst nur mit Ihrer Einwilligung ins Spiel: der Kalender der Online-Terminbuchung.",
       "leadAnalytics": "Diese Website setzt keine eigenen Cookies und nutzt keine Werbedienste. Neben dem Hosting bei GitHub Pages kommen weitere Dienste nur mit Ihrer Einwilligung ins Spiel: der Kalender der Online-Terminbuchung und die Statistik mit Google Analytics.",
-      "updated": "Stand: 12. November 2026",
+      "updated": "Stand: 18. November 2026",
       "tocLabel": "Auf dieser Seite",
       "tocNavLabel": "Inhalt der Datenschutzerklärung",
       "newWindow": "(öffnet in einem neuen Fenster)",
@@ -840,7 +840,8 @@
           "consent": {
             "written": "wenn Sie im Hinweis, in den Cookie-Einstellungen oder im Buchungsbereich eine Wahl treffen",
             "purpose": "Ihre Wahl speichern: Fassung des Hinweises, Zeitpunkt und welche Dienste laden dürfen",
-            "duration": "bis Sie die Wahl ändern oder den Speicher Ihres Browsers löschen"
+            "duration": "bis Sie die Wahl ändern oder den Speicher Ihres Browsers löschen",
+            "writtenNoCalendar": "wenn Sie im Hinweis oder in den Cookie-Einstellungen eine Wahl treffen"
           },
           "theme": {
             "written": "wenn Sie die Darstellung zwischen hell und dunkel umschalten",
@@ -856,7 +857,9 @@
         "necessary": "nicht nötig, unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG)",
         "basis": "Rechtsgrundlage für diese Einträge ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt darin, die von Ihnen gewählten Einstellungen beizubehalten und Ihre Entscheidung zur Einwilligung zu beachten und nachweisen zu können (Art. 7 Abs. 1 DSGVO).",
         "tableLabel": "Einträge im Speicher Ihres Browsers",
-        "scrollHint": "Die Tabelle lässt sich seitlich verschieben."
+        "scrollHint": "Die Tabelle lässt sich seitlich verschieben.",
+        "noTrackingNoCalendar": "Wir verwenden keine Analyse oder Reichweitenmessung, keine Werbedienste und keine Social-Media-Plugins, und wir binden keine Inhalte anderer Anbieter ein.",
+        "noTrackingAnalyticsNoCalendar": "Wir verwenden keine Werbedienste und keine Social-Media-Plugins. Die Statistik mit Google Analytics lädt nur mit Ihrer Einwilligung."
       },
       "consent": {
         "title": "Einwilligung und Cookie-Einstellungen",
@@ -865,7 +868,10 @@
         "record": "Ihre Antwort speichern wir im Eintrag {key} in Ihrem Browser, damit wir nicht auf jeder Seite erneut fragen. Ändert sich der Hinweis inhaltlich, fragen wir erneut.",
         "withdraw": "Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen oder ändern, über den Link Cookie-Einstellungen am Ende jeder Seite oder",
         "withdrawLink": "direkt hier",
-        "withdrawRest": "Ist der Kalender bereits geladen, lädt die Seite nach dem Widerruf neu, damit er entfernt ist. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt davon unberührt."
+        "withdrawRest": "Ist der Kalender bereits geladen, lädt die Seite nach dem Widerruf neu, damit er entfernt ist. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt davon unberührt.",
+        "introNoCalendar": "Derzeit bindet diese Website keinen Dienst ein, für den eine Einwilligung nötig ist. Deshalb fragen wir nach keiner Einwilligung und speichern auch keine. Wird ein solcher Dienst eingebunden, ergänzen wir diese Erklärung und fragen Sie, bevor er lädt.",
+        "introAnalyticsNoCalendar": "Beim ersten Besuch fragen wir, ob die Statistik mit Google Analytics laden darf. Ablehnen ist so einfach wie Zustimmen, und ohne Einwilligung funktioniert die Website vollständig. Vor Ihrer Einwilligung wird nichts von Google geladen und keine Verbindung zu Google aufgebaut.",
+        "withdrawRestNoCalendar": "Ist Google Analytics bereits geladen, lädt die Seite nach dem Widerruf neu, damit es entfernt ist. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt davon unberührt."
       },
       "analytics": {
         "title": "Statistik mit Google Analytics",
@@ -884,7 +890,7 @@
       },
       "links": {
         "title": "Links zu anderen Diensten",
-        "text": "Einige Seiten verlinken auf andere Anbieter, etwa auf Google Maps für die Route zum Studio, auf TikTok und YouTube, auf tattoogutachten.de oder auf die Buchungsseite von cal.com. Solche Links sind einfache Verweise: Daten an den Anbieter gehen erst, wenn Sie den Link anklicken. Ab dann gilt die Datenschutzerklärung des jeweiligen Anbieters."
+        "text": "Einige Seiten verlinken auf andere Anbieter, etwa auf Google Maps für die Route zum Studio, auf TikTok und YouTube oder auf tattoogutachten.de. Solche Links sind einfache Verweise: Daten an den Anbieter gehen erst, wenn Sie den Link anklicken. Ab dann gilt die Datenschutzerklärung des jeweiligen Anbieters."
       },
       "rights": {
         "title": "Ihre Rechte",
@@ -908,7 +914,10 @@
       "duty": {
         "title": "Pflicht zur Bereitstellung und automatisierte Entscheidungen",
         "text": "Sie sind nicht verpflichtet, uns Daten bereitzustellen. Ohne Kontaktdaten können wir eine Anfrage oder einen Termin allerdings nicht bearbeiten. Eine automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt."
-      }
+      },
+      "descriptionNoCalendar": "Datenschutzerklärung von kurstadttattoo.de: Hosting bei GitHub Pages, Speicher im Browser, Kontakt per Telefon und E-Mail, Ihre Rechte.",
+      "leadNoCalendar": "Diese Website kommt ohne eigene Cookies, ohne Analyse und ohne Werbedienste aus. Außer dem Hosting bei GitHub Pages ist kein Dienst eines Dritten eingebunden.",
+      "leadAnalyticsNoCalendar": "Diese Website setzt keine eigenen Cookies und nutzt keine Werbedienste. Neben dem Hosting bei GitHub Pages kommt ein weiterer Dienst nur mit Ihrer Einwilligung ins Spiel: die Statistik mit Google Analytics."
     }
   },
   "works": {
@@ -1227,9 +1236,7 @@
   },
   "consent": {
     "eyebrow": "Datenschutz",
-    "noticeTitle": "Darf der Buchungskalender von cal.com laden?",
     "noticeTitleAnalytics": "Dürfen wir externe Dienste laden?",
-    "noticeBooking": "Diese Website setzt keine Cookies zur Analyse oder Werbung. Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Lädt er, überträgt Ihr Browser unter anderem Ihre IP-Adresse an cal.com in den USA, und cal.com setzt ein Cookie zur Abwehr automatisierter Zugriffe. Das geschieht nur mit Ihrer Einwilligung.",
     "noticeBookingAnalytics": "Für die Online-Terminbuchung binden wir den Kalender von cal.com ein (Cal.com, Inc., USA). Mit Google Analytics der Google Ireland Limited werten wir aus, wie unsere Seiten genutzt werden. Beide Dienste erhalten dabei unter anderem Ihre IP-Adresse, setzen Cookies und können Daten in die USA übermitteln. Das geschieht nur mit Ihrer Einwilligung, und Sie können beide getrennt wählen.",
     "noticeRest": "Ohne Einwilligung funktioniert die Website vollständig, Ihren Termin fragen Sie dann telefonisch an. Ihre Wahl ändern oder widerrufen Sie jederzeit unter Cookie-Einstellungen am Ende jeder Seite.",
     "privacyMore": "Mehr in der Datenschutzerklärung",
@@ -1246,7 +1253,10 @@
     "bookingText": "Lädt den Buchungskalender der Cal.com, Inc., San Francisco, USA, auf der Seite Termin buchen, sobald er sichtbar wird. Dabei erhält cal.com Ihre IP-Adresse, Angaben zu Browser und Gerät und die Adresse der Seite. Der Dienstleister Cloudflare setzt das Cookie __cf_bm gegen automatisierte Zugriffe (30 Minuten), technische Fehlerberichte gehen an Sentry. Übermittlung in die USA auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie bleibt der Kalender aus, Termine fragen Sie telefonisch an.",
     "analyticsTitle": "Statistik: Google Analytics",
     "analyticsText": "Lädt Google Analytics 4 der Google Ireland Limited, Dublin, Irland, und wertet aus, welche Seiten wie genutzt werden. Dabei erhält Google Ihre IP-Adresse, Angaben zu Browser und Gerät und die aufgerufenen Seiten und setzt die Cookies _ga und _ga_ mit der Kennung der Website (bis zu 2 Jahre). Eine Übermittlung in die USA ist möglich, auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie wird Google Analytics nicht geladen und nichts an Google gesendet.",
-    "details": "Einzelheiten in der Datenschutzerklärung."
+    "details": "Einzelheiten in der Datenschutzerklärung.",
+    "noticeTitleAnalyticsNoCalendar": "Darf die Statistik mit Google Analytics laden?",
+    "noticeAnalyticsNoCalendar": "Mit Google Analytics der Google Ireland Limited werten wir aus, wie unsere Seiten genutzt werden. Google erhält dabei unter anderem Ihre IP-Adresse, setzt Cookies und kann Daten in die USA übermitteln. Das geschieht nur mit Ihrer Einwilligung.",
+    "noOptional": "Derzeit lädt diese Website keinen Dienst, für den eine Einwilligung nötig ist. Es gibt hier nichts einzustellen, und wir speichern keine Auswahl."
   },
   "privacyBooking": {
     "title": "Online-Terminbuchung über cal.com",
@@ -1268,7 +1278,8 @@
     "retentionTitle": "Speicherdauer und Alternativen",
     "retentionDemo": "Buchungsdaten aus dem Demo-Kalender erhalten wir nicht. Sie liegen im cal.com Konto von {holder} und werden nach den Regeln von cal.com gespeichert und gelöscht.",
     "retentionLive": "Buchungsdaten löschen wir, sobald sie für die Durchführung und Nachbereitung des Termins nicht mehr benötigt werden, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.",
-    "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, fragen Sie Ihren Termin telefonisch an."
+    "alternative": "Wenn Sie nicht einwilligen oder cal.com nicht nutzen möchten, fragen Sie Ihren Termin telefonisch an.",
+    "notInUse": "Derzeit ist auf dieser Website kein Kalender für die Online-Terminbuchung eingebunden, und es werden keine Daten an cal.com übertragen. Ihren Termin fragen Sie telefonisch an."
   },
   "seo": {
     "ogImageAlt": "KurstadtTattoo, Tattoo Studio in Bad Nauheim: realistisches Fuchs Tattoo in Farbe auf einem Unterarm, daneben Name und Adresse des Studios",
