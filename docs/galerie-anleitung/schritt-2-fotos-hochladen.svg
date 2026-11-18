@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" role="img" aria-labelledby="t">
 <title id="t">Schritt 2: Fotos in das Feld ziehen und mit Commit changes bestätigen</title>
-<style>text{font-family:Helvetica,Arial,sans-serif;fill:#121113} .m{fill:#56535b} .w{fill:#fff} .b{font-weight:bold}</style>
-<rect width="640" height="380" fill="#f5f4f1"/>
-<rect x="20" y="20" width="600" height="340" rx="10" fill="#fff" stroke="#cfcbc3" stroke-width="2"/>
-<rect x="20" y="20" width="600" height="40" rx="10" fill="#eae8e3"/><rect x="20" y="50" width="600" height="10" fill="#eae8e3"/>
-<circle cx="42" cy="40" r="6" fill="#cfcbc3"/><circle cx="62" cy="40" r="6" fill="#cfcbc3"/><circle cx="82" cy="40" r="6" fill="#cfcbc3"/>
-<rect x="104" y="29" width="496" height="22" rx="11" fill="#fff" stroke="#cfcbc3"/>
+<style>text{font-family:Helvetica,Arial,sans-serif;fill:#120d08} .m{fill:#5c5246} .w{fill:#fff} .b{font-weight:bold}</style>
+<rect width="640" height="380" fill="#f7f3ea"/>
+<rect x="20" y="20" width="600" height="340" rx="10" fill="#fff" stroke="#cdc1a8" stroke-width="2"/>
+<rect x="20" y="20" width="600" height="40" rx="10" fill="#ede5d3"/><rect x="20" y="50" width="600" height="10" fill="#ede5d3"/>
+<circle cx="42" cy="40" r="6" fill="#cdc1a8"/><circle cx="62" cy="40" r="6" fill="#cdc1a8"/><circle cx="82" cy="40" r="6" fill="#cdc1a8"/>
+<rect x="104" y="29" width="496" height="22" rx="11" fill="#fff" stroke="#cdc1a8"/>
 <text x="118" y="45" font-size="12" class="m">github.com/digitalfreedom-co-za/kurstadttattoo.de</text>
-<rect x="44" y="76" width="552" height="150" rx="8" fill="#f5f4f1" stroke="#56535b" stroke-width="2" stroke-dasharray="8 6"/>
-<rect x="120" y="100" width="64" height="80" rx="4" fill="#eae8e3" stroke="#cfcbc3"/><path d="M128 168 l18-26 14 18 10-12 10 20z" fill="#cfcbc3"/><circle cx="168" cy="118" r="7" fill="#cfcbc3"/>
-<rect x="196" y="112" width="64" height="80" rx="4" fill="#eae8e3" stroke="#cfcbc3"/><path d="M204 180 l18-26 14 18 10-12 10 20z" fill="#cfcbc3"/>
+<rect x="44" y="76" width="552" height="150" rx="8" fill="#f7f3ea" stroke="#5c5246" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="120" y="100" width="64" height="80" rx="4" fill="#ede5d3" stroke="#cdc1a8"/><path d="M128 168 l18-26 14 18 10-12 10 20z" fill="#cdc1a8"/><circle cx="168" cy="118" r="7" fill="#cdc1a8"/>
+<rect x="196" y="112" width="64" height="80" rx="4" fill="#ede5d3" stroke="#cdc1a8"/><path d="M204 180 l18-26 14 18 10-12 10 20z" fill="#cdc1a8"/>
 <text x="290" y="140" font-size="16" class="b">Fotos hierher ziehen</text>
 <text x="290" y="164" font-size="14" class="m">oder auf choose your files klicken</text>
-<rect x="422" y="262" width="174" height="32" rx="6" fill="#1f883d" stroke="#cfcbc3"/><text x="509.0" y="283" font-size="14" text-anchor="middle" class="w b">Commit changes</text><rect x="416" y="256" width="186" height="44" rx="9" fill="none" stroke="#a3157c" stroke-width="3"/>
+<rect x="422" y="262" width="174" height="32" rx="6" fill="#1f883d" stroke="#cdc1a8"/><text x="509.0" y="283" font-size="14" text-anchor="middle" class="w b">Commit changes</text><rect x="416" y="256" width="186" height="44" rx="9" fill="none" stroke="#7a5a1e" stroke-width="3"/>
 <text x="44" y="284" font-size="15">Fotos ablegen, warten bis alle</text>
 <text x="44" y="306" font-size="15">geladen sind, dann bestätigen</text>
-<circle cx="600" cy="330" r="15" fill="#a3157c"/><text x="600" y="336" font-size="17" text-anchor="middle" class="w b">2</text>
+<circle cx="600" cy="330" r="15" fill="#7a5a1e"/><text x="600" y="336" font-size="17" text-anchor="middle" class="w b">2</text>
 </svg>
