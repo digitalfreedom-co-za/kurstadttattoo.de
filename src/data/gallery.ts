@@ -1,5 +1,6 @@
-// Tattoo work from the old site's gallery (docs/source-content/images), defined once. The landing page
-// shows the hero piece and the preview selection; the gallery page groups every work by style.
+// Tattoo work from the old site's gallery (docs/source-content/images) and the new studio photos of
+// November 2026 (docs/source-content/images/neue-bilder-2026-11, #50), defined once. The landing page
+// shows the hero piece and the preview selection; the gallery page groups every published work by style.
 // Not shown: the photo of a session in progress (it shows no finished work).
 // Captions and alt texts live in the dictionaries under works.<id>, so both locales share one list.
 import type { ImageMetadata } from 'astro';
@@ -30,6 +31,18 @@ import valknut from '../assets/images/galerie-armband-valknut-unterarm.png';
 import memories from '../assets/images/galerie-schriftzug-memories-unterarm.jpg';
 import fist from '../assets/images/galerie-faust-mit-schrift-unterarm.jpg';
 import eye from '../assets/images/galerie-auge-dreieck-knie.png';
+import knotwork from '../assets/images/portfolio/galerie-flechtwerk-ornament-unterarm.jpg';
+import faithHopeLove from '../assets/images/portfolio/galerie-schriftzug-faith-hope-love-unterarm.jpg';
+import eagleEmblem from '../assets/images/portfolio/galerie-adler-mit-motorradlogo-wade.jpg';
+import iceHockey from '../assets/images/portfolio/galerie-eishockeyspieler-wade.jpg';
+import cartoonRabbit from '../assets/images/portfolio/galerie-cartoon-hase-mit-cap-wade.jpg';
+import partnerBands from '../assets/images/portfolio/galerie-partner-armbaender-anker-unterarme.jpg';
+import ornamentFlower from '../assets/images/portfolio/galerie-ornament-bluete-dotwork-unterarm.jpg';
+import cartoonPanther from '../assets/images/portfolio/galerie-cartoon-panther-farbe-wade.jpg';
+import eagleCrest from '../assets/images/portfolio/galerie-adler-vereinswappen-skyline-wade.jpg';
+import always from '../assets/images/portfolio/galerie-schriftzug-always-rippen.jpg';
+import roseQuote from '../assets/images/portfolio/galerie-rose-schriftzug-ewigkeit-unterarm.jpg';
+import footballer from '../assets/images/portfolio/galerie-fussballer-mit-pokal-wade.jpg';
 
 export type WorkId = keyof Dictionary['works'];
 
@@ -58,17 +71,44 @@ export const works: Record<WorkId, ImageMetadata> = {
   memories,
   fist,
   eye,
+  knotwork,
+  faithHopeLove,
+  eagleEmblem,
+  iceHockey,
+  cartoonRabbit,
+  partnerBands,
+  ornamentFlower,
+  cartoonPanther,
+  eagleCrest,
+  always,
+  roseQuote,
+  footballer,
 };
+
+/**
+ * Works that stay in the data but on no page (gallery, landing page, page Markdown) until the owners
+ * confirm them. lettering: the leg piece with the federal eagle, Einigkeit Recht Freiheit and Der Osten,
+ * held back until Patrick and Marcello confirm it is appropriate (#50).
+ */
+const publication: Partial<Record<WorkId, { published: false }>> = {
+  lettering: { published: false },
+};
+
+export const isPublished = (id: WorkId) => publication[id]?.published !== false;
 
 /** The piece in the landing page hero: realism in colour, the studio's speciality. */
 export const heroWork: WorkId = 'fox';
 
 /**
  * Landing page preview: two lead works, a portrait and a fine line piece (the stated specialities, chosen
- * from the clearer photos without large overlaid branding), then one row of four supporting works.
+ * from the clearer photos without large overlaid branding), then one row of four supporting works, three
+ * of them from the new studio photos (#50). Never on the landing page while Patrick has not confirmed the
+ * rights: works with brand or club logos, cartoon characters or a recognisable real person (eagleEmblem,
+ * iceHockey, cartoonRabbit, cartoonPanther, eagleCrest, footballer), and ornamentFlower, whose 4:5 crop
+ * shows a name and a date tattooed above it.
  */
 export const leadWorks: WorkId[] = ['dogPortrait', 'dragonfly'];
-export const previewWorks: WorkId[] = [...leadWorks, 'chessKing', 'rabbit', 'compass', 'blackwork'];
+export const previewWorks: WorkId[] = [...leadWorks, 'roseQuote', 'knotwork', 'partnerBands', 'rabbit'];
 
 /**
  * Thumbnail framing per work, checked against the source photos. contain shows the whole photo where the
@@ -78,6 +118,7 @@ export const previewWorks: WorkId[] = [...leadWorks, 'chessKing', 'rabbit', 'com
  */
 const framing: Partial<Record<WorkId, Pick<GalleryItem, 'fit' | 'position'>>> = {
   memories: { fit: 'contain' },
+  faithHopeLove: { fit: 'contain' },
   shark: { fit: 'contain' },
   chessKing: { fit: 'contain' },
   tribalNeck: { fit: 'contain' },
@@ -90,16 +131,26 @@ const framing: Partial<Record<WorkId, Pick<GalleryItem, 'fit' | 'position'>>> = 
 export type StyleGroupId = keyof Dictionary['pages']['gallery']['groups'];
 
 /**
- * Gallery page: every work once, grouped by style. Realism first, the studio's speciality, then the
- * groups competitors rank with (competitor analysis #2). Each group is its own gallery and lightbox.
+ * Gallery page: every published work once, grouped by style. Realism first, the studio's speciality,
+ * then the groups competitors rank with (competitor analysis #2). Each group is its own gallery and
+ * lightbox. Newest first: the photos of November 2026 (#50) lead each group, in the order of the archive,
+ * since the files carry no shooting date.
  */
-export const styleGroups: { id: StyleGroupId; works: WorkId[] }[] = [
-  { id: 'realism', works: ['dogPortrait', 'chessKing', 'shark', 'crossDove', 'biomech', 'ankh', 'fist'] },
-  { id: 'colour', works: ['fox', 'rabbit', 'smurf'] },
-  { id: 'fineLine', works: ['dragonfly', 'blossoms', 'flower'] },
-  { id: 'lettering', works: ['lettering', 'signature', 'memories', 'compass'] },
-  { id: 'blackwork', works: ['blackwork', 'blackworkOuter', 'maori', 'tribalNeck', 'tribalWeb', 'valknut', 'eye'] },
+const allStyleGroups: { id: StyleGroupId; works: WorkId[] }[] = [
+  {
+    id: 'realism',
+    works: ['eagleEmblem', 'iceHockey', 'cartoonRabbit', 'eagleCrest', 'footballer', 'dogPortrait', 'chessKing', 'shark', 'crossDove', 'biomech', 'ankh', 'fist'],
+  },
+  { id: 'colour', works: ['cartoonPanther', 'fox', 'rabbit', 'smurf'] },
+  { id: 'fineLine', works: ['always', 'dragonfly', 'blossoms', 'flower'] },
+  { id: 'lettering', works: ['faithHopeLove', 'roseQuote', 'lettering', 'signature', 'memories', 'compass'] },
+  {
+    id: 'blackwork',
+    works: ['knotwork', 'partnerBands', 'ornamentFlower', 'blackwork', 'blackworkOuter', 'maori', 'tribalNeck', 'tribalWeb', 'valknut', 'eye'],
+  },
 ];
+
+export const styleGroups = allStyleGroups.map((group) => ({ ...group, works: group.works.filter(isPublished) }));
 
 export function work(id: WorkId, locale: Locale): GalleryItem {
   const copy = t(locale).works[id];
@@ -107,5 +158,5 @@ export function work(id: WorkId, locale: Locale): GalleryItem {
 }
 
 export function galleryItems(ids: readonly WorkId[], locale: Locale): GalleryItem[] {
-  return ids.map((id) => work(id, locale));
+  return ids.filter(isPublished).map((id) => work(id, locale));
 }

@@ -1040,6 +1040,66 @@
       "title": "Auge im Dreieck",
       "meta": "Ornamental, Knie",
       "alt": "Auge in einem Dreieck mit Flügeln und Ornamenten, gepunktet schattiert, auf dem Knie"
+    },
+    "knotwork": {
+      "title": "Flechtbänder",
+      "meta": "Black and Grey, Unterarm",
+      "alt": "Ineinander verflochtene Bänder als plastisch schattiertes Ornament in Black and Grey auf dem Unterarm"
+    },
+    "faithHopeLove": {
+      "title": "faith hope love",
+      "meta": "Schrift, Unterarm",
+      "alt": "Schriftzug faith hope love in verbundener Schreibschrift mit einem kleinen Herz am Ende auf dem Unterarm"
+    },
+    "eagleEmblem": {
+      "title": "Adlerkopf mit Emblem",
+      "meta": "Black and Grey mit Farbe, Wade",
+      "alt": "Adlerkopf in Black and Grey über einem Emblem mit orangefarbenen Akzenten, darunter ein Keks mit Kleeblatt und Initialen, auf der Wade"
+    },
+    "iceHockey": {
+      "title": "Eishockeyspieler",
+      "meta": "Black and Grey, Wade",
+      "alt": "Eishockeyspieler in Black and Grey vor Flammen und einem runden Emblem, mit Schriftzug und einer Maus auf einem Puck, auf der Wade"
+    },
+    "cartoonRabbit": {
+      "title": "Comichase mit Cap",
+      "meta": "Black and Grey, Wade",
+      "alt": "Comichase mit Basecap, Kapuzenpullover und Sneakern als Black and Grey Tattoo auf der Wade"
+    },
+    "partnerBands": {
+      "title": "Armbänder als Partnertattoo",
+      "meta": "Blackwork, Unterarme",
+      "alt": "Zwei gleiche Armbänder aus einem schwarzen Band und einer feinen Linie mit Anker und Unendlichkeitszeichen auf den Unterarmen zweier Menschen"
+    },
+    "ornamentFlower": {
+      "title": "Ornamentale Blüte",
+      "meta": "Blackwork und Dotwork, Unterarm",
+      "alt": "Ornamentale Blüte mit geschwungenen Blättern in flächigem Schwarz und gepunkteten Schattierungen auf dem Unterarm"
+    },
+    "cartoonPanther": {
+      "title": "Comicpanther mit Sonnenbrille",
+      "meta": "Farbe, Wade",
+      "alt": "Farbiger Comicpanther in Pink mit Sonnenbrille, Hemd, Shorts und einem Getränk auf der Wade"
+    },
+    "eagleCrest": {
+      "title": "Adlerkopf mit Skyline",
+      "meta": "Black and Grey, Wade",
+      "alt": "Realistischer Adlerkopf in Black and Grey über einem runden Wappen und einer Skyline aus Hochhäusern auf der Wade"
+    },
+    "always": {
+      "title": "always",
+      "meta": "Fine Line Schrift, Rippen",
+      "alt": "Kleiner Schriftzug always in feiner Schreibschrift seitlich auf den Rippen"
+    },
+    "roseQuote": {
+      "title": "Rose mit Spruch",
+      "meta": "Black and Grey und Schrift, Unterarm",
+      "alt": "Schattierte Rose in Black and Grey mit Ranken und dem Satz Nichts ist für die Ewigkeit in Schreibschrift auf dem Unterarm"
+    },
+    "footballer": {
+      "title": "Fußballer mit Pokal",
+      "meta": "Realistik, Wade",
+      "alt": "Realistisches Porträt eines Fußballers, der einen Pokal in die Höhe hält, in Black and Grey auf der Wade"
     }
   },
   "faq": {
