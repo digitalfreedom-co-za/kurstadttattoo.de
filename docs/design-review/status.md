@@ -31,7 +31,7 @@ The same lists are posted as comments on the fix tickets.
 | #43 UI | 7: replacement photos from owner originals (capture brief). 2: only if Marcello grants an exception to wiki content rule 2, shorter h2 headings. Definition of done check: screenshots at 375 and 1280, light and dark, for the listed pages after the merge |
 | #44 UX | 1 done in #44. Owner facts: 3 (email channel), 4 (hygiene procedures), 5 (price wording), 6 (consultation format, duration, fee), 10 (consultation languages), 11 (style classification), 12 (selected work carried into the request, after 3), 13 (artist story), 14 (arrival details), 15 (review profile), 16 (engraving decision by Marcello). Verify 8 and 18 after the merge |
 | #45 mobile | 2 done in #45 within the wiki rule; 6 completed in #45 (caption and counter wait for the picture). 3, 4: not implemented, the wiki header rule (36 px icon-only below 640 px) applies unless Marcello grants an exception. Verification: physical iOS and Android swipe check, rotation on a real device |
-| #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. Verification: VoiceOver or NVDA for 1, 6, 7, 8; Firefox and Safari keyboard scrolling for 1; axe and Lighthouse after the merge |
+| #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. axe, Lighthouse and Firefox keyboard scrolling done (see Verification of #46). Still manual: VoiceOver or NVDA for 1, 6, 7, 8; real Safari keyboard scrolling for 1 |
 
 ## Wiki conflicts
 
@@ -123,3 +123,38 @@ Checks of the #45 fix round (18 November 2026), Playwright engines Chromium, Fir
 | 6 | Fixed | One atomic status with position, motif and style; counter hidden from assistive tech |
 | 7 | Fixed | Warning title is an h3 |
 | 8 | Fixed | Settings view has no dialog description; switches keep theirs |
+
+### Verification of #46 (18 November 2026, main at 168bb6b)
+
+Run with Playwright, axe-core and Lighthouse from `/tmp` against `astro preview` and, for Lighthouse, also against the deployed github.io build of the same commit. No code change was needed.
+
+- axe WCAG 2.2 A/AA: 0 violations on all 25 pages at 375 and 1280 px, light and dark. Also clean with the mobile menu open (375), the lightbox open and the cookie settings open (375 and 1280, light and dark, DE and EN).
+- Lighthouse mobile, deployed build: home DE 99, home EN 99 to 100, gallery DE and EN 100; accessibility 100; CLS 0. Against the uncompressed local preview the home pages score 96, the baseline commit 28aabd6 scores the same there (DE 96), so the local number is not a regression. The gallery showed one run of 66 on the deployed build; four reruns gave 100 each.
+- Finding 1: below 640 px the storage entries are a named list of term and definition pairs; from 640 px a named region (`Einträge im Speicher Ihres Browsers` / `Entries in your browser storage`) holds the table with caption and header cells. The region is reached with Tab and shows a 2 px outline in Chromium, Firefox and WebKit; arrow keys scroll it at 700 px in Chromium and Firefox. In WebKit under Playwright arrow keys scroll no focused region, not even a minimal test page, so real Safari remains a manual check. No horizontal page overflow at 640 to 1024 px since #45.
+- Finding 6: one status per change, e.g. `Bild 2 von 7: Schachkönig. Black and Grey, Unterarm` / `Image 2 of 7: Chess king. Black and grey, forearm`; focus stays on the next button.
+- Finding 7: outline on both hygiene pages is h2 `Was gehört nach dem Termin zur Hygiene?`, then h3 `Wann Sie zum Arzt gehen` (EN: `When to see a doctor`).
+- Finding 8: the settings dialog is named by its title, has no `aria-describedby`, and the title takes focus.
+- Finding 3 stays open: no `PUBLIC_CAL_LINK` repository variable is set, so the studio's own calendar does not exist yet and its reservation cannot be measured.
+- Finding 4 stays as is: cal.com main (ae027bb70, 13 November 2026) still takes the language only from a login or `Accept-Language` (`getLocale.ts`, last changed February 2026), and `embed.ts` has no locale option.
+- Not done: VoiceOver or NVDA speech (the checks above use the browser accessibility tree), real Safari.
+
+### Screen reader and Safari acceptance (open, manual)
+
+The tester review of PR #57 requires a screen reader check, VoiceOver or NVDA (one of them is enough), for findings 1, 6, 7 and 8 and Safari keyboard scrolling for finding 1, in DE and EN. They could not be run in the fix rounds of 18 November 2026. What was checked:
+
+- NVDA runs only on Windows. The development Mac (macOS 26.6.2) has no Windows machine or virtual machine.
+- `safaridriver` refuses a session: "You must enable 'Allow remote automation' in the Developer section of Safari Settings". Turning it on (`safaridriver --enable`) needs the administrator password, which the run does not have.
+- VoiceOver cannot be controlled by script: `SCREnableAppleScript` is not set and the flag file in `/private/var/db/Accessibility/` needs administrator rights. Starting VoiceOver and sending keys to Safari by hand would take over the desktop that was in use at the time.
+- Second fix round, rechecked the same day: `sudo` still asks for a password, and `safaridriver` still answers with the same error. A VoiceOver AppleScript command started VoiceOver on the desktop that was in use. It was quit at once, and no result was taken from it. Without Safari automation, VoiceOver could only read Safari through key presses sent to the shared desktop.
+
+So these checks are done by hand. Run them against the deployed build or `astro preview`, once in DE and once in EN, with one screen reader, VoiceOver or NVDA. Record browser and version, screen reader and version, and the result per step on #46 and in PR #57.
+
+| Finding | Pages DE / EN | Steps | Expected |
+| --- | --- | --- | --- |
+| 1, Safari | `/datenschutz` / `/en/privacy` | Safari, window wider than 640 px; Settings, Advanced: "Press Tab to highlight each item" on. Tab to the storage table, then arrow right and left | The region gets the 2 px outline and the table scrolls sideways; no horizontal page scroll |
+| 1, screen reader | same | VoiceOver with Safari or NVDA with Firefox or Chrome; at 640 px and wider, then below 640 px | Wide: region `Einträge im Speicher Ihres Browsers` / `Entries in your browser storage` is announced, the table with caption and column headers per cell. Narrow: one list of term and definition pairs per entry |
+| 6 | `/galerie` / `/en/gallery` | Open a work, then press the next button | One announcement per change, e.g. `Bild 2 von 7: Schachkönig. Black and Grey, Unterarm` / `Image 2 of 7: Chess king. Black and grey, forearm`; the visible counter is not read separately; focus stays on the next button |
+| 7 | `/hygiene` / `/en/hygiene` | Heading list (VoiceOver rotor, NVDA H / Insert+F7) | `Was gehört nach dem Termin zur Hygiene?` level 2, `Wann Sie zum Arzt gehen` / `When to see a doctor` level 3 |
+| 8 | any page | Open the cookie settings | The dialog is announced with its title only, no description, focus on the title; each switch is read with its own description |
+
+To run Safari by WebDriver later, an administrator runs `safaridriver --enable` once and turns on "Allow remote automation" in Safari Settings, Developer.
