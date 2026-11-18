@@ -771,6 +771,14 @@
         "title": "Job title",
         "text": "{name}, tattoo artist and piercer"
       },
+      "dsa": {
+        "title": "Contact points under the Digital Services Act",
+        "intro": "Regulation (EU) 2022/2065 (Digital Services Act, DSA) requires providers of intermediary services to name two contact points. {operator} states them irrespective of how this website is classified, so that authorities and users always have an addressable route.",
+        "authorities": "Point of contact for the authorities of the Member States, the European Commission and the European Board for Digital Services (Art. 11 DSA):",
+        "recipients": "Point of contact for recipients of the service (Art. 12 DSA):",
+        "human": "Communication with both contact points is handled by a person; it is not exclusively automated.",
+        "languages": "Languages accepted: German and English."
+      },
       "studio": {
         "title": "Studio address",
         "reopening": "The studio opens at this new address on 1 December 2026."

@@ -771,6 +771,14 @@
         "title": "Berufsbezeichnung",
         "text": "{name}, Tätowierer und Piercer"
       },
+      "dsa": {
+        "title": "Kontaktstellen nach dem Digital Services Act",
+        "intro": "Die Verordnung (EU) 2022/2065 (Digital Services Act, DSA) verlangt von Anbietern von Vermittlungsdiensten zwei Kontaktstellen. Die {operator} nennt sie unabhängig davon, wie diese Website rechtlich eingeordnet wird, damit Behörden und Nutzer immer einen erreichbaren Weg haben.",
+        "authorities": "Kontaktstelle für die Behörden der Mitgliedstaaten, die Europäische Kommission und das Europäische Gremium für digitale Dienste (Art. 11 DSA):",
+        "recipients": "Kontaktstelle für die Nutzer des Dienstes (Art. 12 DSA):",
+        "human": "Die Kommunikation über beide Kontaktstellen führt ein Mensch, sie läuft nicht ausschließlich automatisiert.",
+        "languages": "Sprachen: Deutsch und Englisch."
+      },
       "studio": {
         "title": "Anschrift des Studios",
         "reopening": "Das Studio öffnet am 1. Dezember 2026 an dieser neuen Adresse."
