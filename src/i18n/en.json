@@ -1040,6 +1040,66 @@
       "title": "Eye in a triangle",
       "meta": "Ornamental, knee",
       "alt": "Eye in a triangle with wings and ornaments, dotwork shading, on the knee"
+    },
+    "knotwork": {
+      "title": "Interlaced bands",
+      "meta": "Black and grey, forearm",
+      "alt": "Interlaced bands as a shaded, three dimensional ornament in black and grey on the forearm"
+    },
+    "faithHopeLove": {
+      "title": "faith hope love",
+      "meta": "Lettering, forearm",
+      "alt": "The words faith hope love in joined script with a small heart at the end on the forearm"
+    },
+    "eagleEmblem": {
+      "title": "Eagle head with emblem",
+      "meta": "Black and grey with colour, calf",
+      "alt": "Black and grey eagle head above an emblem with orange accents, below it a biscuit with a four leaf clover and initials, on the calf"
+    },
+    "iceHockey": {
+      "title": "Ice hockey player",
+      "meta": "Black and grey, calf",
+      "alt": "Black and grey ice hockey player in front of flames and a round emblem, with lettering and a mouse on a puck, on the calf"
+    },
+    "cartoonRabbit": {
+      "title": "Cartoon rabbit with cap",
+      "meta": "Black and grey, calf",
+      "alt": "Cartoon rabbit wearing a cap, a hoodie and sneakers as a black and grey tattoo on the calf"
+    },
+    "partnerBands": {
+      "title": "Matching armbands",
+      "meta": "Blackwork, forearms",
+      "alt": "Two matching armbands of a solid black band and a fine line with an anchor and an infinity sign on the forearms of two people"
+    },
+    "ornamentFlower": {
+      "title": "Ornamental flower",
+      "meta": "Blackwork and dotwork, forearm",
+      "alt": "Ornamental flower with sweeping leaves in solid black and dotted shading on the forearm"
+    },
+    "cartoonPanther": {
+      "title": "Cartoon panther with sunglasses",
+      "meta": "Colour, calf",
+      "alt": "Colour cartoon panther in pink with sunglasses, a shirt, shorts and a drink on the calf"
+    },
+    "eagleCrest": {
+      "title": "Eagle head with skyline",
+      "meta": "Black and grey, calf",
+      "alt": "Realistic black and grey eagle head above a round crest and a skyline of high rise buildings on the calf"
+    },
+    "always": {
+      "title": "always",
+      "meta": "Fine line lettering, ribs",
+      "alt": "The small word always in fine script on the side of the ribs"
+    },
+    "roseQuote": {
+      "title": "Rose with a quote",
+      "meta": "Black and grey and lettering, forearm",
+      "alt": "Shaded black and grey rose with vines and the German sentence Nichts ist für die Ewigkeit in script on the forearm"
+    },
+    "footballer": {
+      "title": "Footballer with trophy",
+      "meta": "Realism, calf",
+      "alt": "Realistic black and grey portrait of a footballer lifting a trophy, on the calf"
     }
   },
   "faq": {
