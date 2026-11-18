@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "validate:jsonld": "node scripts/validate-jsonld.mjs dist",
+    "gallery:publish": "node scripts/gallery-inbox/publish.mjs",
     "astro": "astro"
   },
   "dependencies": {

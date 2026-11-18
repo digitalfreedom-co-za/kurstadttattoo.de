@@ -106,7 +106,11 @@
     "failed": "Das Bild konnte nicht geladen werden.",
     "retry": "Erneut laden",
     "original": "Bild direkt öffnen",
-    "enquire": "Über ein Motiv wie dieses sprechen"
+    "enquire": "Über ein Motiv wie dieses sprechen",
+    "newWork": {
+      "title": "Tattoo aus dem Studio",
+      "alt": "Tattoo aus dem Studio KurstadtTattoo Bad Nauheim"
+    }
   },
   "steps": {
     "stepPrefix": "Schritt"
@@ -233,6 +237,11 @@
       "lead": "Hier sehen Sie echte Tattoos aus dem Studio KurstadtTattoo, sortiert nach Stil: Realistik und Porträts, Farbe, Fine Line, Schriftzüge sowie Blackwork und Tribal. Tippen Sie auf ein Bild, um es groß zu sehen.",
       "stylesLabel": "Stile in der Galerie",
       "countLabel": "{count} Arbeiten",
+      "newGroup": {
+        "id": "neu",
+        "title": "Neu im Studio",
+        "intro": "Die neuesten Arbeiten aus dem Studio, die neueste zuerst."
+      },
       "groups": {
         "realism": {
           "id": "realistik",

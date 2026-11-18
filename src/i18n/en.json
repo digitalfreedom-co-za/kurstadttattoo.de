@@ -106,7 +106,11 @@
     "failed": "The picture could not be loaded.",
     "retry": "Try again",
     "original": "Open the picture directly",
-    "enquire": "Talk about a design like this"
+    "enquire": "Talk about a design like this",
+    "newWork": {
+      "title": "Tattoo from the studio",
+      "alt": "Tattoo by KurstadtTattoo Bad Nauheim"
+    }
   },
   "steps": {
     "stepPrefix": "Step"
@@ -233,6 +237,11 @@
       "lead": "These are real tattoos from the KurstadtTattoo studio, sorted by style: realism and portraits, colour, fine line, lettering, and blackwork and tribal. Tap a picture to see it large.",
       "stylesLabel": "Styles in the gallery",
       "countLabel": "{count} pieces",
+      "newGroup": {
+        "id": "new",
+        "title": "New from the studio",
+        "intro": "The latest work from the studio, newest first."
+      },
       "groups": {
         "realism": {
           "id": "realism",
