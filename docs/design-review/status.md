@@ -20,6 +20,8 @@ Scope note of 18 November 2026 on #11: PR #47 delivers the four review files and
 
 On 18 November 2026 the branch was brought up to date with `main` (merge, no conflicts); `npm run check` (0 errors, 0 warnings, 0 hints) and `npm run build` (25 pages) pass.
 
+Deployment acceptance is still open. `.github/workflows/deploy.yml` deploys on a push to `main` (or a manual dispatch), not on a pull request, as `websites.md` prescribes, so the PR state can only be deployed after the merge. On 18 November 2026 the PR checks (CodeQL, commit messages) passed and the last deploy run on `main` (run 44321306990, #48) succeeded. After the merge, the successful run of the "Deploy to GitHub Pages" workflow for the merge commit is posted on #11 as the acceptance evidence.
+
 ## Remaining scope per fix ticket
 
 The same lists are posted as comments on the fix tickets.
