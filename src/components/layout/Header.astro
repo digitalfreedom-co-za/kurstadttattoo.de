@@ -1,6 +1,7 @@
 ---
 // Site header: logo, main navigation, language switch, theme toggle and the booking button. Every control
-// is a 36px icon button below sm and shows its label from sm up (wiki websites.md). Below lg, and whenever
+// is a 36px icon button below sm with a 44px hit area, and shows its label from sm up (wiki websites.md).
+// While the menu button shows, the theme toggle sits in the menu panel, so the row fits. Below lg, and whenever
 // the desktop row does not fit (enlarged text), the navigation moves into a full screen panel behind a
 // menu button (aria-expanded, Escape closes, focus is trapped and returned, the page behind is inert).
 // Without JS the panel renders as a plain list under the header. Only pages that exist are linked.
@@ -57,13 +58,15 @@ const ctaLabel = bookingLabel(copy.booking);
       )
     }
 
-    <div class="flex items-center gap-1 sm:gap-2">
+    <div class="flex items-center gap-2">
       {routeKey && <LanguageSwitch locale={locale} routeKey={routeKey} />}
-      <ThemeToggle locale={locale} />
+      <span class="header-theme contents">
+        <ThemeToggle locale={locale} />
+      </span>
       <a
         href={url(localizedPath('booking', locale))}
         aria-current={routeKey === 'booking' ? 'page' : undefined}
-        class="header-call inline-flex size-9 items-center justify-center rounded-xs bg-ink text-wall transition-colors hover:bg-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-4"
+        class="header-call touch-target inline-flex size-9 items-center justify-center rounded-xs bg-ink text-wall transition-colors hover:bg-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-4"
         aria-label={ctaLabel}
         title={ctaLabel}
       >
@@ -74,7 +77,7 @@ const ctaLabel = bookingLabel(copy.booking);
         hasNav && (
           <button
             type="button"
-            class="menu-toggle hidden size-9 items-center justify-center rounded-xs border border-ink/20 transition-colors hover:border-neon hover:text-neon sm:size-11"
+            class="menu-toggle touch-target hidden size-9 items-center justify-center rounded-xs border border-ink/20 transition-colors hover:border-neon hover:text-neon sm:size-11"
             aria-expanded="false"
             aria-controls="mobile-nav"
             aria-label={copy.nav.menuOpen}
@@ -115,6 +118,9 @@ const ctaLabel = bookingLabel(copy.booking);
               <Icon name="phone" size={18} class="shrink-0 text-neon" />
               <span><span class="sr-only">{copy.studio.phoneLabel} </span>{phoneDisplay(locale)}</span>
             </a>
+            <span class="menu-theme hidden">
+              <ThemeToggle locale={locale} inMenu />
+            </span>
             <p class="flex gap-3">
               <Icon name="clock" size={18} class="mt-0.5 shrink-0 text-neon" />
               <span>
@@ -170,6 +176,15 @@ const ctaLabel = bookingLabel(copy.booking);
     display: inline-flex;
   }
 
+  /* The theme switch needs JS, so the panel only offers it when the script runs. */
+  :global(.js) #site-header[data-has-nav] .header-theme {
+    display: none;
+  }
+
+  :global(.js) .menu-theme {
+    display: contents;
+  }
+
   :global(.js) .mobile-nav {
     position: fixed;
     inset: var(--header-height) 0 0 0;
@@ -209,6 +224,10 @@ const ctaLabel = bookingLabel(copy.booking);
     :global(.js) #site-header:not([data-compact]) .menu-toggle,
     :global(.js) #site-header:not([data-compact]) .mobile-nav {
       display: none;
+    }
+
+    :global(.js) #site-header[data-has-nav]:not([data-compact]) .header-theme {
+      display: contents;
     }
 
     :global(.js) #site-header[data-compact] .desktop-nav {
