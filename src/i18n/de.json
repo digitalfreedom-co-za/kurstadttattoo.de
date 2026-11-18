@@ -768,15 +768,21 @@
         "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
       },
       "profession": {
-        "title": "Berufsbezeichnung",
-        "text": "{name}, Tätowierer und Piercer"
+        "title": "Berufsbezeichnung und berufsrechtliche Regelungen",
+        "text": "{name}, Tätowierer und Piercer",
+        "regulated": "Berufsrechtliche Regelungen: entfällt. Es liegt kein reglementierter Beruf im Sinne von § 5 Abs. 1 Nr. 5 DDG vor."
       },
       "studio": {
         "title": "Anschrift des Studios",
         "reopening": "Das Studio öffnet am 1. Dezember 2026 an dieser neuen Adresse."
       },
+      "editorial": {
+        "title": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+        "text": "Entfällt: Diese Website ist kein journalistisch-redaktionell gestaltetes Angebot im Sinne von § 18 Abs. 2 Medienstaatsvertrag (MStV)."
+      },
       "dispute": {
         "title": "Verbraucher­streit­beilegung",
+        "odr": "Die Plattform der Europäischen Kommission zur Online-Streitbeilegung wurde am 20. Juli 2025 eingestellt. Die Verordnung (EU) 2024/3228 hat die Verordnung (EU) Nr. 524/2013 aufgehoben, auf der die Plattform beruhte. Verbraucher können sich direkt an die {operator} unter {email} wenden oder eine zuständige Stelle zur alternativen Streitbeilegung in ihrem Wohnsitzland anrufen.",
         "text": "Die {operator} ist weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
       },
       "content": {
