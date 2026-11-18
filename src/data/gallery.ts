@@ -6,6 +6,7 @@
 import type { ImageMetadata } from 'astro';
 import type { GalleryItem } from '../components/ui/Gallery.astro';
 import { t, type Dictionary, type Locale } from '../i18n';
+import newPhotos from './gallery-new.json';
 
 import fox from '../assets/images/galerie-fuchs-farbe-unterarm.jpg';
 import dogPortrait from '../assets/images/galerie-hundeportrait-pfote-unterarm.jpg';
@@ -159,4 +160,30 @@ export function work(id: WorkId, locale: Locale): GalleryItem {
 
 export function galleryItems(ids: readonly WorkId[], locale: Locale): GalleryItem[] {
   return ids.filter(isPublished).map((id) => work(id, locale));
+}
+
+/**
+ * Photos the studio published through gallery-inbox/ (#51): scripts/gallery-inbox/publish.mjs writes the
+ * optimised image to assets/images/galerie-neu/ and the entry to gallery-new.json, newest first. An entry
+ * whose image was deleted is skipped, so removing a photo needs only the file deletion; the next run of
+ * the script drops the entry as well. contain, because nobody checks the 4:5 crop of these photos.
+ */
+interface NewPhoto {
+  file: string;
+  /** Publication date, YYYY-MM-DD. */
+  added: string;
+  alt: Record<Locale, string>;
+  caption?: Partial<Record<Locale, string>>;
+}
+
+const newImages = import.meta.glob<ImageMetadata>('../assets/images/galerie-neu/*.jpg', { eager: true, import: 'default' });
+
+export function newWorkItems(locale: Locale): GalleryItem[] {
+  const copy = t(locale).gallery.newWork;
+  const month = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  return (newPhotos as NewPhoto[]).flatMap((photo) => {
+    const src = newImages[`../assets/images/galerie-neu/${photo.file}`];
+    if (!src) return [];
+    return [{ src, alt: photo.alt[locale], title: photo.caption?.[locale] ?? copy.title, meta: month.format(new Date(photo.added)), fit: 'contain' }];
+  });
 }

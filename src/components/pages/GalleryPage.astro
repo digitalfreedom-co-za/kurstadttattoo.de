@@ -1,5 +1,6 @@
 ---
-// Gallery for both locales: every work once, grouped by style, realism first (competitor analysis #2).
+// Gallery for both locales: the newest photos from the studio first when there are any (gallery-inbox, #51),
+// then every work once, grouped by style, realism first (competitor analysis #2).
 // A row of style links under the header jumps to the groups; each group is its own gallery with lightbox,
 // followed by a request about an idea in that style and a link back to the styles.
 // The alt texts describe motif, style and body part (dictionary works.<id>).
@@ -10,7 +11,7 @@ import Gallery from '../ui/Gallery.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import VideoLinks from '../ui/VideoLinks.astro';
-import { galleryItems, styleGroups } from '../../data/gallery';
+import { galleryItems, newWorkItems, styleGroups } from '../../data/gallery';
 import { videos } from '../../data/videos';
 import { pageExists } from '../../lib/pages';
 import { url } from '../../lib/url';
@@ -22,7 +23,11 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = t(locale).pages.gallery;
-const groups = styleGroups.map((group) => ({ ...group, ...copy.groups[group.id] }));
+const newItems = newWorkItems(locale);
+const groups = [
+  ...(newItems.length > 0 ? [{ ...copy.newGroup, items: newItems }] : []),
+  ...styleGroups.map((group) => ({ ...copy.groups[group.id], items: galleryItems(group.works, locale) })),
+];
 const consultationHref = pageExists('consultation', locale) ? localizedPath('consultation', locale) : undefined;
 const bookingHref = url(localizedPath('booking', locale));
 const stylesId = 'stile';
@@ -41,7 +46,7 @@ const stylesId = 'stile';
                 class="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold whitespace-nowrap transition-colors hover:text-neon"
               >
                 {group.title}
-                <span class="caption">({group.works.length})</span>
+                <span class="caption">({group.items.length})</span>
               </a>
             </li>
           ))
@@ -54,8 +59,8 @@ const stylesId = 'stile';
   {/* Style groups are parts of one chapter: compact headings, one surface, no basin rule each. */}
   {
     groups.map((group) => (
-      <Section id={group.id} eyebrow={copy.countLabel.replace('{count}', String(group.works.length))} title={group.title} intro={group.intro} density="support">
-        <Gallery items={galleryItems(group.works, locale)} locale={locale} label={group.title} />
+      <Section id={group.id} eyebrow={copy.countLabel.replace('{count}', String(group.items.length))} title={group.title} intro={group.intro} density="support">
+        <Gallery items={group.items} locale={locale} label={group.title} />
         <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
           <a class="link inline-flex min-h-11 items-center gap-2 font-semibold" href={bookingHref}>
             <Icon name="dialog" size={18} class="shrink-0 text-neon" />

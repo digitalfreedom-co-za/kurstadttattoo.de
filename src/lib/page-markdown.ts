@@ -6,7 +6,8 @@
 import { CAL_IS_DEMO } from '../config/booking';
 import { expertSite, phoneDisplay, reopening, studio } from '../config/site';
 import { faqEntries, faqGroups, featuredFaqIds } from '../data/faq';
-import { galleryItems, styleGroups } from '../data/gallery';
+import { galleryItems, newWorkItems, styleGroups } from '../data/gallery';
+import type { GalleryItem } from '../components/ui/Gallery.astro';
 import { videos, type VideoId } from '../data/videos';
 import { absoluteUrl } from './url';
 import { fillStudio } from './placeholders';
@@ -83,14 +84,11 @@ function pageBody(key: RouteKey, locale: Locale, base: URL | undefined): string 
     }
     case 'gallery': {
       const copy = pages.gallery;
+      const works = (items: GalleryItem[]) => bullets(items.map((item) => `${item.title} (${item.meta}): ${item.alt}`));
+      const newItems = newWorkItems(locale);
       return join(
-        ...styleGroups.map((group) =>
-          section(
-            copy.groups[group.id].title,
-            copy.groups[group.id].intro,
-            bullets(galleryItems(group.works, locale).map((item) => `${item.title} (${item.meta}): ${item.alt}`)),
-          ),
-        ),
+        newItems.length > 0 && section(copy.newGroup.title, copy.newGroup.intro, works(newItems)),
+        ...styleGroups.map((group) => section(copy.groups[group.id].title, copy.groups[group.id].intro, works(galleryItems(group.works, locale)))),
         section(copy.ownDesign.title, copy.ownDesign.text, `[${copy.ownDesign.link}](${link('consultation')})`),
         section(copy.video.title, copy.video.text, videoList(['eagleBack'], locale)),
       );
