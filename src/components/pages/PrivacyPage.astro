@@ -16,7 +16,7 @@ import BookingPrivacy from '../legal/BookingPrivacy.astro';
 import DataTable from '../legal/DataTable.astro';
 import LegalProse from '../legal/LegalProse.astro';
 import { BOOKING_PRIVACY_ANCHOR, CAL_ENABLED } from '../../config/booking';
-import { ANALYTICS_ENABLED } from '../../config/analytics';
+import { ANALYTICS_ENABLED, GA4_COOKIE_MONTHS } from '../../config/analytics';
 import { CONSENT_ANCHOR, CONSENT_CATEGORIES, CONSENT_STORAGE_KEY } from '../../config/consent';
 import { operator, studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
@@ -82,7 +82,14 @@ const vendorEntry = (cookie: string, row: VendorRow) => [
 ];
 const vendorRows = [
   ...(CAL_ENABLED ? [vendorEntry('__cf_bm', vendors.rows.booking)] : []),
-  ...(ANALYTICS_ENABLED ? [vendorEntry(vendors.rows.analytics.cookie, vendors.rows.analytics)] : []),
+  ...(ANALYTICS_ENABLED
+    ? [
+        vendorEntry(vendors.rows.analytics.cookie, {
+          ...vendors.rows.analytics,
+          retention: vendors.rows.analytics.retention.replaceAll('{months}', String(GA4_COOKIE_MONTHS)),
+        }),
+      ]
+    : []),
 ];
 
 const toc = [
@@ -213,7 +220,7 @@ const toc = [
             <>
               <h2 id="statistik">{copy.analytics.title}</h2>
               <p>{copy.analytics.provider}</p>
-              <p>{copy.analytics.data}</p>
+              <p>{copy.analytics.data.replaceAll('{months}', String(GA4_COOKIE_MONTHS))}</p>
               <p>{copy.analytics.consentMode}</p>
               <p>{copy.analytics.basis}</p>
               <p>
