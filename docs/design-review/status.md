@@ -123,3 +123,17 @@ Checks of the #45 fix round (18 November 2026), Playwright engines Chromium, Fir
 | 6 | Fixed | One atomic status with position, motif and style; counter hidden from assistive tech |
 | 7 | Fixed | Warning title is an h3 |
 | 8 | Fixed | Settings view has no dialog description; switches keep theirs |
+
+### Verification of #46 (18 November 2026, main at 168bb6b)
+
+Run with Playwright, axe-core and Lighthouse from `/tmp` against `astro preview` and, for Lighthouse, also against the deployed github.io build of the same commit. No code change was needed.
+
+- axe WCAG 2.2 A/AA: 0 violations on all 25 pages at 375 and 1280 px, light and dark. Also clean with the mobile menu open (375), the lightbox open and the cookie settings open (375 and 1280, light and dark, DE and EN).
+- Lighthouse mobile, deployed build: home DE 99, home EN 99 to 100, gallery DE and EN 100; accessibility 100; CLS 0. Against the uncompressed local preview the home pages score 96, the baseline commit 28aabd6 scores the same there (DE 96), so the local number is not a regression. The gallery showed one run of 66 on the deployed build; four reruns gave 100 each.
+- Finding 1: below 640 px the storage entries are a named list of term and definition pairs; from 640 px a named region (`Einträge im Speicher Ihres Browsers` / `Entries in your browser storage`) holds the table with caption and header cells. The region is reached with Tab and shows a 2 px outline in Chromium, Firefox and WebKit; arrow keys scroll it at 700 px in Chromium and Firefox. In WebKit under Playwright arrow keys scroll no focused region, not even a minimal test page, so real Safari remains a manual check. No horizontal page overflow at 640 to 1024 px since #45.
+- Finding 6: one status per change, e.g. `Bild 2 von 7: Schachkönig. Black and Grey, Unterarm` / `Image 2 of 7: Chess king. Black and grey, forearm`; focus stays on the next button.
+- Finding 7: outline on both hygiene pages is h2 `Was gehört nach dem Termin zur Hygiene?`, then h3 `Wann Sie zum Arzt gehen` (EN: `When to see a doctor`).
+- Finding 8: the settings dialog is named by its title, has no `aria-describedby`, and the title takes focus.
+- Finding 3 stays open: no `PUBLIC_CAL_LINK` repository variable is set, so the studio's own calendar does not exist yet and its reservation cannot be measured.
+- Finding 4 stays as is: cal.com main (ae027bb70, 13 November 2026) still takes the language only from a login or `Accept-Language` (`getLocale.ts`, last changed February 2026), and `embed.ts` has no locale option.
+- Not done: VoiceOver or NVDA speech (the checks above use the browser accessibility tree), real Safari.
