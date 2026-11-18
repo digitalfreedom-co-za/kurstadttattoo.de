@@ -36,7 +36,7 @@ Warum der Standort wichtig ist: Der Ordner ist öffentlich. Das Originalfoto ble
 
 ### Bildtext dazu (freiwillig)
 
-Ohne eigenen Text steht unter dem Foto Tattoo aus dem Studio. Wenn Sie einen eigenen Text möchten:
+Unter den Fotos steht auf der Website kein Text, die Galerie zeigt nur die Bilder. Der Bildtext beschreibt das Foto unsichtbar für Google und für Vorleseprogramme blinder Besucher. Ohne eigenen Text heißt es dort Tattoo aus dem Studio KurstadtTattoo Bad Nauheim. Wenn Sie das Tattoo genauer beschreiben möchten:
 
 1. Im Ordner gallery-inbox auf Add file und dann auf Create new file klicken.
 2. Als Namen den Namen des Fotos nehmen, aber mit .txt am Ende. Zum Foto IMG_1234.jpg gehört IMG_1234.txt.
@@ -44,7 +44,7 @@ Ohne eigenen Text steht unter dem Foto Tattoo aus dem Studio. Wenn Sie einen eig
 4. Wenn Sie möchten, in die zweite Zeile den englischen Text mit EN: davor, zum Beispiel: EN: Rose with lettering, forearm
 5. Unten auf Commit changes klicken.
 
-Ohne englischen Text steht auf der englischen Seite Tattoo from the studio.
+Ohne englischen Text heißt es auf der englischen Seite Tattoo by KurstadtTattoo Bad Nauheim.
 
 ## 3. Was jeden Monat passiert
 
@@ -52,7 +52,7 @@ Am 1. jedes Monats, morgens, holt GitHub alle Fotos aus dem Ordner gallery-inbox
 
 - macht sie kleiner, damit die Seite schnell lädt,
 - entfernt alle versteckten Angaben im Foto, zum Beispiel den Standort,
-- setzt den Bildtext, wenn es einen gibt,
+- übernimmt den Bildtext als unsichtbare Beschreibung, wenn es einen gibt,
 - stellt sie in der Galerie ganz oben unter Neu im Studio ein, die neuesten zuerst.
 
 Danach ist der Ordner wieder leer. Ein paar Minuten später sind die Fotos auf der Website.

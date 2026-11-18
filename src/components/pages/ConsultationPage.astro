@@ -23,7 +23,7 @@ interface Props {
 const { locale } = Astro.props;
 const dict = t(locale);
 const copy = dict.pages.consultation;
-/** A finished piece beside the planning, captioned as an example of a result, not as a consultation photo. */
+/** A finished piece beside the planning, shown as a photo only, without a caption. */
 const example = work('rabbit', locale);
 const galleryHref = pageExists('gallery', locale) ? localizedPath('gallery', locale) : undefined;
 ---
@@ -59,7 +59,7 @@ const galleryHref = pageExists('gallery', locale) ? localizedPath('gallery', loc
         <p class="font-display text-h3" data-reveal>{copy.plan.lead}</p>
         <p class="mt-5 max-w-[34rem] text-muted" data-reveal>{copy.plan.text}</p>
         {galleryHref && <Button href={galleryHref} variant="secondary" class="mt-6">{copy.plan.link}</Button>}
-        <figure class="mt-10 max-w-[24rem]">
+        <div class="mt-10 max-w-[24rem]">
           <ArtImage
             src={example.src}
             alt={example.alt}
@@ -68,11 +68,7 @@ const galleryHref = pageExists('gallery', locale) ? localizedPath('gallery', loc
             widths={[320, 480, 720]}
             sizes="(min-width: 48rem) 24rem, 100vw"
           />
-          <figcaption class="mt-3 border-t border-line pt-2">
-            <span class="block text-[0.9375rem] font-semibold leading-snug">{example.title}</span>
-            <span class="caption mt-0.5 block">{example.meta}. {copy.plan.exampleCaption}</span>
-          </figcaption>
-        </figure>
+        </div>
       </div>
       <div id={copy.cost.id} class="min-w-0 border-t border-ink pt-6 md:col-span-5 md:col-start-8 md:border-t-0 md:border-l md:pt-0 md:pl-8">
         <p class="label text-muted">{copy.cost.eyebrow}</p>

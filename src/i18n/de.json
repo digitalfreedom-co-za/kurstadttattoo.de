@@ -128,8 +128,7 @@
         "eyebrow": "Tattoo Studio Bad Nauheim, Wetterau",
         "heading": "Realistische Porträts. Feine Linien.",
         "intro": "KurstadtTattoo ist das Studio von Patrick Wolf in Bad Nauheim, bei Friedberg und Frankfurt. Sie bringen Ihre Idee oder Vorlage mit, wir planen das Motiv gemeinsam mit Ihnen.",
-        "worksLink": "Arbeiten ansehen",
-        "imageCaption": "Arbeit aus dem Studio"
+        "worksLink": "Arbeiten ansehen"
       },
       "art": {
         "id": "arbeiten",
@@ -473,8 +472,7 @@
         "title": "Wie planen wir Ihr Motiv?",
         "lead": "Gemeinsam mit Ihnen, bis es Ihren Vorstellungen entspricht.",
         "text": "Sie bringen Idee, Vorlage oder Fotos mit, wir setzen daraus Ihr individuelles Tattoo um. Welche Stile im Studio entstehen, zeigt die Galerie, von realistischen Porträts bis Blackwork.",
-        "link": "Galerie nach Stilen ansehen",
-        "exampleCaption": "Beispiel für ein fertiges Tattoo aus dem Studio, kein Foto aus einer Beratung."
+        "link": "Galerie nach Stilen ansehen"
       },
       "cost": {
         "id": "kosten",
