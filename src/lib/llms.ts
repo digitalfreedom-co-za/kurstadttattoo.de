@@ -2,7 +2,7 @@
 // The framing sentences are written here per locale; every fact (address, hours, styles, steps, care,
 // answers) comes from the same config and dictionaries as the pages, so the files never drift from the
 // site. Only stated facts: no prices, no ratings, no certifications (ticket #9, wiki websites.md).
-import { studio, operator, expertSite } from '../config/site';
+import { studio, operator, expertSite, phoneDisplay } from '../config/site';
 import { CAL_IS_DEMO } from '../config/booking';
 import { faqEntries, faqGroups } from '../data/faq';
 import { absoluteUrl } from './url';
@@ -53,7 +53,7 @@ const copy = {
       `Studio: ${studio.address.street}, ${studio.address.postalCode} ${studio.address.city}, Hesse, Germany (new location from 1 December 2026, previously Parkstr. 22 in Bad Nauheim)`,
       'Reopening: 1 December 2026. The studio is closed until then.',
       'Previous opening hours: Monday to Friday, 12 noon to 6 pm or by appointment. Hours at the new location are not confirmed yet.',
-      `Appointments: by phone at ${studio.phone.display}${CAL_IS_DEMO ? '' : ' or book a consultation online'}`,
+      `Appointments: by phone at ${studio.phone.displayIntl}${CAL_IS_DEMO ? '' : ' or book a consultation online'}`,
       `Email: ${studio.email.display}`,
       `Tattoo artist: ${studio.artist}`,
       'Area served: Bad Nauheim, Friedberg, Butzbach, Rosbach, Ober-Mörlen, Wetterau region, Bad Vilbel, Frankfurt am Main',
@@ -91,7 +91,7 @@ function pageLink(key: RouteKey, locale: Locale, base: URL | undefined): string 
   const dict = t(locale);
   const page = dict.pages[key as keyof typeof dict.pages];
   const label = dict.nav.items[key as keyof typeof dict.nav.items];
-  const note = 'description' in page ? fillStudio(page.description) : '';
+  const note = 'description' in page ? fillStudio(page.description, locale) : '';
   // Content pages link their Markdown version (llmstxt.org), the rest their HTML page.
   const path = hasMarkdown(key) ? markdownPath(key, locale) : localizedPath(key, locale);
   return `- [${label}](${absoluteUrl(path, base)})${note ? `: ${note}` : ''}`;
@@ -169,7 +169,7 @@ export function llmsFull(locale: Locale, base: URL | undefined): string {
     ...faqEntries(faqIds, locale).flatMap((entry) => [`### ${entry.question}`, '', entry.answer, '']),
     `## ${h.contact}`,
     '',
-    `- ${dict.studio.phoneLabel}: ${studio.phone.display}`,
+    `- ${dict.studio.phoneLabel}: ${phoneDisplay(locale)}`,
     `- ${dict.studio.emailLabel}: ${studio.email.display}`,
     `- TikTok: ${studio.studioTiktok.handle} (${studio.studioTiktok.href}), ${studio.artist} ${studio.tiktok.handle} (${studio.tiktok.href})`,
     `- YouTube: ${studio.youtube.handle} (${studio.youtube.href})`,

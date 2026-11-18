@@ -1,9 +1,12 @@
 ---
 // What visitors can rely on, at a glance: hygiene, consultation, aftercare and the reopening. Concrete
-// statements from the dictionary instead of a checkmark list; each item leads with a line icon.
+// statements from the dictionary instead of a checkmark list; each item leads with a line icon and, where
+// the page exists, is a short link to it (hygiene, consultation, aftercare, contact for the reopening).
 import Container from './Container.astro';
 import Icon, { type IconName } from './Icon.astro';
-import { t, type Locale } from '../../i18n';
+import { existingRoutes } from '../../lib/pages';
+import { url } from '../../lib/url';
+import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
 
 interface Props {
   locale: Locale;
@@ -19,6 +22,17 @@ const icons: Record<string, IconName> = {
   aftercare: 'leaf',
   reopening: 'calendar',
 };
+
+const targets: Record<string, RouteKey> = {
+  hygiene: 'hygiene',
+  consultation: 'consultation',
+  aftercare: 'aftercare',
+  reopening: 'contact',
+};
+const hrefOf = (key: string) => {
+  const route = targets[key];
+  return route && existingRoutes([route], locale).length > 0 ? url(localizedPath(route, locale)) : undefined;
+};
 ---
 
 <section aria-label={copy.label} class:list={['border-y border-ink bg-wall-deep', className]}>
@@ -28,7 +42,7 @@ const icons: Record<string, IconName> = {
         copy.items.map((item, index) => (
           <li
             class:list={[
-              'flex min-w-0 gap-4 py-6 sm:py-8 sm:pr-6 lg:pl-6',
+              'group/trust relative flex min-w-0 gap-4 py-5 sm:py-6 sm:pr-6 lg:pl-6',
               index % 2 === 1 && 'sm:pl-6 sm:border-l sm:border-line',
               index > 1 && 'sm:border-t sm:border-line lg:border-t-0',
               index > 0 && 'lg:border-l lg:border-line',
@@ -38,7 +52,19 @@ const icons: Record<string, IconName> = {
           >
             <Icon name={icons[item.key] ?? 'calendar'} size={24} class="mt-0.5 shrink-0 text-neon" />
             <div class="min-w-0">
-              <p class="font-display text-lg font-semibold">{item.title}</p>
+              <p class="font-display text-lg font-semibold">
+                {hrefOf(item.key) ? (
+                  <a
+                    href={hrefOf(item.key)}
+                    class="transition-colors group-hover/trust:text-neon after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-neon"
+                  >
+                    <span class="sr-only">{copy.linkPrefix} </span>
+                    {item.title}
+                  </a>
+                ) : (
+                  item.title
+                )}
+              </p>
               <p class="mt-1 text-sm text-muted">{item.text}</p>
             </div>
           </li>

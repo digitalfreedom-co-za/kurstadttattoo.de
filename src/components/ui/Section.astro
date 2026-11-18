@@ -1,7 +1,9 @@
 ---
 // Page section. The opener is the basin rule from the logo, an eyebrow label and the heading; on wide
 // screens the intro sits beside the heading like the text panel next to a picture. Below md everything
-// stacks. density: chapter for the main parts of a page, support for short supporting blocks.
+// stacks. density: chapter for the main parts of a page, support for short supporting blocks and groups
+// within a chapter (gallery styles, related pages). Only chapters open with the basin rule, so the double
+// rule marks a change of subject instead of every block; support blocks open with a thin line.
 // tone: wall (page background), deep (a step darker wall), night (always dark, like the counter).
 import Container from './Container.astro';
 import Eyebrow from './Eyebrow.astro';
@@ -50,8 +52,12 @@ const toneClass = {
     {
       hasHeader && (
         <header>
-          <span class:list={['basin-rule', night ? 'text-chalk/40' : 'text-ink']} data-reveal="rule" aria-hidden="true" />
-          <div class="mt-6 grid gap-5 md:mt-8 md:grid-cols-12 md:items-end md:gap-x-8">
+          {support ? (
+            <span class:list={['block h-px', night ? 'bg-chalk/25' : 'bg-line']} aria-hidden="true" />
+          ) : (
+            <span class:list={['basin-rule', night ? 'text-chalk/40' : 'text-ink']} data-reveal="rule" aria-hidden="true" />
+          )}
+          <div class:list={['grid gap-5 md:grid-cols-12 md:items-end md:gap-x-8', support ? 'mt-5 md:mt-6' : 'mt-6 md:mt-8']}>
             <div class="min-w-0 md:col-span-7">
               {eyebrow && <Eyebrow tone={night ? 'night' : 'wall'}>{eyebrow}</Eyebrow>}
               {title && (

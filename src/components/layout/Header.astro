@@ -9,7 +9,8 @@ import LanguageSwitch from './LanguageSwitch.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
-import { mainNav, studio } from '../../config/site';
+import { bookingLabel } from '../../config/booking';
+import { mainNav, phoneDisplay, reopening, studio } from '../../config/site';
 import { existingRoutes } from '../../lib/pages';
 import { localizedPath, t, type Locale, type RouteKey } from '../../i18n';
 import { url } from '../../lib/url';
@@ -28,6 +29,7 @@ const navItems = existingRoutes(mainNav, locale).map((key) => ({
   current: key === routeKey,
 }));
 const hasNav = navItems.length > 0;
+const ctaLabel = bookingLabel(copy.booking);
 ---
 
 <header id="site-header" class="relative z-40 border-b border-ink/15 bg-wall" data-has-nav={hasNav ? '' : undefined}>
@@ -62,11 +64,11 @@ const hasNav = navItems.length > 0;
         href={url(localizedPath('booking', locale))}
         aria-current={routeKey === 'booking' ? 'page' : undefined}
         class="header-call inline-flex size-9 items-center justify-center rounded-xs bg-ink text-wall transition-colors hover:bg-neon sm:size-auto sm:min-h-11 sm:gap-2 sm:px-4"
-        aria-label={copy.booking.label}
-        title={copy.booking.label}
+        aria-label={ctaLabel}
+        title={ctaLabel}
       >
         <Icon name="calendar" class="h-[18px] w-[18px] sm:h-4 sm:w-4" />
-        <span class="hidden text-sm font-semibold whitespace-nowrap sm:inline">{copy.booking.label}</span>
+        <span class="hidden text-sm font-semibold whitespace-nowrap sm:inline">{ctaLabel}</span>
       </a>
       {
         hasNav && (
@@ -111,11 +113,14 @@ const hasNav = navItems.length > 0;
           <div class="mobile-nav-item mt-8 grid gap-4 text-sm text-muted" style={`--i:${navItems.length}`}>
             <a class="link inline-flex min-h-11 items-center gap-3 text-ink" href={studio.phone.href}>
               <Icon name="phone" size={18} class="shrink-0 text-neon" />
-              <span><span class="sr-only">{copy.studio.phoneLabel} </span>{studio.phone.display}</span>
+              <span><span class="sr-only">{copy.studio.phoneLabel} </span>{phoneDisplay(locale)}</span>
             </a>
             <p class="flex gap-3">
               <Icon name="clock" size={18} class="mt-0.5 shrink-0 text-neon" />
-              <span>{copy.studio.hours}<br />{copy.studio.hoursNote}<span class="mt-1 block">{copy.studio.hoursUnconfirmed}</span></span>
+              <span>
+                {reopening.active && <span class="mb-1 block font-semibold text-ink">{copy.studio.closedNote}</span>}
+                {copy.studio.hours}<br />{copy.studio.hoursNote}<span class="mt-1 block">{copy.studio.hoursUnconfirmed}</span>
+              </span>
             </p>
           </div>
         </Container>
@@ -231,13 +236,19 @@ const hasNav = navItems.length > 0;
 
     const isOpen = () => panel.hasAttribute('data-open');
 
+    // The reopening strip may still sit above the header, so the panel starts at the header's real edge.
+    // Measured on opening and again whenever the header or the viewport changes size while it is open
+    // (rotation, enlarged text, a strip that wraps differently).
+    const placePanel = () => {
+      panel.style.top = `${header.getBoundingClientRect().bottom}px`;
+    };
+
     const setOpen = (open: boolean, returnFocus = true) => {
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '');
       toggle.querySelector('.icon-open')?.classList.toggle('hidden', open);
       toggle.querySelector('.icon-close')?.classList.toggle('hidden', !open);
-      // The reopening strip may still sit above the header, so the panel starts at the header's real edge.
-      if (open) panel.style.top = `${header.getBoundingClientRect().bottom}px`;
+      if (open) placePanel();
       panel.toggleAttribute('data-open', open);
       document.documentElement.style.overflow = open ? 'hidden' : '';
       // Background content leaves the focus order and the accessibility tree while the menu is open.
@@ -303,6 +314,12 @@ const hasNav = navItems.length > 0;
         (counterpart ?? fallback ?? toggle).focus();
       }
     };
+
+    const placeOpenPanel = () => {
+      if (isOpen()) placePanel();
+    };
+    new ResizeObserver(placeOpenPanel).observe(header);
+    window.addEventListener('resize', placeOpenPanel, { passive: true });
 
     if (row) {
       new ResizeObserver(updateCompact).observe(row);

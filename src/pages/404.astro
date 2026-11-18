@@ -1,24 +1,27 @@
 ---
-// One 404 for both locales (GitHub Pages serves a single 404.html): German first, English below.
+// One 404 for both locales (GitHub Pages serves a single 404.html): German first, English below, both in
+// the shared container, type scale and button style of the site.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
 import { t, localizedPath } from '../i18n';
-import { url } from '../lib/url';
 
 const de = t('de').pages.notFound;
 const en = t('en').pages.notFound;
 ---
 
 <BaseLayout title={de.title} description={de.description} locale="de" noindex>
-  <section class="mx-auto max-w-2xl px-5 py-16 sm:py-24">
-    <h1 class="text-4xl font-semibold tracking-tight">{de.heading}</h1>
-    <p class="mt-4">{de.text}</p>
-    <p class="mt-4"><a class="underline underline-offset-4" href={url(localizedPath('home', 'de'))}>{de.homeLink}</a></p>
-    <div lang="en" class="mt-12">
-      <h2 class="text-2xl font-semibold">{en.heading}</h2>
-      <p class="mt-4">{en.text}</p>
-      <p class="mt-4">
-        <a class="underline underline-offset-4" hreflang="en" href={url(localizedPath('home', 'en'))}>{en.homeLink}</a>
-      </p>
-    </div>
-  </section>
+  <Container class="py-section">
+    <span class="basin-rule text-ink" aria-hidden="true"></span>
+    <section class="mt-8 max-w-[40rem]" aria-labelledby="nicht-gefunden">
+      <h1 id="nicht-gefunden" class="text-h1">{de.heading}</h1>
+      <p class="mt-6 text-lead text-muted">{de.text}</p>
+      <Button href={localizedPath('home', 'de')} class="mt-8">{de.homeLink}</Button>
+    </section>
+    <section lang="en" class="mt-14 max-w-[40rem] border-t border-line pt-10" aria-labelledby="not-found">
+      <h2 id="not-found" class="text-h2">{en.heading}</h2>
+      <p class="mt-6 text-muted">{en.text}</p>
+      <Button href={localizedPath('home', 'en')} variant="secondary" class="mt-8">{en.homeLink}</Button>
+    </section>
+  </Container>
 </BaseLayout>

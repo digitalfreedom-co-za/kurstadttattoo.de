@@ -16,7 +16,8 @@ import Faq from '../ui/Faq.astro';
 import CtaBand from '../ui/CtaBand.astro';
 import TrustStrip from '../ui/TrustStrip.astro';
 import ReopeningNotice from '../ui/ReopeningNotice.astro';
-import { expertSite, reopening, studio } from '../../config/site';
+import { bookingLabel } from '../../config/booking';
+import { expertSite, reopening, studio, phoneDisplay } from '../../config/site';
 import { galleryItems, heroWork, previewWorks, work } from '../../data/gallery';
 import { faqEntries, featuredFaqIds } from '../../data/faq';
 import { processSteps } from '../../data/process';
@@ -42,89 +43,72 @@ const faq = faqEntries(featuredFaqIds, locale);
 const subpage = (key: RouteKey) => (pageExists(key, locale) ? localizedPath(key, locale) : undefined);
 const galleryHref = subpage('gallery');
 const aftercareHref = subpage('aftercare');
+const hygieneHref = subpage('hygiene');
 const consultationHref = subpage('consultation');
 const artistsHref = subpage('artists');
 const faqHref = subpage('faq');
 ---
 
-<!-- Opening: the claim and the call on the left, a finished piece hung like a work on the wall on the right. -->
+<!-- Opening: the claim, a finished piece hung like a work on the wall, then the actions. On a phone the
+     picture follows the introduction directly, before the actions; from md the words and actions sit left
+     and the picture right. Address and hours live in the location section; the reopening strip stays. -->
 <section class="relative overflow-hidden" aria-labelledby="start-titel">
-  <Container class="grid gap-12 pt-10 pb-16 md:grid-cols-12 md:gap-x-8 md:pt-14 md:pb-24 lg:items-center">
-    <div class="min-w-0 md:col-span-7">
+  <Container class="grid gap-8 pt-10 pb-16 md:grid-cols-12 md:gap-x-8 md:gap-y-0 md:pt-14 md:pb-24">
+    <div class="min-w-0 md:col-span-7 md:row-start-1 md:self-end">
       <Eyebrow>{copy.hero.eyebrow}</Eyebrow>
-      <h1 id="start-titel" class="mt-5 max-w-[18ch] text-h1">{copy.hero.heading}</h1>
+      <h1 id="start-titel" class="mt-5 max-w-[16ch] text-h1">{copy.hero.heading}</h1>
       {/* No reveal on the lead: as the largest text above the fold it is the LCP element on phones. */}
       <p class="mt-6 max-w-[36rem] text-lead text-muted">{copy.hero.intro}</p>
-      <div class="mt-8 flex flex-wrap gap-3" data-reveal>
-        <Button href={localizedPath('booking', locale)} icon="calendar">{dict.booking.label}</Button>
-        <Button href={`#${copy.art.id}`} variant="secondary">{copy.hero.worksLink}</Button>
-      </div>
-      <dl class="mt-10 grid max-w-[36rem] gap-6 border-t border-ink pt-5 text-[0.9375rem] sm:grid-cols-2" data-reveal>
-        {/* dl > div > dt, dd only (HTML content model), so the icon sits inside the dt and hangs in the indent. */}
-        <div class="relative pl-[1.875rem]">
-          <dt class="label text-muted">
-            <Icon name="pin" size={18} class="absolute top-1 left-0 text-neon" />
-            {reopening.active ? copy.hero.addressLabel : dict.studio.addressLabel}
-          </dt>
-          <dd class="mt-1">{address.street}, {`${address.postalCode} ${address.city}`}</dd>
-        </div>
-        <div class="relative pl-[1.875rem]">
-          <dt class="label text-muted">
-            <Icon name="clock" size={18} class="absolute top-1 left-0 text-neon" />
-            {dict.studio.hoursLabel}
-          </dt>
-          <dd class="mt-1">
-            {dict.studio.hours}, {dict.studio.hoursNote}
-            <span class="mt-1 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
-          </dd>
-        </div>
-      </dl>
     </div>
 
-    <figure class="relative min-w-0 md:col-span-5">
-      <span class="absolute -top-3 -right-3 bottom-10 left-6 border border-neon md:-top-5 md:-right-5" aria-hidden="true"></span>
+    <figure class="min-w-0 md:col-span-5 md:col-start-8 md:row-span-2 md:row-start-1 md:self-center">
       <ArtImage
         src={hero.src}
         alt={hero.alt}
         ratio={4 / 5}
         position="center"
-        widths={[420, 640, 860]}
-        sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
+        widths={[360, 512, 720, 960]}
+        sizes="(min-width: 84rem) 31rem, (min-width: 48rem) calc(41.6vw - 3rem), calc(100vw - 2.5rem)"
         loading="eager"
         fetchpriority="high"
         reveal={false}
-        class="relative"
       />
-      <figcaption class="relative mt-3 border-t border-line pt-2">
+      <figcaption class="mt-3 border-t border-line pt-2">
         <span class="block text-[0.9375rem] font-semibold leading-snug">{hero.title}</span>
-        <span class="label mt-1 block text-muted">{hero.meta}. {copy.hero.imageCaption}</span>
+        <span class="caption mt-0.5 block">{hero.meta}. {copy.hero.imageCaption}</span>
       </figcaption>
     </figure>
+
+    <div class="flex min-w-0 flex-wrap gap-3 md:col-span-7 md:row-start-2 md:mt-8 md:self-start" data-reveal>
+      <Button href={localizedPath('booking', locale)} icon="calendar">{bookingLabel(dict.booking)}</Button>
+      <Button href={`#${copy.art.id}`} variant="secondary">{copy.hero.worksLink}</Button>
+    </div>
   </Container>
 </section>
 
 <TrustStrip locale={locale} />
 
-<!-- Art: styles as wall labels (never numbered), then a preview of real work. -->
+<!-- Art: the selected works first, then the styles as wall labels (never numbered). -->
 <Section id={copy.art.id} eyebrow={copy.art.eyebrow} title={copy.art.title} intro={copy.art.intro}>
-  <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-5" aria-label={copy.art.stylesLabel} data-reveal-group>
-    {
-      copy.art.styles.map((style) => (
-        <li class="min-w-0 border-b border-line py-5 lg:border-b-0 lg:py-6" data-reveal>
-          <h3 class="font-sans text-h4">{style.title}</h3>
-          <p class="mt-2 text-sm text-muted">{style.text}</p>
-        </li>
-      ))
-    }
-  </ul>
-  <Gallery items={galleryItems(previewWorks, locale)} locale={locale} label={copy.art.galleryLabel} layout="preview" class="mt-12 md:mt-16" />
+  <Gallery items={galleryItems(previewWorks, locale)} locale={locale} label={copy.art.galleryLabel} layout="preview" />
   <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <p class="max-w-[36rem] text-sm text-muted">{copy.art.galleryNote}</p>
     {galleryHref && <Button href={galleryHref} variant="secondary">{copy.art.galleryLink}</Button>}
   </div>
+  <ul class="mt-12 grid gap-x-8 border-t border-ink sm:grid-cols-2 md:mt-16 lg:grid-cols-5" aria-label={copy.art.stylesLabel} data-reveal-group>
+    {
+      copy.art.styles.map((style) => (
+        <li class="min-w-0 border-b border-line py-4 lg:border-b-0 lg:py-5" data-reveal>
+          <h3 class="font-sans text-base font-semibold">{style.title}</h3>
+          <p class="mt-1 text-sm text-muted">{style.text}</p>
+        </li>
+      ))
+    }
+  </ul>
 </Section>
 
-<!-- Hygiene: the stated values and the concrete care steps from the old aftercare page. -->
+<!-- Hygiene: the stated values and the concrete care steps from the old aftercare page; the action leads
+     to the hygiene page, the aftercare tips stay a quiet second link. -->
 <Section id={copy.hygiene.id} eyebrow={copy.hygiene.eyebrow} title={copy.hygiene.title} intro={copy.hygiene.intro} tone="deep">
   <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
     <div class="min-w-0 md:col-span-6">
@@ -138,6 +122,7 @@ const faqHref = subpage('faq');
         sizes="(min-width: 84rem) 40rem, (min-width: 48rem) 50vw, 100vw"
       />
       <p class="mt-6 max-w-[34rem]" data-reveal>{copy.hygiene.text}</p>
+      {hygieneHref && <Button href={hygieneHref} variant="secondary" class="mt-6">{copy.hygiene.hygieneLink}</Button>}
     </div>
     <div class="min-w-0 md:col-span-5 md:col-start-8">
       <h3 class="text-h3">{copy.hygiene.careTitle}</h3>
@@ -160,9 +145,9 @@ const faqHref = subpage('faq');
 <Section id={copy.process.id} eyebrow={copy.process.eyebrow} title={copy.process.title} intro={copy.process.intro}>
   <Steps steps={processSteps(locale)} locale={locale} />
   <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
-    <Button href={localizedPath('booking', locale)} icon="calendar">{dict.booking.label}</Button>
+    <Button href={localizedPath('booking', locale)} icon="calendar">{bookingLabel(dict.booking)}</Button>
     <Button href={studio.phone.href} variant="secondary" icon="phone">
-      <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+      <span class="sr-only">{dict.cta.callPrefix}: </span>{phoneDisplay(locale)}
     </Button>
     {consultationHref && <Button href={consultationHref} variant="text">{copy.process.consultationLink}</Button>}
   </div>
@@ -220,6 +205,7 @@ const faqHref = subpage('faq');
       <p class="mt-3 flex gap-3">
         <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
         <span>
+          {reopening.active && <span class="mb-2 block font-semibold">{dict.studio.closedNote}</span>}
           {dict.studio.hours}<span class="block text-muted">{dict.studio.hoursNote}</span>
           <span class="mt-2 block text-sm text-muted">{dict.studio.hoursUnconfirmed}</span>
         </span>
@@ -230,7 +216,7 @@ const faqHref = subpage('faq');
       <p class="mt-2">
         <a class="link inline-flex min-h-11 items-center gap-3 no-underline hover:underline" href={studio.phone.href}>
           <Icon name="phone" size={18} class="shrink-0 text-neon" />
-          <span><span class="sr-only">{dict.studio.phoneLabel} </span>{studio.phone.display}</span>
+          <span><span class="sr-only">{dict.studio.phoneLabel} </span>{phoneDisplay(locale)}</span>
         </a>
       </p>
       <p>

@@ -6,7 +6,7 @@
 // While the demo calendar is configured (CAL_IS_DEMO in src/config/booking.ts), recipient and retention
 // name the holder of the demo account; with the real link the wording switches to the studio.
 import { BOOKING_PRIVACY_ANCHOR, CAL_DEMO_ACCOUNT_HOLDER, CAL_IS_DEMO } from '../../config/booking';
-import { studio } from '../../config/site';
+import { studio, phoneDisplay } from '../../config/site';
 import { CONSENT_ANCHOR } from '../../config/consent';
 import { t, type Locale } from '../../i18n';
 
@@ -47,7 +47,7 @@ const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
   {copy.alternative}
 </p>
 <p>
-  {dict.studio.phoneLabel}: <a href={studio.phone.href}>{studio.phone.display}</a>
+  {dict.studio.phoneLabel}: <a href={studio.phone.href}>{phoneDisplay(locale)}</a>
   <br />
   {dict.studio.emailLabel}: <a href={studio.email.href}>{studio.email.display}</a>
 </p>

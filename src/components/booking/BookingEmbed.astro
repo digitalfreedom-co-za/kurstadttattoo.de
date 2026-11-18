@@ -12,7 +12,7 @@ import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import { BOOKING_PRIVACY_ANCHOR, CAL_DEMO_ACCOUNT_HOLDER, CAL_EMBED_SCRIPT, CAL_IS_DEMO, CAL_LINK, CAL_ORIGIN, CAL_PUBLIC_URL } from '../../config/booking';
 import { CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
-import { studio } from '../../config/site';
+import { studio, phoneDisplay } from '../../config/site';
 import { pageExists } from '../../lib/pages';
 import { url } from '../../lib/url';
 import { localizedPath, t, type Locale } from '../../i18n';
@@ -49,6 +49,7 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
   data-status-loading={copy.statusLoading}
   data-status-ready={copy.statusReady}
   data-status-failed={copy.statusFailed}
+  data-iframe-title={copy.iframeTitle}
 >
   <dl class="mb-6 grid gap-x-8 gap-y-4 border-y border-ink py-4 text-sm sm:grid-cols-2">
     <div class="min-w-0">
@@ -73,6 +74,12 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
         <span id={`${timezoneId}-hint`} class="sr-only">{copy.timezoneHint}</span>
       </dd>
     </div>
+    <!-- cal.com picks the calendar language from the browser (Accept-Language) or a cal.com login, never
+         from the embed, so the page says so before anything loads. -->
+    <div class="min-w-0 sm:col-span-2">
+      <dt class="label text-muted">{copy.languageTerm}</dt>
+      <dd class="mt-1">{copy.languageValue}</dd>
+    </div>
   </dl>
 
   {
@@ -85,7 +92,7 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
         <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
           <Button href={studio.phone.href} icon="phone">
             <span class="sr-only">{dict.cta.callPrefix}: </span>
-            {studio.phone.display}
+            {phoneDisplay(locale)}
           </Button>
           <Button href={studio.email.href} variant="text" icon="mail">
             {copy.emailButton}
@@ -124,7 +131,7 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
           <li>
             <a class={contactLinkClass} href={studio.phone.href}>
               <Icon name="phone" size={18} class="shrink-0 text-neon" />
-              <span><span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}</span>
+              <span><span class="sr-only">{dict.cta.callPrefix}: </span>{phoneDisplay(locale)}</span>
             </a>
           </li>
           <li>
@@ -170,19 +177,25 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
       <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
         <Button href={studio.phone.href} icon="phone">
           <span class="sr-only">{dict.cta.callPrefix}: </span>
-          {studio.phone.display}
+          {phoneDisplay(locale)}
         </Button>
         <a class={contactLinkClass} href={studio.email.href}>
           <Icon name="mail" size={18} class="shrink-0 text-neon" />
           <span class="break-all"><span class="sr-only">{copy.emailPrefix} </span>{studio.email.display}</span>
         </a>
       </div>
-      <p class="mt-4 text-sm">
-        <a class={contactLinkClass} href={CAL_PUBLIC_URL} {...external}>
-          <Icon name="external" size={16} class="shrink-0 text-neon" />
-          {copy.calPage}<span class="sr-only"> {copy.newWindow}</span>
-        </a>
-      </p>
+      {
+        /* The public cal.com page only once it books real studio appointments, never the demo. */
+        !CAL_IS_DEMO && (
+          <p class="mt-4 text-sm">
+            <a class={contactLinkClass} href={CAL_PUBLIC_URL} {...external}>
+              <Icon name="external" size={16} class="shrink-0 text-neon" />
+              {copy.calPage}
+              <span class="sr-only"> {copy.newWindow}</span>
+            </a>
+          </p>
+        )
+      }
     </div>
   </div>
 
@@ -226,17 +239,20 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
 
 <style>
   /* Reserved height of the loaded cal.com month view (event details hidden), only while the calendar is
-     pending or loading, so the embed lands without moving anything below it. Measured against the
-     rendered embed (November 2026, tattoogutachten.de, same embed options): below a frame width of
-     770px cal.com stacks its layout and the height grows linearly with the width; from 770px it is
-     fixed. Re-measure if cal.com changes its layout. Idle (no JS) and failed keep no reservation; ready
-     follows the iframe height. */
+     pending or loading, so the embed lands without moving anything below it. Measured on this site's own
+     embed (November 2026, Chromium, frame widths 288 to 845px, German and English browser language):
+     below a frame width of 770px cal.com stacks its layout and the month view is 106px + 0.831 x the frame
+     width tall (345px at 288px, 703px at 718px); from 770px it is 570px. In some loads cal.com also shows
+     the time slots of a preselected day under the month, 100 to 300px more, which cannot be known in
+     advance; the reservation holds the month view only, so the frame is never a large empty block.
+     Re-measure if cal.com changes its layout. Idle (no JS) and failed keep no reservation; ready follows
+     the iframe height. */
   .booking {
     container: booking / inline-size;
   }
 
   .booking:is([data-state='pending'], [data-state='loading']) .booking-frame {
-    min-height: calc(1018px + 0.819 * 100cqw);
+    min-height: calc(106px + 0.831 * 100cqw);
   }
 
   @container booking (min-width: 770px) {

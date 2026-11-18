@@ -1,15 +1,18 @@
 ---
-// Booking page for both locales: the page header with the phone as the direct alternative, then straight
-// to the cal.com calendar (behind consent, then lazy, see BookingEmbed), then what to prepare for the
-// consultation. Whether the consultation is free and how long it takes are open questions to Patrick,
-// so the page states neither.
+// Booking page for both locales. With the studio's own cal.com calendar: the page header with the phone as
+// the direct alternative, then straight to the calendar (behind consent, then lazy, see BookingEmbed),
+// then what to prepare for the consultation. While the demo calendar of the preview is configured
+// (CAL_IS_DEMO) nothing can be booked online, so the page asks for a request by phone: header texts and
+// actions lead with phone and email, then the preparation, and the demo calendar comes last, closed and
+// labelled as a test before its controls. Whether the consultation is free and how long it takes are open
+// questions to Patrick, so the page states neither.
 import SubpageLayout from '../../layouts/SubpageLayout.astro';
 import Section from '../ui/Section.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import BookingEmbed from '../booking/BookingEmbed.astro';
-import { BOOKING_ANCHOR } from '../../config/booking';
-import { studio } from '../../config/site';
+import { BOOKING_ANCHOR, CAL_IS_DEMO } from '../../config/booking';
+import { studio, phoneDisplay } from '../../config/site';
 import { pageExists } from '../../lib/pages';
 import { localizedPath, t, type Locale } from '../../i18n';
 
@@ -21,27 +24,56 @@ const { locale } = Astro.props;
 const dict = t(locale);
 const copy = dict.pages.booking;
 const consultationHref = pageExists('consultation', locale) ? localizedPath('consultation', locale) : undefined;
+const linkClass = 'link inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline';
 ---
 
-<SubpageLayout locale={locale} routeKey="booking" related={['consultation', 'gallery', 'hygiene', 'contact']}>
+<SubpageLayout locale={locale} routeKey="booking" related={['consultation', 'gallery', 'hygiene', 'contact']} header={CAL_IS_DEMO ? copy.demo : undefined}>
   <Fragment slot="actions">
-    <Button href={`#${BOOKING_ANCHOR}`} icon="calendar">{dict.booking.label}</Button>
-    <a class="link inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline" href={studio.phone.href}>
-      <Icon name="phone" size={18} class="shrink-0 text-neon" />
-      <span><span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}</span>
-    </a>
+    {
+      CAL_IS_DEMO ? (
+        <>
+          <Button href={studio.phone.href} icon="phone">
+            {dict.cta.callPrefix}: {phoneDisplay(locale)}
+          </Button>
+          <a class={linkClass} href={studio.email.href}>
+            <Icon name="mail" size={18} class="shrink-0 text-neon" />
+            <span class="break-all">
+              <span class="sr-only">{dict.booking.emailPrefix} </span>
+              {studio.email.display}
+            </span>
+          </a>
+        </>
+      ) : (
+        <>
+          <Button href={`#${BOOKING_ANCHOR}`} icon="calendar">
+            {dict.booking.label}
+          </Button>
+          <a class={linkClass} href={studio.phone.href}>
+            <Icon name="phone" size={18} class="shrink-0 text-neon" />
+            <span>
+              <span class="sr-only">{dict.cta.callPrefix}: </span>
+              {phoneDisplay(locale)}
+            </span>
+          </a>
+        </>
+      )
+    }
     <a class="link inline-flex min-h-11 items-center text-sm" href={`#${copy.prepare.id}`}>{copy.prepareLink}</a>
   </Fragment>
 
-  <Section id={BOOKING_ANCHOR} eyebrow={copy.calendar.eyebrow} title={copy.calendar.title} intro={copy.calendar.intro} tone="deep">
-    <BookingEmbed locale={locale} />
-  </Section>
+  {
+    !CAL_IS_DEMO && (
+      <Section id={BOOKING_ANCHOR} eyebrow={copy.calendar.eyebrow} title={copy.calendar.title} intro={copy.calendar.intro} tone="deep">
+        <BookingEmbed locale={locale} />
+      </Section>
+    )
+  }
 
   <Section id={copy.prepare.id} eyebrow={copy.prepare.eyebrow} title={copy.prepare.title} intro={copy.prepare.intro}>
-    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2" data-reveal-group>
       {
         copy.prepare.items.map((item) => (
-          <li class="min-w-0 border-b border-line py-6" data-reveal>
+          <li class="min-w-0 border-b border-line py-6 sm:odd:last:col-span-2" data-reveal>
             <h3 class="font-sans text-h4">{item.title}</h3>
             <p class="mt-2 max-w-[32rem] text-muted">{item.text}</p>
           </li>
@@ -50,4 +82,20 @@ const consultationHref = pageExists('consultation', locale) ? localizedPath('con
     </ul>
     {consultationHref && <Button href={consultationHref} variant="text" class="mt-8">{copy.prepare.consultationLink}</Button>}
   </Section>
+
+  {
+    CAL_IS_DEMO && (
+      <Section id={BOOKING_ANCHOR} density="support" tone="deep">
+        <details class="booking-demo">
+          <summary class="flex min-h-11 cursor-pointer items-center gap-3 font-display text-h4 font-semibold">
+            <Icon name="calendar" size={20} class="shrink-0 text-neon" />
+            {dict.booking.demoSummary}
+          </summary>
+          <div class="mt-6">
+            <BookingEmbed locale={locale} />
+          </div>
+        </details>
+      </Section>
+    )
+  }
 </SubpageLayout>

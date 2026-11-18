@@ -15,6 +15,7 @@ interface Props {
 
 const { locale, keys } = Astro.props;
 const copy = t(locale).related;
+// Four links as two by two, three as one row of three, so no row is left with a single item.
 const links = existingRoutes(keys, locale).map((key) => ({
   key,
   href: url(localizedPath(key, locale)),
@@ -25,7 +26,7 @@ const links = existingRoutes(keys, locale).map((key) => ({
 {
   links.length > 0 && (
     <Section id="weiterlesen" eyebrow={copy.eyebrow} title={copy.title} density="support" tone="deep">
-      <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+      <ul class:list={['grid gap-x-8 border-t border-ink', links.length === 3 ? 'md:grid-cols-3' : 'sm:grid-cols-2']} data-reveal-group>
         {links.map((link) => (
           <li class="group/rel relative min-w-0 border-b border-line py-5" data-reveal>
             <a

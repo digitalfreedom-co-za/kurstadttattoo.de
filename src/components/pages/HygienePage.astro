@@ -1,13 +1,14 @@
 ---
 // Hygiene page for both locales. Only stated facts: hygiene as a core value since the founding, the
 // three standards, modern and well equipped rooms, what the studio photos show, and hygiene during
-// healing from the old aftercare page. Procedures and certifications stay out until Patrick confirms them.
+// healing from the old aftercare page. The working photo leads (archive photos, never labelled as the new
+// studio), the three standards sit beside it in short. Procedures and certifications stay out until Patrick confirms them.
 import SubpageLayout from '../../layouts/SubpageLayout.astro';
 import Section from '../ui/Section.astro';
 import ArtImage from '../ui/ArtImage.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
-import { studio } from '../../config/site';
+import { studio, phoneDisplay } from '../../config/site';
 import { pageExists } from '../../lib/pages';
 import { localizedPath, t, type Locale } from '../../i18n';
 
@@ -26,20 +27,8 @@ const [atWork, workstation] = copy.studio.figures;
 ---
 
 <SubpageLayout locale={locale} routeKey="hygiene" related={['aftercare', 'consultation', 'faq']}>
-  <Section id={copy.value.id} eyebrow={copy.value.eyebrow} title={copy.value.title} intro={copy.value.intro}>
-    <ul class="grid gap-x-8 border-t border-ink md:grid-cols-3" data-reveal-group>
-      {
-        copy.value.items.map((item) => (
-          <li class="min-w-0 border-b border-line py-6 md:border-b-0 md:py-8" data-reveal>
-            <h3 class="font-display text-h3">{item.title}</h3>
-            <p class="mt-3 text-muted">{item.text}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
-
-  <Section id={copy.studio.id} eyebrow={copy.studio.eyebrow} title={copy.studio.title} intro={copy.studio.intro} tone="deep">
+  <!-- The working photo leads; the three standards follow beside it in short, instead of a section of their own. -->
+  <Section id={copy.studio.id} eyebrow={copy.studio.eyebrow} title={copy.studio.title} intro={copy.studio.intro}>
     <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
       <figure class="min-w-0 md:col-span-7">
         <ArtImage
@@ -51,9 +40,23 @@ const [atWork, workstation] = copy.studio.figures;
           widths={[480, 720, 1120]}
           sizes="(min-width: 84rem) 46rem, (min-width: 48rem) 58vw, 100vw"
         />
-        <figcaption class="label mt-3 border-t border-line pt-2 text-muted">{atWork.caption}</figcaption>
+        <figcaption class="caption mt-3 border-t border-line pt-2">{atWork.caption}</figcaption>
       </figure>
       <div class="flex min-w-0 flex-col gap-8 md:col-span-5">
+        <section id={copy.value.id} aria-labelledby={`${copy.value.id}-titel`}>
+          <h3 id={`${copy.value.id}-titel`} class="font-display text-h4">{copy.value.title}</h3>
+          <p class="mt-2 text-muted">{copy.value.intro}</p>
+          <dl class="mt-4 border-t border-ink" data-reveal-group>
+            {
+              copy.value.items.map((item) => (
+                <div class="border-b border-line py-3" data-reveal>
+                  <dt class="font-semibold">{item.title}</dt>
+                  <dd class="text-sm text-muted">{item.text}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </section>
         <figure>
           <ArtImage
             src={patrickWorkstation}
@@ -63,20 +66,20 @@ const [atWork, workstation] = copy.studio.figures;
             widths={[420, 640, 920]}
             sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
           />
-          <figcaption class="label mt-3 border-t border-line pt-2 text-muted">{workstation.caption}</figcaption>
+          <figcaption class="caption mt-3 border-t border-line pt-2">{workstation.caption}</figcaption>
         </figure>
         <p class="flex gap-3 border-t border-ink pt-5" data-reveal>
           <Icon name="dialog" size={20} class="mt-0.5 shrink-0 text-neon" />
           <span>{copy.studio.questions}</span>
         </p>
         <Button href={studio.phone.href} icon="phone" class="self-start">
-          <span class="sr-only">{dict.cta.callPrefix}: </span>{studio.phone.display}
+          {dict.cta.callPrefix}: {phoneDisplay(locale)}
         </Button>
       </div>
     </div>
   </Section>
 
-  <Section id={copy.healing.id} eyebrow={copy.healing.eyebrow} title={copy.healing.title} intro={copy.healing.intro}>
+  <Section id={copy.healing.id} eyebrow={copy.healing.eyebrow} title={copy.healing.title} intro={copy.healing.intro} tone="deep">
     <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
       <ul class="min-w-0 border-t border-ink md:col-span-7" data-reveal-group>
         {
@@ -89,11 +92,11 @@ const [atWork, workstation] = copy.studio.figures;
         }
       </ul>
       <div class="min-w-0 md:col-span-4 md:col-start-9">
-        <aside class="border border-ink p-6" aria-labelledby="arzt-titel" data-reveal>
-          <p class="flex items-center gap-3">
+        <aside class="border border-ink bg-wall p-6" aria-labelledby="arzt-titel" data-reveal>
+          <h3 id="arzt-titel" class="flex items-center gap-3 font-display text-lg font-semibold">
             <Icon name="alert" size={22} class="shrink-0 text-neon" />
-            <span id="arzt-titel" class="font-display text-lg font-semibold">{copy.healing.warningTitle}</span>
-          </p>
+            {copy.healing.warningTitle}
+          </h3>
           <p class="mt-3 text-muted">{copy.healing.warning}</p>
         </aside>
         {aftercareHref && <Button href={aftercareHref} variant="secondary" class="mt-6">{copy.healing.link}</Button>}

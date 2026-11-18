@@ -1,16 +1,19 @@
 ---
 // Gallery for both locales: every work once, grouped by style, realism first (competitor analysis #2).
-// A row of style links under the header jumps to the groups; each group is its own gallery with lightbox.
+// A row of style links under the header jumps to the groups; each group is its own gallery with lightbox,
+// followed by a request about an idea in that style and a link back to the styles.
 // The alt texts describe motif, style and body part (dictionary works.<id>).
 import SubpageLayout from '../../layouts/SubpageLayout.astro';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Gallery from '../ui/Gallery.astro';
 import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
 import VideoLinks from '../ui/VideoLinks.astro';
 import { galleryItems, styleGroups } from '../../data/gallery';
 import { videos } from '../../data/videos';
 import { pageExists } from '../../lib/pages';
+import { url } from '../../lib/url';
 import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
@@ -21,37 +24,50 @@ const { locale } = Astro.props;
 const copy = t(locale).pages.gallery;
 const groups = styleGroups.map((group) => ({ ...group, ...copy.groups[group.id] }));
 const consultationHref = pageExists('consultation', locale) ? localizedPath('consultation', locale) : undefined;
+const bookingHref = url(localizedPath('booking', locale));
+const stylesId = 'stile';
 ---
 
 <SubpageLayout locale={locale} routeKey="gallery" related={['artists', 'consultation', 'aftercare']}>
-  <nav aria-label={copy.stylesLabel} class="border-b border-line bg-wall">
+  <!-- Style links wrap on narrow screens, so every style is visible at once. -->
+  <nav id={stylesId} aria-label={copy.stylesLabel} class="border-b border-line bg-wall">
     <Container>
-      <ul class="-mx-1 flex gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
+      <ul class="-mx-1 flex flex-wrap gap-x-1 py-2">
         {
           groups.map((group) => (
-            <li class="shrink-0">
+            <li>
               <a
                 href={`#${group.id}`}
                 class="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold whitespace-nowrap transition-colors hover:text-neon"
               >
                 {group.title}
-                <span class="label text-muted">{group.works.length}</span>
+                <span class="caption">({group.works.length})</span>
               </a>
             </li>
           ))
         }
       </ul>
+      <p class="caption pb-3">{copy.discussNote}</p>
     </Container>
   </nav>
 
+  {/* Style groups are parts of one chapter: compact headings, one surface, no basin rule each. */}
   {
-    groups.map((group, index) => (
-      <Section id={group.id} eyebrow={copy.countLabel.replace('{count}', String(group.works.length))} title={group.title} intro={group.intro} tone={index % 2 === 1 ? 'deep' : 'wall'}>
+    groups.map((group) => (
+      <Section id={group.id} eyebrow={copy.countLabel.replace('{count}', String(group.works.length))} title={group.title} intro={group.intro} density="support">
         <Gallery items={galleryItems(group.works, locale)} locale={locale} label={group.title} />
+        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
+          <a class="link inline-flex min-h-11 items-center gap-2 font-semibold" href={bookingHref}>
+            <Icon name="dialog" size={18} class="shrink-0 text-neon" />
+            {copy.discuss}
+          </a>
+          <a class="link inline-flex min-h-11 items-center text-muted" href={`#${stylesId}`}>
+            {copy.backToStyles}
+          </a>
+        </div>
       </Section>
     ))
   }
-
   <Section density="support">
     <div class="grid gap-10 border-t border-ink pt-8 md:grid-cols-12 md:gap-x-8">
       <div class="min-w-0 md:col-span-6">

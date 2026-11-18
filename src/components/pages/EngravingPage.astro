@@ -26,10 +26,10 @@ const exampleItems = [
 
 <SubpageLayout locale={locale} routeKey="engraving" related={['contact', 'gallery', 'faq']}>
   <Section id={copy.materials.id} eyebrow={copy.materials.eyebrow} title={copy.materials.title} intro={copy.materials.intro}>
-    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+    <ul class="grid gap-x-8 border-t border-ink sm:grid-cols-2" data-reveal-group>
       {
         copy.materials.items.map((material) => (
-          <li class="min-w-0 border-b border-line py-6" data-reveal>
+          <li class="min-w-0 border-b border-line py-6 sm:odd:last:col-span-2" data-reveal>
             <h3 class="text-h3">{material.title}</h3>
             <ul class="mt-4 grid gap-2 text-muted">
               {material.points.map((point) => (
@@ -46,6 +46,6 @@ const exampleItems = [
   </Section>
 
   <Section id={copy.examples.id} eyebrow={copy.examples.eyebrow} title={copy.examples.title} intro={copy.examples.intro} tone="deep">
-    <Gallery items={exampleItems} locale={locale} label={copy.examples.label} />
+    <Gallery items={exampleItems} locale={locale} label={copy.examples.label} enquire={false} />
   </Section>
 </SubpageLayout>

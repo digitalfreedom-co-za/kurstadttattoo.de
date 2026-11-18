@@ -1,10 +1,13 @@
 ---
 // Closing call to action on the always dark surface (the counter): statement left, the action right.
-// Default action is the booking page; the phone number and the email stay as quiet alternative lines.
-// The booking page itself passes primary="phone", so its closing call offers the direct way instead.
+// Each page picks the action its closing words ask for: booking (home, artists, gallery, consultation) or
+// the phone (pages that ask the visitor to call). The phone action carries a visible call label; the other
+// channel and the email stay as quiet alternative lines. While the demo calendar is configured the booking
+// action asks for a request (bookingLabel). The footer follows directly, so the band keeps its bottom short.
 import Container from './Container.astro';
 import Button from './Button.astro';
-import { studio } from '../../config/site';
+import { bookingLabel } from '../../config/booking';
+import { studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
@@ -20,7 +23,7 @@ const copy = dict.cta;
 const altLinkClass = 'link inline-flex min-h-11 items-center font-semibold break-all';
 ---
 
-<section class="bg-night pt-section pb-16 text-chalk md:pb-20" aria-label={copy.label}>
+<section class="bg-night pt-section pb-12 text-chalk md:pb-16" aria-label={copy.label}>
   <Container>
     <span class="basin-rule text-chalk/40" data-reveal="rule" aria-hidden="true"></span>
     <div class="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:gap-x-8">
@@ -32,12 +35,11 @@ const altLinkClass = 'link inline-flex min-h-11 items-center font-semibold break
         {
           primary === 'booking' ? (
             <Button href={localizedPath('booking', locale)} variant="inverse" icon="calendar" class="self-start">
-              {dict.booking.label}
+              {bookingLabel(dict.booking)}
             </Button>
           ) : (
             <Button href={studio.phone.href} variant="inverse" icon="phone" class="self-start">
-              <span class="sr-only">{copy.callPrefix}: </span>
-              {studio.phone.display}
+              {copy.callPrefix}: {phoneDisplay(locale)}
             </Button>
           )
         }
@@ -46,7 +48,7 @@ const altLinkClass = 'link inline-flex min-h-11 items-center font-semibold break
             primary === 'booking' && (
               <li>
                 <a class={altLinkClass} href={studio.phone.href}>
-                  {copy.callPrefix}: {studio.phone.display}
+                  {copy.callPrefix}: {phoneDisplay(locale)}
                 </a>
               </li>
             )

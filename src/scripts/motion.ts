@@ -66,7 +66,8 @@ function initReveal(): void {
 
 function initParallax(): void {
   const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-parallax]'));
-  if (elements.length === 0 || reducedMotion.matches) return;
+  // No parallax on touch screens: the picture holds still while the visitor looks at it.
+  if (elements.length === 0 || reducedMotion.matches || window.matchMedia('(pointer: coarse)').matches) return;
 
   let ticking = false;
   let stopped = false;

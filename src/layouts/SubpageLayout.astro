@@ -1,8 +1,11 @@
 ---
 // Frame of every content subpage in both locales: the page header with breadcrumbs, the page sections
 // (default slot), related pages and the closing call. Title, description, eyebrow, heading, lead and the
-// closing call come from the page entry in the dictionary (pages.<routeKey>). The breadcrumb trail is
-// built here once and feeds both the visible trail and the BreadcrumbList.
+// closing call come from the page entry in the dictionary (pages.<routeKey>); a page can replace the header
+// texts (header prop, e.g. the booking page while the demo calendar is configured). The closing call
+// offers the action the page's own words ask for: the phone where the page asks the visitor to call,
+// booking elsewhere. The breadcrumb trail is built here once and feeds both the visible trail and the
+// BreadcrumbList.
 import BaseLayout from './BaseLayout.astro';
 import PageHeader from '../components/ui/PageHeader.astro';
 import RelatedPages from '../components/ui/RelatedPages.astro';
@@ -13,29 +16,35 @@ import { localizedPath, t, type Locale } from '../i18n';
 
 export type SubpageKey = 'gallery' | 'artists' | 'hygiene' | 'consultation' | 'aftercare' | 'faq' | 'engraving' | 'contact' | 'booking';
 
+/** Pages whose closing words ask the visitor to call; every other subpage closes with booking. */
+const PHONE_CLOSING: SubpageKey[] = ['hygiene', 'aftercare', 'faq', 'engraving', 'contact', 'booking'];
+
 interface Props {
   locale: Locale;
   routeKey: SubpageKey;
+  /** Replaces the dictionary texts of the page header and the meta description. */
+  header?: { description: string; eyebrow: string; heading: string; lead: string };
   related: Parameters<typeof RelatedPages>[0]['keys'];
   schema?: JsonLdNode[];
 }
 
-const { locale, routeKey, related, schema = [] } = Astro.props;
+const { locale, routeKey, related, header, schema = [] } = Astro.props;
 const dict = t(locale);
 const copy = dict.pages[routeKey];
+const texts = header ?? copy;
 const breadcrumbs = [
   { name: dict.nav.items.home, path: localizedPath('home', locale) },
   { name: dict.nav.items[routeKey], path: localizedPath(routeKey, locale) },
 ];
 ---
 
-<BaseLayout title={copy.title} description={fillStudio(copy.description)} locale={locale} routeKey={routeKey} schema={schema} breadcrumbs={breadcrumbs}>
+<BaseLayout title={copy.title} description={fillStudio(texts.description, locale)} locale={locale} routeKey={routeKey} schema={schema} breadcrumbs={breadcrumbs}>
   <PageHeader
     locale={locale}
     breadcrumbs={breadcrumbs}
-    eyebrow={copy.eyebrow}
-    heading={copy.heading}
-    lead={fillStudio(copy.lead)}
+    eyebrow={texts.eyebrow}
+    heading={texts.heading}
+    lead={fillStudio(texts.lead, locale)}
     hasActions={Astro.slots.has('actions')}
     hasMedia={Astro.slots.has('media')}
   >
@@ -44,5 +53,5 @@ const breadcrumbs = [
   </PageHeader>
   <slot />
   <RelatedPages locale={locale} keys={related} />
-  <CtaBand locale={locale} title={copy.cta.title} text={fillStudio(copy.cta.text)} primary={routeKey === 'booking' ? 'phone' : 'booking'} />
+  <CtaBand locale={locale} title={copy.cta.title} text={fillStudio(copy.cta.text, locale)} primary={PHONE_CLOSING.includes(routeKey) ? 'phone' : 'booking'} />
 </BaseLayout>

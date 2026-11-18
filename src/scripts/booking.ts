@@ -150,7 +150,18 @@ function mount(root: HTMLElement): void {
   Cal('init', namespace, { origin: calOrigin });
   const api = Cal.ns![namespace];
 
-  api('on', { action: 'linkReady', callback: () => settle(root, 'ready') });
+  api('on', {
+    action: 'linkReady',
+    callback: () => {
+      // cal.com titles its iframe in English ("Book a call"); name it in the page language. Its content
+      // follows the visitor's browser language: cal.com resolves the locale from a login or the
+      // Accept-Language header only, not from the embed (source and test, November 2026). BookingEmbed
+      // states this above the frame.
+      const frame = root.querySelector<HTMLIFrameElement>('.booking-target iframe');
+      if (frame && root.dataset.iframeTitle) frame.title = root.dataset.iframeTitle;
+      settle(root, 'ready');
+    },
+  });
   const failed = () => settle(root, 'failed');
   api('on', { action: 'linkFailed', callback: failed });
 
