@@ -1,6 +1,6 @@
 # Design review: fix status
 
-Status of every finding in the four reports after the fix round on branch `ticket/11` (12 November 2026). Fixed means implemented in DE and EN and checked in the local build; open means the fix needs facts or a decision from the studio, which the site does not invent. Fix tickets: #43 UI, #44 UX, #45 mobile, #46 accessibility.
+Status of every finding in the four reports after the fix round on branch `ticket/11` (12 November 2026, remaining scope updated 18 November 2026). Fixed means implemented in DE and EN and checked in the local build; open means the fix needs facts or a decision from the studio, which the site does not invent. Fix tickets: #43 UI, #44 UX, #45 mobile, #46 accessibility.
 
 Checks of this round: `npm run check` (0 errors, 0 warnings), `npm run build` (25 pages), and a Chromium run against `astro preview` at 320, 375, 768 and 1280 px:
 
@@ -14,13 +14,22 @@ Re-review: an independent Codex review of the full diff reported two points (fai
 
 Not tested: physical iOS and Android devices, VoiceOver and NVDA speech, Safari and Firefox, a booking submission (none was made).
 
-## Closing conditions of #11
+## Scope of PR #47 and closing conditions of #11
 
-#11 is not done with this branch. Still open on 12 November 2026:
+Scope note of 18 November 2026 on #11: PR #47 delivers the four review files and the fixes listed as fixed below. Every remaining finding is implemented in its fix ticket, not in this PR. The PR is accepted when the review files are committed, #43 to #46 list the exact remaining scope and the PR builds and deploys. #11 is closed after #43 to #46.
 
-- Acceptance of the technical fixes by the team lead; the fix tickets #43, #44, #45 and #46 are open until then.
-- Merge of PR #47 to `main` and a successful run of `.github/workflows/deploy.yml` for that merge, linked in #11.
-- Only then #11 is closed. The open studio facts below are not part of this condition.
+On 18 November 2026 the branch was brought up to date with `main` (merge, no conflicts); `npm run check` (0 errors, 0 warnings, 0 hints) and `npm run build` (25 pages) pass.
+
+## Remaining scope per fix ticket
+
+The same lists are posted as comments on the fix tickets.
+
+| Ticket | Remaining after PR #47 |
+| --- | --- |
+| #43 UI | 7: replacement photos from owner originals (capture brief). 2: only if Marcello grants an exception to wiki content rule 2, shorter h2 headings. Definition of done check: screenshots at 375 and 1280, light and dark, for the listed pages after the merge |
+| #44 UX | 1: the labelled demo calendar is still on the booking page and loads after consent; remove it from the public page or put it behind the config switch. Owner facts: 3 (email channel), 4 (hygiene procedures), 5 (price wording), 6 (consultation format, duration, fee), 10 (consultation languages), 11 (style classification), 12 (selected work carried into the request, after 3), 13 (artist story), 14 (arrival details), 15 (review profile), 16 (engraving decision by Marcello). Verify 8 and 18 after the merge |
+| #45 mobile | 2, 3, 4: not implemented, the wiki header rule (36 px icon-only below 640 px) applies unless Marcello grants an exception. Verification: physical iOS and Android swipe check, menu open during rotation, Safari and Firefox |
+| #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. Verification: VoiceOver or NVDA for 1, 6, 7, 8; Firefox and Safari keyboard scrolling for 1; axe and Lighthouse after the merge |
 
 ## Wiki conflicts
 
@@ -57,7 +66,7 @@ Not tested: physical iOS and Android devices, VoiceOver and NVDA speech, Safari 
 
 | # | Status | What changed |
 | --- | --- | --- |
-| 1 | Fixed | While the demo calendar is configured every booking action reads `Termin anfragen` / `Request appointment`; the booking page leads with phone and email; the demo calendar sits last, closed, labelled as a test; the external cal.com link is gone in demo mode |
+| 1 | Partly, rest in #44 | While the demo calendar is configured every booking action reads `Termin anfragen` / `Request appointment`; the booking page leads with phone and email; the demo calendar sits last, closed, labelled as a test; the external cal.com link is gone in demo mode |
 | 2 | Fixed | The consent dialog opens by itself only once statistics are configured; until then consent is asked at the calendar placeholder; privacy policy text updated |
 | 3 | Fixed, confirmation open | One channel everywhere: appointment requests by phone, other questions by email (old contact page). Open: Patrick confirms whether email requests are welcome |
 | 4 | Partly, rest open | Home hygiene section links to the hygiene page. Open: Patrick's actual procedures |
