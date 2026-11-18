@@ -210,7 +210,12 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
         var record = JSON.parse(localStorage.getItem(key) || 'null');
         var made = record && new Date(record.timestamp);
         var expires = made && new Date(made);
-        if (expires) expires.setMonth(expires.getMonth() + maxAgeMonths);
+        // Same day maxAgeMonths later, capped at the month's last day (consentExpiry in src/config/consent.ts).
+        if (expires) {
+          expires.setDate(1);
+          expires.setMonth(expires.getMonth() + maxAgeMonths);
+          expires.setDate(Math.min(made.getDate(), new Date(expires.getFullYear(), expires.getMonth() + 1, 0).getDate()));
+        }
         granted =
           !!record &&
           record.version === version &&

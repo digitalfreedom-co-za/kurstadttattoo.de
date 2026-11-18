@@ -42,12 +42,24 @@ export interface ConsentRecord {
   categories: Partial<Record<ConsentCategory, boolean>>;
 }
 
+/**
+ * End of validity of a choice made at made: the same day CONSENT_MAX_AGE_MONTHS later, capped at the last day
+ * of that month (29 Feb 2024 expires on 28 Feb 2027), so the record never outlives the 36 calendar months.
+ * The inline scripts in BookingEmbed.astro and Analytics.astro repeat this calculation.
+ */
+export function consentExpiry(made: Date): Date {
+  const expires = new Date(made);
+  expires.setDate(1);
+  expires.setMonth(expires.getMonth() + CONSENT_MAX_AGE_MONTHS);
+  const lastDay = new Date(expires.getFullYear(), expires.getMonth() + 1, 0).getDate();
+  expires.setDate(Math.min(made.getDate(), lastDay));
+  return expires;
+}
+
 /** True when a choice made at timestamp is older than CONSENT_MAX_AGE_MONTHS (or lies in the future). */
 export function consentExpired(timestamp: string, now: Date = new Date()): boolean {
   const made = new Date(timestamp);
-  const expires = new Date(made);
-  expires.setMonth(expires.getMonth() + CONSENT_MAX_AGE_MONTHS);
-  return made > now || now >= expires;
+  return made > now || now >= consentExpiry(made);
 }
 
 /** Anchor of the consent section in the privacy policy, also the no-JS target of the footer link. */

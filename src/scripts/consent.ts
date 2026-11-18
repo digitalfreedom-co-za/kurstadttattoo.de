@@ -81,6 +81,10 @@ export function saveConsent(categories: Partial<Record<ConsentCategory, boolean>
   return record;
 }
 
+// Every page loads this module through the consent dialog: reading the stored choice once removes an expired
+// record on each visit, whether or not the dialog opens on its own.
+readConsent();
+
 // A choice made in another tab of this site replaces the one of this page view.
 window.addEventListener('storage', (event) => {
   if (event.key !== CONSENT_STORAGE_KEY && event.key !== null) return;
