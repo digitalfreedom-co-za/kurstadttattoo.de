@@ -4,6 +4,7 @@ import {
   CONSENT_CATEGORIES,
   CONSENT_STORAGE_KEY,
   CONSENT_VERSION,
+  consentExpired,
   type ConsentCategory,
   type ConsentRecord,
 } from '../config/consent';
@@ -14,12 +15,19 @@ export const CONSENT_OPEN_EVENT = 'consent:open';
 /** Choice made on this page view, used when localStorage refuses to store it. */
 let sessionConsent: ConsentRecord | null = null;
 
-/** The stored choice of the current dialog version, or null when there is none (or storage is blocked). */
+/**
+ * The stored choice of the current dialog version, or null when there is none (or storage is blocked).
+ * An expired choice is removed, so the record is kept no longer than CONSENT_MAX_AGE_MONTHS.
+ */
 export function readConsent(): ConsentRecord | null {
   try {
     const raw = window.localStorage.getItem(CONSENT_STORAGE_KEY);
     if (!raw) return null;
     const record = JSON.parse(raw) as Partial<ConsentRecord>;
+    if (typeof record.timestamp === 'string' && consentExpired(record.timestamp)) {
+      window.localStorage.removeItem(CONSENT_STORAGE_KEY);
+      return null;
+    }
     if (
       record.version !== CONSENT_VERSION ||
       typeof record.timestamp !== 'string' ||
@@ -72,6 +80,10 @@ export function saveConsent(categories: Partial<Record<ConsentCategory, boolean>
   window.dispatchEvent(new CustomEvent<ConsentRecord>(CONSENT_CHANGE_EVENT, { detail: record }));
   return record;
 }
+
+// Every page loads this module through the consent dialog: reading the stored choice once removes an expired
+// record on each visit, whether or not the dialog opens on its own.
+readConsent();
 
 // A choice made in another tab of this site replaces the one of this page view.
 window.addEventListener('storage', (event) => {
