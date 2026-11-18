@@ -842,13 +842,16 @@
       "storage": {
         "title": "Fonts, storage and cookies",
         "fonts": "The fonts of this website sit on the same server as the pages themselves. No data is sent to font providers such as Google Fonts when they load.",
+        "ownTitle": "What this site stores itself",
         "entries": "Our own pages set no cookies. In your browser's storage (localStorage) they only keep the following entries, each only once you use the related function. None of these entries contains an identifier, and none of them leaves your browser.",
         "noTracking": "We use no analytics or audience measurement, no advertising services and no social media plugins. One third party service, the cal.com calendar, only loads with your consent.",
         "noTrackingAnalytics": "We use no advertising services and no social media plugins. The cal.com calendar and statistics with Google Analytics only load with your consent.",
         "columns": {
           "entry": "Entry",
+          "where": "Where",
           "written": "Written",
           "purpose": "Purpose",
+          "category": "Category",
           "duration": "Storage period",
           "consent": "Consent"
         },
@@ -871,9 +874,44 @@
           }
         },
         "necessary": "not required, strictly necessary (§ 25(2) No. 2 TDDDG)",
+        "where": "localStorage",
+        "categoryNecessary": "Necessary",
         "basis": "The legal basis for these entries is Art. 6(1)(f) GDPR. Our legitimate interest lies in keeping the settings you chose and in respecting and being able to demonstrate your consent decision (Art. 7(1) GDPR).",
         "tableLabel": "Entries in your browser storage",
         "scrollHint": "Scroll the table sideways to see every column.",
+        "vendors": {
+          "title": "Cookies set by other providers",
+          "intro": "The following cookies are set by services of other providers that this website embeds. Each of them is only set once you have consented to its category.",
+          "none": "At present this website embeds no service of another provider that sets cookies.",
+          "tableLabel": "Cookies set by other providers",
+          "columns": {
+            "vendor": "Provider",
+            "cookie": "Cookie",
+            "purpose": "Purpose",
+            "type": "Type",
+            "category": "Category",
+            "retention": "Storage period",
+            "consent": "Consent"
+          },
+          "consent": "yes, your consent (§ 25(1) TDDDG)",
+          "rows": {
+            "booking": {
+              "vendor": "Cal.com, Inc., through its service provider Cloudflare",
+              "purpose": "fend off automated access (bots) when the booking calendar loads",
+              "type": "third party (3P), set on the cal.com domain",
+              "category": "External media: booking, technically necessary for cal.com",
+              "retention": "30 minutes of inactivity"
+            },
+            "analytics": {
+              "vendor": "Google Ireland Limited (Google Analytics 4)",
+              "cookie": "_ga, _ga_<property ID>",
+              "purpose": "recognise your browser to measure visits and page views",
+              "type": "first party (1P), set on the domain of this website",
+              "category": "Statistics",
+              "retention": "up to 2 years"
+            }
+          }
+        },
         "noTrackingNoCalendar": "We use no analytics or audience measurement, no advertising services and no social media plugins, and we embed no content from other providers.",
         "noTrackingAnalyticsNoCalendar": "We use no advertising services and no social media plugins. Statistics with Google Analytics only load with your consent."
       },

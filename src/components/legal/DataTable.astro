@@ -1,0 +1,65 @@
+---
+// Table of the privacy policy (storage entries, cookies per vendor). The first column heads each row,
+// the column codeColumn holds technical names and is shown as code. Below 640px each row is a labelled
+// block, so no column hides off screen. From 640px the table, in a named, keyboard focusable region:
+// Tab reaches it and the arrow keys scroll it (WCAG 2.1.1).
+interface Props {
+  /** Unique prefix for the ids of caption, list label and scroll hint. */
+  id: string;
+  label: string;
+  scrollHint: string;
+  columns: string[];
+  /** One cell per column. */
+  rows: string[][];
+  /** Index of the column shown as code. */
+  codeColumn?: number;
+}
+
+const { id, label, scrollHint, columns, rows, codeColumn = 0 } = Astro.props;
+---
+
+<div class="not-prose sm:hidden">
+  <p id={`${id}-liste`} class="sr-only">{label}</p>
+  <ul class="grid border-t border-ink" aria-labelledby={`${id}-liste`}>
+    {
+      rows.map(([head, ...cells]) => (
+        <li class="border-b border-line py-4">
+          <p class="font-semibold">{codeColumn === 0 ? <code>{head}</code> : head}</p>
+          <dl class="mt-2 grid gap-2 text-sm">
+            {cells.map((cell, index) => (
+              <div>
+                <dt class="font-semibold text-ink">{columns[index + 1]}</dt>
+                <dd class="text-ink-soft">{codeColumn === index + 1 ? <code>{cell}</code> : cell}</dd>
+              </div>
+            ))}
+          </dl>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+<div class="hidden sm:block">
+  <p id={`${id}-hinweis`} class="text-sm text-muted">{scrollHint}</p>
+  <div class="overflow-x-auto" role="region" aria-labelledby={`${id}-tabelle`} aria-describedby={`${id}-hinweis`} tabindex="0">
+    <table>
+      <caption id={`${id}-tabelle`} class="sr-only">{label}</caption>
+      <thead>
+        <tr>
+          {columns.map((column) => <th scope="col">{column}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map(([head, ...cells]) => (
+            <tr>
+              <th scope="row" class="align-top">{codeColumn === 0 ? <code>{head}</code> : head}</th>
+              {cells.map((cell, index) => (
+                <td>{codeColumn === index + 1 ? <code>{cell}</code> : cell}</td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
