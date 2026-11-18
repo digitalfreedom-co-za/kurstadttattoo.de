@@ -5,7 +5,8 @@
 // - withdrawn after gtag.js loaded: consent update to denied, the _ga cookies are deleted and the page
 //   reloads, so the loaded tag is gone (unless storage refused the withdrawal, see below).
 // - declined before anything loaded: nothing happens, no Google request, no event.
-import { CONSENT_CHANGE_EVENT, hasConsent, readConsent } from './consent';
+// - Do Not Track or Global Privacy Control: nothing ever loads, even on accept (privacySignal()).
+import { CONSENT_CHANGE_EVENT, hasConsent, privacySignal, readConsent } from './consent';
 
 declare global {
   interface Window {
@@ -31,7 +32,7 @@ function deleteGaCookies(): void {
 
 window.addEventListener(CONSENT_CHANGE_EVENT, () => {
   const { gtag, loadGtag } = window;
-  if (!gtag || !loadGtag) return;
+  if (!gtag || !loadGtag || privacySignal()) return;
   if (hasConsent('analytics')) {
     if (window.__gtagLoaded) return;
     gtag('consent', 'update', { analytics_storage: 'granted' });
