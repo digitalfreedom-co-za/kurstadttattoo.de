@@ -2,7 +2,8 @@
 // Imprint (§ 5 DDG) for both locales. Provider data from src/config/site.ts (operator), taken from the
 // imprint of the old site; the studio address is the new location. Reworked from the old imprint:
 // TMG references replaced, the link to the EU online dispute platform dropped (shut down on 20 July
-// 2025), no tax number, no design credit of the old site.
+// 2025), no tax number, no design credit of the old site. The DSA contact points (Art. 11 and 12) are
+// stated irrespective of the service's classification, as legal website/IMPRESSUM.en.md section 4.3 does.
 // The consent dialog does not open by itself here (ConsentDialog, routeKey imprint).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../ui/PageHeader.astro';
@@ -72,6 +73,19 @@ const { address } = studio;
 
         <h2>{copy.profession.title}</h2>
         <p>{fill(copy.profession.text)}</p>
+
+        <h2>{copy.dsa.title}</h2>
+        <p>{fill(copy.dsa.intro)}</p>
+        <p>
+          {copy.dsa.authorities}<br />
+          <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
+        </p>
+        <p>
+          {copy.dsa.recipients}<br />
+          <a class="break-all" href={studio.email.href}>{studio.email.display}</a>
+        </p>
+        <p>{copy.dsa.human}</p>
+        <p>{copy.dsa.languages}</p>
 
         <h2>{copy.studio.title}</h2>
         <p>
