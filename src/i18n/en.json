@@ -830,10 +830,11 @@
       },
       "hosting": {
         "title": "Hosting on GitHub Pages",
-        "provider": "This website is served by GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. When you open a page, your browser transmits technically necessary data to GitHub's servers. This includes your IP address, the date and time of the request, the requested address, the previously visited page (referrer) and details about your browser and operating system.",
+        "provider": "This website is served on our behalf by {processor}, through GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. When you open a page, your browser transmits technically necessary data to GitHub's servers. This includes your IP address, the date and time of the request, the requested address, the previously visited page (referrer) and details about your browser and operating system.",
+        "processor": "{processorName} is our processor under Art. 28 GDPR. It processes this data only on our instructions and on the basis of a data processing agreement. It engages GitHub as a sub-processor for this.",
         "logs": "According to GitHub, it stores the IP address of visitors to GitHub Pages for security purposes. We have no access to these logs and do not analyse them. GitHub decides how long it keeps them.",
         "basis": "The legal basis is Art. 6(1)(f) GDPR. Our legitimate interest lies in providing the website securely and reliably.",
-        "transfer": "Data is transferred to the USA in the process. GitHub is certified under the EU-U.S. Data Privacy Framework; the transfer is therefore covered by the adequacy decision of the European Commission under Art. 45 GDPR. In addition, GitHub relies on the standard contractual clauses of the European Commission. Details are in the",
+        "transfer": "Data is transferred to the USA in the process. The transfer to {processorName} is covered by the standard contractual clauses of the European Commission (Art. 46(2)(c) GDPR), which are part of the data processing agreement. GitHub is certified under the EU-U.S. Data Privacy Framework; the transfer to GitHub is therefore covered by the adequacy decision of the European Commission under Art. 45 GDPR. In addition, GitHub relies on the standard contractual clauses of the European Commission. Details are in the",
         "privacyLink": "privacy statement of GitHub",
         "https": "All pages are transmitted encrypted via HTTPS."
       },
