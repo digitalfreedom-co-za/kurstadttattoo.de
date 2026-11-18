@@ -207,7 +207,12 @@ async function main() {
   const next = [...published, ...kept].sort((a, b) => b.added.localeCompare(a.added));
   const changed = published.length + removed.length + duplicates.length > 0;
   if (changed) await writeFile(DATA_FILE, `${JSON.stringify(next, null, 2)}\n`);
-  for (const file of processed) await rm(path.join(INBOX_DIR, file));
+  // A caption stays as long as a photo with its base name is still waiting in the inbox.
+  const waiting = new Set(rejected.map((item) => path.parse(item.name).name.toLowerCase()));
+  for (const file of processed) {
+    const isWaitingCaption = path.extname(file).toLowerCase() === CAPTION_EXTENSION && waiting.has(path.parse(file).name.toLowerCase());
+    if (!isWaitingCaption) await rm(path.join(INBOX_DIR, file));
+  }
 
   // A caption file without its photo stays in the inbox until the photo arrives.
   const list = (items) => items.map((item) => `- ${item}`);
