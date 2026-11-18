@@ -23,14 +23,14 @@ const { locale } = Astro.props;
 const dict = t(locale);
 const copy = dict.pages.hygiene;
 const aftercareHref = pageExists('aftercare', locale) ? localizedPath('aftercare', locale) : undefined;
-const [atWork, workstation] = copy.studio.figures;
+const [, workstation] = copy.studio.figures;
 ---
 
 <SubpageLayout locale={locale} routeKey="hygiene" related={['aftercare', 'consultation', 'faq']}>
   <!-- The working photo leads; the three standards follow beside it in short, instead of a section of their own. -->
   <Section id={copy.studio.id} eyebrow={copy.studio.eyebrow} title={copy.studio.title} intro={copy.studio.intro}>
     <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
-      <figure class="min-w-0 md:col-span-7">
+      <div class="min-w-0 md:col-span-7">
         <ArtImage
           src={patrickAtWork}
           alt={copy.imageAlt}
@@ -40,8 +40,7 @@ const [atWork, workstation] = copy.studio.figures;
           widths={[480, 720, 1120]}
           sizes="(min-width: 84rem) 46rem, (min-width: 48rem) 58vw, 100vw"
         />
-        <figcaption class="caption mt-3 border-t border-line pt-2">{atWork.caption}</figcaption>
-      </figure>
+      </div>
       <div class="flex min-w-0 flex-col gap-8 md:col-span-5">
         <section id={copy.value.id} aria-labelledby={`${copy.value.id}-titel`}>
           <h3 id={`${copy.value.id}-titel`} class="font-display text-h4">{copy.value.title}</h3>
@@ -57,7 +56,7 @@ const [atWork, workstation] = copy.studio.figures;
             }
           </dl>
         </section>
-        <figure>
+        <div>
           <ArtImage
             src={patrickWorkstation}
             alt={workstation.alt ?? ''}
@@ -66,8 +65,7 @@ const [atWork, workstation] = copy.studio.figures;
             widths={[420, 640, 920]}
             sizes="(min-width: 84rem) 32rem, (min-width: 48rem) 40vw, 100vw"
           />
-          <figcaption class="caption mt-3 border-t border-line pt-2">{workstation.caption}</figcaption>
-        </figure>
+        </div>
         <p class="flex gap-3 border-t border-ink pt-5" data-reveal>
           <Icon name="dialog" size={20} class="mt-0.5 shrink-0 text-gold" />
           <span>{copy.studio.questions}</span>

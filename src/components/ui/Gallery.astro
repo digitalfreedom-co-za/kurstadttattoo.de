@@ -1,7 +1,8 @@
 ---
-// Gallery wall: 4:5 tiles in a grid, each with a wall label (motif, then style and placement). Each work
-// sets its own framing: a focal position for the 4:5 crop, or contain, which shows the whole photo on a
-// neutral surface where a crop would cut the composition (wide pieces, long placements). Lead works span
+// Gallery wall: 4:5 tiles in a grid, photos only, no visible caption; motif, style and placement live in
+// the alt text and the screen reader status of the lightbox. Each work sets its own framing: a focal
+// position for the 4:5 crop, or contain, which shows the whole photo on a neutral surface where a crop
+// would cut the composition (wide pieces, long placements). Lead works span
 // two columns. Every picture is a link to the full image, so it works without JS. With JS the link opens a
 // lightbox (native modal dialog: focus moves in and is trapped, Escape closes, focus returns to the picture
 // last shown). Arrow keys and a horizontal swipe on the picture step through the works; one polite status
@@ -101,7 +102,7 @@ const prepared = await Promise.all(
 ---
 
 <div class:list={['gallery', className]} data-gallery>
-  <ul class:list={['grid gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10', gridClass]} aria-label={label} data-reveal-group>
+  <ul class:list={['grid gap-4 md:gap-6', gridClass]} aria-label={label} data-reveal-group>
     {
       prepared.map((item, index) => (
         <li
@@ -112,14 +113,13 @@ const prepared = await Promise.all(
           ]}
           data-reveal
         >
-          <figure class="group/item">
+          <div class="group/item">
             <a
               href={item.full.src}
               class="relative block overflow-hidden bg-wall-deep"
               data-gallery-item
               data-alt={item.alt}
-              data-title={item.title}
-              data-caption={item.meta ? `${item.title}. ${item.meta}` : item.title}
+              data-label={item.meta ? `${item.title}. ${item.meta}` : item.title}
               data-width={item.full.width}
               data-height={item.full.height}
             >
@@ -146,11 +146,7 @@ const prepared = await Promise.all(
               </span>
               <span class="sr-only">, {copy.open}</span>
             </a>
-            <figcaption class="mt-3 border-t border-line pt-2">
-              <span class="block text-[0.9375rem] font-semibold leading-snug">{item.title}</span>
-              {item.meta && <span class="caption mt-0.5 block">{item.meta}</span>}
-            </figcaption>
-          </figure>
+          </div>
         </li>
       ))
     }
@@ -180,7 +176,6 @@ const prepared = await Promise.all(
             <a class="link inline-flex min-h-11 items-center font-semibold" href="" data-lightbox-original>{copy.original}</a>
           </div>
         </div>
-        <figcaption class="max-w-[40rem] text-center text-sm text-chalk-muted" data-lightbox-caption></figcaption>
         {
           enquireHref && (
             <a class="link inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-chalk" href={enquireHref}>
@@ -267,21 +262,20 @@ const prepared = await Promise.all(
     const q = <T extends HTMLElement>(selector: string) => dialog?.querySelector<T>(selector) ?? null;
     const image = q<HTMLImageElement>('[data-lightbox-img]');
     const stage = q<HTMLElement>('[data-lightbox-stage]');
-    const caption = q<HTMLElement>('[data-lightbox-caption]');
     const counter = q<HTMLElement>('[data-lightbox-counter]');
     const status = q<HTMLElement>('[data-lightbox-status]');
     const loading = q<HTMLElement>('[data-lightbox-loading]');
     const failure = q<HTMLElement>('[data-lightbox-error]');
     const original = q<HTMLAnchorElement>('[data-lightbox-original]');
     const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-gallery-item]'));
-    if (!dialog || !image || !stage || !caption || !counter || !status || !loading || !failure || !original || links.length === 0) return;
+    if (!dialog || !image || !stage || !counter || !status || !loading || !failure || !original || links.length === 0) return;
 
     let index = 0;
     const template = counter.dataset.template ?? '{current} / {total}';
 
-    /** Picture, caption and counter appear together; hidden they keep their space, so the stage does not jump. */
+    /** Picture and counter appear together; hidden they keep their space, so the stage does not jump. */
     const reveal = (visible: boolean) => {
-      [image, caption, counter].forEach((element) => {
+      [image, counter].forEach((element) => {
         if (visible) element.style.removeProperty('visibility');
         else element.style.visibility = 'hidden';
       });
@@ -309,10 +303,10 @@ const prepared = await Promise.all(
       original.href = link.href;
       const position = template.replace('{current}', String(index + 1)).replace('{total}', String(links.length));
       counter.textContent = position;
-      caption.textContent = link.dataset.caption ?? '';
       load(link);
-      // One status per change: position, motif, style and placement. The detailed alt stays on the image.
-      status.textContent = `${position}: ${link.dataset.caption ?? ''}`;
+      // One status per change: position, motif, style and placement, for screen readers only; the lightbox
+      // shows no caption text. The detailed alt stays on the image.
+      status.textContent = `${position}: ${link.dataset.label ?? ''}`;
     };
 
     image.addEventListener('load', () => {
