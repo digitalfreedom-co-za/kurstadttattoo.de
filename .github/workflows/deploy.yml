@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    # Uploads into the gallery inbox change nothing on the site; the gallery publish workflow deploys them.
+    paths-ignore:
+      - 'gallery-inbox/**'
   workflow_dispatch:
 
 permissions:

@@ -1,0 +1,83 @@
+name: Gallery publish
+
+# Publishes the photos in gallery-inbox/ into the gallery (#51): once a month and on demand
+# (Actions, Gallery publish, Run workflow). scripts/gallery-inbox/publish.mjs optimises the photos and
+# updates src/data/gallery-new.json; the result is checked, built and committed to the branch the run
+# started on. A push with GITHUB_TOKEN starts no other workflow, so on main the deploy is started
+# explicitly (workflow_dispatch is the documented exception). No secrets needed.
+on:
+  schedule:
+    # 1st of every month, 06:00 UTC (07:00 or 08:00 in Bad Nauheim).
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: gallery-publish
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Report in the job summary: published, duplicates, files left in the inbox and why.
+      - name: Process the inbox
+        id: inbox
+        run: npm run gallery:publish
+
+      # Same checks as the deploy, so a broken photo never reaches the branch.
+      - name: Type check
+        if: steps.inbox.outputs.changed == 'true'
+        run: npx astro check
+
+      - name: Build
+        if: steps.inbox.outputs.changed == 'true'
+        run: npm run build
+
+      - name: Validate JSON-LD
+        if: steps.inbox.outputs.changed == 'true'
+        run: npm run validate:jsonld
+
+      # Author is the triggering user (commit message policy, wiki ci-cd.md).
+      - name: Commit and push
+        if: steps.inbox.outputs.changed == 'true'
+        env:
+          ACTOR: ${{ github.actor }}
+          ACTOR_ID: ${{ github.actor_id }}
+          BRANCH: ${{ github.ref_name }}
+          PUBLISHED: ${{ steps.inbox.outputs.published }}
+        run: |
+          git config user.name "$ACTOR"
+          git config user.email "$ACTOR_ID+$ACTOR@users.noreply.github.com"
+          git add -A gallery-inbox src/assets/images/galerie-neu src/data/gallery-new.json
+          if [ "$PUBLISHED" -gt 0 ]; then
+            git commit -m "Gallery: publish $PUBLISHED new photos from the inbox"
+          else
+            git commit -m "Gallery: tidy the inbox and the published photos"
+          fi
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:$BRANCH"
+
+      - name: Start the deploy
+        if: steps.inbox.outputs.changed == 'true' && github.ref_name == 'main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
