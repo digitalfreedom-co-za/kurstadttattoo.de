@@ -137,3 +137,23 @@ Run with Playwright, axe-core and Lighthouse from `/tmp` against `astro preview`
 - Finding 3 stays open: no `PUBLIC_CAL_LINK` repository variable is set, so the studio's own calendar does not exist yet and its reservation cannot be measured.
 - Finding 4 stays as is: cal.com main (ae027bb70, 13 November 2026) still takes the language only from a login or `Accept-Language` (`getLocale.ts`, last changed February 2026), and `embed.ts` has no locale option.
 - Not done: VoiceOver or NVDA speech (the checks above use the browser accessibility tree), real Safari.
+
+### Screen reader and Safari acceptance (open, manual)
+
+The tester review of PR #57 requires VoiceOver and NVDA for findings 1, 6, 7 and 8 and Safari keyboard scrolling for finding 1, in DE and EN. They could not be run in the fix round of 18 November 2026. What was checked:
+
+- NVDA runs only on Windows. The development Mac (macOS 26.6.2) has no Windows machine or virtual machine.
+- `safaridriver` refuses a session: "You must enable 'Allow remote automation' in the Developer section of Safari Settings". Turning it on (`safaridriver --enable`) needs the administrator password, which the run does not have.
+- VoiceOver cannot be controlled by script: `SCREnableAppleScript` is not set and the flag file in `/private/var/db/Accessibility/` needs administrator rights. Starting VoiceOver and sending keys to Safari by hand would take over the desktop that was in use at the time.
+
+So these checks are done by hand. Run them against the deployed build or `astro preview`, once in DE and once in EN, and record browser and version, screen reader and version, and the result per step on #46 and in PR #57.
+
+| Finding | Pages DE / EN | Steps | Expected |
+| --- | --- | --- | --- |
+| 1, Safari | `/datenschutz` / `/en/privacy` | Safari, window wider than 640 px; Settings, Advanced: "Press Tab to highlight each item" on. Tab to the storage table, then arrow right and left | The region gets the 2 px outline and the table scrolls sideways; no horizontal page scroll |
+| 1, screen reader | same | VoiceOver with Safari, NVDA with Firefox or Chrome; at 640 px and wider, then below 640 px | Wide: region `Einträge im Speicher Ihres Browsers` / `Entries in your browser storage` is announced, the table with caption and column headers per cell. Narrow: one list of term and definition pairs per entry |
+| 6 | `/galerie` / `/en/gallery` | Open a work, then press the next button | One announcement per change, e.g. `Bild 2 von 7: Schachkönig. Black and Grey, Unterarm` / `Image 2 of 7: Chess king. Black and grey, forearm`; the visible counter is not read separately; focus stays on the next button |
+| 7 | `/hygiene` / `/en/hygiene` | Heading list (VoiceOver rotor, NVDA H / Insert+F7) | `Was gehört nach dem Termin zur Hygiene?` level 2, `Wann Sie zum Arzt gehen` / `When to see a doctor` level 3 |
+| 8 | any page | Open the cookie settings | The dialog is announced with its title only, no description, focus on the title; each switch is read with its own description |
+
+To run Safari by WebDriver later, an administrator runs `safaridriver --enable` once and turns on "Allow remote automation" in Safari Settings, Developer.
