@@ -11,7 +11,7 @@
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import { BOOKING_PRIVACY_ANCHOR, CAL_DEMO_ACCOUNT_HOLDER, CAL_EMBED_SCRIPT, CAL_IS_DEMO, CAL_LINK, CAL_ORIGIN, CAL_PUBLIC_URL } from '../../config/booking';
-import { CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
+import { CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
 import { studio, phoneDisplay } from '../../config/site';
 import { pageExists } from '../../lib/pages';
 import { url } from '../../lib/url';
@@ -202,17 +202,22 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
   <!-- Sets the state before first paint (placeholder without consent, reserved calendar height with it), so
        the frame does not change size once the module script runs. Mirrors readConsent() in
        src/scripts/consent.ts for the booking category. -->
-  <script is:inline define:vars={{ key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, id: rootId }}>
+  <script is:inline define:vars={{ key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, maxAgeMonths: CONSENT_MAX_AGE_MONTHS, id: rootId }}>
     (function (root) {
       if (!root) return;
       var granted = false;
       try {
         var record = JSON.parse(localStorage.getItem(key) || 'null');
+        var made = record && new Date(record.timestamp);
+        var expires = made && new Date(made);
+        if (expires) expires.setMonth(expires.getMonth() + maxAgeMonths);
         granted =
           !!record &&
           record.version === version &&
           typeof record.timestamp === 'string' &&
           !isNaN(Date.parse(record.timestamp)) &&
+          made <= new Date() &&
+          new Date() < expires &&
           !!record.categories &&
           record.categories.booking === true;
       } catch (e) {}

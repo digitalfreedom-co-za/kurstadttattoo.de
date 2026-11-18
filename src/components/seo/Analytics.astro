@@ -5,13 +5,13 @@
 // gtag.js tag; it is injected only by loadGtag(), on a stored grant or on accept (src/scripts/analytics.ts).
 // The stored choice is the consent record of the dialog (src/config/consent.ts), checked like readConsent().
 import { ANALYTICS_ENABLED, GA4_ID } from '../../config/analytics';
-import { CONSENT_CATEGORIES, CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
+import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
 ---
 
 {
   ANALYTICS_ENABLED && (
     <>
-      <script is:inline define:vars={{ gaId: GA4_ID, key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, categories: CONSENT_CATEGORIES }}>
+      <script is:inline define:vars={{ gaId: GA4_ID, key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, maxAgeMonths: CONSENT_MAX_AGE_MONTHS, categories: CONSENT_CATEGORIES }}>
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () {
           dataLayer.push(arguments);
@@ -36,11 +36,16 @@ import { CONSENT_CATEGORIES, CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../
 
         try {
           var record = JSON.parse(localStorage.getItem(key) || 'null');
+          var made = record && new Date(record.timestamp);
+          var expires = made && new Date(made);
+          if (expires) expires.setMonth(expires.getMonth() + maxAgeMonths);
           if (
             record &&
             record.version === version &&
             typeof record.timestamp === 'string' &&
             !isNaN(Date.parse(record.timestamp)) &&
+            made <= new Date() &&
+            new Date() < expires &&
             record.categories &&
             categories.every(function (category) {
               return typeof record.categories[category] === 'boolean';

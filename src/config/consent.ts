@@ -10,10 +10,17 @@
 // website/COOKIE_POLICY.en.md § 3.1). Raise CONSENT_TEXT_VERSION whenever the purpose, the recipient or
 // the wording of the dialog changes in substance; a stored choice of an older version counts as no choice
 // and the dialog asks again. Switching analytics on changes the version too, so every visitor is asked.
+//
+// Proof of consent (legal website/COOKIE_POLICY.en.md § 5.2) stays on the visitor's side: the site is static
+// and the operator keeps no consent log (Decision Log #14, ticket #34). A record expires CONSENT_MAX_AGE_MONTHS
+// after its timestamp, the retention § 5.2 names; it is then removed and the dialog asks again.
 import { ANALYTICS_ENABLED } from './analytics';
 import { CAL_ENABLED } from './booking';
 
 export const CONSENT_STORAGE_KEY = 'kt-consent';
+
+/** Months a stored choice stays valid (COOKIE_POLICY § 5.2: 36 months). */
+export const CONSENT_MAX_AGE_MONTHS = 36;
 
 const CONSENT_TEXT_VERSION = '2026-11-12';
 
@@ -33,6 +40,14 @@ export interface ConsentRecord {
   /** ISO 8601 time of the decision. */
   timestamp: string;
   categories: Partial<Record<ConsentCategory, boolean>>;
+}
+
+/** True when a choice made at timestamp is older than CONSENT_MAX_AGE_MONTHS (or lies in the future). */
+export function consentExpired(timestamp: string, now: Date = new Date()): boolean {
+  const made = new Date(timestamp);
+  const expires = new Date(made);
+  expires.setMonth(expires.getMonth() + CONSENT_MAX_AGE_MONTHS);
+  return made > now || now >= expires;
 }
 
 /** Anchor of the consent section in the privacy policy, also the no-JS target of the footer link. */

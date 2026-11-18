@@ -859,7 +859,7 @@
           "consent": {
             "written": "when you make a choice in the notice, in the cookie settings or in the booking area",
             "purpose": "store your choice: version of the notice, time and which services may load",
-            "duration": "until you change your choice or clear your browser's storage",
+            "duration": "36 months from your latest choice, then we ask again; deleted earlier if you clear your browser's storage",
             "writtenNoCalendar": "when you make a choice in the notice or in the cookie settings"
           },
           "theme": {
@@ -920,7 +920,7 @@
         "title": "Consent and cookie settings",
         "intro": "We only ask whether the cal.com booking calendar may load when you want to load it on the appointment page. Declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com and no connection to cal.com is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or request your appointment by phone.",
         "introAnalytics": "On your first visit we ask whether the cal.com booking calendar and statistics with Google Analytics may load. You can choose each separately, declining is as easy as agreeing, and the website works fully without consent. Before you consent, nothing is loaded from cal.com or Google and no connection to these services is made. Instead of the calendar you see a placeholder from which you can load the calendar with your consent or arrange the appointment by phone or email.",
-        "record": "We store your answer in the entry {key} in your browser so that we do not ask again on every page. If the notice changes in substance, we ask again.",
+        "record": "We store your answer in the entry {key} in your browser so that we do not ask again on every page. The entry holds the version of the notice, the time and your selection, but no IP address and no identifier. It stays in your browser only, we keep no copy ourselves. After 36 months it expires: the website removes it on your next visit and asks again. If the notice changes in substance, we also ask again.",
         "withdraw": "You can withdraw or change your consent at any time with effect for the future, via the link Cookie settings at the bottom of every page or",
         "withdrawLink": "right here",
         "withdrawRest": "If the calendar has already loaded, the page reloads after the withdrawal so that it is removed. The lawfulness of processing up to the withdrawal remains unaffected.",
@@ -1363,7 +1363,7 @@
     "close": "Close without changes",
     "alwaysOn": "Always on",
     "necessaryTitle": "Necessary",
-    "necessaryText": "Stores your choice in this browser (localStorage, entry kt-consent with the version of the notice, the time and your selection), so we do not ask again. No identifier, read only by this website. No consent needed, § 25(2) no. 2 TDDDG.",
+    "necessaryText": "Stores your choice in this browser (localStorage, entry kt-consent with the version of the notice, the time and your selection), so we do not ask again for 36 months. No identifier, read only by this website. No consent needed, § 25(2) no. 2 TDDDG.",
     "bookingTitle": "External media: booking via cal.com",
     "bookingText": "Loads the booking calendar of Cal.com, Inc., San Francisco, USA, on the Book appointment page once it comes into view. cal.com then receives your IP address, browser and device details and the address of the page. Its service provider Cloudflare sets the cookie __cf_bm against automated access (30 minutes), and technical error reports go to Sentry. Transfer to the USA on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it the calendar stays off, and you request appointments by phone.",
     "analyticsTitle": "Statistics: Google Analytics",
