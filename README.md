@@ -92,6 +92,14 @@ Der Schalter `PUBLIC_INDEXABLE` (gesetzt im Deploy Workflow) steuert die Suchmas
 
 Der cal.com Kalender hängt an `PUBLIC_CAL_LINK` (Repository Variable des Deploy Workflows, siehe `src/config/booking.ts`). Ohne den Link des Studios bindet keine öffentliche Seite einen Kalender ein: Termine werden telefonisch angefragt, und Datenschutzerklärung und Cookie-Einstellungen sagen, dass kein Dienst eine Einwilligung braucht. Der Demo Kalender der Vorschau erscheint nur in einem Testbuild mit `PUBLIC_CAL_DEMO=true npm run build`, als Test gekennzeichnet; der Deploy Workflow setzt diese Variable nie.
 
+Der Demo Termintyp liegt im cal.com Konto `marcelrgberger` und ist im Legal Repository unter `processors/cal-com.md` erfasst (#38). Wechsel auf den Kalender des Studios, sobald RuW Lifestyle GmbH ein eigenes cal.com Konto hat:
+
+1. Das Konto gehört der GmbH; mit der Anlage gilt der AVV von cal.com. Kontoname und Datum in `processors/cal-com.md` eintragen.
+2. DPF Status von Cal.com, Inc. in der Data Privacy Framework List und die Datenschutzerklärung von cal.com am Tag des Wechsels prüfen; das Prüfdatum in `processors/cal-com.md` und im Text `privacyBooking.transfer` beider Wörterbücher eintragen.
+3. Repository Variable `PUBLIC_CAL_LINK` auf den Termintyp des Studios setzen. `CAL_IS_DEMO` wird falsch, Demo Hinweis und Demo Wortlaut der Datenschutzerklärung (Empfänger, Speicherdauer) weichen dem Live Wortlaut; beides in DE und EN prüfen.
+4. `CONSENT_TEXT_VERSION` in `src/config/consent.ts` erhöhen, weil der Empfänger der Buchungsdaten wechselt.
+5. Den Abschnitt zu kurstadttattoo.de aus `processors/cal-com.md` austragen: cal.com verarbeitet die Buchungen dann für die GmbH, nicht für DigitalFreedom.
+
 ## Galerie Eingang
 
 Das Studio stellt neue Fotos selbst ein (#51): Upload im Browser in den Ordner `gallery-inbox/`, die Anleitung für das Studio steht in `docs/galerie-anleitung.md`.
