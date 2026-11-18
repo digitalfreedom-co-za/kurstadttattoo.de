@@ -81,6 +81,16 @@ export const operator = {
 } as const;
 
 /**
+ * Processor that hosts the site for the operator (Art. 28 GDPR); it serves the site through GitHub Pages
+ * with GitHub, Inc. as sub-processor. Entity and address exactly as in the legal repo README (Operating
+ * company); the hosting chain is recorded in legal processors/github.md (issue #37).
+ */
+export const hostingProcessor = {
+  name: 'DigitalFreedom Global LLC',
+  address: '30 N Gould St, Ste N, Sheridan, WY 82801, USA',
+} as const;
+
+/**
  * Reopening at the new location. While active, the layout shows the reopening strip and the footer marks
  * the address as new. Switch off after the opening day; the build stays free of date logic so the HTML
  * is deterministic (wiki websites.md, IndexNow).

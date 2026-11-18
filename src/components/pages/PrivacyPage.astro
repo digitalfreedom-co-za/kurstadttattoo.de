@@ -18,7 +18,7 @@ import LegalProse from '../legal/LegalProse.astro';
 import { BOOKING_PRIVACY_ANCHOR, CAL_ENABLED } from '../../config/booking';
 import { ANALYTICS_ENABLED, GA4_COOKIE_MONTHS } from '../../config/analytics';
 import { CONSENT_ANCHOR, CONSENT_CATEGORIES, CONSENT_STORAGE_KEY } from '../../config/consent';
-import { operator, studio, phoneDisplay } from '../../config/site';
+import { hostingProcessor, operator, studio, phoneDisplay } from '../../config/site';
 import { localizedPath, t, type Locale } from '../../i18n';
 
 interface Props {
@@ -33,6 +33,10 @@ const breadcrumbs = [
   { name: dict.nav.items.privacy, path: localizedPath('privacy', locale) },
 ];
 const withOperator = (text: string) => text.replaceAll('{operator}', operator.name);
+const withProcessor = (text: string) =>
+  text
+    .replaceAll('{processor}', `${hostingProcessor.name}, ${hostingProcessor.address}`)
+    .replaceAll('{processorName}', hostingProcessor.name);
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 // Text variants for the services this build embeds: with calendar and statistics, with only one of them,
 // or with none, in which case nothing asks for consent and the consent record is never written.
@@ -153,11 +157,12 @@ const toc = [
         <p>{copy.controller.questions}</p>
 
         <h2 id="hosting">{copy.hosting.title}</h2>
-        <p>{copy.hosting.provider}</p>
+        <p>{withProcessor(copy.hosting.provider)}</p>
+        <p>{withProcessor(copy.hosting.processor)}</p>
         <p>{copy.hosting.logs}</p>
         <p>{copy.hosting.basis}</p>
         <p>
-          {copy.hosting.transfer}
+          {withProcessor(copy.hosting.transfer)}
           <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" {...external}>
             {copy.hosting.privacyLink}<span class="sr-only"> {copy.newWindow}</span></a
           >.

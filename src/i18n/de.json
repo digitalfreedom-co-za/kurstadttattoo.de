@@ -830,10 +830,11 @@
       },
       "hosting": {
         "title": "Hosting bei GitHub Pages",
-        "provider": "Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an die Server von GitHub. Dazu gehören Ihre IP-Adresse, Datum und Uhrzeit des Abrufs, die aufgerufene Adresse, die zuvor besuchte Seite (Referrer) sowie Angaben zu Browser und Betriebssystem.",
+        "provider": "Diese Website stellt die {processor}, in unserem Auftrag über GitHub Pages bereit, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an die Server von GitHub. Dazu gehören Ihre IP-Adresse, Datum und Uhrzeit des Abrufs, die aufgerufene Adresse, die zuvor besuchte Seite (Referrer) sowie Angaben zu Browser und Betriebssystem.",
+        "processor": "Die {processorName} ist unser Auftragsverarbeiter nach Art. 28 DSGVO. Sie verarbeitet diese Daten nur nach unseren Weisungen und auf Grundlage eines Vertrags über die Auftragsverarbeitung. Sie setzt dabei GitHub als Unterauftragsverarbeiter ein.",
         "logs": "Nach eigenen Angaben speichert GitHub die IP-Adresse der Besucher von GitHub Pages zu Sicherheitszwecken. Auf diese Protokolle haben wir keinen Zugriff, und wir werten sie nicht aus. Wie lange GitHub sie aufbewahrt, legt GitHub fest.",
         "basis": "Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einer sicheren und zuverlässigen Bereitstellung der Website.",
-        "transfer": "Dabei werden Daten in die USA übermittelt. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert; für die Übermittlung gilt damit der Angemessenheitsbeschluss der Europäischen Kommission nach Art. 45 DSGVO. Ergänzend stützt sich GitHub auf die Standardvertragsklauseln der Europäischen Kommission. Einzelheiten stehen in der",
+        "transfer": "Dabei werden Daten in die USA übermittelt. Für die Übermittlung an die {processorName} gelten die Standardvertragsklauseln der Europäischen Kommission (Art. 46 Abs. 2 lit. c DSGVO), die Teil des Vertrags über die Auftragsverarbeitung sind. GitHub ist nach dem EU-U.S. Data Privacy Framework zertifiziert; für die Übermittlung an GitHub gilt damit der Angemessenheitsbeschluss der Europäischen Kommission nach Art. 45 DSGVO. Ergänzend stützt sich GitHub auf die Standardvertragsklauseln der Europäischen Kommission. Einzelheiten stehen in der",
         "privacyLink": "Datenschutzerklärung von GitHub",
         "https": "Alle Seiten werden verschlüsselt über HTTPS übertragen."
       },
