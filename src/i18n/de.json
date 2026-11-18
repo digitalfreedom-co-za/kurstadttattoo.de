@@ -843,7 +843,7 @@
         "title": "Schriften, Speicher und Cookies",
         "fonts": "Die Schriften dieser Website liegen auf demselben Server wie die Seiten selbst. Beim Laden werden keine Daten an Schriftanbieter wie Google Fonts übertragen.",
         "ownTitle": "Was diese Website selbst speichert",
-        "entries": "Unsere eigenen Seiten setzen keine Cookies. Im Speicher Ihres Browsers (localStorage) legen sie nur die folgenden Einträge ab, jeweils erst, wenn Sie die zugehörige Funktion nutzen. Keiner dieser Einträge enthält eine Kennung, und keiner verlässt Ihren Browser.",
+        "entries": "Unsere eigenen Seiten setzen keine Cookies. Im Speicher Ihres Browsers legen sie nur die folgenden Einträge ab, jeweils erst, wenn Sie die zugehörige Funktion nutzen. Keiner dieser Einträge enthält eine Kennung, und keiner verlässt Ihren Browser.",
         "noTracking": "Wir verwenden keine Analyse oder Reichweitenmessung, keine Werbedienste und keine Social-Media-Plugins. Ein Dienst eines Dritten, der Kalender von cal.com, lädt nur mit Ihrer Einwilligung.",
         "noTrackingAnalytics": "Wir verwenden keine Werbedienste und keine Social-Media-Plugins. Der Kalender von cal.com und die Statistik mit Google Analytics laden nur mit Ihrer Einwilligung.",
         "columns": {
@@ -864,17 +864,18 @@
           },
           "theme": {
             "written": "wenn Sie die Darstellung zwischen hell und dunkel umschalten",
-            "purpose": "die gewählte Darstellung beim nächsten Seitenaufruf beibehalten",
-            "duration": "bis Sie den Speicher Ihres Browsers löschen"
+            "purpose": "die gewählte Darstellung bei den weiteren Seitenaufrufen in diesem Tab beibehalten",
+            "duration": "bis Sie den Tab oder das Browserfenster schließen"
           },
           "locale": {
             "written": "wenn Sie über den Sprachwechsel die Sprache wählen oder den Sprachhinweis schließen",
-            "purpose": "sich merken, dass Sie die Sprache selbst gewählt haben, damit der Sprachhinweis nicht erneut erscheint",
-            "duration": "bis Sie den Speicher Ihres Browsers löschen"
+            "purpose": "sich merken, dass Sie die Sprache selbst gewählt haben, damit der Sprachhinweis in diesem Tab nicht erneut erscheint",
+            "duration": "bis Sie den Tab oder das Browserfenster schließen"
           }
         },
         "necessary": "nicht nötig, unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG)",
         "where": "localStorage",
+        "whereSession": "sessionStorage",
         "categoryNecessary": "Notwendig",
         "basis": "Rechtsgrundlage für diese Einträge ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt darin, die von Ihnen gewählten Einstellungen beizubehalten und Ihre Entscheidung zur Einwilligung zu beachten und nachweisen zu können (Art. 7 Abs. 1 DSGVO).",
         "tableLabel": "Einträge im Speicher Ihres Browsers",
