@@ -1,6 +1,6 @@
 ---
 // Renders an <a> when href is set, otherwise a <button>. Internal hrefs (starting with /) get the base
-// path through url(). Hover: the fill turns neon, the icon nudges; no motion under reduced motion.
+// path through url(). Hover: the fill turns gold, the icon nudges; no motion under reduced motion.
 import type { HTMLAttributes } from 'astro/types';
 import Icon, { type IconName } from './Icon.astro';
 import { url } from '../../lib/url';
@@ -24,10 +24,10 @@ const { href, variant = 'primary', icon, type = 'button', class: className, ...r
 const resolvedHref = href?.startsWith('/') ? url(href) : href;
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-ink text-wall border border-ink hover:bg-neon hover:border-neon px-5 py-3 sm:px-6',
+  primary: 'bg-ink text-wall border border-ink hover:bg-gold hover:border-gold px-5 py-3 sm:px-6',
   secondary: 'bg-transparent text-ink border border-ink hover:bg-ink hover:text-wall px-5 py-3 sm:px-6',
-  inverse: 'bg-chalk text-night border border-chalk hover:bg-neon-glow hover:border-neon-glow px-5 py-3 sm:px-6',
-  text: 'border-b border-current/40 hover:border-neon hover:text-neon py-1',
+  inverse: 'bg-chalk text-night border border-chalk hover:bg-gold-glow hover:border-gold-glow px-5 py-3 sm:px-6',
+  text: 'border-b border-current/40 hover:border-gold hover:text-gold py-1',
 };
 
 const classes = [

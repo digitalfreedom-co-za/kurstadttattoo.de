@@ -5,6 +5,7 @@ Archive of the old Webador site, fetched with curl on 2026-11-12. This folder is
 - `html/`: original HTML of every page plus `sitemap.xml` and `robots.txt`, unchanged
 - `pages/`: text per page as Markdown (title, meta description, og:image, header banner, headings, text, links, embedded videos, image references). Wording is unchanged, only the structure is cleaned up. Navigation and footer are removed from the pages; the footer, which is the same on every page, is in `pages/_footer.md`
 - `images/`: every image of the site in the largest size Webador delivers, deduplicated, with descriptive names
+- `flyer/`: the studio flyer and two banners of November 2026 (not from the old site), source of the colour system, see `flyer/README.md`
 
 ## Pages
 

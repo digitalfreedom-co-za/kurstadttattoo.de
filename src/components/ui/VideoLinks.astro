@@ -16,10 +16,10 @@ interface Props {
 const { items, locale, tone = 'wall', class: className } = Astro.props;
 const copy = t(locale).videos;
 const night = tone === 'night';
-// On the always dark surface only the bright neon keeps hover and focus above 4.5:1 (dark neon: 2.71:1).
+// On the always dark surface only the bright gold keeps hover and focus above 4.5:1 (deep gold: 3.16:1).
 const accent = night
-  ? { hover: 'group-hover/video:text-neon-glow', focus: 'focus-visible:outline-neon-glow' }
-  : { hover: 'group-hover/video:text-neon', focus: 'focus-visible:outline-neon' };
+  ? { hover: 'group-hover/video:text-gold-glow', focus: 'focus-visible:outline-gold-glow' }
+  : { hover: 'group-hover/video:text-gold', focus: 'focus-visible:outline-gold' };
 ---
 
 <ul class:list={['border-t', night ? 'border-chalk/40' : 'border-ink', className]} data-reveal-group>
@@ -32,7 +32,7 @@ const accent = night
           target="_blank"
           class:list={['flex min-h-11 items-start gap-4 py-4 focus-visible:outline-2 focus-visible:outline-offset-2', accent.focus]}
         >
-          <Icon name="play" size={22} class:list={['mt-0.5 shrink-0', night ? 'text-neon-glow' : 'text-neon']} />
+          <Icon name="play" size={22} class:list={['mt-0.5 shrink-0', night ? 'text-gold-glow' : 'text-gold']} />
           <span class="min-w-0 flex-1">
             <span class:list={['block font-semibold transition-colors', accent.hover]}>{item.title}</span>
             <span class:list={['mt-0.5 block text-sm', night ? 'text-chalk-muted' : 'text-muted']}>

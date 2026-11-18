@@ -84,9 +84,9 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
 
   {
     CAL_IS_DEMO && (
-      <div class="mb-6 border-l-2 border-neon bg-wall px-4 py-4 md:px-6 md:py-5">
+      <div class="mb-6 border-l-2 border-gold bg-wall px-4 py-4 md:px-6 md:py-5">
         <p class="text-muted">
-          <span class="label mr-2 text-neon">{copy.demoLabel}</span>
+          <span class="label mr-2 text-gold">{copy.demoLabel}</span>
           {copy.demoText.replaceAll('{holder}', CAL_DEMO_ACCOUNT_HOLDER)}
         </p>
         <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -130,13 +130,13 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
         <ul class="mt-2 grid">
           <li>
             <a class={contactLinkClass} href={studio.phone.href}>
-              <Icon name="phone" size={18} class="shrink-0 text-neon" />
+              <Icon name="phone" size={18} class="shrink-0 text-gold" />
               <span><span class="sr-only">{dict.cta.callPrefix}: </span>{phoneDisplay(locale)}</span>
             </a>
           </li>
           <li>
             <a class={contactLinkClass} href={studio.email.href}>
-              <Icon name="mail" size={18} class="shrink-0 text-neon" />
+              <Icon name="mail" size={18} class="shrink-0 text-gold" />
               <span class="break-all"><span class="sr-only">{copy.emailPrefix} </span>{studio.email.display}</span>
             </a>
           </li>
@@ -180,7 +180,7 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
           {phoneDisplay(locale)}
         </Button>
         <a class={contactLinkClass} href={studio.email.href}>
-          <Icon name="mail" size={18} class="shrink-0 text-neon" />
+          <Icon name="mail" size={18} class="shrink-0 text-gold" />
           <span class="break-all"><span class="sr-only">{copy.emailPrefix} </span>{studio.email.display}</span>
         </a>
       </div>
@@ -189,7 +189,7 @@ const contactLinkClass = 'link inline-flex min-h-11 items-center gap-3 font-semi
         !CAL_IS_DEMO && (
           <p class="mt-4 text-sm">
             <a class={contactLinkClass} href={CAL_PUBLIC_URL} {...external}>
-              <Icon name="external" size={16} class="shrink-0 text-neon" />
+              <Icon name="external" size={16} class="shrink-0 text-gold" />
               {copy.calPage}
               <span class="sr-only"> {copy.newWindow}</span>
             </a>

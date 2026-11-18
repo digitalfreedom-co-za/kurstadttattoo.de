@@ -37,7 +37,7 @@ const consentHref = pageExists('privacy', locale) ? url(`${localizedPath('privac
         <p class="label mt-6 text-chalk-muted">{copy.studio.followLabel}</p>
         <p class="mt-1">
           <a class={`${linkClass} items-start gap-3 py-2 text-[0.9375rem]`} href={studio.tiktok.href} rel="noopener" target="_blank">
-            <Icon name="tiktok" size={18} class="mt-1 shrink-0 text-neon-glow" />
+            <Icon name="tiktok" size={18} class="mt-1 shrink-0 text-gold-glow" />
             <span>{copy.studio.tiktok}<span class="block text-sm text-chalk-muted">{studio.tiktok.handle}</span></span>
           </a>
         </p>
@@ -47,7 +47,7 @@ const consentHref = pageExists('privacy', locale) ? url(`${localizedPath('privac
         <p class="label text-chalk-muted">{copy.studio.addressLabel}</p>
         <address class="mt-3 grid gap-1 text-[0.9375rem] not-italic">
           <p class="flex gap-3">
-            <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon-glow" />
+            <Icon name="pin" size={18} class="mt-1 shrink-0 text-gold-glow" />
             <span>
               {address.street}
               <br />
@@ -57,20 +57,20 @@ const consentHref = pageExists('privacy', locale) ? url(`${localizedPath('privac
           </p>
           <p>
             <a class={`${linkClass} gap-3`} href={studio.phone.href}>
-              <Icon name="phone" size={18} class="shrink-0 text-neon-glow" />
+              <Icon name="phone" size={18} class="shrink-0 text-gold-glow" />
               <span><span class="sr-only">{copy.studio.phoneLabel} </span>{phoneDisplay(locale)}</span>
             </a>
           </p>
           <p>
             <a class={`${linkClass} gap-3 break-all`} href={studio.email.href}>
-              <Icon name="mail" size={18} class="shrink-0 text-neon-glow" />
+              <Icon name="mail" size={18} class="shrink-0 text-gold-glow" />
               <span><span class="sr-only">{copy.studio.emailLabel} </span>{studio.email.display}</span>
             </a>
           </p>
         </address>
         <p class="label mt-6 text-chalk-muted">{copy.studio.hoursLabel}</p>
         <p class="mt-3 flex gap-3 text-[0.9375rem]">
-          <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon-glow" />
+          <Icon name="clock" size={18} class="mt-1 shrink-0 text-gold-glow" />
           <span>
             {reopening.active && <span class="mb-1 block font-semibold">{copy.studio.closedNote}</span>}
             {copy.studio.hours}<span class="block text-sm text-chalk-muted">{copy.studio.hoursNote}</span>

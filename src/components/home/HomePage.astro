@@ -130,7 +130,7 @@ const faqHref = subpage('faq');
         {
           copy.hygiene.care.map((item) => (
             <li class="flex gap-4 border-b border-line py-4" data-reveal>
-              <Icon name="drop" size={20} class="mt-0.5 shrink-0 text-neon" />
+              <Icon name="drop" size={20} class="mt-0.5 shrink-0 text-gold" />
               <span>{item}</span>
             </li>
           ))
@@ -168,14 +168,14 @@ const faqHref = subpage('faq');
       />
     </div>
     <div class="min-w-0 md:col-span-6 md:col-start-7">
-      <span class="basin-rule text-chalk/40" data-reveal="rule" aria-hidden="true"></span>
+      <span class="basin-rule text-gold-glow" data-reveal="rule" aria-hidden="true"></span>
       <Eyebrow tone="night" class="mt-8">{copy.artists.eyebrow}</Eyebrow>
       <h2 id={`${copy.artists.id}-titel`} class="mt-4 text-h2">{copy.artists.title}</h2>
       <p class="mt-6 font-display text-h3" data-reveal>{copy.artists.lead}</p>
       <p class="mt-6 max-w-[34rem] text-chalk-muted" data-reveal>{copy.artists.text}</p>
       <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
         <a class="link inline-flex min-h-11 items-center gap-3 font-semibold no-underline hover:underline" href={studio.tiktok.href} rel="noopener" target="_blank">
-          <Icon name="tiktok" size={20} class="shrink-0 text-neon-glow" />
+          <Icon name="tiktok" size={20} class="shrink-0 text-gold-glow" />
           <span>{dict.studio.tiktok} <span class="text-chalk-muted">{studio.tiktok.handle}</span></span>
         </a>
         {artistsHref && <Button href={artistsHref} variant="inverse">{copy.artists.artistsLink}</Button>}
@@ -191,7 +191,7 @@ const faqHref = subpage('faq');
     <div class="min-w-0">
       <p class="label text-muted">{dict.studio.addressLabel}</p>
       <address class="mt-3 flex gap-3 not-italic">
-        <Icon name="pin" size={18} class="mt-1 shrink-0 text-neon" />
+        <Icon name="pin" size={18} class="mt-1 shrink-0 text-gold" />
         <span>{studio.name}<br />{address.street}<br />{`${address.postalCode} ${address.city}`}</span>
       </address>
       <a class="link mt-3 inline-flex min-h-11 items-center gap-2 font-semibold" href={studio.mapHref} rel="noopener" target="_blank">
@@ -203,7 +203,7 @@ const faqHref = subpage('faq');
     <div class="min-w-0">
       <p class="label text-muted">{dict.studio.hoursLabel}</p>
       <p class="mt-3 flex gap-3">
-        <Icon name="clock" size={18} class="mt-1 shrink-0 text-neon" />
+        <Icon name="clock" size={18} class="mt-1 shrink-0 text-gold" />
         <span>
           {reopening.active && <span class="mb-2 block font-semibold">{dict.studio.closedNote}</span>}
           {dict.studio.hours}<span class="block text-muted">{dict.studio.hoursNote}</span>
@@ -215,13 +215,13 @@ const faqHref = subpage('faq');
       <p class="label text-muted">{dict.studio.contactLabel}</p>
       <p class="mt-2">
         <a class="link inline-flex min-h-11 items-center gap-3 no-underline hover:underline" href={studio.phone.href}>
-          <Icon name="phone" size={18} class="shrink-0 text-neon" />
+          <Icon name="phone" size={18} class="shrink-0 text-gold" />
           <span><span class="sr-only">{dict.studio.phoneLabel} </span>{phoneDisplay(locale)}</span>
         </a>
       </p>
       <p>
         <a class="link inline-flex min-h-11 items-center gap-3 break-all no-underline hover:underline" href={studio.email.href}>
-          <Icon name="mail" size={18} class="shrink-0 text-neon" />
+          <Icon name="mail" size={18} class="shrink-0 text-gold" />
           <span><span class="sr-only">{dict.studio.emailLabel} </span>{studio.email.display}</span>
         </a>
       </p>

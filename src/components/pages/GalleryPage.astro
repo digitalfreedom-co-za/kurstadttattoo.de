@@ -43,7 +43,7 @@ const stylesId = 'stile';
             <li>
               <a
                 href={`#${group.id}`}
-                class="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold whitespace-nowrap transition-colors hover:text-neon"
+                class="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-semibold whitespace-nowrap transition-colors hover:text-gold"
               >
                 {group.title}
                 <span class="caption">({group.items.length})</span>
@@ -63,7 +63,7 @@ const stylesId = 'stile';
         <Gallery items={group.items} locale={locale} label={group.title} />
         <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
           <a class="link inline-flex min-h-11 items-center gap-2 font-semibold" href={bookingHref}>
-            <Icon name="dialog" size={18} class="shrink-0 text-neon" />
+            <Icon name="dialog" size={18} class="shrink-0 text-gold" />
             {copy.discuss}
           </a>
           <a class="link inline-flex min-h-11 items-center text-muted" href={`#${stylesId}`}>
