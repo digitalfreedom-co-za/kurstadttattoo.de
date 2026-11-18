@@ -768,15 +768,21 @@
         "text": "VAT identification number under section 27a of the German VAT Act:"
       },
       "profession": {
-        "title": "Job title",
-        "text": "{name}, tattoo artist and piercer"
+        "title": "Job title and professional regulations",
+        "text": "{name}, tattoo artist and piercer",
+        "regulated": "Professional regulations: not applicable. There is no regulated profession within the meaning of section 5(1) no. 5 DDG."
       },
       "studio": {
         "title": "Studio address",
         "reopening": "The studio opens at this new address on 1 December 2026."
       },
+      "editorial": {
+        "title": "Responsible for editorial content under section 18(2) MStV",
+        "text": "Not applicable: this website is not a journalistic editorial offering within the meaning of section 18(2) of the German Interstate Media Treaty (MStV)."
+      },
       "dispute": {
         "title": "Consumer dispute resolution",
+        "odr": "The European Commission's Online Dispute Resolution platform ceased operation on 20 July 2025. Regulation (EU) 2024/3228 repealed Regulation (EU) No 524/2013, under which the platform had been established. Consumers may contact {operator} directly at {email} or approach a competent alternative dispute resolution body in their country of residence.",
         "text": "{operator} is neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board."
       },
       "content": {
