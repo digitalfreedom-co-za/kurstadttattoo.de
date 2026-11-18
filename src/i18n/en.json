@@ -796,8 +796,9 @@
       "copyright": {
         "title": "Copyright",
         "paragraphs": [
-          "Texts, photos, graphics and the logo on this website are protected by German copyright law. Copying, editing, distributing or any other use beyond the limits of copyright law requires the written consent of the respective rights holder.",
-          "If you notice a copyright infringement, please let us know. We will then remove the content concerned without delay."
+          "Content and works created by {operator} on this website are protected by copyright. Which law governs that protection is determined by the country for which protection is claimed (Art. 5(2) of the Berne Convention, Art. 8(1) of the Rome II Regulation), not by the provider's seat and not by German law as a default.",
+          "Reproduction, adaptation, distribution and any form of exploitation beyond the limits of the applicable copyright law require the written consent of the respective author or creator. Downloads and copies of this website are permitted for private, non commercial use only.",
+          "Where content on this website was not created by {operator}, third party copyrights are respected and such content is marked as such. If you nevertheless become aware of a copyright infringement, please let us know. As soon as we become aware of an infringement, we will remove the content concerned without delay."
         ]
       },
       "privacy": {

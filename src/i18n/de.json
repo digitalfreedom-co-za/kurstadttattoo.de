@@ -796,8 +796,9 @@
       "copyright": {
         "title": "Urheberrecht",
         "paragraphs": [
-          "Texte, Fotos, Grafiken und das Logo auf dieser Website unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Rechteinhabers.",
-          "Sollten Sie auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen Hinweis. Wir entfernen betroffene Inhalte dann umgehend."
+          "Die von der {operator} erstellten Inhalte und Werke auf dieser Website sind urheberrechtlich geschützt. Welches Recht für diesen Schutz gilt, richtet sich nach dem Land, für das der Schutz beansprucht wird (Art. 5 Abs. 2 der Berner Übereinkunft, Art. 8 Abs. 1 der Rom-II-Verordnung), nicht nach dem Sitz des Anbieters und nicht ersatzweise nach deutschem Recht.",
+          "Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des jeweils anwendbaren Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Urhebers oder Erstellers. Downloads und Kopien dieser Website sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.",
+          "Soweit Inhalte auf dieser Website nicht von der {operator} erstellt wurden, werden die Urheberrechte Dritter beachtet und diese Inhalte als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen Hinweis. Sobald wir von einer Rechtsverletzung erfahren, entfernen wir den betroffenen Inhalt umgehend."
         ]
       },
       "privacy": {
