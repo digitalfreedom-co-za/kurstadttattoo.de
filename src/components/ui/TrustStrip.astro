@@ -50,13 +50,13 @@ const hrefOf = (key: string) => {
             ]}
             data-reveal
           >
-            <Icon name={icons[item.key] ?? 'calendar'} size={24} class="mt-0.5 shrink-0 text-neon" />
+            <Icon name={icons[item.key] ?? 'calendar'} size={24} class="mt-0.5 shrink-0 text-gold" />
             <div class="min-w-0">
               <p class="font-display text-lg font-semibold">
                 {hrefOf(item.key) ? (
                   <a
                     href={hrefOf(item.key)}
-                    class="transition-colors group-hover/trust:text-neon after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-neon"
+                    class="transition-colors group-hover/trust:text-gold after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-gold"
                   >
                     <span class="sr-only">{copy.linkPrefix} </span>
                     {item.title}

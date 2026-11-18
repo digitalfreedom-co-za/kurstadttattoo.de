@@ -24,10 +24,10 @@ const { items, locale, class: className } = Astro.props;
           </li>
         ) : (
           <li class="flex items-center gap-3">
-            <a class="inline-flex min-h-11 items-center no-underline transition-colors hover:text-neon" href={url(item.path)}>
+            <a class="inline-flex min-h-11 items-center no-underline transition-colors hover:text-gold" href={url(item.path)}>
               {item.name}
             </a>
-            <span class="h-[3px] w-3 bg-neon" aria-hidden="true" />
+            <span class="h-[3px] w-3 bg-gold" aria-hidden="true" />
           </li>
         ),
       )

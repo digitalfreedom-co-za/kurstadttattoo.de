@@ -32,7 +32,7 @@ const phases = copy.phases;
         phases.items.map((phase, index) => (
           <li class="min-w-0 border-b border-line py-8 lg:border-b-0 lg:border-l lg:px-8 lg:first:border-l-0 lg:first:pl-0" data-reveal>
             <p class="flex items-baseline gap-3">
-              <span class="font-display text-h2 leading-none text-neon" aria-hidden="true">{index + 1}</span>
+              <span class="font-display text-h2 leading-none text-gold" aria-hidden="true">{index + 1}</span>
               <span class="label text-muted" aria-hidden="true">{phases.prefix}</span>
             </p>
             <h3 class="mt-4 text-h3">
@@ -42,7 +42,7 @@ const phases = copy.phases;
             <ul class="mt-5 grid gap-3">
               {phase.points.map((point) => (
                 <li class="flex gap-3">
-                  <span class="mt-[0.6em] h-[3px] w-3 shrink-0 bg-neon" aria-hidden="true" />
+                  <span class="mt-[0.6em] h-[3px] w-3 shrink-0 bg-gold" aria-hidden="true" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -57,7 +57,7 @@ const phases = copy.phases;
     <div class="grid gap-10 md:grid-cols-12 md:gap-x-8">
       <section id={copy.warning.id} aria-labelledby={`${copy.warning.id}-titel`} class="min-w-0 self-start border border-ink bg-wall p-6 md:col-span-6 md:p-8" data-reveal>
         <p class="label flex items-center gap-3 text-muted">
-          <Icon name="alert" size={20} class="shrink-0 text-neon" />
+          <Icon name="alert" size={20} class="shrink-0 text-gold" />
           {copy.warning.eyebrow}
         </p>
         <h2 id={`${copy.warning.id}-titel`} class="mt-4 text-h3">{copy.warning.title}</h2>

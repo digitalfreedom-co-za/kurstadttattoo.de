@@ -69,7 +69,7 @@ const [atWork, workstation] = copy.studio.figures;
           <figcaption class="caption mt-3 border-t border-line pt-2">{workstation.caption}</figcaption>
         </figure>
         <p class="flex gap-3 border-t border-ink pt-5" data-reveal>
-          <Icon name="dialog" size={20} class="mt-0.5 shrink-0 text-neon" />
+          <Icon name="dialog" size={20} class="mt-0.5 shrink-0 text-gold" />
           <span>{copy.studio.questions}</span>
         </p>
         <Button href={studio.phone.href} icon="phone" class="self-start">
@@ -85,7 +85,7 @@ const [atWork, workstation] = copy.studio.figures;
         {
           copy.healing.items.map((item) => (
             <li class="flex gap-4 border-b border-line py-4" data-reveal>
-              <Icon name="drop" size={20} class="mt-0.5 shrink-0 text-neon" />
+              <Icon name="drop" size={20} class="mt-0.5 shrink-0 text-gold" />
               <span>{item}</span>
             </li>
           ))
@@ -94,7 +94,7 @@ const [atWork, workstation] = copy.studio.figures;
       <div class="min-w-0 md:col-span-4 md:col-start-9">
         <aside class="border border-ink bg-wall p-6" aria-labelledby="arzt-titel" data-reveal>
           <h3 id="arzt-titel" class="flex items-center gap-3 font-display text-lg font-semibold">
-            <Icon name="alert" size={22} class="shrink-0 text-neon" />
+            <Icon name="alert" size={22} class="shrink-0 text-gold" />
             {copy.healing.warningTitle}
           </h3>
           <p class="mt-3 text-muted">{copy.healing.warning}</p>

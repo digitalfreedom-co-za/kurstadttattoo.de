@@ -1,7 +1,8 @@
 <!doctype html>
 <!-- Source of public/og/kurstadttattoo-og-{de,en}.png (1200 x 630). Rendered with scripts/og-image/render.sh,
      which opens this file with ?lang=de or ?lang=en. Site fonts, the studio logo and the hero piece of the
-     landing page; colours from the design tokens in src/styles/global.css (night, chalk, neon). Only facts
+     landing page; colours from the design tokens in src/styles/global.css (night, chalk, gold-glow), taken from the studio
+     flyer in docs/source-content/flyer/. Only facts
      that do not expire: no reopening date on the card. -->
 <html lang="de">
   <head>
@@ -18,11 +19,11 @@
         font-weight: 400 700;
       }
       :root {
-        --night: #0f0e10;
-        --night-soft: #1a181c;
-        --chalk: #f1efeb;
-        --chalk-muted: #aaa6ae;
-        --neon-glow: #f472d0;
+        --night: #0b0703;
+        --night-soft: #18120a;
+        --chalk: #f8f4e8;
+        --chalk-muted: #b3a892;
+        --gold-glow: #e5bd63;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html, body { width: 1200px; height: 630px; overflow: hidden; }
@@ -42,11 +43,19 @@
       .label {
         font-size: 15px;
         font-weight: 600;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
       }
       .brand { display: flex; align-items: center; gap: 22px; }
-      .brand img { width: 92px; height: 92px; filter: invert(1); }
+      /* The logo is a black SVG; tinted gold through a mask so it matches the gold of the flyer. */
+      .brand .mark {
+        width: 92px;
+        height: 92px;
+        flex-shrink: 0;
+        background: var(--gold-glow);
+        -webkit-mask: url('../../src/assets/brand/logo.svg') center / contain no-repeat;
+        mask: url('../../src/assets/brand/logo.svg') center / contain no-repeat;
+      }
       .brand .name {
         font-family: 'Syne', Arial, sans-serif;
         font-weight: 700;
@@ -62,7 +71,7 @@
         line-height: 1.02;
         letter-spacing: -0.02em;
       }
-      h1 span { color: var(--neon-glow); white-space: nowrap; }
+      h1 span { color: var(--gold-glow); white-space: nowrap; }
       .lead {
         margin-top: 22px;
         max-width: 620px;
@@ -70,7 +79,7 @@
         line-height: 1.4;
         color: var(--chalk-muted);
       }
-      /* Double rule: thin rim over a heavy base, the basin of the fountain in the logo. */
+      /* Double rule in gold: thin rim over a heavy base, the basin of the fountain in the logo. */
       .foot {
         position: relative;
         margin-top: 44px;
@@ -79,11 +88,11 @@
         justify-content: space-between;
         align-items: baseline;
       }
-      .foot::before, .foot::after { content: ''; position: absolute; left: 0; right: 0; background: var(--chalk); }
+      .foot::before, .foot::after { content: ''; position: absolute; left: 0; right: 0; background: var(--gold-glow); }
       .foot::before { top: -10px; height: 1px; opacity: 0.6; }
       .foot::after { top: -4px; height: 4px; }
       .address { font-size: 21px; }
-      .domain { color: var(--neon-glow); }
+      .domain { color: var(--gold-glow); }
       .photo { position: relative; overflow: hidden; }
       .photo img {
         width: 100%;
@@ -96,7 +105,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        box-shadow: inset 6px 0 0 var(--neon-glow);
+        box-shadow: inset 6px 0 0 var(--gold-glow);
         z-index: 1;
       }
     </style>
@@ -104,7 +113,7 @@
   <body>
     <main class="sheet">
       <div class="brand">
-        <img src="../../src/assets/brand/logo.svg" alt="" />
+        <span class="mark" aria-hidden="true"></span>
         <div>
           <p class="name">KurstadtTattoo</p>
           <p class="label place" data-text="place"></p>

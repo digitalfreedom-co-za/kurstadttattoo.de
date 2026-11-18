@@ -34,7 +34,7 @@ const { items, variant = 'accordion', name, class: className } = Astro.props;
       {items.map((item) => (
         <details class="group/faq border-b border-line" name={name} data-reveal>
           <summary class="flex min-h-11 cursor-pointer list-none items-start gap-4 py-5 md:gap-8 md:py-6 [&::-webkit-details-marker]:hidden">
-            <span class="flex-1 text-h4 font-semibold transition-colors group-hover/faq:text-neon">{item.question}</span>
+            <span class="flex-1 text-h4 font-semibold transition-colors group-hover/faq:text-gold">{item.question}</span>
             <span class="relative mt-1.5 size-4 shrink-0" aria-hidden="true">
               <span class="absolute top-1/2 left-0 h-px w-4 bg-current" />
               <span class="absolute top-0 left-1/2 h-4 w-px bg-current transition-transform duration-300 group-open/faq:scale-y-0" />

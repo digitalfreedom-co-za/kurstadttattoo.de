@@ -37,7 +37,7 @@ const linkClass = 'link inline-flex min-h-11 items-center gap-3 font-semibold no
             {dict.cta.callPrefix}: {phoneDisplay(locale)}
           </Button>
           <a class={linkClass} href={studio.email.href}>
-            <Icon name="mail" size={18} class="shrink-0 text-neon" />
+            <Icon name="mail" size={18} class="shrink-0 text-gold" />
             <span class="break-all">
               <span class="sr-only">{dict.booking.emailPrefix} </span>
               {studio.email.display}
@@ -50,7 +50,7 @@ const linkClass = 'link inline-flex min-h-11 items-center gap-3 font-semibold no
             {dict.booking.label}
           </Button>
           <a class={linkClass} href={studio.phone.href}>
-            <Icon name="phone" size={18} class="shrink-0 text-neon" />
+            <Icon name="phone" size={18} class="shrink-0 text-gold" />
             <span>
               <span class="sr-only">{dict.cta.callPrefix}: </span>
               {phoneDisplay(locale)}
@@ -89,7 +89,7 @@ const linkClass = 'link inline-flex min-h-11 items-center gap-3 font-semibold no
       <Section id={BOOKING_ANCHOR} density="support" tone="deep">
         <details class="booking-demo">
           <summary class="flex min-h-11 cursor-pointer items-center gap-3 font-display text-h4 font-semibold">
-            <Icon name="calendar" size={20} class="shrink-0 text-neon" />
+            <Icon name="calendar" size={20} class="shrink-0 text-gold" />
             {dict.booking.demoSummary}
           </summary>
           <div class="mt-6">

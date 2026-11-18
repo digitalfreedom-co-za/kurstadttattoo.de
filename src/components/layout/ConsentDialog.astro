@@ -59,7 +59,7 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
           <section data-consent-view="notice" class="grid gap-5 lg:grid-cols-12 lg:gap-x-8">
             <div class="min-w-0 lg:col-span-8">
               <p class="label flex items-center gap-3 text-muted">
-                <span class="h-px w-6 bg-neon" aria-hidden="true"></span>{copy.eyebrow}
+                <span class="h-px w-6 bg-gold" aria-hidden="true"></span>{copy.eyebrow}
               </p>
               <h2 id="consent-notice-title" class="mt-3 font-display text-h4 font-semibold focus:outline-none" tabindex="-1">
                 {noticeTitle}
@@ -96,7 +96,7 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
       <div class="flex items-start justify-between gap-4">
         <div>
           <p class="label flex items-center gap-3 text-muted">
-            <span class="h-px w-6 bg-neon" aria-hidden="true"></span>{copy.eyebrow}
+            <span class="h-px w-6 bg-gold" aria-hidden="true"></span>{copy.eyebrow}
           </p>
           <h2 id="consent-settings-title" class="mt-3 font-display text-h4 font-semibold focus:outline-none" tabindex="-1">
             {copy.settingsTitle}
@@ -104,7 +104,7 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
         </div>
         <button
           type="button"
-          class="inline-flex size-11 shrink-0 items-center justify-center transition-colors hover:text-neon"
+          class="inline-flex size-11 shrink-0 items-center justify-center transition-colors hover:text-gold"
           aria-label={copy.close}
           title={copy.close}
           data-consent-action="close"
@@ -189,11 +189,11 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
     border-top: 2px solid var(--color-ink);
     background: var(--color-wall);
     color: var(--color-ink);
-    box-shadow: 0 -18px 40px -24px rgb(15 14 16 / 0.55);
+    box-shadow: 0 -18px 40px -24px rgb(11 7 3 / 0.55);
   }
 
   .consent::backdrop {
-    background: rgb(15 14 16 / 0.4);
+    background: rgb(11 7 3 / 0.4);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -260,8 +260,8 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
   }
 
   .consent-switch input:checked + span {
-    background: var(--color-neon);
-    border-color: var(--color-neon);
+    background: var(--color-gold);
+    border-color: var(--color-gold);
   }
 
   .consent-switch input:checked + span::after {
@@ -270,7 +270,7 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
   }
 
   .consent-switch input:focus-visible + span {
-    outline: 2px solid var(--color-neon);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
   }
 

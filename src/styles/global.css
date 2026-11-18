@@ -2,30 +2,35 @@
 @plugin '@tailwindcss/typography';
 
 /*
- * Design tokens. Direction: a gallery for skin art. White studio walls, black ink and the black
- * reception counter, one accent from the magenta neon logo on the studio wall. The double rule
- * (thin rim over a heavy base) is the basin of the fountain in the logo.
+ * Design tokens. Direction: a gallery for skin art, in the colours of the studio flyer
+ * (docs/source-content/flyer/): warm black, gold leaf and ivory. The double rule (thin rim over a
+ * heavy base) is the basin of the fountain in the logo.
+ *
+ * Colours sampled from the flyer: black #0b0703 (background), gold #e5bd63 (script lettering, icon
+ * rings), ivory #f8f4e8 (body text). Gold is an accent on dark: on the light wall it darkens to the
+ * shadow tone of the gold leaf (#7a5a1e, 5.7:1 on wall) so text and icons keep WCAG AA; the bright
+ * gold only ever sits on the black surfaces.
  *
  * Theming (wiki websites.md): light is the default, dark only after an explicit choice in the theme
  * toggle. The themed colours are plain @theme tokens; html[data-theme='dark'] overrides their values,
  * so every utility (bg-wall, text-ink, border-line, opacity modifiers) follows the theme.
- * night, chalk and neon-glow stay dark or bright in both themes: surfaces that are always dark
- * (footer, CTA band, like the counter) and the bright neon that only works on them.
+ * night, chalk and gold-glow stay dark or bright in both themes: surfaces that are always dark
+ * (footer, CTA band, like the flyer) and the bright gold that only works on them.
  */
 @theme {
   --color-*: initial;
-  --color-wall: #f5f4f1;
-  --color-wall-deep: #eae8e3;
-  --color-ink: #121113;
-  --color-ink-soft: #2b292e;
-  --color-muted: #56535b;
-  --color-line: #cfcbc3;
-  --color-neon: #a3157c;
-  --color-night: #0f0e10;
-  --color-night-soft: #1a181c;
-  --color-chalk: #f1efeb;
-  --color-chalk-muted: #aaa6ae;
-  --color-neon-glow: #f472d0;
+  --color-wall: #f7f3ea;
+  --color-wall-deep: #ede5d3;
+  --color-ink: #120d08;
+  --color-ink-soft: #2a2219;
+  --color-muted: #5c5246;
+  --color-line: #cdc1a8;
+  --color-gold: #7a5a1e;
+  --color-night: #0b0703;
+  --color-night-soft: #18120a;
+  --color-chalk: #f8f4e8;
+  --color-chalk-muted: #b3a892;
+  --color-gold-glow: #e5bd63;
   --color-white: #ffffff;
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -37,7 +42,8 @@
      for a long word like KurstadtTattoo on a 320px phone. */
   --text-label: 0.75rem;
   --text-label--line-height: 1.3;
-  --text-label--letter-spacing: 0.14em;
+  /* Wide tracked capitals as on the flyer (KUNST, LEIDENSCHAFT, CHARAKTER). */
+  --text-label--letter-spacing: 0.18em;
   --text-sm: 0.875rem;
   --text-sm--line-height: 1.5;
   --text-base: 1.0625rem;
@@ -77,18 +83,18 @@
     --reveal-stagger: 70ms;
   }
 
-  /* Dark theme: the studio after hours. The counter black becomes the wall, the neon gets brighter. */
+  /* Dark theme: the flyer itself. Warm black becomes the wall, the accent turns to bright gold. */
   :root[data-theme='dark'] {
     color-scheme: dark;
-    --color-wall: #0f0e10;
-    --color-wall-deep: #1a181c;
-    --color-ink: #f1efeb;
-    --color-ink-soft: #dcd9d4;
-    --color-muted: #aaa6ae;
-    --color-line: #36333a;
-    --color-neon: #f472d0;
-    --color-night: #070608;
-    --color-night-soft: #141216;
+    --color-wall: #0b0703;
+    --color-wall-deep: #18120a;
+    --color-ink: #f8f4e8;
+    --color-ink-soft: #e6dece;
+    --color-muted: #b3a892;
+    --color-line: #3b3022;
+    --color-gold: #e5bd63;
+    --color-night: #050302;
+    --color-night-soft: #120d07;
   }
 
   @media (min-width: 64rem) {
@@ -137,19 +143,19 @@
   }
 
   ::selection {
-    background-color: var(--color-neon);
+    background-color: var(--color-gold);
     color: var(--color-wall);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-neon);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
     border-radius: var(--radius-xs);
   }
 
-  /* On the always dark surfaces the bright neon keeps the focus ring above 3:1. */
+  /* On the always dark surfaces the bright gold keeps the focus ring above 3:1. */
   :where(.bg-night, .bg-night-soft) :focus-visible {
-    outline-color: var(--color-neon-glow);
+    outline-color: var(--color-gold-glow);
   }
 
   a {
@@ -209,7 +215,8 @@
     inset: -4px;
   }
 
-  /* The basin of the fountain in the logo: a thin rim over a heavy base. Section openers and the footer. */
+  /* The basin of the fountain in the logo: a thin rim over a heavy base, in gold like the dividers on the
+     flyer. Section openers and the footer. */
   .basin-rule {
     display: block;
     height: 7px;
@@ -218,7 +225,7 @@
       linear-gradient(currentColor, currentColor) bottom left / 100% 3px no-repeat;
   }
 
-  /* Inline text link: the underline takes the neon colour on hover. */
+  /* Inline text link: the underline takes the gold colour on hover. */
   .link {
     color: inherit;
     text-decoration-line: underline;
@@ -229,12 +236,12 @@
   }
 
   .link:hover {
-    color: var(--color-neon);
+    color: var(--color-gold);
     text-decoration-color: currentColor;
   }
 
   :where(.bg-night, .bg-night-soft) .link:hover {
-    color: var(--color-neon-glow);
+    color: var(--color-gold-glow);
   }
 }
 

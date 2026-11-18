@@ -162,7 +162,7 @@ const prepared = await Promise.all(
         <p class="label text-chalk-muted" aria-hidden="true" data-lightbox-counter data-template={copy.counter}></p>
         <button
           type="button"
-          class="flex size-11 items-center justify-center text-chalk transition-colors hover:text-neon-glow"
+          class="flex size-11 items-center justify-center text-chalk transition-colors hover:text-gold-glow"
           aria-label={copy.close}
           title={copy.close}
           data-lightbox-close
@@ -184,7 +184,7 @@ const prepared = await Promise.all(
         {
           enquireHref && (
             <a class="link inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-chalk" href={enquireHref}>
-              <Icon name="dialog" size={18} class="shrink-0 text-neon-glow" />
+              <Icon name="dialog" size={18} class="shrink-0 text-gold-glow" />
               {copy.enquire}
               <span class="sr-only">({bookingLabel(dict.booking)})</span>
             </a>
@@ -194,7 +194,7 @@ const prepared = await Promise.all(
       <div class="lightbox-x lightbox-nav flex justify-center gap-3 pb-[max(1rem,env(safe-area-inset-bottom))] md:pointer-events-none md:absolute md:inset-x-0 md:top-1/2 md:-translate-y-1/2 md:justify-between md:pb-0">
         <button
           type="button"
-          class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-neon-glow hover:text-neon-glow"
+          class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-gold-glow hover:text-gold-glow"
           aria-label={copy.prev}
           title={copy.prev}
           data-lightbox-prev
@@ -203,7 +203,7 @@ const prepared = await Promise.all(
         </button>
         <button
           type="button"
-          class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-neon-glow hover:text-neon-glow"
+          class="pointer-events-auto flex size-11 items-center justify-center border border-chalk/30 text-chalk transition-colors hover:border-gold-glow hover:text-gold-glow"
           aria-label={copy.next}
           title={copy.next}
           data-lightbox-next

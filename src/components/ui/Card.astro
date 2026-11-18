@@ -41,14 +41,14 @@ const resolvedHref = href?.startsWith('/') ? url(href) : href;
       class:list={[
         kicker && 'mt-3',
         Heading === 'h3' ? 'text-h3' : 'text-h4',
-        resolvedHref && 'transition-colors group-hover/card:text-neon group-has-[a:focus-visible]/card:text-neon',
+        resolvedHref && 'transition-colors group-hover/card:text-gold group-has-[a:focus-visible]/card:text-gold',
       ]}
     >
       {
         resolvedHref ? (
           <a
             href={resolvedHref}
-            class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-neon"
+            class="after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-gold"
           >
             {title}
           </a>
@@ -67,7 +67,7 @@ const resolvedHref = href?.startsWith('/') ? url(href) : href;
     {
       resolvedHref && linkLabel && (
         <p class="mt-auto pt-5 text-sm font-semibold" aria-hidden="true">
-          <span class="border-b border-current/40 transition-colors group-hover/card:border-neon group-hover/card:text-neon">
+          <span class="border-b border-current/40 transition-colors group-hover/card:border-gold group-hover/card:text-gold">
             {linkLabel}
           </span>
         </p>
