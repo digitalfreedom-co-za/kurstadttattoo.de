@@ -4,6 +4,9 @@
 // stub, consent defaults all denied, loadGtag() and the restore of a stored grant. There is no static
 // gtag.js tag; it is injected only by loadGtag(), on a stored grant or on accept (src/scripts/analytics.ts).
 // The stored choice is the consent record of the dialog (src/config/consent.ts), checked like readConsent().
+// Do Not Track or Global Privacy Control (legal website/COOKIE_POLICY.en.md § 7) is detected here, once, as
+// the earliest script of the page: with either signal gtag.js never loads, whatever the visitor chose. The
+// result is window.__privacySignal, read by privacySignal() in src/scripts/consent.ts.
 import { ANALYTICS_ENABLED, GA4_COOKIE_EXPIRES_SECONDS, GA4_ID } from '../../config/analytics';
 import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
 ---
@@ -12,6 +15,12 @@ import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSEN
   ANALYTICS_ENABLED && (
     <>
       <script is:inline define:vars={{ gaId: GA4_ID, cookieExpires: GA4_COOKIE_EXPIRES_SECONDS, key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, maxAgeMonths: CONSENT_MAX_AGE_MONTHS, categories: CONSENT_CATEGORIES }}>
+        window.__privacySignal =
+          navigator.globalPrivacyControl === true ||
+          [navigator.doNotTrack, window.doNotTrack, navigator.msDoNotTrack].some(function (value) {
+            return value === '1' || value === 'yes';
+          });
+
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () {
           dataLayer.push(arguments);
@@ -24,7 +33,7 @@ import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSEN
         });
 
         window.loadGtag = function () {
-          if (window.__gtagLoaded) return;
+          if (window.__gtagLoaded || window.__privacySignal) return;
           window.__gtagLoaded = true;
           var s = document.createElement('script');
           s.async = true;
@@ -45,6 +54,7 @@ import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSEN
             expires.setDate(Math.min(made.getDate(), new Date(expires.getFullYear(), expires.getMonth() + 1, 0).getDate()));
           }
           if (
+            !window.__privacySignal &&
             record &&
             record.version === version &&
             typeof record.timestamp === 'string' &&

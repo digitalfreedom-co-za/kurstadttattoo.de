@@ -9,8 +9,24 @@ import {
   type ConsentRecord,
 } from '../config/consent';
 
+declare global {
+  interface Window {
+    /** Set by the analytics head snippet (src/components/seo/Analytics.astro). */
+    __privacySignal?: boolean;
+  }
+}
+
 export const CONSENT_CHANGE_EVENT = 'consent:change';
 export const CONSENT_OPEN_EVENT = 'consent:open';
+
+/**
+ * True when the browser sends Do Not Track or Global Privacy Control. Statistics then stay off whatever the
+ * visitor chooses (legal website/COOKIE_POLICY.en.md § 7). Detected once by the analytics head snippet, which
+ * exists only while analytics is configured; without it there is nothing to limit.
+ */
+export function privacySignal(): boolean {
+  return window.__privacySignal === true;
+}
 
 /** Choice made on this page view, used when localStorage refuses to store it. */
 let sessionConsent: ConsentRecord | null = null;
@@ -64,6 +80,9 @@ export function saveConsent(categories: Partial<Record<ConsentCategory, boolean>
   const merged = Object.fromEntries(
     CONSENT_CATEGORIES.map((category) => [category, categories[category] ?? previous[category] === true]),
   );
+  // Under Do Not Track or Global Privacy Control an accept never stores a statistics consent that would take
+  // effect once the signal is gone.
+  if ('analytics' in merged && privacySignal()) merged.analytics = false;
   const record: ConsentRecord = { version: CONSENT_VERSION, timestamp: new Date().toISOString(), categories: merged };
   try {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(record));

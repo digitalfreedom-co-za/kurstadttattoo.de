@@ -17,6 +17,9 @@
 // dialog description: its categories carry their own descriptions on the switches. Focus moves to the title, Tab is held inside the dialog, Escape closes it without a decision:
 // nothing is stored or loaded, and the notice returns on the next page. Closing returns focus to the
 // control that opened it. Without JS the dialog never opens and nothing loads.
+// Do Not Track or Global Privacy Control (privacySignal() in src/scripts/consent.ts): the statistics switch
+// stays off and disabled with a note why, and the notice does not open by itself, because there is nothing
+// left to ask (legal website/COOKIE_POLICY.en.md § 7).
 import Button from '../ui/Button.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
@@ -144,6 +147,11 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
               <p id={`consent-${category.key}-text`} class="col-span-2 text-muted sm:col-span-1">
                 {category.text}
               </p>
+              {category.key === 'analytics' && (
+                <p id="consent-analytics-signal" class="col-span-2 font-semibold sm:col-span-1" hidden data-privacy-signal-note>
+                  {copy.analyticsSignal}
+                </p>
+              )}
             </div>
           ))
         }
@@ -269,6 +277,14 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
     background: var(--color-wall);
   }
 
+  .consent-switch input:disabled {
+    cursor: not-allowed;
+  }
+
+  .consent-switch input:disabled + span {
+    opacity: 0.45;
+  }
+
   .consent-switch input:focus-visible + span {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;
@@ -284,7 +300,14 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
 
 <script>
   import type { ConsentCategory } from '../../config/consent';
-  import { CONSENT_OPEN_EVENT, allCategories, currentConsent, readConsent, saveConsent } from '../../scripts/consent';
+  import {
+    CONSENT_OPEN_EVENT,
+    allCategories,
+    currentConsent,
+    privacySignal,
+    readConsent,
+    saveConsent,
+  } from '../../scripts/consent';
 
   const dialog = document.querySelector<HTMLDialogElement>('[data-consent-dialog]');
 
@@ -296,6 +319,15 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
     const switches = Array.from(dialog.querySelectorAll<HTMLInputElement>('[data-consent-category]'));
     let opener: HTMLElement | null = null;
 
+    // Statistics are not available under Do Not Track or Global Privacy Control: the switch stays off.
+    const signalNote = dialog.querySelector<HTMLElement>('[data-privacy-signal-note]');
+    const analyticsSwitch = switches.find((input) => input.dataset.consentCategory === 'analytics');
+    if (signalNote && analyticsSwitch && privacySignal()) {
+      signalNote.hidden = false;
+      analyticsSwitch.disabled = true;
+      analyticsSwitch.setAttribute('aria-describedby', `${analyticsSwitch.getAttribute('aria-describedby')} ${signalNote.id}`);
+    }
+
     const show = (view: keyof typeof views) => {
       if (views.notice) views.notice.hidden = view !== 'notice';
       views.settings.hidden = view !== 'settings';
@@ -304,7 +336,7 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
       else dialog.removeAttribute('aria-describedby');
       const categories = currentConsent()?.categories;
       switches.forEach((input) => {
-        input.checked = categories?.[input.dataset.consentCategory as ConsentCategory] === true;
+        input.checked = !input.disabled && categories?.[input.dataset.consentCategory as ConsentCategory] === true;
       });
       if (!dialog.open) dialog.showModal();
       dialog.querySelector<HTMLElement>(`#consent-${view}-title`)?.focus();
@@ -365,6 +397,6 @@ const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyt
       });
     });
 
-    if (dialog.hasAttribute('data-auto-open') && !readConsent()) show('notice');
+    if (dialog.hasAttribute('data-auto-open') && !readConsent() && !privacySignal()) show('notice');
   }
 </script>
