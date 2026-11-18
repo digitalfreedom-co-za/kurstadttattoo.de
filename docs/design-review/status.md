@@ -30,14 +30,14 @@ The same lists are posted as comments on the fix tickets.
 | --- | --- |
 | #43 UI | 7: replacement photos from owner originals (capture brief). 2: only if Marcello grants an exception to wiki content rule 2, shorter h2 headings. Definition of done check: screenshots at 375 and 1280, light and dark, for the listed pages after the merge |
 | #44 UX | 1 done in #44. Owner facts: 3 (email channel), 4 (hygiene procedures), 5 (price wording), 6 (consultation format, duration, fee), 10 (consultation languages), 11 (style classification), 12 (selected work carried into the request, after 3), 13 (artist story), 14 (arrival details), 15 (review profile), 16 (engraving decision by Marcello). Verify 8 and 18 after the merge |
-| #45 mobile | 2, 3, 4: not implemented, the wiki header rule (36 px icon-only below 640 px) applies unless Marcello grants an exception. Verification: physical iOS and Android swipe check, menu open during rotation, Safari and Firefox |
+| #45 mobile | 2 done in #45 within the wiki rule. 3, 4: not implemented, the wiki header rule (36 px icon-only below 640 px) applies unless Marcello grants an exception. Verification: physical iOS and Android swipe check, menu open during rotation, Safari and Firefox |
 | #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. Verification: VoiceOver or NVDA for 1, 6, 7, 8; Firefox and Safari keyboard scrolling for 1; axe and Lighthouse after the merge |
 
 ## Wiki conflicts
 
 | Finding | Wiki rule | Outcome |
 | --- | --- | --- |
-| Mobile 2, 3, 4; UX 9 | `websites.md`, Header: 36 × 36 px icon-only controls below 640 px | Not implemented, the header keeps the wiki pattern |
+| Mobile 2, 3, 4; UX 9 | `websites.md`, Header: 36 × 36 px icon-only controls below 640 px | 2 fixed within the rule (36 px icons, 44 px hit areas); 3, 4 and UX 9 not implemented, the header keeps the wiki pattern |
 | UI 2 (section headings) | `websites.md`, content rule 2: question-shaped headings | The h2 questions stay; the h1 headings are shortened |
 
 ## UI and visual design (`ui.md`)
@@ -92,7 +92,8 @@ The same lists are posted as comments on the fix tickets.
 | # | Status | What changed |
 | --- | --- | --- |
 | 1 | Fixed | See UX 2 |
-| 2, 3, 4 | Superseded | Wiki header rule |
+| 2 | Fixed (#45) | Icons stay 36 px (wiki), each with a 44 px hit area and 8 px gaps, so the areas touch but never overlap. While the menu button shows (below 1024 px or enlarged text), the theme switch moves into the menu with its label; this also removes the 67 to 79 px row overflow at 640 px |
+| 3, 4 | Superseded | Wiki header rule |
 | 5 | Fixed | Swipe only on the image stage, one primary pointer, clearly horizontal, cancel resets, controls excluded, `touch-action: pan-y pinch-zoom` |
 | 6 | Fixed | Loading note, picture shown only once loaded, retry and direct link on error |
 | 7 | Fixed | Expand badge always visible without hover |

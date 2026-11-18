@@ -197,6 +197,18 @@
     color: var(--color-muted);
   }
 
+  /* A 36px icon button (wiki header rule below sm) with a 44px hit area. Neighbours need a gap of 8px so
+     the enlarged areas touch but never overlap. */
+  .touch-target {
+    position: relative;
+  }
+
+  .touch-target::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+  }
+
   /* The basin of the fountain in the logo: a thin rim over a heavy base. Section openers and the footer. */
   .basin-rule {
     display: block;
