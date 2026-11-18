@@ -1,6 +1,8 @@
 // Consent for optional third party services, configured in one place. The site itself sets no cookies.
-// Optional categories: the cal.com booking calendar, always; statistics (GA4) only while a measurement ID
-// is configured (src/config/analytics.ts).
+// Optional categories: the cal.com booking calendar only while the build embeds one (CAL_ENABLED in
+// src/config/booking.ts); statistics (GA4) only while a measurement ID is configured
+// (src/config/analytics.ts). With neither there is nothing to consent to: the dialog says so and no
+// choice is stored.
 //
 // The choice is stored in localStorage under CONSENT_STORAGE_KEY as
 // { version, timestamp, categories: { booking, analytics? } }. No identifier, only read by this site,
@@ -9,6 +11,7 @@
 // the wording of the dialog changes in substance; a stored choice of an older version counts as no choice
 // and the dialog asks again. Switching analytics on changes the version too, so every visitor is asked.
 import { ANALYTICS_ENABLED } from './analytics';
+import { CAL_ENABLED } from './booking';
 
 export const CONSENT_STORAGE_KEY = 'kt-consent';
 
@@ -20,7 +23,10 @@ export const CONSENT_VERSION = ANALYTICS_ENABLED ? `${CONSENT_TEXT_VERSION}+anal
 export type ConsentCategory = 'booking' | 'analytics';
 
 /** Categories the dialog offers on this build. */
-export const CONSENT_CATEGORIES: ConsentCategory[] = ANALYTICS_ENABLED ? ['booking', 'analytics'] : ['booking'];
+export const CONSENT_CATEGORIES: ConsentCategory[] = [
+  ...(CAL_ENABLED ? (['booking'] as const) : []),
+  ...(ANALYTICS_ENABLED ? (['analytics'] as const) : []),
+];
 
 export interface ConsentRecord {
   version: string;

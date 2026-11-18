@@ -1,10 +1,12 @@
 ---
-// Consent dialog for the optional third party services: the cal.com booking calendar and, only while a GA4
-// measurement ID is configured, statistics (src/config/analytics.ts). Self hosted, no CMP. A modal
+// Consent dialog for the optional third party services: the cal.com booking calendar, only while the build
+// embeds one (CAL_ENABLED), and statistics, only while a GA4 measurement ID is configured
+// (src/config/analytics.ts). With neither, the settings view only states that nothing needs consent and
+// offers no choice, so nothing is stored. Self hosted, no CMP. A modal
 // <dialog> shown as a bottom sheet in the top layer, so it never moves the page (no layout shift). Two
 // views in one dialog:
-// - notice: first visit. Ablehnen and Akzeptieren are the same button, same size and weight; Einstellungen
-//   opens the settings view.
+// - notice: first visit, only rendered with statistics configured (the only case it is shown). Ablehnen
+//   and Akzeptieren are the same button, same size and weight; Einstellungen opens the settings view.
 // - settings: Notwendig (always on) and one switch per optional category (off unless consented), save,
 //   reject, accept. Opened from the footer link Cookie-Einstellungen on every page, via CONSENT_OPEN_EVENT.
 // While the booking calendar is the only optional service, the dialog never opens by itself: the calendar
@@ -19,6 +21,7 @@ import Button from '../ui/Button.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import { ANALYTICS_ENABLED } from '../../config/analytics';
+import { CAL_ENABLED } from '../../config/booking';
 import { CONSENT_ANCHOR } from '../../config/consent';
 import { pageExists } from '../../lib/pages';
 import { url } from '../../lib/url';
@@ -34,53 +37,60 @@ const copy = t(locale).consent;
 const legalPage = routeKey === 'privacy' || routeKey === 'imprint';
 const privacyHref = pageExists('privacy', locale) ? url(`${localizedPath('privacy', locale)}#${CONSENT_ANCHOR}`) : undefined;
 const categories = [
-  { key: 'booking', title: copy.bookingTitle, text: copy.bookingText },
+  ...(CAL_ENABLED ? [{ key: 'booking', title: copy.bookingTitle, text: copy.bookingText }] : []),
   ...(ANALYTICS_ENABLED ? [{ key: 'analytics', title: copy.analyticsTitle, text: copy.analyticsText }] : []),
 ];
+const hasChoice = categories.length > 0;
+const noticeTitle = CAL_ENABLED ? copy.noticeTitleAnalytics : copy.noticeTitleAnalyticsNoCalendar;
+const noticeText = CAL_ENABLED ? copy.noticeBookingAnalytics : copy.noticeAnalyticsNoCalendar;
 ---
 
 <dialog
   id="consent-dialog"
   class="consent"
-  aria-labelledby="consent-notice-title"
-  aria-describedby="consent-notice-text"
+  aria-labelledby={ANALYTICS_ENABLED ? 'consent-notice-title' : 'consent-settings-title'}
+  aria-describedby={ANALYTICS_ENABLED ? 'consent-notice-text' : undefined}
   data-consent-dialog
   data-auto-open={ANALYTICS_ENABLED && !legalPage ? '' : undefined}
 >
   <Container class="py-6 md:py-8">
-    <section data-consent-view="notice" class="grid gap-5 lg:grid-cols-12 lg:gap-x-8">
-      <div class="min-w-0 lg:col-span-8">
-        <p class="label flex items-center gap-3 text-muted">
-          <span class="h-px w-6 bg-neon" aria-hidden="true"></span>{copy.eyebrow}
-        </p>
-        <h2 id="consent-notice-title" class="mt-3 font-display text-h4 font-semibold focus:outline-none" tabindex="-1">
-          {ANALYTICS_ENABLED ? copy.noticeTitleAnalytics : copy.noticeTitle}
-        </h2>
-        <div id="consent-notice-text" class="mt-3 grid gap-2 text-sm text-muted">
-          <p>{ANALYTICS_ENABLED ? copy.noticeBookingAnalytics : copy.noticeBooking}</p>
-          <p>
-            {copy.noticeRest}
-            {
-              privacyHref && (
-                <>
-                  {' '}
-                  <a class="link" href={privacyHref}>
-                    {copy.privacyMore}
-                  </a>
-                </>
-              )
-            }
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4 lg:flex-col lg:items-stretch lg:justify-end">
-        <div class="grid w-full grid-cols-2 gap-3 sm:max-w-md lg:max-w-none">
-          <Button class="justify-center" icon="close" data-consent-action="reject">{copy.reject}</Button>
-          <Button class="justify-center" icon="check" data-consent-action="accept">{copy.accept}</Button>
-        </div>
-        <Button variant="text" class="self-start" data-consent-action="settings">{copy.settings}</Button>
-      </div>
-    </section>
+    {
+      ANALYTICS_ENABLED && (
+          <section data-consent-view="notice" class="grid gap-5 lg:grid-cols-12 lg:gap-x-8">
+            <div class="min-w-0 lg:col-span-8">
+              <p class="label flex items-center gap-3 text-muted">
+                <span class="h-px w-6 bg-neon" aria-hidden="true"></span>{copy.eyebrow}
+              </p>
+              <h2 id="consent-notice-title" class="mt-3 font-display text-h4 font-semibold focus:outline-none" tabindex="-1">
+                {noticeTitle}
+              </h2>
+              <div id="consent-notice-text" class="mt-3 grid gap-2 text-sm text-muted">
+                <p>{noticeText}</p>
+                <p>
+                  {copy.noticeRest}
+                  {
+                    privacyHref && (
+                      <>
+                        {' '}
+                        <a class="link" href={privacyHref}>
+                          {copy.privacyMore}
+                        </a>
+                      </>
+                    )
+                  }
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4 lg:flex-col lg:items-stretch lg:justify-end">
+              <div class="grid w-full grid-cols-2 gap-3 sm:max-w-md lg:max-w-none">
+                <Button class="justify-center" icon="close" data-consent-action="reject">{copy.reject}</Button>
+                <Button class="justify-center" icon="check" data-consent-action="accept">{copy.accept}</Button>
+              </div>
+              <Button variant="text" class="self-start" data-consent-action="settings">{copy.settings}</Button>
+            </div>
+          </section>
+      )
+    }
 
     <section data-consent-view="settings" hidden>
       <div class="flex items-start justify-between gap-4">
@@ -104,11 +114,17 @@ const categories = [
       </div>
 
       <div class="mt-4 grid border-t border-ink text-sm">
-        <div class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-b border-line py-4 sm:gap-x-8">
-          <h3 class="font-semibold">{copy.necessaryTitle}</h3>
-          <p class="label pt-0.5 text-muted sm:row-span-2">{copy.alwaysOn}</p>
-          <p class="col-span-2 text-muted sm:col-span-1">{copy.necessaryText}</p>
-        </div>
+        {
+          hasChoice ? (
+            <div class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-b border-line py-4 sm:gap-x-8">
+              <h3 class="font-semibold">{copy.necessaryTitle}</h3>
+              <p class="label pt-0.5 text-muted sm:row-span-2">{copy.alwaysOn}</p>
+              <p class="col-span-2 text-muted sm:col-span-1">{copy.necessaryText}</p>
+            </div>
+          ) : (
+            <p class="max-w-[40rem] border-b border-line py-4">{copy.noOptional}</p>
+          )
+        }
         {
           categories.map((category) => (
             <div class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-b border-line py-4 sm:gap-x-8">
@@ -142,13 +158,17 @@ const categories = [
         }
       </div>
 
-      <div class="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
-        <div class="grid grid-cols-2 gap-3 sm:contents">
-          <Button class="justify-center" icon="close" data-consent-action="reject">{copy.reject}</Button>
-          <Button class="justify-center" icon="check" data-consent-action="accept">{copy.accept}</Button>
-        </div>
-        <Button variant="secondary" class="justify-center" data-consent-action="save">{copy.save}</Button>
-      </div>
+      {
+        hasChoice && (
+          <div class="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
+            <div class="grid grid-cols-2 gap-3 sm:contents">
+              <Button class="justify-center" icon="close" data-consent-action="reject">{copy.reject}</Button>
+              <Button class="justify-center" icon="check" data-consent-action="accept">{copy.accept}</Button>
+            </div>
+            <Button variant="secondary" class="justify-center" data-consent-action="save">{copy.save}</Button>
+          </div>
+        )
+      }
     </section>
   </Container>
 </dialog>
@@ -270,14 +290,14 @@ const categories = [
 
   if (dialog && typeof dialog.showModal === 'function') {
     const views = {
-      notice: dialog.querySelector<HTMLElement>('[data-consent-view="notice"]')!,
+      notice: dialog.querySelector<HTMLElement>('[data-consent-view="notice"]'),
       settings: dialog.querySelector<HTMLElement>('[data-consent-view="settings"]')!,
     };
     const switches = Array.from(dialog.querySelectorAll<HTMLInputElement>('[data-consent-category]'));
     let opener: HTMLElement | null = null;
 
     const show = (view: keyof typeof views) => {
-      views.notice.hidden = view !== 'notice';
+      if (views.notice) views.notice.hidden = view !== 'notice';
       views.settings.hidden = view !== 'settings';
       dialog.setAttribute('aria-labelledby', `consent-${view}-title`);
       if (view === 'notice') dialog.setAttribute('aria-describedby', 'consent-notice-text');

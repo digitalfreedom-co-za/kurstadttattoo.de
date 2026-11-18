@@ -86,6 +86,10 @@ Jede Seite trägt einen eigenen Titel, eine eigene Beschreibung, canonical, href
 
 Der Schalter `PUBLIC_INDEXABLE` (gesetzt im Deploy Workflow) steuert die Suchmaschinen. Auf der github.io Vorschau steht er auf `false`: jede Seite trägt `noindex`, `robots.txt` erlaubt das Crawlen trotzdem, damit das `noindex` gelesen wird. Die 404 Seite ist nie indexierbar.
 
+## Terminkalender
+
+Der cal.com Kalender hängt an `PUBLIC_CAL_LINK` (Repository Variable des Deploy Workflows, siehe `src/config/booking.ts`). Ohne den Link des Studios bindet keine öffentliche Seite einen Kalender ein: Termine werden telefonisch angefragt, und Datenschutzerklärung und Cookie-Einstellungen sagen, dass kein Dienst eine Einwilligung braucht. Der Demo Kalender der Vorschau erscheint nur in einem Testbuild mit `PUBLIC_CAL_DEMO=true npm run build`, als Test gekennzeichnet; der Deploy Workflow setzt diese Variable nie.
+
 ## Deploy
 
 `.github/workflows/deploy.yml` läuft bei jedem Push auf `main`: `npm ci`, `astro check`, Build, JSON-LD Prüfung, Upload als Pages Artefakt, Deploy. Pull Requests prüft zusätzlich `.github/workflows/commit-policy.yaml` mit der Commit Message Policy aus `org-ci-config`. Die Prüfung steht direkt im Repository, weil ein öffentliches Repository keine Workflows aus dem privaten `org-ci-config` aufrufen darf. Die CodeQL Analyse für JavaScript, TypeScript und die Workflows läuft über `.github/workflows/codeql.yml` bei jedem Pull Request, jedem Push auf `main` und wöchentlich. Das Default Setup in den Repository Einstellungen bleibt aus, weil es neben dem Workflow nicht laufen darf. Dependabot schlägt wöchentlich Updates vor, Astro Major Updates und Vite Major Updates sind ausgenommen.
