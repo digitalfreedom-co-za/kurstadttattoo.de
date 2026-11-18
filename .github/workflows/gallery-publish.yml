@@ -56,17 +56,15 @@ jobs:
         if: steps.inbox.outputs.changed == 'true'
         run: npm run validate:jsonld
 
-      # Author is the triggering user (commit message policy, wiki ci-cd.md).
+      # Author is the repository owner, as for every commit in this repo (commit message policy, wiki ci-cd.md).
       - name: Commit and push
         if: steps.inbox.outputs.changed == 'true'
         env:
-          ACTOR: ${{ github.actor }}
-          ACTOR_ID: ${{ github.actor_id }}
           BRANCH: ${{ github.ref_name }}
           PUBLISHED: ${{ steps.inbox.outputs.published }}
         run: |
-          git config user.name "$ACTOR"
-          git config user.email "$ACTOR_ID+$ACTOR@users.noreply.github.com"
+          git config user.name "Marcel R. G. Berger"
+          git config user.email "hello@marcelrgberger.com"
           git add -A gallery-inbox src/assets/images/galerie-neu src/data/gallery-new.json
           if [ "$PUBLISHED" -gt 0 ]; then
             git commit -m "Gallery: publish $PUBLISHED new photos from the inbox"

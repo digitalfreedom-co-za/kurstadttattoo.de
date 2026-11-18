@@ -159,6 +159,9 @@ async function main() {
   const published = [];
   const duplicates = [];
   const rejected = [];
+  // Inbox files leave only after the data is saved, so an error never loses a photo. A Set, because
+  // photos with the same base name (foto.jpg, foto.png) share one caption file.
+  const processed = new Set();
   const knownHashes = new Set(kept.map((entry) => entry.hash));
 
   for (const name of names) {
@@ -172,33 +175,39 @@ async function main() {
     }
 
     const captionName = captionFiles.get(path.parse(name).name.toLowerCase());
-    const removeFromInbox = async () => {
-      await rm(source);
-      if (captionName) await rm(path.join(INBOX_DIR, captionName));
-    };
+    const removeFromInbox = () => [name, captionName].filter(Boolean).forEach((file) => processed.add(file));
     const hash = createHash('sha256').update(input).digest('hex').slice(0, HASH_LENGTH);
     if (knownHashes.has(hash)) {
       duplicates.push(name);
-      await removeFromInbox();
+      removeFromInbox();
       continue;
     }
 
     const caption = captionName ? parseCaption(await readFile(path.join(INBOX_DIR, captionName), 'utf8')) : {};
     const file = `tattoo-${slugify(caption.de ?? '') || 'kurstadttattoo'}-${today}-${hash}.jpg`;
-    await writeFile(path.join(OUTPUT_DIR, file), await optimise(input));
+    let output;
+    try {
+      output = await optimise(input);
+    } catch {
+      // A damaged file can pass the header check and fail only while decoding the pixels.
+      rejected.push({ name, reason: 'Bild ist beschädigt und konnte nicht gelesen werden' });
+      continue;
+    }
+    await writeFile(path.join(OUTPUT_DIR, file), output);
     const alt = {
       de: caption.de ? `${fallbackAlt.de}: ${caption.de}` : fallbackAlt.de,
       en: caption.en ? `${fallbackAlt.en}: ${caption.en}` : fallbackAlt.en,
     };
     published.push({ file, added: today, hash, alt, ...(Object.keys(caption).length > 0 && { caption }) });
     knownHashes.add(hash);
-    await removeFromInbox();
+    removeFromInbox();
   }
 
   // Newest first; within one day the inbox order (by file name) is kept, since the sort is stable.
   const next = [...published, ...kept].sort((a, b) => b.added.localeCompare(a.added));
   const changed = published.length + removed.length + duplicates.length > 0;
   if (changed) await writeFile(DATA_FILE, `${JSON.stringify(next, null, 2)}\n`);
+  for (const file of processed) await rm(path.join(INBOX_DIR, file));
 
   // A caption file without its photo stays in the inbox until the photo arrives.
   const list = (items) => items.map((item) => `- ${item}`);
