@@ -38,6 +38,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Regression tests of the publish script in temporary folders; a failure stops the run before the inbox is touched.
+      - name: Test the publish script
+        run: npm run test:gallery
+
       # Report in the job summary: published, duplicates, files left in the inbox and why.
       - name: Process the inbox
         id: inbox

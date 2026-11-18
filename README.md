@@ -99,14 +99,16 @@ Das Studio stellt neue Fotos selbst ein (#51): Upload im Browser in den Ordner `
 ```mermaid
 flowchart LR
   A[Upload in gallery-inbox] --> B[gallery-publish.yml<br>am 1. jedes Monats oder per Run workflow]
-  B --> C[publish.mjs: prüfen, drehen,<br>Metadaten entfernen, verkleinern]
+  B --> T[npm run test:gallery]
+  T --> C[publish.mjs: prüfen, drehen,<br>Metadaten entfernen, verkleinern]
   C --> D[src/assets/images/galerie-neu<br>src/data/gallery-new.json]
   D --> E[astro check, Build, JSON-LD Prüfung]
   E --> F[Commit auf main]
   F --> G[deploy.yml per workflow_dispatch]
 ```
 
-- `scripts/gallery-inbox/publish.mjs` (`npm run gallery:publish`, Datum für Tests mit `-- --date=YYYY-MM-DD`): nimmt JPG, PNG und WebP bis 25 MB mit mindestens 1200 Pixeln an der langen Seite. Es dreht nach EXIF, entfernt alle Metadaten (EXIF, GPS, XMP, ICC nach Umwandlung in sRGB), verkleinert auf höchstens 2000 Pixel und speichert ein JPG mit dem Namen `tattoo-<bildtext>-<datum>-<hash>.jpg`. Der Eintrag in `src/data/gallery-new.json` bekommt Datum, Alt Text in beiden Sprachen (Rückfall aus `gallery.newWork.alt` der Wörterbücher) und den freiwilligen Bildtext aus `<foto>.txt` (erste Zeilen Deutsch, Zeile mit `EN:` Englisch; Anführungszeichen, Gedankenstriche und Pfeile werden entfernt). Gleiche Dateien (Hash) werden nicht doppelt eingestellt. Was nicht passt, bleibt im Eingang und steht in der Zusammenfassung des Laufs.
+- `scripts/gallery-inbox/publish.mjs` (`npm run gallery:publish`, Datum für Tests mit `-- --date=YYYY-MM-DD`): nimmt JPG, PNG und WebP bis 25 MB mit mindestens 1200 Pixeln an der langen Seite. Es dreht nach EXIF, entfernt alle Metadaten (EXIF, GPS, XMP, ICC nach Umwandlung in sRGB), verkleinert auf höchstens 2000 Pixel und speichert ein JPG mit dem Namen `tattoo-<bildtext>-<datum>-<hash>.jpg`. Der Eintrag in `src/data/gallery-new.json` bekommt Datum, Alt Text in beiden Sprachen (Rückfall aus `gallery.newWork.alt` der Wörterbücher) und den freiwilligen Bildtext aus `<foto>.txt` (erste Zeilen Deutsch, Zeile mit `EN:` Englisch; Anführungszeichen, Gedankenstriche und Pfeile werden entfernt, auch Emoji Pfeile wie ➡️ und getippte wie ->). Gleiche Dateien (Hash) werden nicht doppelt eingestellt. Was nicht passt, bleibt im Eingang und steht in der Zusammenfassung des Laufs.
+- `npm run test:gallery` (`scripts/gallery-inbox/publish.test.mjs`, Testrunner von Node, läuft vor jeder Verarbeitung im Workflow): Regressionstests in temporären Ordnern für Veröffentlichung mit Drehung, Verkleinerung, Metadatenentfernung und Bildtext, Dubletten, Aufräumen gelöschter Fotos, abgelehnte Fotos samt Bildtext und den Erhalt des Eingangs, wenn die Daten nicht gespeichert werden können.
 - Die Galerie zeigt die Einträge als erste Gruppe Neu im Studio, die neuesten zuerst (`newWorkItems` in `src/data/gallery.ts`), auch in der Markdown Fassung. Ein Eintrag ohne Bild wird übersprungen: Ein Foto ist entfernt, sobald seine Datei in `galerie-neu/` gelöscht ist; der nächste Lauf räumt den Eintrag auf.
 - `.github/workflows/gallery-publish.yml` braucht keine Secrets, nur `GITHUB_TOKEN` mit `contents: write` und `actions: write`. Ein Push mit diesem Token startet keinen anderen Workflow, deshalb startet der Lauf den Deploy selbst. Autor der Commits ist Marcel R. G. Berger wie bei allen Commits im Repository. Uploads in `gallery-inbox/` allein lösen keinen Deploy aus (`paths-ignore`).
 - Das Repository ist öffentlich: hochgeladene Originale sind bis zum Lauf auf github.com sichtbar und bleiben mit ihren Metadaten in der Git Historie.

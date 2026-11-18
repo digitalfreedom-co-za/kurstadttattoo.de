@@ -6,7 +6,8 @@
 // caption. Processed files leave the inbox; files that cannot be used stay there and are listed in the
 // report. Entries whose image was deleted from galerie-neu/ are removed from the data.
 //
-// Usage: node scripts/gallery-inbox/publish.mjs [--date=YYYY-MM-DD]
+// Usage: node scripts/gallery-inbox/publish.mjs [--date=YYYY-MM-DD] [--root=DIR]
+// --root points at another project folder; the tests use it to work in an isolated copy.
 // In GitHub Actions the report goes to the job summary and changed/published to the step outputs.
 import { createHash } from 'node:crypto';
 import { appendFile, mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
@@ -14,7 +15,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-const ROOT = fileURLToPath(new URL('../../', import.meta.url));
+const args = Object.fromEntries(process.argv.slice(2).map((arg) => arg.replace(/^--/, '').split('=')));
+const ROOT = args.root ? path.resolve(args.root) : fileURLToPath(new URL('../../', import.meta.url));
 const INBOX_DIR = path.join(ROOT, 'gallery-inbox');
 const OUTPUT_DIR = path.join(ROOT, 'src/assets/images/galerie-neu');
 const DATA_FILE = path.join(ROOT, 'src/data/gallery-new.json');
@@ -34,8 +36,13 @@ const JPEG_QUALITY = 82;
 const MAX_CAPTION_LENGTH = 160;
 const MAX_SLUG_LENGTH = 48;
 const HASH_LENGTH = 10;
+/**
+ * Arrows of every Unicode block that holds them (Arrows, Supplemental Arrows A to C, Dingbats, Miscellaneous
+ * Symbols and Arrows), with the variation selector that turns ➡ into the emoji ➡️, and arrows typed as -> or =>.
+ */
+const ARROWS =
+  /[\u2190-\u21FF\u2794-\u27BF\u27F0-\u27FF\u2900-\u297F\u2B00-\u2B11\u2B30-\u2B4F\u2B60-\u2BB9\u{1F800}-\u{1F8FF}][\uFE0E\uFE0F]?|<?[-=]+>|<[-=]+/gu;
 
-const args = Object.fromEntries(process.argv.slice(2).map((arg) => arg.replace(/^--/, '').split('=')));
 const today = args.date ?? new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format(new Date());
 if (!/^\d{4}-\d{2}-\d{2}$/.test(today)) throw new Error(`--date must be YYYY-MM-DD, got ${today}`);
 
@@ -47,7 +54,7 @@ function cleanCaption(text) {
   let clean = text
     .replace(/[„“”‚‘«»‹›]/g, '')
     .replace(/’/g, "'")
-    .replace(/[←-⇿⟰-⟿⤀-⥿]/g, '')
+    .replace(ARROWS, ' ')
     .replace(/\s+[-‒-―]+\s+/g, ', ')
     .replace(/[‒-―]/g, '-')
     .replace(/\s+/g, ' ')
