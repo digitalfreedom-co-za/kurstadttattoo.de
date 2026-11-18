@@ -1,6 +1,8 @@
 ---
-// Link to the same page in the other locale. An explicit choice is remembered in
-// localStorage["locale-explicit"] (wiki websites.md), so a later language hint stays away. A section
+// Link to the same page in the other locale. An explicit choice is remembered for the tab in
+// sessionStorage["locale-explicit"], so a later language hint stays away. Session only instead of the
+// wiki's forever, because the legal cookie policy § 3.1 exempts a longer lifespan only with a notice at
+// the control (Decision Log #33). A section
 // anchor in the address is carried over in its translated form (#arbeiten becomes #work); anchors both
 // locales share (legal pages) stay as they are. The href follows the address, so a new tab keeps it too.
 // Below sm the switch is a labelled globe icon, from sm up the text label shows (wiki websites.md).
@@ -57,7 +59,7 @@ const anchors = anchorMap(routeKey, locale, target);
     window.addEventListener('hashchange', followHash);
     link.addEventListener('click', () => {
       try {
-        localStorage.setItem('locale-explicit', '1');
+        sessionStorage.setItem('locale-explicit', '1');
       } catch {
         // Storage blocked: the switch still works, only the choice is not remembered.
       }

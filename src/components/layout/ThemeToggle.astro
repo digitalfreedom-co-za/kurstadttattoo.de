@@ -1,7 +1,9 @@
 ---
 // Dark mode switch (wiki websites.md, Theming). A toggle button with a constant label and aria-pressed
-// for the state; the moon fills while dark mode is on. The choice is stored in localStorage["theme"];
-// the bootstrap script in BaseLayout applies it before paint. In the header row icon only below sm, label
+// for the state; the moon fills while dark mode is on. The choice is stored in sessionStorage["theme"],
+// so it lasts only for the tab and stays strictly necessary without a notice at the control (legal
+// website/COOKIE_POLICY.en.md § 3.1 source note, Decision Log #33); the bootstrap script in BaseLayout
+// applies it before paint. In the header row icon only below sm, label
 // from sm up; in the menu panel (inMenu) always with its label.
 import { t, type Locale } from '../../i18n';
 
@@ -63,7 +65,7 @@ const label = t(locale).theme.label;
       if (dark) root.dataset.theme = 'dark';
       else delete root.dataset.theme;
       try {
-        localStorage.setItem(STORAGE_KEY, dark ? 'dark' : 'light');
+        sessionStorage.setItem(STORAGE_KEY, dark ? 'dark' : 'light');
       } catch {
         // Storage blocked: the theme still switches for this page, only the choice is not remembered.
       }

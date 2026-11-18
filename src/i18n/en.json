@@ -843,7 +843,7 @@
         "title": "Fonts, storage and cookies",
         "fonts": "The fonts of this website sit on the same server as the pages themselves. No data is sent to font providers such as Google Fonts when they load.",
         "ownTitle": "What this site stores itself",
-        "entries": "Our own pages set no cookies. In your browser's storage (localStorage) they only keep the following entries, each only once you use the related function. None of these entries contains an identifier, and none of them leaves your browser.",
+        "entries": "Our own pages set no cookies. In your browser's storage they only keep the following entries, each only once you use the related function. None of these entries contains an identifier, and none of them leaves your browser.",
         "noTracking": "We use no analytics or audience measurement, no advertising services and no social media plugins. One third party service, the cal.com calendar, only loads with your consent.",
         "noTrackingAnalytics": "We use no advertising services and no social media plugins. The cal.com calendar and statistics with Google Analytics only load with your consent.",
         "columns": {
@@ -864,17 +864,18 @@
           },
           "theme": {
             "written": "when you switch the display between light and dark",
-            "purpose": "keep the chosen display on the next page view",
-            "duration": "until you clear your browser's storage"
+            "purpose": "keep the chosen display on further page views in this tab",
+            "duration": "until you close the tab or the browser window"
           },
           "locale": {
             "written": "when you choose the language in the language switch or close the language notice",
-            "purpose": "remember that you chose the language yourself, so the language notice does not appear again",
-            "duration": "until you clear your browser's storage"
+            "purpose": "remember that you chose the language yourself, so the language notice does not appear again in this tab",
+            "duration": "until you close the tab or the browser window"
           }
         },
         "necessary": "not required, strictly necessary (§ 25(2) No. 2 TDDDG)",
         "where": "localStorage",
+        "whereSession": "sessionStorage",
         "categoryNecessary": "Necessary",
         "basis": "The legal basis for these entries is Art. 6(1)(f) GDPR. Our legitimate interest lies in keeping the settings you chose and in respecting and being able to demonstrate your consent decision (Art. 7(1) GDPR).",
         "tableLabel": "Entries in your browser storage",

@@ -3,9 +3,9 @@
 // redirecting users from one language version of a site to a different language version"). Only on the
 // two start pages: the German root offers English to browsers without German in their language list, the
 // English root offers German to browsers whose first language is German. Fixed below the header, so it
-// never shifts the layout; hidden until the inline script decides to show it. Not shown again after a
-// dismissal or an explicit choice in the language switch (both store localStorage locale-explicit, listed
-// in the privacy policy). Text and link are in the offered language and carry its lang.
+// never shifts the layout; hidden until the inline script decides to show it. Not shown again in the same
+// tab after a dismissal or an explicit choice in the language switch (both store sessionStorage
+// locale-explicit, listed in the privacy policy; session only, Decision Log #33). Text and link are in the offered language and carry its lang.
 import Icon from '../ui/Icon.astro';
 import { t, locales, localeMeta, localizedPath, anchorMap, type Locale } from '../../i18n';
 import { url } from '../../lib/url';
@@ -57,7 +57,7 @@ const anchors = anchorMap('home', locale, target);
     var header = document.getElementById('site-header');
     if (!el) return;
     try {
-      if (localStorage.getItem('locale-explicit')) return;
+      if (sessionStorage.getItem('locale-explicit')) return;
     } catch (e) {}
     var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
     var langs = [];
@@ -69,7 +69,7 @@ const anchors = anchorMap('home', locale, target);
 
     function remember() {
       try {
-        localStorage.setItem('locale-explicit', '1');
+        sessionStorage.setItem('locale-explicit', '1');
       } catch (e) {}
     }
     // The reopening strip above the sticky header scrolls away, so the hint follows the header bottom.

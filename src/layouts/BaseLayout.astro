@@ -23,13 +23,13 @@ const { locale, routeKey } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <!-- Before paint: the stored dark theme (wiki websites.md: light by default, prefers-color-scheme is
+    <!-- Before paint: the dark theme stored for this tab (wiki websites.md: light by default, prefers-color-scheme is
          ignored) and the JS states. Failsafe: if the motion or menu script has not initialised after 3 s
          (blocked or failed), drop .js so content and navigation stay usable. -->
     <script is:inline>
       (function (root) {
         try {
-          if (localStorage.getItem('theme') === 'dark') root.dataset.theme = 'dark';
+          if (sessionStorage.getItem('theme') === 'dark') root.dataset.theme = 'dark';
         } catch (e) {}
         root.classList.add('js');
         setTimeout(function () {

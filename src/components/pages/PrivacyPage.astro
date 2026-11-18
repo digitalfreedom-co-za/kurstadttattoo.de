@@ -1,7 +1,7 @@
 ---
 // Privacy policy for both locales. Describes only what the site really does: GitHub Pages hosting, self
-// hosted fonts, no cookies of its own, the three localStorage entries (consent record, theme, explicit
-// language) and the cookies per vendor, both tables in the structure of the legal cookie policy, the
+// hosted fonts, no cookies of its own, the three storage entries (consent record in localStorage, theme
+// and explicit language in sessionStorage) and the cookies per vendor, both tables in the structure of the legal cookie policy, the
 // cal.com calendar only after consent and only while the build embeds one (BookingPrivacy, wording per
 // CAL_ENABLED and CAL_IS_DEMO), GA4 only while a measurement ID is configured (src/config/analytics.ts),
 // contact by phone and the WEB.DE mailbox, plain external links. Controller from the imprint of the old site (operator in src/config/site.ts).
@@ -49,11 +49,12 @@ const consentIntro = CAL_ENABLED
   : ANALYTICS_ENABLED ? copy.consent.introAnalyticsNoCalendar : copy.consent.introNoCalendar;
 const { writtenNoCalendar, ...consentRow } = copy.storage.rows.consent;
 // Section 3.5 of the cookie policy template (legal website/COOKIE_POLICY.en.md): every key the site's own
-// code writes. All three are localStorage entries, written only on the visitor's own action.
+// code writes, each written only on the visitor's own action. The consent record is kept in localStorage,
+// theme and language choice only for the tab in sessionStorage (Decision Log #33).
 const storageColumns = Object.values(copy.storage.columns);
-const ownEntry = (key: string, row: { written: string; purpose: string; duration: string }) => [
+const ownEntry = (key: string, where: string, row: { written: string; purpose: string; duration: string }) => [
   key,
-  copy.storage.where,
+  where,
   row.written,
   row.purpose,
   copy.storage.categoryNecessary,
@@ -62,10 +63,10 @@ const ownEntry = (key: string, row: { written: string; purpose: string; duration
 ];
 const storageRows = [
   ...(consentNeeded
-    ? [ownEntry(CONSENT_STORAGE_KEY, { ...consentRow, written: CAL_ENABLED ? consentRow.written : writtenNoCalendar })]
+    ? [ownEntry(CONSENT_STORAGE_KEY, copy.storage.where, { ...consentRow, written: CAL_ENABLED ? consentRow.written : writtenNoCalendar })]
     : []),
-  ownEntry('theme', copy.storage.rows.theme),
-  ownEntry('locale-explicit', copy.storage.rows.locale),
+  ownEntry('theme', copy.storage.whereSession, copy.storage.rows.theme),
+  ownEntry('locale-explicit', copy.storage.whereSession, copy.storage.rows.locale),
 ];
 // Section 5.1 of the template: cookies of the embedded vendors, one row per service this build embeds.
 const vendors = copy.storage.vendors;
