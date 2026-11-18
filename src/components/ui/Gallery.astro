@@ -279,15 +279,23 @@ const prepared = await Promise.all(
     let index = 0;
     const template = counter.dataset.template ?? '{current} / {total}';
 
+    /** Picture, caption and counter appear together; hidden they keep their space, so the stage does not jump. */
+    const reveal = (visible: boolean) => {
+      [image, caption, counter].forEach((element) => {
+        if (visible) element.style.removeProperty('visibility');
+        else element.style.visibility = 'hidden';
+      });
+    };
+
     /** Shows the requested picture only once it has loaded; a slow request shows a loading note. */
     const load = (link: HTMLAnchorElement) => {
       failure.hidden = true;
       if (image.src === link.href && image.complete && image.naturalWidth > 0) {
-        image.style.removeProperty('visibility');
+        reveal(true);
         loading.hidden = true;
         return;
       }
-      image.style.visibility = 'hidden';
+      reveal(false);
       loading.hidden = false;
       image.src = link.href;
     };
@@ -299,10 +307,10 @@ const prepared = await Promise.all(
       image.width = Number(link.dataset.width) || 0;
       image.height = Number(link.dataset.height) || 0;
       original.href = link.href;
-      load(link);
       const position = template.replace('{current}', String(index + 1)).replace('{total}', String(links.length));
       counter.textContent = position;
       caption.textContent = link.dataset.caption ?? '';
+      load(link);
       // One status per change: position, motif, style and placement. The detailed alt stays on the image.
       status.textContent = `${position}: ${link.dataset.caption ?? ''}`;
     };
@@ -311,7 +319,7 @@ const prepared = await Promise.all(
       // A late load of a picture the visitor has already moved past does not count.
       if (image.src !== links[index].href) return;
       loading.hidden = true;
-      image.style.removeProperty('visibility');
+      reveal(true);
     });
     image.addEventListener('error', () => {
       if (image.src !== links[index].href) return;
