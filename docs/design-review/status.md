@@ -31,7 +31,7 @@ The same lists are posted as comments on the fix tickets.
 | #43 UI | 7: replacement photos from owner originals (capture brief). 2: only if Marcello grants an exception to wiki content rule 2, shorter h2 headings. Definition of done check: screenshots at 375 and 1280, light and dark, for the listed pages after the merge |
 | #44 UX | 1 done in #44. Owner facts: 3 (email channel), 4 (hygiene procedures), 5 (price wording), 6 (consultation format, duration, fee), 10 (consultation languages), 11 (style classification), 12 (selected work carried into the request, after 3), 13 (artist story), 14 (arrival details), 15 (review profile), 16 (engraving decision by Marcello). Verify 8 and 18 after the merge |
 | #45 mobile | 2 done in #45 within the wiki rule; 6 completed in #45 (caption and counter wait for the picture). 3, 4: not implemented, the wiki header rule (36 px icon-only below 640 px) applies unless Marcello grants an exception. Verification: physical iOS and Android swipe check, rotation on a real device |
-| #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. Verification: VoiceOver or NVDA for 1, 6, 7, 8; Firefox and Safari keyboard scrolling for 1; axe and Lighthouse after the merge |
+| #46 a11y | 3: recheck the calendar reservation and CLS with the studio's real calendar. 4: cal.com offers no locale control, the notice above the frame stays until it does. axe, Lighthouse and Firefox keyboard scrolling done (see Verification of #46). Still manual: VoiceOver or NVDA for 1, 6, 7, 8; real Safari keyboard scrolling for 1 |
 
 ## Wiki conflicts
 
