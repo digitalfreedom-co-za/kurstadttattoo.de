@@ -907,7 +907,7 @@
               "purpose": "Ihren Browser wiedererkennen, um Besuche und Seitenaufrufe zu messen",
               "type": "Erstanbieter (1P), gesetzt auf der Domain dieser Website",
               "category": "Statistik",
-              "retention": "bis zu 2 Jahre"
+              "retention": "bis zu {months} Monate nach dem letzten Besuch"
             }
           }
         },
@@ -929,7 +929,7 @@
       "analytics": {
         "title": "Statistik mit Google Analytics",
         "provider": "Mit Ihrer Einwilligung nutzen wir Google Analytics 4, einen Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.",
-        "data": "Google Analytics zeigt uns, wie Besucher die Website nutzen, etwa welche Seiten aufgerufen werden und mit welcher Art von Gerät. Dazu verarbeitet Google Ihre IP-Adresse, die aufgerufenen Seiten, Datum und Uhrzeit, Angaben zu Browser und Gerät, den ungefähren Standort sowie die Seite, von der Sie kommen. Google setzt dafür die Cookies _ga und _ga_ mit der Kennung unserer Property, die Ihren Browser wiedererkennen und nach zwei Jahren ablaufen.",
+        "data": "Google Analytics zeigt uns, wie Besucher die Website nutzen, etwa welche Seiten aufgerufen werden und mit welcher Art von Gerät. Dazu verarbeitet Google Ihre IP-Adresse, die aufgerufenen Seiten, Datum und Uhrzeit, Angaben zu Browser und Gerät, den ungefähren Standort sowie die Seite, von der Sie kommen. Google setzt dafür die Cookies _ga und _ga_ mit der Kennung unserer Property, die Ihren Browser wiedererkennen und spätestens {months} Monate nach Ihrem letzten Besuch ablaufen.",
         "consentMode": "Google Analytics lädt nur nach Ihrer Einwilligung (Einwilligungsmodus v2 in der Basis-Variante). Vor Ihrer Einwilligung und nach einer Ablehnung wird kein Skript von Google geladen, und es werden keine Daten an Google gesendet, auch keine Signale ohne Cookies.",
         "basis": "Rechtsgrundlage ist allein Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Widerrufen Sie sie in den Cookie-Einstellungen, werden die Cookies _ga gelöscht und die Seite lädt neu, damit Google Analytics entfernt ist.",
         "transfer": "Google kann Daten auch in die USA übermitteln. Google LLC ist nach dem EU-U.S. Data Privacy Framework zertifiziert; die Übermittlung erfolgt damit auf Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission nach Art. 45 DSGVO. Die Daten werden in Google Analytics höchstens 14 Monate gespeichert. Einzelheiten stehen in der",
@@ -1365,7 +1365,7 @@
     "bookingTitle": "Externe Medien: Terminbuchung über cal.com",
     "bookingText": "Lädt den Buchungskalender der Cal.com, Inc., San Francisco, USA, auf der Seite Termin buchen, sobald er sichtbar wird. Dabei erhält cal.com Ihre IP-Adresse, Angaben zu Browser und Gerät und die Adresse der Seite. Der Dienstleister Cloudflare setzt das Cookie __cf_bm gegen automatisierte Zugriffe (30 Minuten), technische Fehlerberichte gehen an Sentry. Übermittlung in die USA auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie bleibt der Kalender aus, Termine fragen Sie telefonisch an.",
     "analyticsTitle": "Statistik: Google Analytics",
-    "analyticsText": "Lädt Google Analytics 4 der Google Ireland Limited, Dublin, Irland, und wertet aus, welche Seiten wie genutzt werden. Dabei erhält Google Ihre IP-Adresse, Angaben zu Browser und Gerät und die aufgerufenen Seiten und setzt die Cookies _ga und _ga_ mit der Kennung der Website (bis zu 2 Jahre). Eine Übermittlung in die USA ist möglich, auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie wird Google Analytics nicht geladen und nichts an Google gesendet.",
+    "analyticsText": "Lädt Google Analytics 4 der Google Ireland Limited, Dublin, Irland, und wertet aus, welche Seiten wie genutzt werden. Dabei erhält Google Ihre IP-Adresse, Angaben zu Browser und Gerät und die aufgerufenen Seiten und setzt die Cookies _ga und _ga_ mit der Kennung der Website (bis zu {months} Monate nach dem letzten Besuch). Eine Übermittlung in die USA ist möglich, auf Grundlage des EU-U.S. Data Privacy Framework. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie jederzeit hier widerrufen können. Ohne sie wird Google Analytics nicht geladen und nichts an Google gesendet.",
     "details": "Einzelheiten in der Datenschutzerklärung.",
     "noticeTitleAnalyticsNoCalendar": "Darf die Statistik mit Google Analytics laden?",
     "noticeAnalyticsNoCalendar": "Mit Google Analytics der Google Ireland Limited werten wir aus, wie unsere Seiten genutzt werden. Google erhält dabei unter anderem Ihre IP-Adresse, setzt Cookies und kann Daten in die USA übermitteln. Das geschieht nur mit Ihrer Einwilligung.",

@@ -907,7 +907,7 @@
               "purpose": "recognise your browser to measure visits and page views",
               "type": "first party (1P), set on the domain of this website",
               "category": "Statistics",
-              "retention": "up to 2 years"
+              "retention": "up to {months} months after the last visit"
             }
           }
         },
@@ -929,7 +929,7 @@
       "analytics": {
         "title": "Statistics with Google Analytics",
         "provider": "With your consent we use Google Analytics 4, a service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland.",
-        "data": "Google Analytics shows us how visitors use the website, for example which pages are viewed and on what kind of device. For this Google processes your IP address, the pages viewed, date and time, browser and device details, the approximate location and the page you came from. Google sets the cookies _ga and _ga_ with the identifier of our property for this, which recognise your browser and expire after two years.",
+        "data": "Google Analytics shows us how visitors use the website, for example which pages are viewed and on what kind of device. For this Google processes your IP address, the pages viewed, date and time, browser and device details, the approximate location and the page you came from. Google sets the cookies _ga and _ga_ with the identifier of our property for this, which recognise your browser and expire no later than {months} months after your last visit.",
         "consentMode": "Google Analytics only loads after your consent (Consent Mode v2, basic implementation). Before your consent and after declining, no Google script is loaded and no data is sent to Google, not even cookieless signals.",
         "basis": "The only legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG). If you withdraw it in the cookie settings, the _ga cookies are deleted and the page reloads so that Google Analytics is removed.",
         "transfer": "Google may also transfer data to the USA. Google LLC is certified under the EU-U.S. Data Privacy Framework; the transfer is therefore based on the adequacy decision of the European Commission under Art. 45 GDPR. Data in Google Analytics is kept for no more than 14 months. Details are in the",
@@ -1365,7 +1365,7 @@
     "bookingTitle": "External media: booking via cal.com",
     "bookingText": "Loads the booking calendar of Cal.com, Inc., San Francisco, USA, on the Book appointment page once it comes into view. cal.com then receives your IP address, browser and device details and the address of the page. Its service provider Cloudflare sets the cookie __cf_bm against automated access (30 minutes), and technical error reports go to Sentry. Transfer to the USA on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it the calendar stays off, and you request appointments by phone.",
     "analyticsTitle": "Statistics: Google Analytics",
-    "analyticsText": "Loads Google Analytics 4 by Google Ireland Limited, Dublin, Ireland, and evaluates which pages are used and how. Google then receives your IP address, browser and device details and the pages you visit, and sets the cookies _ga and _ga_ with the website's ID (up to 2 years). A transfer to the USA is possible, on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it Google Analytics is not loaded and nothing is sent to Google.",
+    "analyticsText": "Loads Google Analytics 4 by Google Ireland Limited, Dublin, Ireland, and evaluates which pages are used and how. Google then receives your IP address, browser and device details and the pages you visit, and sets the cookies _ga and _ga_ with the website's ID (up to {months} months after the last visit). A transfer to the USA is possible, on the basis of the EU-U.S. Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG), which you can withdraw here at any time. Without it Google Analytics is not loaded and nothing is sent to Google.",
     "details": "Details in the privacy policy.",
     "noticeTitleAnalyticsNoCalendar": "May statistics with Google Analytics load?",
     "noticeAnalyticsNoCalendar": "With Google Analytics by Google Ireland Limited we evaluate how our pages are used. Google receives your IP address, among other data, sets cookies and may transfer data to the USA. This only happens with your consent.",

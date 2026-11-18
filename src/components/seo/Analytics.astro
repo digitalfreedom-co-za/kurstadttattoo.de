@@ -4,14 +4,14 @@
 // stub, consent defaults all denied, loadGtag() and the restore of a stored grant. There is no static
 // gtag.js tag; it is injected only by loadGtag(), on a stored grant or on accept (src/scripts/analytics.ts).
 // The stored choice is the consent record of the dialog (src/config/consent.ts), checked like readConsent().
-import { ANALYTICS_ENABLED, GA4_ID } from '../../config/analytics';
+import { ANALYTICS_ENABLED, GA4_COOKIE_EXPIRES_SECONDS, GA4_ID } from '../../config/analytics';
 import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSENT_VERSION } from '../../config/consent';
 ---
 
 {
   ANALYTICS_ENABLED && (
     <>
-      <script is:inline define:vars={{ gaId: GA4_ID, key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, maxAgeMonths: CONSENT_MAX_AGE_MONTHS, categories: CONSENT_CATEGORIES }}>
+      <script is:inline define:vars={{ gaId: GA4_ID, cookieExpires: GA4_COOKIE_EXPIRES_SECONDS, key: CONSENT_STORAGE_KEY, version: CONSENT_VERSION, maxAgeMonths: CONSENT_MAX_AGE_MONTHS, categories: CONSENT_CATEGORIES }}>
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () {
           dataLayer.push(arguments);
@@ -31,7 +31,7 @@ import { CONSENT_CATEGORIES, CONSENT_MAX_AGE_MONTHS, CONSENT_STORAGE_KEY, CONSEN
           s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
           document.head.appendChild(s);
           gtag('js', new Date());
-          gtag('config', gaId);
+          gtag('config', gaId, { cookie_expires: cookieExpires });
         };
 
         try {

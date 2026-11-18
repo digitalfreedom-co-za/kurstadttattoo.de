@@ -20,7 +20,7 @@
 import Button from '../ui/Button.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
-import { ANALYTICS_ENABLED } from '../../config/analytics';
+import { ANALYTICS_ENABLED, GA4_COOKIE_MONTHS } from '../../config/analytics';
 import { CAL_ENABLED } from '../../config/booking';
 import { CONSENT_ANCHOR } from '../../config/consent';
 import { pageExists } from '../../lib/pages';
@@ -38,7 +38,7 @@ const legalPage = routeKey === 'privacy' || routeKey === 'imprint';
 const privacyHref = pageExists('privacy', locale) ? url(`${localizedPath('privacy', locale)}#${CONSENT_ANCHOR}`) : undefined;
 const categories = [
   ...(CAL_ENABLED ? [{ key: 'booking', title: copy.bookingTitle, text: copy.bookingText }] : []),
-  ...(ANALYTICS_ENABLED ? [{ key: 'analytics', title: copy.analyticsTitle, text: copy.analyticsText }] : []),
+  ...(ANALYTICS_ENABLED ? [{ key: 'analytics', title: copy.analyticsTitle, text: copy.analyticsText.replaceAll('{months}', String(GA4_COOKIE_MONTHS)) }] : []),
 ];
 const hasChoice = categories.length > 0;
 const noticeTitle = CAL_ENABLED ? copy.noticeTitleAnalytics : copy.noticeTitleAnalyticsNoCalendar;
